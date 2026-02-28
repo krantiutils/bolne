@@ -1,0 +1,116 @@
+{
+  "description": "Acoustic quality evaluation protocol for NepTTS-Bench. Defines automated metrics, thresholds, and human calibration procedures for assessing synthesized speech quality. Designed to quantify signal fidelity, perceptual quality, and production readiness.",
+  "notes": {
+    "usage": "Run all automated metrics on every synthesized utterance. Use human MOS calibration on a stratified subset to validate automated scores. Run the same protocol on teacher (Gemini) output to establish a quality baseline.",
+    "evaluation": "A passing system must meet all 'pass' thresholds. Systems meeting only 'minimum' thresholds are flagged for review. Failures on any metric below 'minimum' disqualify the utterance.",
+    "reference_standard": "Thresholds calibrated against EBU R128 broadcast standards and published TTS benchmarks (Seed-TTS-Eval, LibriTTS-R)."
+  },
+  "metrics": {
+    "dnsmos_p835": {
+      "description": "Microsoft DNSMOS P.835 — non-intrusive perceptual speech quality model predicting Mean Opinion Scores for overall quality (OVRL), speech signal quality (SIG), and background noise quality (BAK).",
+      "model": "DNSMOS P.835",
+      "components": {
+        "OVRL": {
+          "description": "Overall speech quality",
+          "pass_threshold": 3.5,
+          "minimum_threshold": 3.0,
+          "scale": "1.0–5.0 (MOS)"
+        },
+        "SIG": {
+          "description": "Speech signal quality (distortion, artifacts)",
+          "pass_threshold": 3.5,
+          "minimum_threshold": 3.0,
+          "scale": "1.0–5.0 (MOS)"
+        },
+        "BAK": {
+          "description": "Background noise quality (absence of noise)",
+          "pass_threshold": 4.0,
+          "minimum_threshold": 3.5,
+          "scale": "1.0–5.0 (MOS)"
+        }
+      }
+    },
+    "utmos": {
+      "description": "UTMOS — universal TTS MOS prediction model. Provides a single naturalness score correlated with human MOS ratings.",
+      "model": "UTMOS (SaruLab)",
+      "pass_threshold": 4.0,
+      "minimum_threshold": 3.5,
+      "scale": "1.0–5.0 (MOS)"
+    },
+    "signal_to_noise_ratio": {
+      "description": "Signal-to-noise ratio measured on the speech signal. Higher values indicate cleaner audio.",
+      "unit": "dB",
+      "pass_threshold": 35,
+      "minimum_threshold": 25
+    },
+    "loudness": {
+      "description": "Integrated loudness per EBU R128. Ensures consistent volume across utterances.",
+      "unit": "LUFS",
+      "target": -23.0,
+      "tolerance": 1.0,
+      "range": [-24.0, -22.0],
+      "standard": "EBU R128"
+    },
+    "clipping": {
+      "description": "Percentage of audio samples at or exceeding the maximum amplitude. Indicates digital clipping artifacts.",
+      "unit": "percent",
+      "maximum_threshold": 0.01,
+      "measurement": "Percentage of samples with |amplitude| >= 0.99 of max"
+    },
+    "silence_trimming": {
+      "description": "Maximum allowed leading and trailing silence. Excess silence wastes training data and indicates generation issues.",
+      "unit": "ms",
+      "maximum_leading_silence": 100,
+      "maximum_trailing_silence": 100,
+      "measurement": "Duration of leading/trailing segments below -40 dBFS"
+    }
+  },
+  "human_mos_calibration": {
+    "description": "Human listening test to validate automated metric scores and establish a perceptual quality baseline. Run on a stratified subset of generated utterances.",
+    "sample_size": 100,
+    "sampling_strategy": "Stratified by corpus layer (phonological core, conversational, edge cases, English) and by automated quality score quartile",
+    "listeners": 5,
+    "listener_requirements": "Native Nepali speakers with self-reported normal hearing",
+    "rating_scale": {
+      "type": "MOS",
+      "range": [1, 5],
+      "labels": {
+        "1": "Bad",
+        "2": "Poor",
+        "3": "Fair",
+        "4": "Good",
+        "5": "Excellent"
+      }
+    },
+    "pass_threshold": 3.8,
+    "minimum_threshold": 3.5,
+    "inter_rater_reliability": "Krippendorff's alpha >= 0.6"
+  },
+  "teacher_baseline": {
+    "description": "Run the identical evaluation protocol on teacher model (Gemini Flash 2.5 TTS) output to quantify the quality gap between teacher and student.",
+    "procedure": [
+      "Generate audio for the same 100-sample calibration subset using the teacher model",
+      "Run all automated metrics (DNSMOS, UTMOS, SNR, LUFS, clipping, silence)",
+      "Conduct human MOS evaluation with the same listener panel",
+      "Report per-metric delta: student - teacher",
+      "Flag metrics where student falls more than 0.5 MOS or 10 dB below teacher"
+    ],
+    "reporting": {
+      "per_metric_comparison": true,
+      "gap_analysis": true,
+      "maximum_acceptable_gap": {
+        "DNSMOS_OVRL": 0.5,
+        "UTMOS": 0.5,
+        "SNR_dB": 10,
+        "human_MOS": 0.5
+      }
+    }
+  },
+  "aggregate_reporting": {
+    "description": "How to report acoustic quality results across the full evaluation set.",
+    "statistics": ["mean", "median", "std", "p5", "p25", "p75", "p95"],
+    "pass_rate": "Percentage of utterances meeting all 'pass' thresholds",
+    "minimum_rate": "Percentage of utterances meeting all 'minimum' thresholds",
+    "breakdown_by": ["corpus_layer", "utterance_length_bucket", "language"]
+  }
+}

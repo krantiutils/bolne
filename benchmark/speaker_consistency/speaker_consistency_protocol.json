@@ -1,0 +1,112 @@
+{
+  "description": "Speaker consistency evaluation protocol for NepTTS-Bench. Defines metrics and thresholds for verifying that the distilled student model preserves the teacher's speaker identity, pitch characteristics, and speaking rate across all conditions.",
+  "notes": {
+    "usage": "Run speaker embedding extraction on all evaluation utterances. Compare teacher-vs-student and student-vs-student pairs. Evaluate F0 and speaking rate consistency across the stratified evaluation set.",
+    "evaluation": "A consistent model should sound like the same speaker regardless of utterance content, emotion, length, or language. Cross-condition tests verify identity preservation under variation.",
+    "reference": "Speaker verification thresholds calibrated against VoxCeleb benchmarks and recent TTS distillation literature (Seed-TTS-Eval, CosyVoice)."
+  },
+  "metrics": {
+    "speaker_embedding_similarity": {
+      "description": "Cosine similarity between speaker embeddings extracted from utterance pairs. Measures whether two utterances sound like the same speaker.",
+      "model": "ECAPA-TDNN (SpeechBrain pretrained)",
+      "embedding_dimension": 192,
+      "comparisons": {
+        "teacher_vs_student": {
+          "description": "Same text spoken by teacher (Gemini) and student model. Measures how well the student preserves the teacher's voice identity.",
+          "pass_threshold": 0.85,
+          "minimum_threshold": 0.75
+        },
+        "student_vs_student": {
+          "description": "Different texts spoken by the student model. Measures internal voice consistency — the model should always sound like the same speaker.",
+          "pass_threshold": 0.90,
+          "minimum_threshold": 0.80
+        }
+      },
+      "scale": "-1.0 to 1.0 (cosine similarity)"
+    },
+    "f0_consistency": {
+      "description": "Fundamental frequency (pitch) consistency between teacher and student. Ensures the student model matches the teacher's pitch range and variability.",
+      "extraction_method": "CREPE or PYIN (on voiced segments only)",
+      "components": {
+        "mean_f0": {
+          "description": "Mean fundamental frequency across voiced segments",
+          "maximum_deviation_percent": 15,
+          "unit": "Hz"
+        },
+        "std_f0": {
+          "description": "Standard deviation of fundamental frequency (pitch variability)",
+          "maximum_deviation_percent": 25,
+          "unit": "Hz"
+        }
+      },
+      "comparison": "Per-utterance: student F0 stats compared to teacher F0 stats for the same text"
+    },
+    "speaking_rate_consistency": {
+      "description": "Speaking rate measured as syllables per second. Student should match the teacher's pacing.",
+      "unit": "syllables/second",
+      "maximum_deviation_percent": 15,
+      "measurement": "Total syllable count (from text) divided by speech duration (excluding leading/trailing silence)"
+    }
+  },
+  "cross_condition_tests": {
+    "description": "Verify speaker identity is preserved across different speaking conditions. The model should sound like the same speaker regardless of what it says or how it says it.",
+    "conditions": {
+      "emotion": {
+        "description": "Speaker consistency across emotion categories (neutral, happy, sad, urgent, calm)",
+        "source_file": "../prosody/nepali_emotion_sentences.json",
+        "test": "Compute pairwise speaker embedding similarity across all emotion pairs. All pairs should meet student-vs-student thresholds.",
+        "minimum_pairs": 10
+      },
+      "utterance_length": {
+        "description": "Speaker consistency across short (<3s), medium (3-8s), and long (>8s) utterances",
+        "source_file": "../stability/nepali_long_form_sentences.json",
+        "test": "Compare speaker embeddings between length buckets. Longer utterances should not drift from short-utterance voice identity.",
+        "length_buckets_seconds": [3, 8]
+      },
+      "language": {
+        "description": "Speaker consistency between Nepali and English utterances (same voice, bilingual)",
+        "test": "Compare speaker embeddings between Nepali-only and English-only utterances. The same voice should be recognizable in both languages.",
+        "minimum_pairs": 20
+      }
+    }
+  },
+  "evaluation_protocol": {
+    "description": "200-utterance stratified evaluation set for speaker consistency testing.",
+    "total_utterances": 200,
+    "stratification": {
+      "by_corpus_layer": {
+        "phonological_core": 40,
+        "conversational_nepali": 60,
+        "edge_cases": 30,
+        "english": 30,
+        "emotion": 20,
+        "long_form": 20
+      }
+    },
+    "procedure": [
+      "Generate teacher audio for all 200 utterances using the selected Gemini voice",
+      "Generate student audio for the same 200 utterances",
+      "Extract ECAPA-TDNN speaker embeddings for all 400 audio files",
+      "Compute teacher-vs-student cosine similarity for each utterance pair (200 pairs)",
+      "Compute student-vs-student cosine similarity for 500 random student pairs",
+      "Extract F0 contours for all 400 audio files",
+      "Compute per-utterance F0 mean and std deviation comparison",
+      "Compute speaking rate for all 400 audio files",
+      "Run cross-condition tests (emotion, length, language)",
+      "Report aggregate statistics and per-condition breakdowns"
+    ]
+  },
+  "aggregate_reporting": {
+    "description": "How to report speaker consistency results.",
+    "statistics": ["mean", "median", "std", "min", "p5", "p25", "p75", "p95"],
+    "pass_rate": "Percentage of pairs meeting 'pass' thresholds",
+    "minimum_rate": "Percentage of pairs meeting 'minimum' thresholds",
+    "breakdown_by": ["comparison_type", "corpus_layer", "cross_condition"],
+    "visualizations": [
+      "Speaker embedding similarity histogram (teacher-vs-student)",
+      "Speaker embedding similarity histogram (student-vs-student)",
+      "F0 mean scatter plot (teacher vs student)",
+      "Speaking rate scatter plot (teacher vs student)"
+    ]
+  }
+}
