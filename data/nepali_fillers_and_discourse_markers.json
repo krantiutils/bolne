@@ -1,0 +1,487 @@
+{
+  "description": "Nepali fillers, backchannels, discourse markers, interjections, and particles for TTS system",
+  "notes": {
+    "usage": "These are sounds/words Nepali speakers use in natural conversation for acknowledgment, hesitation, agreement, surprise, etc.",
+    "particles": "Nepali particles (निपात/nipaat) carry little standalone meaning but significantly affect sentence tone and emphasis",
+    "formality": "Some items have formal vs colloquial variants; marked where applicable",
+    "prosody": "Many of these can be lengthened for emphasis (e.g., ओहोहोहो for stronger surprise)"
+  },
+  "backchannels_and_acknowledgment": [
+    {
+      "word": "हजुर",
+      "romanization": "hajur",
+      "function": "acknowledgment_respectful",
+      "description": "Respectful 'yes' or acknowledgment; used with elders/superiors; also used as a polite backchannel to show listening"
+    },
+    {
+      "word": "हो",
+      "romanization": "ho",
+      "function": "agreement",
+      "description": "Direct 'yes'; most common affirmative response"
+    },
+    {
+      "word": "हो हो",
+      "romanization": "ho ho",
+      "function": "emphatic_agreement",
+      "description": "Emphatic agreement; repeated for stronger affirmation"
+    },
+    {
+      "word": "अँ",
+      "romanization": "a~",
+      "function": "acknowledgment_casual",
+      "description": "Casual 'yeah'; nasalized sound showing affirmation or that one is listening"
+    },
+    {
+      "word": "ह",
+      "romanization": "ha",
+      "function": "acknowledgment_minimal",
+      "description": "Minimal backchannel; soft acknowledgment while listening"
+    },
+    {
+      "word": "हुन्छ",
+      "romanization": "hunchha",
+      "function": "agreement_acceptance",
+      "description": "'Okay' / 'will do' / 'that works'; signals acceptance or consent"
+    },
+    {
+      "word": "ठीक छ",
+      "romanization": "thik chha",
+      "function": "agreement_acceptance",
+      "description": "'It's okay' / 'that's fine'; signals understanding or acceptance"
+    },
+    {
+      "word": "ठीकै छ",
+      "romanization": "thikai chha",
+      "function": "agreement_reassurance",
+      "description": "'It's totally fine' / 'no problem'; reassuring variant"
+    },
+    {
+      "word": "लाग्छ",
+      "romanization": "lagchha",
+      "function": "tentative_agreement",
+      "description": "'It seems so' / 'I think so'; hedged agreement"
+    },
+    {
+      "word": "त्यसो त",
+      "romanization": "tyaso ta",
+      "function": "concession",
+      "description": "'That's true' / 'in that case'; conceding a point"
+    }
+  ],
+  "hesitation_and_fillers": [
+    {
+      "word": "अ",
+      "romanization": "a",
+      "function": "hesitation",
+      "description": "Brief hesitation sound, equivalent to English 'uh'"
+    },
+    {
+      "word": "अँ",
+      "romanization": "a~",
+      "function": "hesitation_thinking",
+      "description": "Nasalized hesitation; also used as thinking filler (context-dependent: can be acknowledgment or hesitation)"
+    },
+    {
+      "word": "उम्",
+      "romanization": "um",
+      "function": "hesitation",
+      "description": "Thinking filler, equivalent to English 'um'"
+    },
+    {
+      "word": "एउटा कुरा",
+      "romanization": "euta kura",
+      "function": "topic_introduction",
+      "description": "'One thing...' used to introduce a new topic or stall while thinking"
+    },
+    {
+      "word": "भन्नाले",
+      "romanization": "bhannale",
+      "function": "elaboration_filler",
+      "description": "'That is to say' / 'meaning'; used to elaborate or rephrase; also serves as filler"
+    },
+    {
+      "word": "कसो भन्ने",
+      "romanization": "kaso bhanne",
+      "function": "hesitation_rephrasing",
+      "description": "'How to say it' / 'how should I put it'; used when searching for words"
+    },
+    {
+      "word": "के भन्ने",
+      "romanization": "ke bhanne",
+      "function": "hesitation_rephrasing",
+      "description": "'What to say'; similar to 'how should I put it'"
+    },
+    {
+      "word": "त्यो",
+      "romanization": "tyo",
+      "function": "placeholder_filler",
+      "description": "'That (thing)'; used as a placeholder when the speaker is searching for the right word"
+    },
+    {
+      "word": "त्यो भनेको",
+      "romanization": "tyo bhaneko",
+      "function": "elaboration_filler",
+      "description": "'That means' / 'what that is'; used to explain or as a filler while thinking"
+    },
+    {
+      "word": "यो",
+      "romanization": "yo",
+      "function": "placeholder_filler",
+      "description": "'This (thing)'; proximal placeholder filler"
+    },
+    {
+      "word": "खै",
+      "romanization": "khai",
+      "function": "uncertainty_attention",
+      "description": "'I don't know' / 'well...'; expresses uncertainty, unfamiliarity, or disappointment; also used to get attention"
+    }
+  ],
+  "discourse_particles": [
+    {
+      "word": "त",
+      "romanization": "ta",
+      "function": "emphasis_topic",
+      "description": "Emphasizes or asserts; marks topics; equivalent to 'indeed' or 'as for'"
+    },
+    {
+      "word": "नि",
+      "romanization": "ni",
+      "function": "emphasis_attention",
+      "description": "Emphasizes answers/questions; draws attention to the marked element"
+    },
+    {
+      "word": "नै",
+      "romanization": "nai",
+      "function": "emphasis_strong",
+      "description": "Strong emphasis; augments the notion ('exactly', 'the very', 'itself')"
+    },
+    {
+      "word": "पो",
+      "romanization": "po",
+      "function": "surprise_contrast",
+      "description": "Indicates surprise or contrast with expectations ('actually', 'on the contrary')"
+    },
+    {
+      "word": "रे",
+      "romanization": "re",
+      "function": "reported_speech",
+      "description": "Indicates hearsay/reported speech ('they say', 'apparently'); also indicates unfamiliarity"
+    },
+    {
+      "word": "चाहिँ",
+      "romanization": "chahi~",
+      "function": "focus_specification",
+      "description": "Focuses or gives emphasis to a specific subject ('especially', 'as for', 'in particular')"
+    },
+    {
+      "word": "कि",
+      "romanization": "ki",
+      "function": "doubt_question",
+      "description": "Expresses doubt or uncertainty in questions; also 'or' in alternative questions"
+    },
+    {
+      "word": "क्यारे",
+      "romanization": "kyare",
+      "function": "uncertainty",
+      "description": "Denotes uncertainty ('probably', 'I guess', 'maybe')"
+    },
+    {
+      "word": "न",
+      "romanization": "na",
+      "function": "insistence_softening",
+      "description": "Shows insistence or softens imperatives; equivalent to 'please' or tag question"
+    },
+    {
+      "word": "ल",
+      "romanization": "la",
+      "function": "agreement_request",
+      "description": "At start: agreement ('okay, let's...'); at end: request/gentle command"
+    },
+    {
+      "word": "है",
+      "romanization": "hai",
+      "function": "confirmation_seeking",
+      "description": "Seeks confirmation; tag question equivalent ('okay?', 'right?', 'you know?')"
+    }
+  ],
+  "surprise_and_exclamation": [
+    {
+      "word": "ओहो",
+      "romanization": "oho",
+      "function": "pleasant_surprise",
+      "description": "Pleasant surprise; can be doubled/tripled for emphasis (ओहोहो)"
+    },
+    {
+      "word": "अरे",
+      "romanization": "are",
+      "function": "surprise_confusion",
+      "description": "Surprise mixed with confusion/irritation at something unexpected; similar to 'huh?'"
+    },
+    {
+      "word": "अरे वा",
+      "romanization": "are wa",
+      "function": "pleasant_surprise",
+      "description": "Pleasantly surprised exclamation"
+    },
+    {
+      "word": "वा",
+      "romanization": "wa",
+      "function": "admiration",
+      "description": "'Wow!'; expresses admiration or wonder"
+    },
+    {
+      "word": "वाह",
+      "romanization": "wah",
+      "function": "admiration",
+      "description": "'Wow!'; stronger admiration or amazement"
+    },
+    {
+      "word": "लौ",
+      "romanization": "lau",
+      "function": "surprise_realization",
+      "description": "Indicates sudden surprise or realization"
+    },
+    {
+      "word": "हरे",
+      "romanization": "hare",
+      "function": "disbelief",
+      "description": "Disbelief or skepticism; 'Are you serious?'"
+    },
+    {
+      "word": "आमामा",
+      "romanization": "amama",
+      "function": "shock",
+      "description": "Shock at something exceeding expectations; can be extended for stronger effect"
+    },
+    {
+      "word": "बाबु रे",
+      "romanization": "babu re",
+      "function": "shock_exclamation",
+      "description": "Exclamation of shock or disbelief (colloquial)"
+    },
+    {
+      "word": "ई खा",
+      "romanization": "i kha",
+      "function": "extreme_disbelief",
+      "description": "Extreme disbelief; can be extended indefinitely for emphasis"
+    },
+    {
+      "word": "आहा",
+      "romanization": "aaha",
+      "function": "delight",
+      "description": "Expression of delight or appreciation"
+    }
+  ],
+  "disagreement_and_disapproval": [
+    {
+      "word": "हैन",
+      "romanization": "haina",
+      "function": "negation",
+      "description": "'No'; direct negation or disagreement"
+    },
+    {
+      "word": "अहँ",
+      "romanization": "aha~",
+      "function": "casual_negation",
+      "description": "Casual 'no' / 'nah'; informal negation"
+    },
+    {
+      "word": "होइन",
+      "romanization": "hoina",
+      "function": "correction",
+      "description": "'No, it's not'; used to correct someone"
+    },
+    {
+      "word": "छ्या",
+      "romanization": "chyaa",
+      "function": "disgust_dismissal",
+      "description": "'Yuck!' / dismissal; expresses disgust or strong dismissal"
+    },
+    {
+      "word": "छि",
+      "romanization": "chhi",
+      "function": "disgust",
+      "description": "'Eww!'; stronger disgust"
+    },
+    {
+      "word": "धत",
+      "romanization": "dhat",
+      "function": "disapproval",
+      "description": "Disapproval of something inappropriate or forbidden"
+    },
+    {
+      "word": "धत्तेरी",
+      "romanization": "dhatteri",
+      "function": "frustration_annoyance",
+      "description": "Frustration or strong annoyance; mild expletive"
+    },
+    {
+      "word": "हत्",
+      "romanization": "hat",
+      "function": "annoyance_dismissal",
+      "description": "Annoyance or dismissal; 'tsk!'"
+    },
+    {
+      "word": "ह्याँ",
+      "romanization": "hya~",
+      "function": "annoyance",
+      "description": "Annoyance at unexpected or unwelcome news; can be lengthened for emphasis"
+    },
+    {
+      "word": "आ",
+      "romanization": "aa",
+      "function": "protest_dissent",
+      "description": "Protest, dissent, or disapproval"
+    }
+  ],
+  "question_and_clarification": [
+    {
+      "word": "हो र",
+      "romanization": "ho ra",
+      "function": "surprise_question",
+      "description": "'Really?' / 'Is that so?'; expresses mild surprise while seeking confirmation"
+    },
+    {
+      "word": "के",
+      "romanization": "ke",
+      "function": "question_what",
+      "description": "'What?'; used as standalone exclamation of surprise or to ask for clarification"
+    },
+    {
+      "word": "किन",
+      "romanization": "kina",
+      "function": "question_why",
+      "description": "'Why?'; used as standalone rhetorical or genuine question"
+    },
+    {
+      "word": "अनि",
+      "romanization": "ani",
+      "function": "continuation_prompt",
+      "description": "'And then?' / 'so?'; prompts the speaker to continue"
+    },
+    {
+      "word": "त्यसपछि",
+      "romanization": "tyaspachhi",
+      "function": "continuation_then",
+      "description": "'After that' / 'then'; prompts continuation of a narrative"
+    },
+    {
+      "word": "हैन त",
+      "romanization": "haina ta",
+      "function": "tag_question",
+      "description": "'Isn't it?' / 'right?'; rhetorical tag seeking agreement"
+    }
+  ],
+  "conversational_management": [
+    {
+      "word": "ल",
+      "romanization": "la",
+      "function": "topic_transition",
+      "description": "'Okay' / 'alright'; signals readiness or transition to new topic/action"
+    },
+    {
+      "word": "ल ल",
+      "romanization": "la la",
+      "function": "hurried_agreement",
+      "description": "'Okay okay'; hurried agreement or acknowledgment"
+    },
+    {
+      "word": "अनि",
+      "romanization": "ani",
+      "function": "connective",
+      "description": "'And' / 'then'; connects utterances in narrative or conversation"
+    },
+    {
+      "word": "त्यसो भए",
+      "romanization": "tyaso bhaye",
+      "function": "conditional_conclusion",
+      "description": "'In that case' / 'if so'; draws conclusion from what was said"
+    },
+    {
+      "word": "जे भए पनि",
+      "romanization": "je bhaye pani",
+      "function": "concession_anyway",
+      "description": "'Anyway' / 'regardless'; shifts topic or overrides previous discussion"
+    },
+    {
+      "word": "हेर्नुस्",
+      "romanization": "hernus",
+      "function": "attention_getter",
+      "description": "'Look' / 'see' (polite); used to draw attention before making a point"
+    },
+    {
+      "word": "सुन्नुस्",
+      "romanization": "sunnus",
+      "function": "attention_getter",
+      "description": "'Listen' (polite); used to preface important information"
+    },
+    {
+      "word": "ए",
+      "romanization": "e",
+      "function": "attention_calling",
+      "description": "'Hey' / 'oh'; getting someone's attention (informal)"
+    },
+    {
+      "word": "ओइ",
+      "romanization": "oi",
+      "function": "attention_calling_informal",
+      "description": "'Hey!' (informal); calling someone's attention casually"
+    },
+    {
+      "word": "हेर न",
+      "romanization": "hera na",
+      "function": "attention_casual",
+      "description": "'Look here' (casual); informal attention-getting"
+    }
+  ],
+  "emotional_reactions": [
+    {
+      "word": "बबाल",
+      "romanization": "babaal",
+      "function": "excitement_approval",
+      "description": "'Superb!' / 'Awesome!'; strong excitement or approval (slang)"
+    },
+    {
+      "word": "दाम्मी",
+      "romanization": "dammi",
+      "function": "excitement_approval",
+      "description": "'Awesome!' / 'Great!'; expressing approval or excitement (slang)"
+    },
+    {
+      "word": "जे पाई तेई",
+      "romanization": "je pai tei",
+      "function": "disapproval_careless",
+      "description": "Disapproval of someone saying whatever they please; often shortened to 'jpt' in text"
+    },
+    {
+      "word": "आत्था",
+      "romanization": "attha",
+      "function": "physical_sensation",
+      "description": "'Hot!' (exclamation when touching something hot)"
+    },
+    {
+      "word": "आच्छु",
+      "romanization": "acchhu",
+      "function": "physical_sensation",
+      "description": "'Cold!' (exclamation when feeling cold)"
+    },
+    {
+      "word": "उफ्",
+      "romanization": "uf",
+      "function": "exasperation",
+      "description": "'Ugh!' / 'oops!'; mild frustration or realization of mistake"
+    },
+    {
+      "word": "माफ गर्नुहोस्",
+      "romanization": "maaf garnuhos",
+      "function": "apology_formal",
+      "description": "'Excuse me' / 'I'm sorry' (formal); used as conversational repair"
+    },
+    {
+      "word": "सोरी",
+      "romanization": "sori",
+      "function": "apology_casual",
+      "description": "'Sorry' (borrowed from English); casual conversational repair"
+    }
+  ]
+}

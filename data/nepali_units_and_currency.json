@@ -1,0 +1,583 @@
+{
+  "description": "Nepali currency and measurement unit words for TTS text normalization",
+  "notes": {
+    "usage": "Used to expand abbreviated or symbolic units (e.g., 'रु', 'कि.मी.', 'कि.ग्रा.') into full spoken forms",
+    "systems": "Nepal uses metric system officially since 1963, but traditional units remain widely used in daily life",
+    "regional_land_units": "Hill regions use ropani system; Terai regions use bigha system",
+    "abbreviation_key": "Common Nepali abbreviations included where applicable for text normalization matching"
+  },
+  "currency": [
+    {
+      "word": "रुपैयाँ",
+      "romanization": "rupaiya~",
+      "symbol": "रु",
+      "abbreviation": "रु.",
+      "english": "rupee",
+      "description": "Nepalese rupee; primary currency unit"
+    },
+    {
+      "word": "पैसा",
+      "romanization": "paisa",
+      "symbol": null,
+      "abbreviation": null,
+      "english": "paisa",
+      "description": "1/100 of a rupee; subdivision of rupee"
+    },
+    {
+      "word": "डलर",
+      "romanization": "dalar",
+      "symbol": "$",
+      "abbreviation": null,
+      "english": "dollar",
+      "description": "US dollar (commonly referenced in Nepal)"
+    },
+    {
+      "word": "युरो",
+      "romanization": "yuro",
+      "symbol": null,
+      "abbreviation": null,
+      "english": "euro",
+      "description": "Euro"
+    },
+    {
+      "word": "पाउन्ड",
+      "romanization": "paund",
+      "symbol": null,
+      "abbreviation": null,
+      "english": "pound",
+      "description": "British pound"
+    },
+    {
+      "word": "भारतीय रुपैयाँ",
+      "romanization": "bharatiya rupaiya~",
+      "symbol": null,
+      "abbreviation": "भा.रु.",
+      "english": "Indian rupee",
+      "description": "Indian rupee; widely used along Nepal-India border"
+    }
+  ],
+  "weight_metric": [
+    {
+      "word": "किलोग्राम",
+      "romanization": "kilogram",
+      "abbreviation": "कि.ग्रा.",
+      "short_form": "किलो",
+      "english": "kilogram",
+      "description": "Standard metric weight unit; 'किलो' is the colloquial short form used in daily speech"
+    },
+    {
+      "word": "किलो",
+      "romanization": "kilo",
+      "abbreviation": null,
+      "short_form": null,
+      "english": "kilo",
+      "description": "Colloquial form of किलोग्राम; most common in everyday speech (e.g., 'दुई किलो चामल')"
+    },
+    {
+      "word": "ग्राम",
+      "romanization": "gram",
+      "abbreviation": "ग्रा.",
+      "short_form": null,
+      "english": "gram",
+      "description": "Standard metric unit"
+    },
+    {
+      "word": "मिलिग्राम",
+      "romanization": "miligram",
+      "abbreviation": "मि.ग्रा.",
+      "short_form": null,
+      "english": "milligram",
+      "description": "Used in medical/pharmaceutical contexts"
+    },
+    {
+      "word": "टन",
+      "romanization": "tan",
+      "abbreviation": null,
+      "short_form": null,
+      "english": "ton",
+      "description": "Metric ton"
+    },
+    {
+      "word": "क्विन्टल",
+      "romanization": "kwintal",
+      "abbreviation": null,
+      "short_form": null,
+      "english": "quintal",
+      "description": "100 kilograms; commonly used in agriculture and trade"
+    }
+  ],
+  "weight_traditional": [
+    {
+      "word": "तोला",
+      "romanization": "tola",
+      "abbreviation": null,
+      "english": "tola",
+      "equivalent": "~11.66 grams",
+      "description": "Used for measuring gold and precious metals; the standard unit in jewelry shops"
+    },
+    {
+      "word": "लाल",
+      "romanization": "lal",
+      "abbreviation": null,
+      "english": "lal",
+      "equivalent": "1/100 tola",
+      "description": "Smallest unit for precious metals; 100 lal = 1 tola"
+    },
+    {
+      "word": "आना",
+      "romanization": "aana",
+      "abbreviation": null,
+      "english": "aana (weight)",
+      "equivalent": "6.25 lal",
+      "description": "Traditional gold weight subdivision"
+    },
+    {
+      "word": "चटक",
+      "romanization": "chatak",
+      "abbreviation": null,
+      "english": "chatak",
+      "equivalent": "~58.31 grams",
+      "description": "Traditional weight unit"
+    },
+    {
+      "word": "पाउ",
+      "romanization": "pau",
+      "abbreviation": null,
+      "english": "pau",
+      "equivalent": "~199.45 grams (4 chatak)",
+      "description": "Quarter unit; still used in some markets"
+    },
+    {
+      "word": "सेर",
+      "romanization": "ser",
+      "abbreviation": null,
+      "english": "seer",
+      "equivalent": "~933 grams (Terai) / ~800 grams (Hills)",
+      "description": "Traditional weight unit; varies by region"
+    },
+    {
+      "word": "धार्नी",
+      "romanization": "dharni",
+      "abbreviation": null,
+      "english": "dharni",
+      "equivalent": "~2.39 kg (12 pau)",
+      "description": "Common traditional weight unit for vegetables and produce"
+    },
+    {
+      "word": "पल्ला",
+      "romanization": "palla",
+      "abbreviation": null,
+      "english": "palla",
+      "equivalent": "~5 kg",
+      "description": "Traditional weight unit"
+    },
+    {
+      "word": "मन",
+      "romanization": "man",
+      "abbreviation": null,
+      "english": "maund",
+      "equivalent": "~37.32 kg",
+      "description": "Large traditional weight unit (maund)"
+    }
+  ],
+  "length_metric": [
+    {
+      "word": "मिलिमिटर",
+      "romanization": "milimitar",
+      "abbreviation": "मि.मि.",
+      "english": "millimeter",
+      "description": "Standard metric unit"
+    },
+    {
+      "word": "सेन्टिमिटर",
+      "romanization": "sentimitar",
+      "abbreviation": "से.मि.",
+      "english": "centimeter",
+      "description": "Standard metric unit"
+    },
+    {
+      "word": "मिटर",
+      "romanization": "mitar",
+      "abbreviation": "मि.",
+      "english": "meter",
+      "description": "Standard metric unit"
+    },
+    {
+      "word": "किलोमिटर",
+      "romanization": "kilomitar",
+      "abbreviation": "कि.मि.",
+      "english": "kilometer",
+      "description": "Standard metric unit for distances"
+    },
+    {
+      "word": "इन्च",
+      "romanization": "inch",
+      "abbreviation": null,
+      "english": "inch",
+      "description": "Commonly used in informal measurement"
+    },
+    {
+      "word": "फिट",
+      "romanization": "fit",
+      "abbreviation": null,
+      "english": "feet",
+      "description": "Widely used in construction and real estate"
+    }
+  ],
+  "length_traditional": [
+    {
+      "word": "अंगुल",
+      "romanization": "angul",
+      "abbreviation": null,
+      "english": "finger-width",
+      "equivalent": "~1.91 cm",
+      "description": "Width of a finger; smallest traditional length unit"
+    },
+    {
+      "word": "विट्ठा",
+      "romanization": "vittha",
+      "abbreviation": null,
+      "english": "span",
+      "equivalent": "~22.86 cm (12 angul)",
+      "description": "Hand span; distance from thumb tip to little finger tip"
+    },
+    {
+      "word": "हात",
+      "romanization": "haat",
+      "abbreviation": null,
+      "english": "cubit",
+      "equivalent": "~45.72 cm (1.5 feet)",
+      "description": "Forearm length; commonly used in fabric measurement and daily contexts"
+    },
+    {
+      "word": "दण्डा",
+      "romanization": "danda",
+      "abbreviation": null,
+      "english": "rod",
+      "equivalent": "~1.83 m (4 haat)",
+      "description": "Traditional rod measurement"
+    },
+    {
+      "word": "जञ्जिर",
+      "romanization": "janjir",
+      "abbreviation": null,
+      "english": "chain",
+      "equivalent": "~9 haat",
+      "description": "Chain measurement used in land surveying"
+    },
+    {
+      "word": "कोस",
+      "romanization": "kos",
+      "abbreviation": null,
+      "english": "kos",
+      "equivalent": "~3.66 km (2.25 miles)",
+      "description": "Traditional distance unit; still used in rural speech"
+    },
+    {
+      "word": "योजन",
+      "romanization": "yojan",
+      "abbreviation": null,
+      "english": "yojana",
+      "equivalent": "~14.64 km (4 kos)",
+      "description": "Ancient large distance unit"
+    }
+  ],
+  "volume_metric": [
+    {
+      "word": "मिलिलिटर",
+      "romanization": "mililitar",
+      "abbreviation": "मि.लि.",
+      "english": "milliliter",
+      "description": "Standard metric unit"
+    },
+    {
+      "word": "लिटर",
+      "romanization": "litar",
+      "abbreviation": "लि.",
+      "english": "liter",
+      "description": "Standard metric unit for liquids"
+    }
+  ],
+  "volume_traditional": [
+    {
+      "word": "मुठी",
+      "romanization": "muthi",
+      "abbreviation": null,
+      "english": "handful",
+      "equivalent": "~0.057 liters (1/10 mana)",
+      "description": "A handful; smallest traditional volume unit"
+    },
+    {
+      "word": "माना",
+      "romanization": "mana",
+      "abbreviation": null,
+      "english": "mana",
+      "equivalent": "~0.568 liters",
+      "description": "Common traditional grain measure; still used in markets and households"
+    },
+    {
+      "word": "कुरुवा",
+      "romanization": "kuruwa",
+      "abbreviation": null,
+      "english": "kuruwa",
+      "equivalent": "~1.136 liters (2 mana)",
+      "description": "Traditional volume unit"
+    },
+    {
+      "word": "पाथी",
+      "romanization": "pathi",
+      "abbreviation": null,
+      "english": "pathi",
+      "equivalent": "~4.546 liters",
+      "description": "Foundational traditional volume unit; very commonly used for grain (rice, wheat, etc.)"
+    },
+    {
+      "word": "मुरी",
+      "romanization": "muri",
+      "abbreviation": null,
+      "english": "muri",
+      "equivalent": "~90.92 liters (20 pathi)",
+      "description": "Large grain measure; used for bulk quantities in agriculture"
+    }
+  ],
+  "area_metric": [
+    {
+      "word": "वर्ग मिटर",
+      "romanization": "barga mitar",
+      "abbreviation": "व.मि.",
+      "english": "square meter",
+      "description": "Standard metric area unit"
+    },
+    {
+      "word": "वर्ग फिट",
+      "romanization": "barga fit",
+      "abbreviation": "व.फि.",
+      "english": "square feet",
+      "description": "Commonly used in real estate alongside traditional units"
+    },
+    {
+      "word": "हेक्टर",
+      "romanization": "hektar",
+      "abbreviation": null,
+      "english": "hectare",
+      "description": "Used in government/agricultural context"
+    }
+  ],
+  "area_traditional_hill": [
+    {
+      "word": "दाम",
+      "romanization": "daam",
+      "abbreviation": null,
+      "english": "daam",
+      "equivalent": "~1.99 sq m (21.39 sq ft)",
+      "description": "Smallest hill-region land unit"
+    },
+    {
+      "word": "पैसा",
+      "romanization": "paisa",
+      "abbreviation": null,
+      "english": "paisa (land)",
+      "equivalent": "~7.95 sq m (4 daam)",
+      "description": "Hill-region land unit; note: same word as currency subdivision but different meaning"
+    },
+    {
+      "word": "आना",
+      "romanization": "aana",
+      "abbreviation": null,
+      "english": "aana (land)",
+      "equivalent": "~31.80 sq m (4 paisa)",
+      "description": "Very commonly used hill-region land unit; key unit in Kathmandu real estate"
+    },
+    {
+      "word": "रोपनी",
+      "romanization": "ropani",
+      "abbreviation": null,
+      "english": "ropani",
+      "equivalent": "~508.74 sq m (16 aana)",
+      "description": "Primary hill-region land unit; most common unit in Kathmandu Valley real estate"
+    }
+  ],
+  "area_traditional_terai": [
+    {
+      "word": "धुर",
+      "romanization": "dhur",
+      "abbreviation": null,
+      "english": "dhur",
+      "equivalent": "~16.93 sq m",
+      "description": "Smallest Terai-region land unit"
+    },
+    {
+      "word": "कठ्ठा",
+      "romanization": "kattha",
+      "abbreviation": null,
+      "english": "kattha",
+      "equivalent": "~338.63 sq m (20 dhur)",
+      "description": "Common Terai-region land unit"
+    },
+    {
+      "word": "बिघा",
+      "romanization": "bigha",
+      "abbreviation": null,
+      "english": "bigha",
+      "equivalent": "~6,772.63 sq m (20 kattha)",
+      "description": "Primary Terai-region land unit; largest commonly used unit"
+    }
+  ],
+  "time": [
+    {
+      "word": "सेकेन्ड",
+      "romanization": "sekend",
+      "abbreviation": "से.",
+      "english": "second",
+      "description": "Standard time unit"
+    },
+    {
+      "word": "मिनेट",
+      "romanization": "minet",
+      "abbreviation": "मि.",
+      "english": "minute",
+      "description": "Standard time unit"
+    },
+    {
+      "word": "घण्टा",
+      "romanization": "ghanta",
+      "abbreviation": "घ.",
+      "english": "hour",
+      "description": "Standard time unit"
+    },
+    {
+      "word": "दिन",
+      "romanization": "din",
+      "abbreviation": null,
+      "english": "day",
+      "description": "Day"
+    },
+    {
+      "word": "हप्ता",
+      "romanization": "hapta",
+      "abbreviation": null,
+      "english": "week",
+      "description": "Week"
+    },
+    {
+      "word": "महिना",
+      "romanization": "mahina",
+      "abbreviation": null,
+      "english": "month",
+      "description": "Month"
+    },
+    {
+      "word": "वर्ष",
+      "romanization": "barsha",
+      "abbreviation": null,
+      "english": "year",
+      "description": "Year (formal)"
+    },
+    {
+      "word": "साल",
+      "romanization": "sal",
+      "abbreviation": null,
+      "english": "year",
+      "description": "Year (colloquial)"
+    },
+    {
+      "word": "बजे",
+      "romanization": "baje",
+      "abbreviation": null,
+      "english": "o'clock",
+      "description": "Used after number to indicate clock time (e.g., 'तीन बजे' = 3 o'clock)"
+    }
+  ],
+  "temperature": [
+    {
+      "word": "डिग्री",
+      "romanization": "digri",
+      "abbreviation": null,
+      "english": "degree",
+      "description": "Temperature/angle degree"
+    },
+    {
+      "word": "सेल्सियस",
+      "romanization": "selsiyas",
+      "abbreviation": null,
+      "english": "Celsius",
+      "description": "Celsius scale (standard in Nepal)"
+    },
+    {
+      "word": "फरेनहाइट",
+      "romanization": "pharenhaait",
+      "abbreviation": null,
+      "english": "Fahrenheit",
+      "description": "Fahrenheit scale"
+    }
+  ],
+  "speed_and_rate": [
+    {
+      "word": "प्रति",
+      "romanization": "prati",
+      "abbreviation": null,
+      "english": "per",
+      "description": "'Per'; used to form rate expressions (e.g., 'किलोमिटर प्रति घण्टा')"
+    },
+    {
+      "word": "प्रतिशत",
+      "romanization": "pratishat",
+      "abbreviation": "%",
+      "english": "percent",
+      "description": "Percent"
+    }
+  ],
+  "counting_and_quantity": [
+    {
+      "word": "वटा",
+      "romanization": "wata",
+      "abbreviation": null,
+      "english": "piece/unit (general)",
+      "description": "General counting classifier for objects (e.g., 'दुई वटा' = two pieces)"
+    },
+    {
+      "word": "जना",
+      "romanization": "jana",
+      "abbreviation": null,
+      "english": "person (counter)",
+      "description": "Classifier for counting people (e.g., 'तीन जना' = three people)"
+    },
+    {
+      "word": "थान",
+      "romanization": "than",
+      "abbreviation": null,
+      "english": "piece/unit (formal)",
+      "description": "Formal counting classifier; used in written/official contexts"
+    },
+    {
+      "word": "दर्जन",
+      "romanization": "darjan",
+      "abbreviation": null,
+      "english": "dozen",
+      "description": "Dozen (12 units)"
+    },
+    {
+      "word": "गोटा",
+      "romanization": "gota",
+      "abbreviation": null,
+      "english": "piece (colloquial)",
+      "description": "Colloquial counting classifier; variant of वटा"
+    }
+  ],
+  "common_abbreviation_patterns": {
+    "description": "Common abbreviation patterns in Nepali text that need expansion for TTS",
+    "examples": [
+      { "abbreviated": "रु.", "expanded": "रुपैयाँ" },
+      { "abbreviated": "कि.मी.", "expanded": "किलोमिटर" },
+      { "abbreviated": "कि.ग्रा.", "expanded": "किलोग्राम" },
+      { "abbreviated": "मि.लि.", "expanded": "मिलिलिटर" },
+      { "abbreviated": "से.मि.", "expanded": "सेन्टिमिटर" },
+      { "abbreviated": "मि.मि.", "expanded": "मिलिमिटर" },
+      { "abbreviated": "व.मि.", "expanded": "वर्ग मिटर" },
+      { "abbreviated": "व.फि.", "expanded": "वर्ग फिट" },
+      { "abbreviated": "लि.", "expanded": "लिटर" },
+      { "abbreviated": "घ.", "expanded": "घण्टा" },
+      { "abbreviated": "%", "expanded": "प्रतिशत" }
+    ]
+  }
+}
