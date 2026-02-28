@@ -1,0 +1,137 @@
+{
+  "description": "Text normalization accuracy evaluation protocol for NepTTS-Bench. Tests whether the text normalization pipeline correctly converts written-form text to spoken-form text before synthesis. Covers numbers, dates, currency, time, phone numbers, abbreviations, and percentages.",
+  "notes": {
+    "usage": "Run the normalizer on all test inputs and compare output to expected spoken forms via exact string match. Normalization is upstream of synthesis — errors here propagate to all downstream metrics. Test both in isolation and end-to-end.",
+    "evaluation": "A passing normalizer must achieve >= 98% exact match overall and >= 95% per category. Failures are categorized and analyzed to guide normalizer rule development.",
+    "reference": "Test data drawn from dual-purpose files in data/ which define both normalization rules and expected outputs."
+  },
+  "test_sources": {
+    "description": "Dual-purpose files in data/ that serve both the normalizer pipeline and as benchmark test inputs. Each file contains input-output pairs for a normalization category.",
+    "files": {
+      "numbers": {
+        "path": "../data/nepali_numbers.json",
+        "description": "Number-to-word conversion (cardinal, ordinal, decimal, large numbers)"
+      },
+      "abbreviations": {
+        "path": "../data/nepali_abbreviations.json",
+        "description": "Abbreviation expansion to full spoken forms"
+      },
+      "phone_numbers": {
+        "path": "../data/nepali_phone_number_patterns.json",
+        "description": "Phone number digit-by-digit or grouped reading patterns"
+      },
+      "time_expressions": {
+        "path": "../data/nepali_time_expressions.json",
+        "description": "Time expression normalization (12h, 24h, relative time)"
+      },
+      "negation_patterns": {
+        "path": "../data/nepali_negation_patterns.json",
+        "description": "Negation pattern normalization"
+      }
+    }
+  },
+  "metrics": {
+    "exact_match_accuracy": {
+      "description": "Percentage of test inputs where the normalizer output exactly matches the expected spoken form after whitespace normalization.",
+      "formula": "count(normalized_output == expected_output) / total_inputs",
+      "thresholds": {
+        "overall": {
+          "pass": 0.98,
+          "minimum": 0.95
+        },
+        "per_category": {
+          "numbers": {
+            "description": "Cardinal numbers, ordinal numbers, decimal numbers, large numbers (lakh, crore)",
+            "pass": 0.98,
+            "minimum": 0.95
+          },
+          "dates": {
+            "description": "Date formats (BS and AD calendars, various separators)",
+            "pass": 0.98,
+            "minimum": 0.95
+          },
+          "currency": {
+            "description": "Currency amounts (NPR, USD, mixed formats with commas and decimals)",
+            "pass": 0.98,
+            "minimum": 0.95
+          },
+          "time": {
+            "description": "Time expressions (12-hour, 24-hour, relative time, durations)",
+            "pass": 0.98,
+            "minimum": 0.95
+          },
+          "phone_numbers": {
+            "description": "Phone numbers (landline, mobile, with/without country code)",
+            "pass": 0.98,
+            "minimum": 0.95
+          },
+          "abbreviations": {
+            "description": "Common Nepali and English abbreviations (e.g., ने.रु., WHO, etc.)",
+            "pass": 0.95,
+            "minimum": 0.90
+          },
+          "percentages": {
+            "description": "Percentage values and expressions",
+            "pass": 0.98,
+            "minimum": 0.95
+          }
+        }
+      }
+    },
+    "coverage": {
+      "description": "Percentage of corpus utterances that trigger at least one normalization rule. Low coverage may indicate missing rules for common patterns.",
+      "formula": "count(utterances_with_normalization) / total_corpus_utterances",
+      "reporting_only": true,
+      "notes": "No pass/fail threshold — this is an informational metric to identify normalization gaps."
+    }
+  },
+  "edge_cases": {
+    "description": "Specific challenging inputs that test normalizer robustness.",
+    "categories": {
+      "mixed_format": {
+        "description": "Inputs combining multiple normalization types",
+        "examples": [
+          "रु. 1,234.56 (currency with comma grouping and decimals)",
+          "२०८१/०१/१५ मा रु. ५,००० (date + currency in same utterance)",
+          "बिहान ७:३० मा +977-1-4XXXXXX मा फोन गर्नुहोस् (time + phone number)"
+        ]
+      },
+      "nested_normalizations": {
+        "description": "Inputs where one normalization produces text requiring further normalization",
+        "examples": [
+          "Abbreviation expanding to text containing a number",
+          "Date containing an ordinal number"
+        ]
+      },
+      "ambiguous_formats": {
+        "description": "Inputs where the normalization depends on context",
+        "examples": [
+          "१२:३० — time or ratio?",
+          "२/३ — date or fraction?",
+          "१,२३४ — Nepali comma grouping vs decimal"
+        ]
+      }
+    }
+  },
+  "evaluation_protocol": {
+    "procedure": [
+      "Extract all input-output pairs from the test source files",
+      "Run the text normalizer on each input",
+      "Compare normalized output to expected spoken form (exact match after whitespace normalization)",
+      "Classify each failure by category and error type (missing rule, incorrect rule, ambiguity)",
+      "Compute per-category and overall exact match accuracy",
+      "Run coverage analysis on the full corpus to identify untriggered normalization categories",
+      "Test edge cases and mixed-format inputs separately",
+      "Report failures with input, expected output, actual output, and error classification"
+    ]
+  },
+  "aggregate_reporting": {
+    "description": "How to report normalizer accuracy results.",
+    "statistics": ["accuracy", "count", "failures"],
+    "pass_rate": "Percentage of inputs with exact match",
+    "breakdown_by": ["normalization_category", "error_type"],
+    "failure_report": {
+      "description": "For each failure, report: input text, expected output, actual output, error category, and whether the error would cause an audible mispronunciation"
+    }
+  }
+}

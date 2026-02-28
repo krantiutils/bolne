@@ -1,0 +1,107 @@
+{
+  "description": "Code-switching evaluation protocol for NepTTS-Bench. Evaluates synthesis quality at Nepali-English language boundaries within utterances — voice quality, speaker identity, phonological correctness, and transition smoothness across switch points.",
+  "notes": {
+    "usage": "Run on the code-switching test set (50 utterances with annotated switch points). Evaluate each dimension independently. This protocol complements the robustness tests in stability/ by focusing specifically on language-boundary phenomena.",
+    "evaluation": "Code-switching quality is critical for natural bilingual Nepali-English speech. The system must maintain voice identity and produce smooth transitions at language boundaries while applying appropriate phonology (Nepali vs English) to each segment.",
+    "reference": "Test utterances drawn from robustness tests (../stability/nepali_robustness_tests.json) and conversational corpus entries with annotated language boundaries."
+  },
+  "test_set": {
+    "description": "50 utterances with annotated Nepali-English switch points for evaluating code-switching quality.",
+    "total_utterances": 50,
+    "sources": [
+      "../stability/nepali_robustness_tests.json (code-switching entries)",
+      "Conversational corpus entries with English loanwords and phrases"
+    ],
+    "annotations": {
+      "switch_points": "Character/word index where language switches from Nepali to English or vice versa",
+      "expected_phonology": "Per-segment annotation: whether English words should use Nepali phonology (nativized loanwords) or English phonology (proper nouns, technical terms)",
+      "segment_boundaries_ms": "Expected approximate timestamp boundaries for each language segment (generated from reference alignment)"
+    }
+  },
+  "metrics": {
+    "voice_quality_at_boundaries": {
+      "description": "Perceptual speech quality measured in windows around language switch points. Quality should not degrade at boundaries compared to segment interiors.",
+      "metric": "DNSMOS P.835 OVRL",
+      "measurement": {
+        "boundary_window": "500ms window centered on each switch point",
+        "interior_window": "500ms window at the midpoint of each language segment",
+        "comparison": "Per-utterance delta: boundary_DNSMOS - interior_DNSMOS"
+      },
+      "maximum_delta": 0.3,
+      "unit": "MOS delta",
+      "notes": "Negative delta (boundary worse than interior) is the failure mode. Positive delta is acceptable."
+    },
+    "speaker_identity_across_switch": {
+      "description": "Speaker embedding similarity between Nepali and English segments within the same utterance. The voice should sound like the same speaker in both languages.",
+      "model": "ECAPA-TDNN (SpeechBrain pretrained)",
+      "measurement": "Extract speaker embeddings from Nepali-only and English-only segments of each utterance. Compute cosine similarity between the two embeddings.",
+      "thresholds": {
+        "pass": 0.88,
+        "minimum": 0.80
+      },
+      "scale": "-1.0 to 1.0 (cosine similarity)"
+    },
+    "phonology_correctness": {
+      "description": "Whether English words/phrases use the correct phonological system based on context. Nativized loanwords (e.g., 'computer' used in everyday Nepali) should use Nepali phonology. Proper nouns and technical terms may use English phonology.",
+      "evaluation_method": "Human annotator evaluation on the full 50-utterance test set. Each English segment is rated as using correct or incorrect phonology based on the annotated expected_phonology field.",
+      "pass_threshold": 0.85,
+      "minimum_threshold": 0.75,
+      "unit": "proportion correct",
+      "categories": {
+        "nativized_loanwords": {
+          "description": "English words commonly used in Nepali with Nepali phonology (e.g., 'bus' → 'बस', 'computer' → 'कम्प्युटर')",
+          "expected": "Nepali phonology"
+        },
+        "proper_nouns": {
+          "description": "Names, places, organizations that retain English pronunciation",
+          "expected": "English phonology"
+        },
+        "technical_terms": {
+          "description": "Technical or domain-specific English terms",
+          "expected": "English phonology (or established Nepali adaptation)"
+        },
+        "phrases": {
+          "description": "Multi-word English phrases embedded in Nepali sentences",
+          "expected": "English phonology with natural Nepali prosodic framing"
+        }
+      }
+    },
+    "transition_smoothness": {
+      "description": "F0 (fundamental frequency) continuity across switch points. Abrupt pitch discontinuities at language boundaries indicate poor transition quality.",
+      "measurement": {
+        "f0_extraction": "CREPE or PYIN on voiced segments",
+        "window": "100ms before and after each switch point",
+        "metric": "Maximum F0 jump at switch point boundary"
+      },
+      "maximum_f0_jump_hz": 50,
+      "unit": "Hz",
+      "notes": "Natural speech may have some F0 variation at language boundaries, but discontinuous jumps > 50Hz indicate synthesis artifacts rather than natural prosodic variation."
+    }
+  },
+  "evaluation_protocol": {
+    "procedure": [
+      "Generate audio for all 50 code-switching test utterances",
+      "Segment each utterance into Nepali and English portions using annotated switch points",
+      "Compute DNSMOS on boundary windows (500ms around switch points) and interior windows",
+      "Extract speaker embeddings from Nepali-only and English-only segments per utterance",
+      "Compute per-utterance speaker embedding similarity across languages",
+      "Extract F0 contours across switch point boundaries and measure maximum jumps",
+      "Conduct human phonology correctness evaluation on all 50 utterances",
+      "Run identical pipeline on teacher (Gemini) output for baseline comparison",
+      "Report per-metric results with pass/fail determination"
+    ]
+  },
+  "aggregate_reporting": {
+    "description": "How to report code-switching evaluation results.",
+    "statistics": ["mean", "median", "std", "min", "max"],
+    "pass_rate": "Percentage of utterances meeting all 'pass' thresholds across all metrics",
+    "minimum_rate": "Percentage of utterances meeting all 'minimum' thresholds",
+    "breakdown_by": ["switch_direction", "english_segment_type", "utterance_position"],
+    "visualizations": [
+      "DNSMOS boundary vs interior scatter plot",
+      "Speaker embedding similarity distribution (within-utterance cross-language)",
+      "F0 contour plots across switch points (overlay of multiple utterances)",
+      "Phonology correctness by category bar chart"
+    ]
+  }
+}

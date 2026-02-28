@@ -1,0 +1,123 @@
+{
+  "description": "Phonological accuracy evaluation protocol for NepTTS-Bench. The core differentiator for Nepali TTS — scores whether the system correctly produces Nepali phonological contrasts that distinguish meaning. Covers aspiration, retroflexion, nasalization, gemination, and schwa deletion.",
+  "notes": {
+    "usage": "Run ABX discrimination and forced alignment on all phonological minimal pair utterances. Generate the perceptual confusion matrix. Supplement with human evaluation on a 50-pair subset. This is the most Nepali-specific evaluation dimension.",
+    "evaluation": "A system that fails phonological accuracy cannot be considered acceptable for Nepali TTS, regardless of acoustic quality scores. Phonological contrasts are meaning-distinguishing — confusing aspirated/unaspirated or retroflex/dental produces a different word.",
+    "reference": "Contrast categories derived from ../data/phonological_minimal_pairs.json. Thresholds calibrated against human perception studies of Nepali phonological contrasts."
+  },
+  "test_data": {
+    "source": "../data/phonological_minimal_pairs.json",
+    "description": "Minimal pairs covering Nepali phonological contrasts. Each pair consists of two words/utterances differing in exactly one phonological feature."
+  },
+  "metrics": {
+    "abx_discrimination": {
+      "description": "ABX discrimination test — given three audio samples (A, B, X) where A and B are a minimal pair and X matches one of them, can a classifier correctly identify which one X matches? Measures whether the TTS system produces phonologically distinct outputs for contrastive sounds.",
+      "method": "Extract speaker-normalized embeddings (ECAPA-TDNN or wav2vec2) from synthesized minimal pair audio. For each pair, compute cosine distance between A-X and B-X. Classify X as matching the closer embedding. Score = percentage of correct classifications.",
+      "models": ["ECAPA-TDNN (SpeechBrain)", "wav2vec2-large-xlsr-53"],
+      "score_unit": "percent_correct",
+      "thresholds_by_category": {
+        "aspiration_4way": {
+          "description": "4-way aspiration contrasts across 5 places of articulation (velar, palatal, retroflex, dental, bilabial): voiceless unaspirated, voiceless aspirated, voiced unaspirated, voiced aspirated",
+          "examples": ["क/ख (ka/kha)", "ग/घ (ga/gha)", "च/छ (ca/cha)", "ट/ठ (ṭa/ṭha)", "त/थ (ta/tha)", "प/फ (pa/pha)"],
+          "pass": 90,
+          "minimum": 80
+        },
+        "retroflex_vs_dental": {
+          "description": "Retroflex vs dental consonant contrasts",
+          "examples": ["ट/त (ṭa/ta)", "ठ/थ (ṭha/tha)", "ड/द (ḍa/da)", "ढ/ध (ḍha/dha)", "ण/न (ṇa/na)"],
+          "pass": 90,
+          "minimum": 80
+        },
+        "nasal_vowels": {
+          "description": "Oral vs nasal vowel contrasts",
+          "examples": ["आ/आँ (ā/ā̃)", "उ/उँ (u/ũ)"],
+          "pass": 85,
+          "minimum": 75
+        },
+        "gemination": {
+          "description": "Geminate (long) vs singleton (short) consonant contrasts",
+          "examples": ["पत/पत्त (pat/patt)", "सम/सम्म (sam/samm)"],
+          "pass": 85,
+          "minimum": 75
+        },
+        "schwa_deletion": {
+          "description": "Correct schwa deletion vs retention in context — Nepali deletes inherent schwa in specific environments",
+          "examples": ["कमल (kamal not kamala)", "नमस्ते (namaste not namaste)"],
+          "pass": 80,
+          "minimum": 70
+        }
+      }
+    },
+    "forced_alignment": {
+      "description": "Forced alignment of generated audio to the expected phoneme sequence. Measures per-phoneme confidence and identifies systematic alignment failures.",
+      "tool": "Montreal Forced Aligner (MFA)",
+      "acoustic_model": "Nepali acoustic model (trained or adapted)",
+      "pronunciation_dictionary": "Nepali grapheme-to-phoneme mapping covering all test pairs",
+      "metrics": {
+        "alignment_confidence": {
+          "description": "Per-phoneme posterior probability from forced alignment. Low confidence indicates the produced sound doesn't match the expected phoneme.",
+          "pass_threshold": 0.80,
+          "minimum_threshold": 0.60,
+          "unit": "posterior probability (0-1)"
+        },
+        "boundary_precision": {
+          "description": "Precision of phoneme boundary placement compared to expected durations.",
+          "maximum_deviation_ms": 30,
+          "unit": "ms"
+        }
+      }
+    },
+    "perceptual_confusion_matrix": {
+      "description": "Aggregated confusion matrix showing which Nepali phonological contrasts the TTS system fails to produce distinctly. Built from ABX errors and forced alignment failures.",
+      "axes": "Expected phoneme (rows) × Produced/perceived phoneme (columns)",
+      "key_contrasts_to_monitor": [
+        "Aspiration: voiceless unaspirated ↔ voiceless aspirated (e.g., क↔ख)",
+        "Aspiration: voiced unaspirated ↔ voiced aspirated (e.g., ग↔घ)",
+        "Place: retroflex ↔ dental (e.g., ट↔त)",
+        "Nasalization: oral ↔ nasal vowel (e.g., आ↔आँ)",
+        "Length: singleton ↔ geminate consonant",
+        "Schwa: deleted ↔ retained"
+      ],
+      "reporting": "Report top-10 most confused pairs with error counts and example utterances"
+    }
+  },
+  "human_evaluation": {
+    "description": "Human ABX listening test on a subset of phonological minimal pairs to validate automated metrics and establish perceptual ground truth.",
+    "sample_size": 50,
+    "sampling": "50 minimal pairs stratified across all contrast categories, prioritizing pairs where automated metrics show borderline scores",
+    "listeners": 3,
+    "listener_requirements": "Native Nepali speakers with self-reported normal hearing, familiar with standard Nepali pronunciation",
+    "task": "ABX format — listener hears three audio clips (A from word1, B from word2, X from one of them) and identifies which word X matches",
+    "pass_threshold": 90,
+    "minimum_threshold": 80,
+    "inter_rater_reliability": "Fleiss' kappa >= 0.7",
+    "unit": "percent_correct"
+  },
+  "evaluation_protocol": {
+    "procedure": [
+      "Generate audio for all minimal pairs from ../data/phonological_minimal_pairs.json",
+      "Run ABX discrimination using ECAPA-TDNN and wav2vec2 embeddings",
+      "Run Montreal Forced Aligner on all generated audio with expected phoneme sequences",
+      "Compute per-category ABX accuracy and forced alignment confidence",
+      "Generate perceptual confusion matrix from all errors",
+      "Select 50-pair subset for human evaluation (stratified, prioritizing borderline cases)",
+      "Conduct human ABX listening test with 3 native speakers",
+      "Compare automated vs human ABX scores to validate automated metrics",
+      "Run identical pipeline on teacher (Gemini) output for baseline comparison",
+      "Report per-category pass/fail with confusion analysis"
+    ]
+  },
+  "aggregate_reporting": {
+    "description": "How to report phonological accuracy results.",
+    "statistics": ["mean", "median", "std", "min", "max"],
+    "pass_rate": "Percentage of minimal pairs meeting 'pass' threshold per category",
+    "minimum_rate": "Percentage of minimal pairs meeting 'minimum' threshold per category",
+    "breakdown_by": ["contrast_category", "place_of_articulation", "voicing"],
+    "visualizations": [
+      "Per-category ABX accuracy bar chart (with pass/minimum threshold lines)",
+      "Confusion matrix heatmap",
+      "Forced alignment confidence distribution per category",
+      "Human vs automated ABX correlation scatter plot"
+    ]
+  }
+}

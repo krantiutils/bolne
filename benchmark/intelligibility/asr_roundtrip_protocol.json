@@ -1,0 +1,130 @@
+{
+  "description": "ASR round-trip intelligibility protocol for NepTTS-Bench. Formalizes automatic speech recognition round-trip evaluation as a benchmark dimension — synthesize text to speech, transcribe back with ASR, and measure character/word error rates to quantify intelligibility.",
+  "notes": {
+    "usage": "Run on every synthesized utterance in the evaluation set. Generate audio from text, transcribe with the pinned Whisper model, compare transcription to original text after normalization. Report CER and WER at overall and per-category levels.",
+    "evaluation": "A passing system must meet all 'pass' thresholds at the overall level. Per-category thresholds allow higher tolerance for known-difficult categories (aspiration pairs, English loanwords). Failures below 'minimum' thresholds disqualify the utterance.",
+    "reference": "Methodology follows Seed-TTS-Eval ASR-based intelligibility scoring. Whisper model pinned to ensure reproducibility across evaluations."
+  },
+  "asr_model": {
+    "model_id": "openai/whisper-large-v3",
+    "language": "ne",
+    "task": "transcribe",
+    "pinned_version": "openai/whisper-large-v3",
+    "notes": "Pin exact model version for reproducibility. If upgrading, re-run baseline to recalibrate thresholds."
+  },
+  "text_normalization": {
+    "description": "Normalization applied to both original text and ASR transcription before comparison to remove superficial mismatches.",
+    "steps": [
+      "Unicode NFC normalization for Devanagari text",
+      "Strip all punctuation (Devanagari and Latin)",
+      "Normalize whitespace (collapse multiple spaces, trim leading/trailing)",
+      "Lowercase Latin characters (for English/code-switched segments)",
+      "Normalize Devanagari numerals to Arabic numerals (or vice versa, consistently)"
+    ]
+  },
+  "metrics": {
+    "character_error_rate": {
+      "description": "Character Error Rate — edit distance between normalized reference and ASR hypothesis at the character level, divided by reference length.",
+      "formula": "(substitutions + deletions + insertions) / reference_length",
+      "thresholds": {
+        "overall": {
+          "pass": 0.10,
+          "minimum": 0.20
+        },
+        "per_category": {
+          "phonological_core": {
+            "description": "Minimal pairs, aspiration contrasts — higher tolerance due to inherent ASR difficulty with Nepali phonological contrasts",
+            "pass": 0.15,
+            "minimum": 0.25
+          },
+          "conversational": {
+            "description": "Natural conversational Nepali utterances",
+            "pass": 0.08,
+            "minimum": 0.18
+          },
+          "edge_cases": {
+            "description": "Tongue twisters, rare words, unusual constructions",
+            "pass": 0.15,
+            "minimum": 0.25
+          },
+          "english": {
+            "description": "English and code-switched utterances",
+            "pass": 0.12,
+            "minimum": 0.22
+          }
+        }
+      }
+    },
+    "word_error_rate": {
+      "description": "Word Error Rate — edit distance between normalized reference and ASR hypothesis at the word level, divided by reference word count.",
+      "formula": "(substitutions + deletions + insertions) / reference_word_count",
+      "thresholds": {
+        "overall": {
+          "pass": 0.15,
+          "minimum": 0.25
+        },
+        "per_category": {
+          "phonological_core": {
+            "pass": 0.20,
+            "minimum": 0.30
+          },
+          "conversational": {
+            "pass": 0.12,
+            "minimum": 0.22
+          },
+          "edge_cases": {
+            "pass": 0.20,
+            "minimum": 0.30
+          },
+          "english": {
+            "pass": 0.15,
+            "minimum": 0.25
+          }
+        }
+      }
+    }
+  },
+  "failure_analysis": {
+    "description": "Systematic analysis of ASR round-trip failures to identify which phonological categories the TTS system struggles with most.",
+    "confusion_matrix": {
+      "description": "Character-level confusion matrix aggregated across all failed utterances. Shows which Devanagari characters/phonemes are most frequently substituted, inserted, or deleted.",
+      "grouping": "Group confusions by phonological category (aspiration pairs, retroflex/dental, nasal vowels, gemination, schwa) to identify systematic TTS production errors vs. ASR transcription errors."
+    },
+    "most_failed_categories": {
+      "description": "Rank phonological categories by failure rate. Report the top-5 most confused character pairs and the utterances that triggered them.",
+      "categories": [
+        "Aspiration contrasts (e.g., क/ख, ग/घ, च/छ, ट/ठ, त/थ, प/फ)",
+        "Retroflex vs dental (ट/त, ठ/थ, ड/द, ढ/ध, ण/न)",
+        "Nasal vowels vs oral vowels",
+        "Geminate vs singleton consonants",
+        "Schwa deletion contexts",
+        "Visarga and anusvara",
+        "English loanword pronunciation"
+      ]
+    },
+    "per_utterance_report": {
+      "description": "For each utterance with CER > minimum threshold, report: original text, ASR transcription, aligned diff, identified error categories."
+    }
+  },
+  "evaluation_protocol": {
+    "description": "Full evaluation set processed through the ASR round-trip pipeline.",
+    "procedure": [
+      "Generate audio for all evaluation utterances using the TTS system under test",
+      "Transcribe all generated audio using the pinned Whisper model",
+      "Apply text normalization to both original text and ASR transcription",
+      "Compute per-utterance CER and WER",
+      "Aggregate by category (phonological core, conversational, edge cases, English)",
+      "Generate confusion matrix from all utterances with CER > pass threshold",
+      "Run the same pipeline on teacher (Gemini) output for baseline comparison",
+      "Report overall and per-category metrics with pass/fail determination"
+    ]
+  },
+  "aggregate_reporting": {
+    "description": "How to report ASR round-trip intelligibility results.",
+    "statistics": ["mean", "median", "std", "p5", "p25", "p75", "p95"],
+    "pass_rate": "Percentage of utterances meeting all 'pass' thresholds",
+    "minimum_rate": "Percentage of utterances meeting all 'minimum' thresholds",
+    "breakdown_by": ["corpus_layer", "utterance_length_bucket", "phonological_category"],
+    "teacher_comparison": "Report per-metric delta between student and teacher (Gemini) ASR round-trip scores"
+  }
+}
