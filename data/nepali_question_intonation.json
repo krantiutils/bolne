@@ -1,0 +1,391 @@
+{
+  "description": "Nepali question intonation patterns for TTS benchmark evaluation (NepTTS-Bench). Tests whether a TTS system produces correct rising, falling, and mixed intonation contours for different question types, modeled after EmergentTTS-Eval methodology.",
+  "notes": {
+    "usage": "Each entry specifies the expected intonation pattern for a Nepali question type. Use to evaluate whether TTS output matches the expected prosodic contour for each question category.",
+    "evaluation": "A good TTS system should produce audibly distinct intonation patterns: rising for yes/no questions, falling for wh-questions, rising on tags, sharp rising for echo/confirmation, and rise-fall for alternative questions.",
+    "coverage": "Covers yes/no questions (हो/होइन प्रश्न), wh-questions (प्रश्नवाचक शब्द प्रश्न), tag questions (पुच्छर प्रश्न), echo/confirmation questions (प्रतिध्वनि प्रश्न), rhetorical questions (अलंकारिक प्रश्न), and alternative questions (वैकल्पिक प्रश्न)",
+    "intonation_key": "rising = pitch rises toward sentence end; falling = pitch falls toward end; rise-fall = pitch rises on first option, falls on second; sharp_rising = steep pitch rise expressing surprise; varied = depends on rhetorical intent",
+    "romanization": "Romanization follows standard Nepali transliteration conventions used in linguistics"
+  },
+  "yes_no_questions": [
+    {
+      "sentence": "तपाईं जानुहुन्छ?",
+      "romanization": "Tapāī̃ jānuhuncha?",
+      "english": "Are you going?",
+      "question_type": "yes_no",
+      "expected_intonation": "rising",
+      "intonation_description": "Pitch rises steadily through the verb जानुहुन्छ, peaking at the final syllable. The rise signals that a yes/no response is expected.",
+      "description": "Simple yes/no question using honorific form, asking about the listener's plan to go"
+    },
+    {
+      "sentence": "खाना खानुभयो?",
+      "romanization": "Khānā khānubhayo?",
+      "english": "Did you eat?",
+      "question_type": "yes_no",
+      "expected_intonation": "rising",
+      "intonation_description": "Pitch rises on the final verb खानुभयो, with the peak on the last syllable -यो. Common greeting-style question with gentle rise.",
+      "description": "Very common Nepali greeting that doubles as a yes/no question about whether someone has eaten"
+    },
+    {
+      "sentence": "तपाईंलाई नेपाली आउँछ?",
+      "romanization": "Tapāī̃lāī Nepālī āũcha?",
+      "english": "Do you know Nepali?",
+      "question_type": "yes_no",
+      "expected_intonation": "rising",
+      "intonation_description": "Pitch rises through आउँछ, with the question conveyed purely by intonation since there is no question particle.",
+      "description": "Yes/no question about language ability, relying on rising intonation to distinguish from the declarative form"
+    },
+    {
+      "sentence": "उनी आउनुहुन्छ?",
+      "romanization": "Unī āunuhuncha?",
+      "english": "Is he/she coming?",
+      "question_type": "yes_no",
+      "expected_intonation": "rising",
+      "intonation_description": "Gradual pitch rise through the honorific verb आउनुहुन्छ. The rising contour on the final syllable marks this as interrogative.",
+      "description": "Yes/no question about a third person's arrival using mid-honorific register"
+    },
+    {
+      "sentence": "यो तपाईंको हो?",
+      "romanization": "Yo tapāī̃ko ho?",
+      "english": "Is this yours?",
+      "question_type": "yes_no",
+      "expected_intonation": "rising",
+      "intonation_description": "Short sentence with clear rising pitch on the copula हो. The rise on हो distinguishes the question from the declarative 'यो तपाईंको हो।'",
+      "description": "Yes/no question about possession, minimal pair with declarative form differing only in intonation"
+    },
+    {
+      "sentence": "पसल खुलेको छ?",
+      "romanization": "Pasal khuleko cha?",
+      "english": "Is the shop open?",
+      "question_type": "yes_no",
+      "expected_intonation": "rising",
+      "intonation_description": "Rising pitch on the auxiliary छ at sentence end. The perfective aspect खुलेको remains relatively flat, with the interrogative rise concentrated on छ.",
+      "description": "Practical yes/no question about whether a shop is open"
+    },
+    {
+      "sentence": "तिमीले बुझ्यौ?",
+      "romanization": "Timīle bujhyau?",
+      "english": "Did you understand?",
+      "question_type": "yes_no",
+      "expected_intonation": "rising",
+      "intonation_description": "Rising pitch on the past tense verb बुझ्यौ, peaking on the final syllable -यौ. Common classroom or conversation check.",
+      "description": "Yes/no question checking comprehension, using timi-level familiarity"
+    },
+    {
+      "sentence": "बिजुली आयो?",
+      "romanization": "Bijulī āyo?",
+      "english": "Did the electricity come (back)?",
+      "question_type": "yes_no",
+      "expected_intonation": "rising",
+      "intonation_description": "Rising pitch on आयो. A very common everyday question in Nepal where power outages are frequent.",
+      "description": "Everyday yes/no question about electricity restoration, culturally common in Nepal"
+    }
+  ],
+  "wh_questions": [
+    {
+      "sentence": "को आयो?",
+      "romanization": "Ko āyo?",
+      "english": "Who came?",
+      "question_type": "wh_ko",
+      "expected_intonation": "falling",
+      "intonation_description": "Pitch peaks on the wh-word को and falls through the verb आयो. The falling contour is typical of wh-questions where the interrogative word carries the pitch accent.",
+      "description": "Simple wh-question with को (who) as subject"
+    },
+    {
+      "sentence": "तपाईंको नाम के हो?",
+      "romanization": "Tapāī̃ko nām ke ho?",
+      "english": "What is your name?",
+      "question_type": "wh_ke",
+      "expected_intonation": "falling",
+      "intonation_description": "Pitch rises on the wh-word के and then falls on the copula हो. Standard falling contour for information-seeking wh-questions.",
+      "description": "Common introductory wh-question with के (what)"
+    },
+    {
+      "sentence": "तपाईं कहाँ जानुहुन्छ?",
+      "romanization": "Tapāī̃ kahā̃ jānuhuncha?",
+      "english": "Where are you going?",
+      "question_type": "wh_kaha",
+      "expected_intonation": "falling",
+      "intonation_description": "Pitch peaks on कहाँ and falls gradually through the polysyllabic verb जानुहुन्छ. The long verb allows a gentle falling slope.",
+      "description": "Wh-question with कहाँ (where), common daily conversation question"
+    },
+    {
+      "sentence": "यो कसरी बनाउने?",
+      "romanization": "Yo kasarī banāune?",
+      "english": "How do you make this?",
+      "question_type": "wh_kasari",
+      "expected_intonation": "falling",
+      "intonation_description": "Pitch accent on कसरी with gradual fall through बनाउने. The infinitive/participial ending -ने has a low pitch.",
+      "description": "Wh-question with कसरी (how), asking about method or process"
+    },
+    {
+      "sentence": "तिमी किन रोयौ?",
+      "romanization": "Timī kina royau?",
+      "english": "Why did you cry?",
+      "question_type": "wh_kina",
+      "expected_intonation": "falling",
+      "intonation_description": "Pitch peaks on किन and falls through the verb रोयौ. The emotional content may add intensity to the peak on किन.",
+      "description": "Wh-question with किन (why), emotionally charged question about reason for crying"
+    },
+    {
+      "sentence": "यो कति पर्छ?",
+      "romanization": "Yo kati parcha?",
+      "english": "How much does this cost?",
+      "question_type": "wh_kati",
+      "expected_intonation": "falling",
+      "intonation_description": "Pitch accent on कति with fall on पर्छ. Short, transactional question with crisp falling contour.",
+      "description": "Wh-question with कति (how much), standard market/shopping question"
+    },
+    {
+      "sentence": "तपाईं कहिले आउनुहुन्छ?",
+      "romanization": "Tapāī̃ kahile āunuhuncha?",
+      "english": "When are you coming?",
+      "question_type": "wh_kahile",
+      "expected_intonation": "falling",
+      "intonation_description": "Pitch peaks on कहिले and falls through the long verb आउनुहुन्छ. The extended verb provides space for a gradual fall.",
+      "description": "Wh-question with कहिले (when), asking about timing"
+    },
+    {
+      "sentence": "कुन रंग मन पर्छ?",
+      "romanization": "Kun raṅ man parcha?",
+      "english": "Which color do you like?",
+      "question_type": "wh_kun",
+      "expected_intonation": "falling",
+      "intonation_description": "Pitch accent on कुन with progressive fall through the compound verb मन पर्छ.",
+      "description": "Wh-question with कुन (which), asking about preference"
+    },
+    {
+      "sentence": "कसको किताब हो यो?",
+      "romanization": "Kasko kitāb ho yo?",
+      "english": "Whose book is this?",
+      "question_type": "wh_kasko",
+      "expected_intonation": "falling",
+      "intonation_description": "Pitch peaks on कसको and falls through किताब हो यो. The demonstrative यो at the end receives low pitch.",
+      "description": "Wh-question with कसको (whose), asking about ownership"
+    },
+    {
+      "sentence": "उसले के भन्यो?",
+      "romanization": "Usle ke bhanyo?",
+      "english": "What did he say?",
+      "question_type": "wh_ke",
+      "expected_intonation": "falling",
+      "intonation_description": "Pitch peaks on the wh-word के and falls on the verb भन्यो. Common in reported speech and gossip contexts.",
+      "description": "Wh-question with के (what), asking about the content of speech"
+    }
+  ],
+  "tag_questions": [
+    {
+      "sentence": "राम्रो छ, है?",
+      "romanization": "Rāmro cha, hai?",
+      "english": "It's good, isn't it?",
+      "question_type": "tag",
+      "expected_intonation": "rising",
+      "intonation_description": "The declarative part राम्रो छ has a relatively flat or slightly falling contour. The tag है carries a sharp rising pitch, seeking confirmation.",
+      "description": "Tag question with है, the most common Nepali tag particle seeking agreement"
+    },
+    {
+      "sentence": "तिमी जान्छौ, हैन?",
+      "romanization": "Timī jānchau, haina?",
+      "english": "You'll go, won't you?",
+      "question_type": "tag",
+      "expected_intonation": "rising",
+      "intonation_description": "Falling or flat pitch on the declarative तिमी जान्छौ, then a clear rising pitch on the negative tag हैन, seeking confirmation of the positive statement.",
+      "description": "Tag question with हैन (isn't it so), negative tag seeking positive confirmation"
+    },
+    {
+      "sentence": "मौसम राम्रो छ, हैन र?",
+      "romanization": "Mausam rāmro cha, haina ra?",
+      "english": "The weather is nice, isn't it?",
+      "question_type": "tag",
+      "expected_intonation": "rising",
+      "intonation_description": "Flat declarative part with rising pitch on the compound tag हैन र. The particle र adds a softening conversational tone to the rising contour.",
+      "description": "Tag question with the compound tag हैन र, softer and more conversational than bare हैन"
+    },
+    {
+      "sentence": "खाना मिठो भयो, है कि?",
+      "romanization": "Khānā miṭho bhayo, hai ki?",
+      "english": "The food was tasty, right?",
+      "question_type": "tag",
+      "expected_intonation": "rising",
+      "intonation_description": "Declarative contour on खाना मिठो भयो with rising pitch on the tag है कि. The double particle है कि emphasizes the expectation of agreement.",
+      "description": "Tag question with है कि, a stronger tag seeking definite confirmation"
+    },
+    {
+      "sentence": "उनी आउनुहुन्छ, होला नि?",
+      "romanization": "Unī āunuhuncha, holā ni?",
+      "english": "She'll come, I suppose?",
+      "question_type": "tag",
+      "expected_intonation": "rising",
+      "intonation_description": "Declarative contour on the main clause with a gentle rise on होला नि. The presumptive होला combined with नि creates an uncertain, seeking tone.",
+      "description": "Tag question with होला नि, expressing hopeful uncertainty and seeking reassurance"
+    },
+    {
+      "sentence": "यो ठिक छ, हो कि होइन?",
+      "romanization": "Yo ṭhik cha, ho ki hoina?",
+      "english": "This is correct, is it or not?",
+      "question_type": "tag",
+      "expected_intonation": "rising",
+      "intonation_description": "Flat declarative part with a rise-fall-rise contour on the tag: rising on हो, slight fall on कि, rising again on होइन. This full positive-or-negative tag genuinely seeks the answer.",
+      "description": "Full tag question with हो कि होइन, presenting both positive and negative options"
+    }
+  ],
+  "echo_confirmation_questions": [
+    {
+      "sentence": "उसले त्यो भन्यो?",
+      "romanization": "Usle tyo bhanyo?",
+      "english": "He said THAT?",
+      "question_type": "echo",
+      "expected_intonation": "sharp_rising",
+      "intonation_description": "Steep rising pitch starting from त्यो and continuing sharply through भन्यो. The sharp rise conveys disbelief or surprise at what was said.",
+      "description": "Echo question expressing disbelief about what someone said"
+    },
+    {
+      "sentence": "तिमी हिँड्यौ?",
+      "romanization": "Timī hĩḍyau?",
+      "english": "YOU walked?",
+      "question_type": "echo",
+      "expected_intonation": "sharp_rising",
+      "intonation_description": "High pitch on तिमी with sharp rising pitch through हिँड्यौ. The surprise is directed at the subject — the listener walked, which is unexpected.",
+      "description": "Echo question expressing surprise that the particular person walked"
+    },
+    {
+      "sentence": "दस लाख?",
+      "romanization": "Das lākh?",
+      "english": "Ten lakhs? (One million?)",
+      "question_type": "echo",
+      "expected_intonation": "sharp_rising",
+      "intonation_description": "Sharp rising pitch across the entire short phrase दस लाख, expressing shock or disbelief at the amount mentioned.",
+      "description": "Echo question repeating an amount with disbelief, very common in price negotiations"
+    },
+    {
+      "sentence": "भोलि?",
+      "romanization": "Bholi?",
+      "english": "Tomorrow?",
+      "question_type": "echo",
+      "expected_intonation": "sharp_rising",
+      "intonation_description": "Single word with sharp rising pitch, echoing something previously said and expressing surprise or seeking confirmation about the timing.",
+      "description": "Single-word echo question seeking confirmation of a time reference"
+    },
+    {
+      "sentence": "उनीहरू गइसके?",
+      "romanization": "Unīharū gaisakē?",
+      "english": "They already left?",
+      "question_type": "echo",
+      "expected_intonation": "sharp_rising",
+      "intonation_description": "Rising pitch through the completive verb गइसके, with the sharpest rise on the final syllable. Expresses surprise that they have already departed.",
+      "description": "Echo question expressing surprise about a completed action"
+    },
+    {
+      "sentence": "तपाईंले नै भन्नुभयो?",
+      "romanization": "Tapāī̃le nai bhannubhayo?",
+      "english": "YOU yourself said that?",
+      "question_type": "echo",
+      "expected_intonation": "sharp_rising",
+      "intonation_description": "Emphatic particle नै adds intensity. Pitch rises from नै through भन्नुभयो with a sharp upward contour expressing incredulity.",
+      "description": "Echo question with emphatic नै, expressing strong surprise that the addressee personally said something"
+    }
+  ],
+  "rhetorical_questions": [
+    {
+      "sentence": "यो कसरी सम्भव छ र?",
+      "romanization": "Yo kasarī sambhav cha ra?",
+      "english": "How is this even possible?",
+      "question_type": "rhetorical",
+      "expected_intonation": "rising",
+      "intonation_description": "Pitch rises through the sentence with an emphatic peak on सम्भव and continuing rise on the particle र. The particle र adds rhetorical force. No answer is expected.",
+      "description": "Rhetorical question expressing impossibility or exasperation, particle र marks it as rhetorical"
+    },
+    {
+      "sentence": "को भन्छ त?",
+      "romanization": "Ko bhancha ta?",
+      "english": "Who says so? (Nobody says so.)",
+      "question_type": "rhetorical",
+      "expected_intonation": "falling",
+      "intonation_description": "Falling pitch from को through भन्छ, with the particle त at a low pitch. The falling contour combined with त conveys dismissiveness — the implied answer is 'nobody.'",
+      "description": "Rhetorical question implying nobody holds that view, particle त adds dismissive tone"
+    },
+    {
+      "sentence": "यसमा मेरो के दोष?",
+      "romanization": "Yasmā mero ke doṣ?",
+      "english": "What fault of mine is in this? (It's not my fault.)",
+      "question_type": "rhetorical",
+      "expected_intonation": "falling",
+      "intonation_description": "Pitch peaks on के and falls on दोष. The falling contour asserts innocence — the implied answer is 'no fault at all.'",
+      "description": "Rhetorical question asserting the speaker's innocence, expecting no answer"
+    },
+    {
+      "sentence": "अब के गर्ने त?",
+      "romanization": "Aba ke garne ta?",
+      "english": "What to do now? (There's nothing we can do.)",
+      "question_type": "rhetorical",
+      "expected_intonation": "falling",
+      "intonation_description": "Falling pitch through the sentence, ending low on the particle त. Expresses helplessness and resignation. The implied answer is that nothing can be done.",
+      "description": "Rhetorical question expressing helplessness, very common colloquial expression"
+    },
+    {
+      "sentence": "यो कुरा बालबालिकाले पनि बुझ्दैनन् र?",
+      "romanization": "Yo kurā bālbālikāle pani bujhdainan ra?",
+      "english": "Don't even children understand this? (Of course they do.)",
+      "question_type": "rhetorical",
+      "expected_intonation": "rising",
+      "intonation_description": "Rising pitch toward the end with emphatic stress on पनि and a rising particle र. The rising contour with र expresses disbelief that someone does not understand something obvious.",
+      "description": "Rhetorical question implying the matter is so obvious that even children would understand"
+    },
+    {
+      "sentence": "मलाई के थाहा?",
+      "romanization": "Malāī ke thāhā?",
+      "english": "How would I know? (I don't know.)",
+      "question_type": "rhetorical",
+      "expected_intonation": "falling",
+      "intonation_description": "Falling pitch from के to थाहा. The falling contour conveys that the speaker genuinely has no knowledge and is not expected to have it.",
+      "description": "Rhetorical question denying knowledge, common defensive or dismissive expression"
+    }
+  ],
+  "alternative_questions": [
+    {
+      "sentence": "चिया कि कफी?",
+      "romanization": "Ciyā ki kaphī?",
+      "english": "Tea or coffee?",
+      "question_type": "alternative",
+      "expected_intonation": "rise-fall",
+      "intonation_description": "Pitch rises on the first option चिया, stays elevated or slightly falls through कि, then falls on the second option कफी. The rise marks the first option, the fall on the second signals the question is complete.",
+      "description": "Simple alternative question offering two beverage choices, very common in hospitality"
+    },
+    {
+      "sentence": "आज कि भोलि?",
+      "romanization": "Āja ki bholi?",
+      "english": "Today or tomorrow?",
+      "question_type": "alternative",
+      "expected_intonation": "rise-fall",
+      "intonation_description": "Rising pitch on आज, then falling on भोलि after the conjunction कि. The contour guides the listener to choose one of the two time options.",
+      "description": "Alternative question offering two time options"
+    },
+    {
+      "sentence": "बसमा जाने कि हिँडेर?",
+      "romanization": "Basmā jāne ki hĩḍera?",
+      "english": "Go by bus or walk?",
+      "question_type": "alternative",
+      "expected_intonation": "rise-fall",
+      "intonation_description": "Rising pitch on बसमा जाने, slight pause at कि, then falling pitch on हिँडेर. The contrastive contour clearly separates the two travel options.",
+      "description": "Alternative question about mode of transportation"
+    },
+    {
+      "sentence": "तपाईं बस्नुहुन्छ कि जानुहुन्छ?",
+      "romanization": "Tapāī̃ basnuhuncha ki jānuhuncha?",
+      "english": "Will you stay or go?",
+      "question_type": "alternative",
+      "expected_intonation": "rise-fall",
+      "intonation_description": "Rising pitch on बस्नुहुन्छ, brief transition at कि, then falling pitch on जानुहुन्छ. The honorific register is maintained consistently across both options.",
+      "description": "Alternative question about staying or leaving, using honorific verb forms"
+    },
+    {
+      "sentence": "माछा कि मासु?",
+      "romanization": "Māchā ki māsu?",
+      "english": "Fish or meat?",
+      "question_type": "alternative",
+      "expected_intonation": "rise-fall",
+      "intonation_description": "Rising pitch on माछा, falling pitch on मासु. Short, direct alternative question typical of ordering or meal planning.",
+      "description": "Simple alternative question about food preference"
+    }
+  ]
+}

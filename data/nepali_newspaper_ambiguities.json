@@ -1,0 +1,822 @@
+{
+  "description": "Ambiguous sentences from Nepali newspapers for NepTTS-Bench evaluation. Tests whether a TTS system can resolve syntactic, lexical, and pragmatic ambiguity through appropriate prosodic realization (pausing, phrasing, emphasis, intonation). Ambiguity in Nepali news writing arises from SOV word order flexibility, postposition attachment, modifier scope, pronoun reference, headline telegraphic style, and compound noun boundaries.",
+  "notes": {
+    "methodology": "Sentences were collected from major Nepali newspaper websites (ekantipur.com, onlinekhabar.com, ratopati.com, setopati.com, nagariknews.nagariknetwork.com, gorkhapatraonline.com) during February 2026. Where real headlines exhibited ambiguity patterns, the original text is preserved. Additional examples were constructed based on attested patterns commonly found in Nepali news writing, following the linguist's observation that 'problematic sentences are ambiguous sentences and sentences with dangling modifiers — many newspapers make such mistakes.'",
+    "sources": [
+      "ekantipur.com (Kantipur daily)",
+      "onlinekhabar.com",
+      "ratopati.com",
+      "setopati.com",
+      "nagariknews.nagariknetwork.com",
+      "gorkhapatraonline.com (Gorkhapatra)"
+    ],
+    "ambiguity_types_covered": {
+      "structural": "Phrase attachment ambiguity — where a modifier, postpositional phrase, or relative clause could attach to more than one head",
+      "dangling_modifier": "Participial or adverbial phrase whose logical subject does not match the grammatical subject of the main clause",
+      "scope": "Negation, quantifier, or conjunction scope is unclear — does 'र' (and) conjoin noun phrases or full clauses? Does 'न' (not) negate the whole VP or just the nearest verb?",
+      "lexical": "A word has multiple meanings and the sentential context does not fully disambiguate (overlaps with homograph evaluation but here focuses on sentence-level ambiguity)",
+      "pronoun_reference": "Unclear antecedent for उनी/उनले/उनको when multiple referents are available in context",
+      "headline": "Telegraphic headline style with dropped verbs, postpositions, or subjects creating crash-blossom-style ambiguity"
+    },
+    "tts_relevance": "A TTS system must commit to a single prosodic realization. Prosodic phrasing (pause placement), pitch accent placement, and boundary tones all signal syntactic structure to listeners. Ambiguous sentences force the TTS to make an implicit disambiguation choice that may not match the intended reading.",
+    "evaluation": "Present each sentence to TTS. Have listeners judge which reading the synthesized prosody conveys. A robust TTS should either (a) produce prosody consistent with the most likely intended reading, or (b) accept disambiguating markup (SSML, punctuation, etc.) and realize the specified reading.",
+    "linguistic_references": [
+      "Argument Structure of Nepali Verbs: A Study on Lexico-Semantic Ambiguity (Researchgate, 2023)",
+      "Building a natural sounding Text-To-Speech system for the Nepali language (Researchgate, 2021)",
+      "Verb Sense Disambiguation in Nepali Using Verb Frames (U. of Hyderabad dissertation)",
+      "A Computational Analysis of Nepali Morphology (U. of Konstanz)"
+    ]
+  },
+  "ambiguous_sentences": [
+    {
+      "id": "amb_01",
+      "sentence": "पूर्वाधारकै अभावमा प्रदेश राजधानी सुर्खेत",
+      "source": "Kantipur (ekantipur.com)",
+      "url": "https://ekantipur.com",
+      "ambiguity_type": "headline",
+      "readings": [
+        {
+          "interpretation": "पूर्वाधारकै अभाव भएको स्थानमा प्रदेशको राजधानी सुर्खेतमा राखियो",
+          "english": "The province capital was placed in Surkhet despite lacking infrastructure",
+          "prosodic_implication": "Pause after अभावमा, treating सुर्खेत as a topic-comment predicate; falling intonation on सुर्खेत"
+        },
+        {
+          "interpretation": "प्रदेश राजधानी सुर्खेतमा पूर्वाधारकै अभाव छ",
+          "english": "Province capital Surkhet lacks infrastructure",
+          "prosodic_implication": "No pause before सुर्खेत; सुर्खेत is part of the subject NP 'प्रदेश राजधानी सुर्खेत'; rising-falling contour on the whole subject"
+        }
+      ],
+      "intended_reading": "The second reading is intended — Surkhet, which is the province capital, lacks infrastructure",
+      "tts_challenge": "Without a verb, the headline is a nominal sentence. TTS must decide whether सुर्खेत is the predicate (naming the capital) or part of the subject (describing the capital that lacks infrastructure). Pause placement between अभावमा and प्रदेश vs. after सुर्खेत completely changes the meaning.",
+      "description": "Real headline from Kantipur. Classic crash-blossom: the verb-less headline creates PP-attachment ambiguity. The postposition -मा on अभाव could mean 'in the absence of' (locative of circumstance) modifying the whole sentence, or it could be the predicate itself."
+    },
+    {
+      "id": "amb_02",
+      "sentence": "प्रतिस्पर्धामा बिजुली किन्ने प्राधिकरणको दोस्रो प्रस्तावमा पनि भारतीय कम्पनीले देखाएनन् चासो",
+      "source": "Kantipur (ekantipur.com)",
+      "url": "https://ekantipur.com",
+      "ambiguity_type": "structural",
+      "readings": [
+        {
+          "interpretation": "प्रतिस्पर्धामा बिजुली किन्ने [प्राधिकरणको दोस्रो प्रस्तावमा] पनि भारतीय कम्पनीले चासो देखाएनन्",
+          "english": "Indian companies showed no interest even in the second proposal of the authority that buys electricity competitively",
+          "prosodic_implication": "Phrasing: [प्रतिस्पर्धामा बिजुली किन्ने] modifies प्राधिकरण; major pause before पनि"
+        },
+        {
+          "interpretation": "[प्रतिस्पर्धामा] [बिजुली किन्ने प्राधिकरणको] दोस्रो प्रस्तावमा पनि भारतीय कम्पनीले चासो देखाएनन्",
+          "english": "Even in the competition, Indian companies showed no interest in the electricity-buying authority's second proposal",
+          "prosodic_implication": "Phrasing: प्रतिस्पर्धामा is a separate adverbial; [बिजुली किन्ने] modifies प्राधिकरण differently"
+        }
+      ],
+      "intended_reading": "The first reading — the authority buys electricity through competitive bidding, and Indian companies ignored the second call",
+      "tts_challenge": "The participial clause 'प्रतिस्पर्धामा बिजुली किन्ने' has ambiguous attachment: does प्रतिस्पर्धामा modify the buying (competitive buying) or is it a separate adverbial (in the competition)? Pause placement after प्रतिस्पर्धामा vs. after किन्ने changes the parse.",
+      "description": "Real headline from Kantipur. Complex noun phrase with a participial relative clause modifier. The scope of प्रतिस्पर्धामा is ambiguous."
+    },
+    {
+      "id": "amb_03",
+      "sentence": "निर्वाचनमा सञ्चारकर्मीमाथिको भौतिक आक्रमणप्रति सरोकारवालाको गम्भीर चिन्ता",
+      "source": "Ratopati (ratopati.com)",
+      "url": "https://ratopati.com",
+      "ambiguity_type": "structural",
+      "readings": [
+        {
+          "interpretation": "निर्वाचनमा [सञ्चारकर्मीमाथिको भौतिक आक्रमण]प्रति सरोकारवालाको गम्भीर चिन्ता",
+          "english": "Stakeholders express serious concern about physical attacks on journalists during elections",
+          "prosodic_implication": "निर्वाचनमा is a temporal adverbial at sentence level; pause after निर्वाचनमा"
+        },
+        {
+          "interpretation": "[निर्वाचनमा सञ्चारकर्मीमाथिको] भौतिक आक्रमणप्रति सरोकारवालाको गम्भीर चिन्ता",
+          "english": "Serious concern about physical attacks on election-covering journalists",
+          "prosodic_implication": "निर्वाचनमा modifies सञ्चारकर्मी (journalists in elections); no pause after निर्वाचनमा"
+        }
+      ],
+      "intended_reading": "First reading — concern about attacks that happened during elections",
+      "tts_challenge": "The locative निर्वाचनमा could modify the entire event (attacks happened during elections) or specifically the journalists (journalists covering elections). Prosodic boundary placement determines the parse.",
+      "description": "Real headline from Ratopati. PP-attachment ambiguity with the locative postposition -मा."
+    },
+    {
+      "id": "amb_04",
+      "sentence": "चुनावीको र्‍यालीका सहभागी सवार बस दुर्घटना, २९ जना घाईते",
+      "source": "Nagarik News (nagariknews.nagariknetwork.com)",
+      "url": "https://nagariknews.nagariknetwork.com",
+      "ambiguity_type": "headline",
+      "readings": [
+        {
+          "interpretation": "[चुनावीको र्‍यालीका सहभागी] [सवार बस] दुर्घटना",
+          "english": "Bus carrying election rally participants had an accident, 29 injured",
+          "prosodic_implication": "Compound NP: rally participants who were riding the bus; stress on बस दुर्घटना as the event"
+        },
+        {
+          "interpretation": "[चुनावीको र्‍यालीका] [सहभागी सवार] [बस दुर्घटना]",
+          "english": "Participating passengers of the election rally [involved in] bus accident",
+          "prosodic_implication": "सहभागी modifies सवार (participating passengers); different pause structure"
+        }
+      ],
+      "intended_reading": "First reading — participants of election rally were on a bus that crashed",
+      "tts_challenge": "Multiple compounded nouns without explicit case markers create a noun-stacking ambiguity. The string 'सहभागी सवार बस दुर्घटना' is four nouns in sequence, and the internal grouping is ambiguous without prosodic cues.",
+      "description": "Real headline from Nagarik News. Noun compounding in Nepali headlines removes case markers and verbs, creating crash-blossom ambiguity. The boundaries between modifier and head are unclear."
+    },
+    {
+      "id": "amb_05",
+      "sentence": "अब बन्ने सरकारले पार्टीका नेताबाट सम्पत्ति शुद्धीकरण सुरु गर्छ",
+      "source": "Ratopati (ratopati.com)",
+      "url": "https://ratopati.com",
+      "ambiguity_type": "structural",
+      "readings": [
+        {
+          "interpretation": "अब बन्ने सरकारले [पार्टीका नेताबाट] सम्पत्ति शुद्धीकरण सुरु गर्छ",
+          "english": "The next government will start asset purification/audit starting from party leaders",
+          "prosodic_implication": "बाट marks the starting point — FROM party leaders; pause before सम्पत्ति शुद्धीकरण"
+        },
+        {
+          "interpretation": "अब बन्ने सरकारले [पार्टीका नेताबाट सम्पत्ति शुद्धीकरण] सुरु गर्छ",
+          "english": "The next government will start [purification of assets from party leaders] — i.e., investigating party leaders' asset laundering",
+          "prosodic_implication": "बाट is part of the compound noun phrase; no pause between नेताबाट and सम्पत्ति"
+        }
+      ],
+      "intended_reading": "The intended meaning is that asset auditing will begin with party leaders first (first reading), but the sentence also reads as investigating asset laundering by party leaders",
+      "tts_challenge": "The postposition बाट (from) creates attachment ambiguity: is it 'starting from party leaders' (ablative of source) or 'asset laundering by party leaders' (agentive)? The compound सम्पत्ति शुद्धीकरण itself is ambiguous between 'asset purification/audit' and 'money laundering.'",
+      "description": "Based on real Ratopati headline (quote from Sabhapati Thapa). The word शुद्धीकरण is lexically ambiguous between purification (positive) and laundering (negative), and the postposition बाट has PP-attachment ambiguity."
+    },
+    {
+      "id": "amb_06",
+      "sentence": "पाँच वर्ष कांग्रेसले विवेक र सावधानीका साथ देश चलाउँछ",
+      "source": "Ratopati (ratopati.com)",
+      "url": "https://ratopati.com",
+      "ambiguity_type": "scope",
+      "readings": [
+        {
+          "interpretation": "[पाँच वर्ष] कांग्रेसले [विवेक र सावधानीका साथ] देश चलाउँछ",
+          "english": "For five years, Congress will run the country with wisdom and caution",
+          "prosodic_implication": "पाँच वर्ष is a temporal adverbial; pause after पाँच वर्ष"
+        },
+        {
+          "interpretation": "पाँच वर्ष कांग्रेसले विवेक [र सावधानीका साथ] देश चलाउँछ",
+          "english": "Five-year Congress will use prudence and, with caution, run the country",
+          "prosodic_implication": "पाँच वर्ष modifies कांग्रेस (five-year Congress); no pause after वर्ष"
+        }
+      ],
+      "intended_reading": "First reading — Congress promises to govern wisely for five years",
+      "tts_challenge": "Scope ambiguity of the temporal modifier पाँच वर्ष — does it modify the verb (will run for five years) or the noun कांग्रेस (five-year Congress)? Pause placement disambiguates.",
+      "description": "Real headline from Ratopati. Temporal adverbials in Nepali can float to sentence-initial position, creating ambiguity about what they modify."
+    },
+    {
+      "id": "amb_07",
+      "sentence": "ठूलो शहरको मान्छे आयो",
+      "source": "constructed_example",
+      "url": "constructed_example",
+      "ambiguity_type": "structural",
+      "readings": [
+        {
+          "interpretation": "[ठूलो शहर]को मान्छे आयो",
+          "english": "A person from a big city came",
+          "prosodic_implication": "ठूलो modifies शहर; rising pitch on शहर, then को links to मान्छे"
+        },
+        {
+          "interpretation": "ठूलो [शहरको मान्छे] आयो",
+          "english": "A big person of the city came",
+          "prosodic_implication": "ठूलो modifies मान्छे; pitch accent on ठूलो with continuous phrase to मान्छे"
+        }
+      ],
+      "intended_reading": "Either reading is valid without further context — this is a classic NP-internal modifier scope ambiguity",
+      "tts_challenge": "Adjective attachment ambiguity within a genitive NP. The adjective ठूलो could modify either the head of the genitive (शहर) or the head of the whole NP (मान्छे). TTS prosody (pause after शहरको vs. continuous phrasing) determines which reading listeners perceive.",
+      "description": "Classic Nepali adjective-scope ambiguity noted by linguists. This pattern is extremely common in news writing where complex genitive chains occur. The genitive marker को creates a structural ambiguity for preceding adjectives."
+    },
+    {
+      "id": "amb_08",
+      "sentence": "प्रधान शत्रु खोज्थे, परस्परका शत्रु भए",
+      "source": "Online Khabar (onlinekhabar.com)",
+      "url": "https://onlinekhabar.com",
+      "ambiguity_type": "lexical",
+      "readings": [
+        {
+          "interpretation": "प्रधान (=मुख्य) शत्रु खोज्थे, परस्परका शत्रु भए",
+          "english": "They used to seek the main enemy, [but] became enemies of each other",
+          "prosodic_implication": "प्रधान as adjective meaning 'main/chief'; normal attributive stress"
+        },
+        {
+          "interpretation": "प्रधान (=प्रधानमन्त्री) शत्रु खोज्थे, परस्परका शत्रु भए",
+          "english": "The Prime Minister used to seek enemies, [they] became enemies of each other",
+          "prosodic_implication": "प्रधान as a noun referring to the PM; pause after प्रधान, then शत्रु खोज्थे as a separate VP"
+        }
+      ],
+      "intended_reading": "First reading — 'main enemy' is the intended compound, but the headline artfully plays on both meanings",
+      "tts_challenge": "The word प्रधान is lexically ambiguous: as an adjective it means 'main/chief' (modifying शत्रु), as a noun it means 'prime minister/head.' TTS must choose whether to prosodically group प्रधान शत्रु as a compound or separate them.",
+      "description": "Real headline from Online Khabar about Maoist party factionalism. The headline deliberately exploits the ambiguity of प्रधान for rhetorical effect — a common device in Nepali journalism."
+    },
+    {
+      "id": "amb_09",
+      "sentence": "दमकमा पत्रकार आचार्यमाथि आक्रमण गर्ने एमाले कार्यकर्ताविरुद्ध जाहेरी",
+      "source": "Online Khabar (onlinekhabar.com)",
+      "url": "https://onlinekhabar.com",
+      "ambiguity_type": "structural",
+      "readings": [
+        {
+          "interpretation": "दमकमा [पत्रकार आचार्यमाथि आक्रमण गर्ने] [एमाले कार्यकर्ता]विरुद्ध जाहेरी",
+          "english": "Complaint filed in Damak against UML cadre who attacked journalist Acharya",
+          "prosodic_implication": "Relative clause 'आक्रमण गर्ने' modifies एमाले कार्यकर्ता; continuous NP"
+        },
+        {
+          "interpretation": "दमकमा [पत्रकार आचार्य]माथि [आक्रमण गर्ने एमाले कार्यकर्ता]विरुद्ध जाहेरी",
+          "english": "Complaint against attacking UML cadre, filed against the one who attacked journalist Acharya in Damak",
+          "prosodic_implication": "Same meaning but different prosodic grouping"
+        },
+        {
+          "interpretation": "[दमकमा पत्रकार] आचार्यमाथि आक्रमण गर्ने एमाले कार्यकर्ताविरुद्ध जाहेरी",
+          "english": "Complaint against UML cadre who attacked Acharya, journalist in Damak",
+          "prosodic_implication": "दमकमा modifies पत्रकार (journalist based in Damak); pause after पत्रकार"
+        }
+      ],
+      "intended_reading": "First reading — the location दमकमा modifies where the attack/complaint took place, not where the journalist is from",
+      "tts_challenge": "The locative दमकमा has ambiguous attachment (does it modify the location of the event or the journalist's posting?). The participial relative clause creates a long prenominal modifier that needs correct prosodic phrasing.",
+      "description": "Real headline from Online Khabar. Complex prenominal relative clause with multiple postpositional modifiers creates attachment ambiguity."
+    },
+    {
+      "id": "amb_10",
+      "sentence": "इरानमा अमेरिका र इजरायलको आक्रमण",
+      "source": "Online Khabar (onlinekhabar.com)",
+      "url": "https://onlinekhabar.com",
+      "ambiguity_type": "scope",
+      "readings": [
+        {
+          "interpretation": "इरानमा [अमेरिका र इजरायल]को आक्रमण",
+          "english": "Attack by America and Israel on Iran",
+          "prosodic_implication": "को scopes over the conjunction 'अमेरिका र इजरायल'; continuous rising pitch across the conjoined NP"
+        },
+        {
+          "interpretation": "इरानमा अमेरिका र [इजरायलको आक्रमण]",
+          "english": "America and Israel's attack on Iran (but ambiguous: is America also in Iran, or just Israel's attack?)",
+          "prosodic_implication": "को attaches only to इजरायल; pause before र, treating अमेरिका as a separate topic"
+        }
+      ],
+      "intended_reading": "First reading — a joint attack by both America and Israel on Iran",
+      "tts_challenge": "Conjunction scope with the genitive postposition को: does को scope over 'अमेरिका र इजरायल' (joint genitive) or only over इजरायल? This is a common structural ambiguity in Nepali coordinate structures.",
+      "description": "Real headline from Online Khabar. Coordination ambiguity with the genitive marker को — a pervasive issue in Nepali news writing."
+    },
+    {
+      "id": "amb_11",
+      "sentence": "किसानलाई समयमै मल र युवालाई स्वदेशमै रोजगारी दिने कांग्रेसको सङ्कल्प",
+      "source": "Gorkhapatra (gorkhapatraonline.com)",
+      "url": "https://gorkhapatraonline.com",
+      "ambiguity_type": "scope",
+      "readings": [
+        {
+          "interpretation": "[किसानलाई समयमै मल] र [युवालाई स्वदेशमै रोजगारी] दिने कांग्रेसको सङ्कल्प",
+          "english": "Congress's resolution to give fertilizer to farmers on time AND employment to youth domestically",
+          "prosodic_implication": "Parallel structure: two dative objects conjoined; pause before र, then matching intonation on the second clause"
+        },
+        {
+          "interpretation": "[किसानलाई समयमै मल र युवालाई] स्वदेशमै रोजगारी दिने कांग्रेसको सङ्कल्प",
+          "english": "Congress's resolution to give domestic employment to both farmers with timely fertilizer and youth",
+          "prosodic_implication": "र conjoins किसानलाई and युवालाई as compound indirect objects; continuous phrasing"
+        }
+      ],
+      "intended_reading": "First reading — two separate pledges: fertilizer for farmers AND jobs for youth",
+      "tts_challenge": "The conjunction र creates scope ambiguity: does it conjoin two complete VP complements (fertilizer to farmers AND jobs to youth) or two indirect objects (both farmers and youth get the same thing)? Prosodic parallelism in the TTS output must signal the correct parse.",
+      "description": "Real headline from Gorkhapatra. The gapping construction (verb दिने shared across conjuncts) creates scope ambiguity over what is conjoined."
+    },
+    {
+      "id": "amb_12",
+      "sentence": "विकासमा नेतृत्व गरेको भन्दै अध्यक्ष ओलीलाई अभिनन्दन",
+      "source": "Gorkhapatra (gorkhapatraonline.com)",
+      "url": "https://gorkhapatraonline.com",
+      "ambiguity_type": "dangling_modifier",
+      "readings": [
+        {
+          "interpretation": "[विकासमा नेतृत्व गरेको भन्दै] [अध्यक्ष ओलीलाई] अभिनन्दन (गरियो)",
+          "english": "Congratulations to Chairman Oli, saying [he] led in development",
+          "prosodic_implication": "The participial clause 'भन्दै' has an implicit subject (those congratulating); pause after भन्दै; ओलीलाई receives the congratulations"
+        },
+        {
+          "interpretation": "[विकासमा नेतृत्व गरेको] भन्दै, अध्यक्ष ओलीलाई अभिनन्दन",
+          "english": "Chairman Oli congratulated [someone] saying [they] led in development",
+          "prosodic_implication": "ओली is the agent of भन्दै (saying); different subject attribution"
+        }
+      ],
+      "intended_reading": "First reading — Oli is being congratulated for his development leadership",
+      "tts_challenge": "The participial 'भन्दै' (saying/claiming) is a dangling modifier — its subject is not specified. Who is 'saying' that development leadership happened? TTS prosody (especially pause placement and the intonation contour on भन्दै) affects whether listeners perceive Oli as the one being praised or the one doing the praising.",
+      "description": "Real headline from Gorkhapatra. Dangling participial modifier — extremely common in Nepali news headlines where the agent of भन्दै/गर्दै is dropped."
+    },
+    {
+      "id": "amb_13",
+      "sentence": "मध्यपूर्वमा रहेका नेपालीको सुरक्षा र सम्भावित उद्धारको पूर्वतयारी गर्न सरकारलाई रविको आग्रह",
+      "source": "Nagarik News (nagariknews.nagariknetwork.com)",
+      "url": "https://nagariknews.nagariknetwork.com",
+      "ambiguity_type": "scope",
+      "readings": [
+        {
+          "interpretation": "[मध्यपूर्वमा रहेका नेपालीको सुरक्षा] र [सम्भावित उद्धारको पूर्वतयारी] गर्न सरकारलाई रविको आग्रह",
+          "english": "Rabi's request to the government to ensure safety of Nepalis in the Middle East AND prepare for possible evacuation",
+          "prosodic_implication": "र conjoins two objects of गर्न; pause before र, parallel intonation"
+        },
+        {
+          "interpretation": "मध्यपूर्वमा रहेका नेपालीको [सुरक्षा र सम्भावित उद्धार]को पूर्वतयारी गर्न सरकारलाई रविको आग्रह",
+          "english": "Rabi's request to the government to prepare for safety and possible evacuation of Nepalis in the Middle East",
+          "prosodic_implication": "र conjoins सुरक्षा and उद्धार inside the genitive phrase; continuous NP"
+        }
+      ],
+      "intended_reading": "Both readings are plausible; the first is more likely given the political context of separate demands",
+      "tts_challenge": "Conjunction scope: does र conjoin 'safety' and 'evacuation preparation' as two separate requests, or does it conjoin 'safety' and 'evacuation' as a compound within one request for preparation? Prosodic boundary at र disambiguates.",
+      "description": "Real headline from Nagarik News. Coordination scope ambiguity with nested genitives — a pattern that recurs frequently in Nepali political news."
+    },
+    {
+      "id": "amb_14",
+      "sentence": "उडान अवरुद्ध हुँदा त्रिभुवन अन्तर्राष्ट्रिय विमानस्थलमा यात्रु अलपत्र",
+      "source": "Gorkhapatra (gorkhapatraonline.com)",
+      "url": "https://gorkhapatraonline.com",
+      "ambiguity_type": "headline",
+      "readings": [
+        {
+          "interpretation": "उडान अवरुद्ध हुँदा | त्रिभुवन अन्तर्राष्ट्रिय विमानस्थलमा | यात्रु अलपत्र",
+          "english": "When flights were blocked, passengers stranded at Tribhuvan International Airport",
+          "prosodic_implication": "हुँदा marks a temporal clause; pause after हुँदा; विमानस्थलमा is locative for the stranding"
+        },
+        {
+          "interpretation": "[उडान अवरुद्ध हुँदा त्रिभुवन अन्तर्राष्ट्रिय विमानस्थलमा] यात्रु अलपत्र",
+          "english": "Passengers stranded when flights disrupted at TIA",
+          "prosodic_implication": "विमानस्थलमा modifies where flights were disrupted; single prosodic unit before यात्रु"
+        }
+      ],
+      "intended_reading": "Both readings are effectively equivalent in meaning but require different prosodic phrasing",
+      "tts_challenge": "The locative विमानस्थलमा could attach to the main predicate (stranded at the airport) or the subordinate clause (disrupted at the airport). While the meaning difference is subtle, the prosodic realization is different.",
+      "description": "Real headline from Gorkhapatra. Locative attachment ambiguity in a complex headline with a temporal subordinate clause."
+    },
+    {
+      "id": "amb_15",
+      "sentence": "धिमाल संग्रहालयमा ओली, अन्य उम्मेदवार पनि घरदैलोमा",
+      "source": "Gorkhapatra (gorkhapatraonline.com)",
+      "url": "https://gorkhapatraonline.com",
+      "ambiguity_type": "headline",
+      "readings": [
+        {
+          "interpretation": "[धिमाल संग्रहालयमा] ओली, [अन्य उम्मेदवार पनि] [घरदैलोमा]",
+          "english": "Oli at Dhimal Museum; other candidates also doing door-to-door canvassing",
+          "prosodic_implication": "Two juxtaposed clauses; major pause after ओली (comma); contrast between Oli's specific location and others' general activity"
+        },
+        {
+          "interpretation": "[धिमाल संग्रहालयमा ओली], [अन्य उम्मेदवार] पनि [घरदैलोमा]",
+          "english": "Oli at Dhimal Museum; other candidates also on home visits",
+          "prosodic_implication": "पनि scopes over अन्य उम्मेदवार; they are ALSO doing the same as Oli"
+        },
+        {
+          "interpretation": "[धिमाल संग्रहालय]मा ओली [अन्य उम्मेदवार] पनि [घरदैलोमा]",
+          "english": "Oli and other candidates in Dhimal Museum, also going door-to-door",
+          "prosodic_implication": "Both Oli and others are subjects; they were at the museum AND doing door-to-door"
+        }
+      ],
+      "intended_reading": "First reading — Oli visited a museum while other candidates were canvassing door-to-door",
+      "tts_challenge": "Verb-less headline with comma juxtaposition. The absence of verbs and the comma's function (listing vs. contrasting) creates ambiguity. TTS must decide on the prosodic relationship between the two fragments.",
+      "description": "Real headline from Gorkhapatra. Telegraphic style with dropped verbs creates multiple possible readings."
+    },
+    {
+      "id": "amb_16",
+      "sentence": "मतदानको दिन देशभर मौसम सफा हुन्छ, अहिलेको हिमपातले असर गर्दैन",
+      "source": "Kantipur (ekantipur.com)",
+      "url": "https://ekantipur.com",
+      "ambiguity_type": "scope",
+      "readings": [
+        {
+          "interpretation": "[मतदानको दिन] [देशभर] मौसम सफा हुन्छ",
+          "english": "On election day, the weather will be clear across the country",
+          "prosodic_implication": "देशभर is a spatial adverbial modifying the main predicate; neutral declarative"
+        },
+        {
+          "interpretation": "[मतदानको दिन देशभर] मौसम सफा हुन्छ",
+          "english": "Throughout the country on election day, weather will be clear",
+          "prosodic_implication": "देशभर groups with मतदानको दिन as a combined temporal-spatial adverbial"
+        }
+      ],
+      "intended_reading": "Both readings are functionally equivalent, but prosodic phrasing differs",
+      "tts_challenge": "Adverbial stacking: temporal (मतदानको दिन) and spatial (देशभर) adverbials in sequence create phrasing ambiguity. TTS must choose whether to group them or separate them with a prosodic boundary.",
+      "description": "Real sentence from Kantipur. Multiple adverbials stacked before the subject create phrasing ambiguity that affects naturalness even when semantic content is similar."
+    },
+    {
+      "id": "amb_17",
+      "sentence": "इरानको दक्षिणी प्रान्तमा कम्तीमा ७० जनाको मृत्यु",
+      "source": "Ratopati (ratopati.com)",
+      "url": "https://ratopati.com",
+      "ambiguity_type": "structural",
+      "readings": [
+        {
+          "interpretation": "[इरानको दक्षिणी प्रान्त]मा [कम्तीमा ७० जना]को मृत्यु",
+          "english": "At least 70 people died in Iran's southern province",
+          "prosodic_implication": "कम्तीमा is a quantifier adverbial modifying ७० जना; prosodic grouping: [कम्तीमा ७० जना]"
+        },
+        {
+          "interpretation": "[इरानको दक्षिणी प्रान्तमा कम्तीमा] ७० जनाको मृत्यु",
+          "english": "Death of 70 people in at least [one of] Iran's southern provinces",
+          "prosodic_implication": "कम्तीमा could theoretically modify प्रान्त (at least one province); different grouping"
+        }
+      ],
+      "intended_reading": "First reading — at least 70 people, not at least one province",
+      "tts_challenge": "The quantifier adverbial कम्तीमा ('at least') has scope ambiguity — does it quantify over the number of deaths (at least 70) or over the location (at least one southern province)? Prosodic phrasing resolves this.",
+      "description": "Real headline from Ratopati. Quantifier scope ambiguity. In Nepali, कम्तीमा can float and attach to different constituents."
+    },
+    {
+      "id": "amb_18",
+      "sentence": "बिबिसीले बनाइएको भिडियो प्रशारण गर्ने रास्वपाका कार्यकर्ता पक्राउ",
+      "source": "Nagarik News (nagariknews.nagariknetwork.com)",
+      "url": "https://nagariknews.nagariknetwork.com",
+      "ambiguity_type": "structural",
+      "readings": [
+        {
+          "interpretation": "[बिबिसीले बनाइएको भिडियो] [प्रशारण गर्ने] [रास्वपाका कार्यकर्ता] पक्राउ",
+          "english": "RSP cadre arrested for broadcasting video made by BBC",
+          "prosodic_implication": "बिबिसीले बनाइएको modifies भिडियो; प्रशारण गर्ने modifies कार्यकर्ता"
+        },
+        {
+          "interpretation": "[बिबिसीले बनाइएको] [भिडियो प्रशारण गर्ने] [रास्वपाका कार्यकर्ता] पक्राउ",
+          "english": "RSP cadre arrested who broadcast BBC-made [content]",
+          "prosodic_implication": "बनाइएको is a standalone relative clause; भिडियो प्रशारण is a compound verb"
+        }
+      ],
+      "intended_reading": "First reading — the cadre broadcast a video that the BBC had made",
+      "tts_challenge": "Multiple stacked prenominal relative clauses in Nepali create parsing difficulty. The sentence has two participial modifiers (बनाइएको and गर्ने) and the internal structure of the NP is ambiguous. TTS phrasing must signal which relative clause modifies which noun.",
+      "description": "Real headline from Nagarik News. Stacked relative clause ambiguity — a hallmark of Nepali news writing where prenominal modification creates long, complex NPs."
+    },
+    {
+      "id": "amb_19",
+      "sentence": "मध्यपूर्वका देशमा रहेका नेपालीहरूलाई सरकारले भन्यो- बाहिर ननिस्कनू",
+      "source": "Setopati (setopati.com)",
+      "url": "https://setopati.com",
+      "ambiguity_type": "pronoun_reference",
+      "readings": [
+        {
+          "interpretation": "सरकारले [मध्यपूर्वका देशमा रहेका नेपालीहरूलाई] भन्यो : बाहिर ननिस्कनू",
+          "english": "The government told Nepalis in Middle Eastern countries: don't go outside",
+          "prosodic_implication": "बाहिर = outside (your house/shelter); the imperative is directed at Nepalis"
+        },
+        {
+          "interpretation": "सरकारले [मध्यपूर्वका देशमा रहेका नेपालीहरूलाई] भन्यो : [मध्यपूर्वबाट] बाहिर ननिस्कनू",
+          "english": "The government told Nepalis in the Middle East: don't leave (the region/country)",
+          "prosodic_implication": "बाहिर = out of the country/region; broader scope of the prohibition"
+        }
+      ],
+      "intended_reading": "First reading — stay indoors for safety, not 'don't leave the region'",
+      "tts_challenge": "The lexical ambiguity of बाहिर (outside — of what?) combines with the dropped object reference. TTS emphasis on बाहिर vs. ननिस्कनू affects perceived meaning.",
+      "description": "Real headline from Setopati. The scope of बाहिर is ambiguous without explicit specification of what one should stay inside of."
+    },
+    {
+      "id": "amb_20",
+      "sentence": "जलवायु परिवर्तनकै कारण पहिरो, बाढी, हिमताल फुट्ने जोखिम र भूमि क्षय बढ्दा नेपालका धेरै समुदाय परम्परागत बासस्थान छोड्न बाध्य छन्",
+      "source": "Kantipur (ekantipur.com)",
+      "url": "https://ekantipur.com",
+      "ambiguity_type": "scope",
+      "readings": [
+        {
+          "interpretation": "जलवायु परिवर्तनकै कारण [पहिरो, बाढी, हिमताल फुट्ने जोखिम, र भूमि क्षय] बढ्दा...",
+          "english": "Due to climate change, when landslides, floods, glacial lake burst risk, and land erosion increased...",
+          "prosodic_implication": "Four-item list all subject to बढ्दा; list intonation with commas"
+        },
+        {
+          "interpretation": "जलवायु परिवर्तनकै कारण [पहिरो, बाढी, हिमताल फुट्ने] जोखिम र [भूमि क्षय बढ्दा]...",
+          "english": "Due to climate change, the risk of landslides, floods, glacial lake bursts, and when land erosion increased...",
+          "prosodic_implication": "जोखिम scopes over the first three items; भूमि क्षय बढ्दा is a separate temporal clause"
+        }
+      ],
+      "intended_reading": "The first reading is more likely — all four are consequences of climate change",
+      "tts_challenge": "Complex list with an embedded relative clause (हिमताल फुट्ने) creates ambiguity about where the list ends and how जोखिम and बढ्दा scope. TTS list intonation pattern (rising continuation on each item) must signal the correct list boundary.",
+      "description": "Real sentence from Kantipur opinion piece. Long enumeration with an embedded participial modifier creates list-boundary ambiguity."
+    },
+    {
+      "id": "amb_21",
+      "sentence": "मौन अवधिको चलखेल विशेष निगरानी",
+      "source": "Kantipur (ekantipur.com)",
+      "url": "https://ekantipur.com",
+      "ambiguity_type": "headline",
+      "readings": [
+        {
+          "interpretation": "[मौन अवधिको चलखेल] [विशेष निगरानी]",
+          "english": "Special monitoring of the silent period's maneuvering",
+          "prosodic_implication": "विशेष निगरानी is the predicate about the मौन अवधिको चलखेल"
+        },
+        {
+          "interpretation": "[मौन अवधि]को [चलखेल] — [विशेष निगरानी]",
+          "english": "Maneuvering during the silent period — under special surveillance",
+          "prosodic_implication": "Three segments with pauses; topic-comment structure"
+        },
+        {
+          "interpretation": "मौन अवधिको [चलखेल विशेष निगरानी]",
+          "english": "The silent period's maneuvering-special-monitoring",
+          "prosodic_implication": "Compound noun चलखेल विशेष निगरानी; continuous NP"
+        }
+      ],
+      "intended_reading": "First or second reading — the election commission will specially monitor any maneuvering during the silent period",
+      "tts_challenge": "Verb-less headline with noun compounding creates multiple possible internal structures. The string of nouns 'चलखेल विशेष निगरानी' could be parsed as [चलखेल] [विशेष निगरानी] or [चलखेल विशेष] [निगरानी].",
+      "description": "Based on real Kantipur article about election silent period monitoring. Headline noun-stacking ambiguity."
+    },
+    {
+      "id": "amb_22",
+      "sentence": "नेताले भ्रष्ट अधिकारी र कर्मचारीलाई कारबाही गर्ने बताए",
+      "source": "constructed_example",
+      "url": "constructed_example",
+      "ambiguity_type": "scope",
+      "readings": [
+        {
+          "interpretation": "नेताले [भ्रष्ट अधिकारी] र [कर्मचारी]लाई कारबाही गर्ने बताए",
+          "english": "The leader said he would take action against corrupt officials and [all] employees",
+          "prosodic_implication": "भ्रष्ट modifies only अधिकारी; कर्मचारी are a separate group; pause between अधिकारी and र"
+        },
+        {
+          "interpretation": "नेताले [भ्रष्ट [अधिकारी र कर्मचारी]]लाई कारबाही गर्ने बताए",
+          "english": "The leader said he would take action against corrupt officials and corrupt employees",
+          "prosodic_implication": "भ्रष्ट modifies both अधिकारी and कर्मचारी; continuous NP with no major pause"
+        }
+      ],
+      "intended_reading": "Second reading is almost certainly intended — action against those who are corrupt among both groups",
+      "tts_challenge": "Adjective scope over coordination: does भ्रष्ट (corrupt) modify only the first conjunct (officials) or both conjuncts (officials and employees)? This is the Nepali equivalent of English 'old men and women' ambiguity. Prosodic phrasing disambiguates.",
+      "description": "Constructed based on common Nepali political news pattern. This adjective-scope-over-coordination ambiguity appears constantly in Nepali news writing about government actions."
+    },
+    {
+      "id": "amb_23",
+      "sentence": "प्रधानमन्त्रीले भेटेका नेताहरूसँग चुनावबारे छलफल गरे",
+      "source": "constructed_example",
+      "url": "constructed_example",
+      "ambiguity_type": "pronoun_reference",
+      "readings": [
+        {
+          "interpretation": "प्रधानमन्त्रीले भेटेका नेताहरूसँग [प्रधानमन्त्रीले] चुनावबारे छलफल गरे",
+          "english": "The PM discussed elections with leaders [he] met",
+          "prosodic_implication": "The PM is the agent of both भेट्नु and छलफल गर्नु; continuous narrative"
+        },
+        {
+          "interpretation": "प्रधानमन्त्रीले भेटेका नेताहरूसँग [नेताहरूले] चुनावबारे छलफल गरे",
+          "english": "The leaders whom the PM met discussed elections [among themselves]",
+          "prosodic_implication": "The leaders are the agent of छलफल गर्नु; different subject for the main verb"
+        }
+      ],
+      "intended_reading": "First reading — the PM discussed elections with the leaders he met",
+      "tts_challenge": "The verb गरे is third-person plural honorific, which could have either the PM or the leaders as subject. The relative clause 'प्रधानमन्त्रीले भेटेका' modifies नेताहरू, but the main verb's subject is ambiguous. Prosodic emphasis on the subject disambiguates.",
+      "description": "Constructed based on common Nepali political reporting pattern. Honorific verb forms in Nepali do not distinguish between singular-honorific and plural subjects, creating referential ambiguity."
+    },
+    {
+      "id": "amb_24",
+      "sentence": "ओलीद्वारा मध्यपूर्वमा पछिल्लो समय देखिएको तनावप्रति चिन्ता व्यक्त",
+      "source": "Gorkhapatra (gorkhapatraonline.com)",
+      "url": "https://gorkhapatraonline.com",
+      "ambiguity_type": "dangling_modifier",
+      "readings": [
+        {
+          "interpretation": "ओलीद्वारा [मध्यपूर्वमा पछिल्लो समय देखिएको तनाव]प्रति चिन्ता व्यक्त (गरियो)",
+          "english": "Concern expressed by Oli regarding the tension seen recently in the Middle East",
+          "prosodic_implication": "ओलीद्वारा is an agentive phrase; the relative clause modifies तनाव"
+        },
+        {
+          "interpretation": "ओलीद्वारा [मध्यपूर्वमा] [पछिल्लो समय देखिएको तनावप्रति] चिन्ता व्यक्त",
+          "english": "By Oli, in the Middle East, concern expressed about recent tension",
+          "prosodic_implication": "मध्यपूर्वमा could modify where Oli expressed concern or where tension was seen"
+        }
+      ],
+      "intended_reading": "First reading — tension was in the Middle East, Oli expressed concern (from Nepal)",
+      "tts_challenge": "The passive construction with द्वारा combined with a prenominal relative clause containing a locative (मध्यपूर्वमा) creates attachment ambiguity. Is Oli in the Middle East, or is the tension in the Middle East?",
+      "description": "Real headline from Gorkhapatra. Passive voice headlines with the postposition द्वारा create agent-location confusion when combined with locative phrases."
+    },
+    {
+      "id": "amb_25",
+      "sentence": "दलीय ब्रह्मलुट भत्काएर सुशासनको जग बसाल्न चुनावमा होमिएका छौं",
+      "source": "Online Khabar (onlinekhabar.com)",
+      "url": "https://onlinekhabar.com",
+      "ambiguity_type": "structural",
+      "readings": [
+        {
+          "interpretation": "[दलीय ब्रह्मलुट भत्काएर] [सुशासनको जग बसाल्न] चुनावमा होमिएका छौं",
+          "english": "We are dedicated to the election to destroy party-based plunder and establish the foundation of good governance",
+          "prosodic_implication": "Two purpose clauses: (1) destroy plunder (2) establish governance; then main verb; serial pause structure"
+        },
+        {
+          "interpretation": "[दलीय ब्रह्मलुट भत्काएर सुशासनको जग बसाल्न] [चुनावमा होमिएका छौं]",
+          "english": "To destroy party plunder and lay the foundation of good governance, we have dedicated ourselves to the election",
+          "prosodic_implication": "One complex purpose clause with two components; major pause before चुनावमा"
+        }
+      ],
+      "intended_reading": "Both readings convey similar meaning with different prosodic structure",
+      "tts_challenge": "The relationship between the participial clause (भत्काएर) and the infinitive (बसाल्न) is ambiguous: are they sequential steps or a single compound purpose? Prosodic phrasing (pause after भत्काएर or after बसाल्न) signals different structural analyses.",
+      "description": "Real quote from Online Khabar political coverage. Chained participial-infinitive construction creates ambiguity about the hierarchical structure of purpose clauses."
+    },
+    {
+      "id": "amb_26",
+      "sentence": "बहुदलपछि ७ निर्वाचन, ३३ सरकार र १९ आयोग बने, सुकुम्बासी समस्या ज्युँका त्युँ",
+      "source": "Online Khabar (onlinekhabar.com)",
+      "url": "https://onlinekhabar.com",
+      "ambiguity_type": "scope",
+      "readings": [
+        {
+          "interpretation": "बहुदलपछि [७ निर्वाचन], [३३ सरकार] र [१९ आयोग] बने, सुकुम्बासी समस्या ज्युँका त्युँ",
+          "english": "After multiparty [democracy], 7 elections, 33 governments, and 19 commissions were formed; the squatter problem remains as-is",
+          "prosodic_implication": "Three-item list with list intonation; र conjoins three NPs; बने applies to all three"
+        },
+        {
+          "interpretation": "बहुदलपछि [७ निर्वाचन, ३३ सरकार] र [१९ आयोग बने], सुकुम्बासी समस्या ज्युँका त्युँ",
+          "english": "After multiparty democracy, 7 elections, 33 governments, and 19 commissions were created; squatter problem unchanged",
+          "prosodic_implication": "र conjoins the last item only with the verb; the first two items are separate"
+        }
+      ],
+      "intended_reading": "First reading — all three items (elections, governments, commissions) are presented as a list of things that happened",
+      "tts_challenge": "Long enumeration with the verb at the end (SOV) — the listener must hold all three items in memory and assign them to the verb बने. TTS must produce list intonation (rising continuation) on each item and a definitive falling contour on बने.",
+      "description": "Real headline from Online Khabar. SOV order with a long enumerated subject creates a processing challenge where TTS must maintain list prosody across the entire sentence."
+    },
+    {
+      "id": "amb_27",
+      "sentence": "चुनावी याममा प्रचारप्रसारको गति उचाइमा पुगेको छ",
+      "source": "Kantipur (ekantipur.com)",
+      "url": "https://ekantipur.com",
+      "ambiguity_type": "lexical",
+      "readings": [
+        {
+          "interpretation": "चुनावी याममा प्रचारप्रसारको गति उचाइमा (=उच्च स्तरमा) पुगेको छ",
+          "english": "During the election season, the pace of campaigning has reached a peak/height",
+          "prosodic_implication": "उचाइ = height/peak (metaphorical); neutral declarative intonation"
+        },
+        {
+          "interpretation": "चुनावी याममा प्रचारप्रसारको गति उचाइमा (=ऊँचाईमा, शाब्दिक) पुगेको छ",
+          "english": "During the election season, the speed of campaigning has reached a [geographical] height/altitude",
+          "prosodic_implication": "उचाइ = literal altitude; possible reference to hill regions; different tonal contour"
+        }
+      ],
+      "intended_reading": "First reading — metaphorical 'height' meaning peak intensity",
+      "tts_challenge": "The word उचाइ can mean literal height/altitude or metaphorical peak/climax. In a news context about elections, the metaphorical reading is intended, but TTS might not distinguish between literal and metaphorical prosodic patterns.",
+      "description": "Real sentence from Kantipur opinion piece. Lexical ambiguity where a spatial metaphor (उचाइमा पुग्नु) could be read literally in a geographical context."
+    },
+    {
+      "id": "amb_28",
+      "sentence": "नयाँ र पुरानो दलका उम्मेदवारबीच कडा प्रतिस्पर्धा",
+      "source": "constructed_example",
+      "url": "constructed_example",
+      "ambiguity_type": "structural",
+      "readings": [
+        {
+          "interpretation": "[नयाँ र पुरानो] [दलका उम्मेदवार]बीच कडा प्रतिस्पर्धा",
+          "english": "Tough competition between candidates of new and old parties",
+          "prosodic_implication": "नयाँ र पुरानो modify दल; candidates from both new and old parties compete"
+        },
+        {
+          "interpretation": "[नयाँ] र [पुरानो दलका उम्मेदवार]बीच कडा प्रतिस्पर्धा",
+          "english": "Tough competition between new [candidates] and old party candidates",
+          "prosodic_implication": "नयाँ stands alone (new candidates); पुरानो दलका modifies उम्मेदवार; pause after नयाँ"
+        }
+      ],
+      "intended_reading": "First reading is more likely — competition between candidates from both new and established parties",
+      "tts_challenge": "Adjective coordination scope: do both adjectives (नयाँ and पुरानो) modify दल, or does नयाँ modify an elided noun? This is particularly common in election coverage where 'new' parties vs 'old' parties is a frequent frame.",
+      "description": "Constructed based on ubiquitous election coverage pattern in Nepali newspapers. Adjective scope over coordination with genitive case marking."
+    },
+    {
+      "id": "amb_29",
+      "sentence": "मन्त्रीले विपक्षी नेतासँग भेटेर समस्या समाधान गर्ने प्रतिबद्धता जनाए",
+      "source": "constructed_example",
+      "url": "constructed_example",
+      "ambiguity_type": "dangling_modifier",
+      "readings": [
+        {
+          "interpretation": "मन्त्रीले [विपक्षी नेतासँग भेटेर] [समस्या समाधान गर्ने प्रतिबद्धता] जनाए",
+          "english": "The minister, after meeting opposition leaders, expressed commitment to solving the problem",
+          "prosodic_implication": "भेटेर is a sequential participial — the meeting happened, then the commitment was expressed; pause after भेटेर"
+        },
+        {
+          "interpretation": "मन्त्रीले [विपक्षी नेतासँग भेटेर समस्या समाधान गर्ने] प्रतिबद्धता जनाए",
+          "english": "The minister expressed commitment to meeting opposition leaders and solving the problem",
+          "prosodic_implication": "भेटेर is part of the content of the commitment (will meet AND solve); no pause after भेटेर"
+        }
+      ],
+      "intended_reading": "Either reading is contextually plausible; ambiguity arises from whether भेटेर describes what happened or what is promised",
+      "tts_challenge": "The participial भेटेर (having met) can be interpreted as a completed action (sequential: met, then expressed commitment) or as part of the future plan (committed to meeting and solving). Prosodic boundary after भेटेर disambiguates.",
+      "description": "Constructed based on common Nepali political reporting pattern. Participial clause ambiguity — does the participial describe background or content of the main assertion?"
+    },
+    {
+      "id": "amb_30",
+      "sentence": "सरकारले गरिब र दलित महिलालाई छात्रवृत्ति दिने",
+      "source": "constructed_example",
+      "url": "constructed_example",
+      "ambiguity_type": "scope",
+      "readings": [
+        {
+          "interpretation": "सरकारले [गरिब] र [दलित महिला]लाई छात्रवृत्ति दिने",
+          "english": "Government to give scholarships to poor people and Dalit women",
+          "prosodic_implication": "गरिब stands alone (poor people in general); दलित महिला is a separate group; pause after गरिब"
+        },
+        {
+          "interpretation": "सरकारले [गरिब र दलित] [महिला]लाई छात्रवृत्ति दिने",
+          "english": "Government to give scholarships to women who are poor and Dalit",
+          "prosodic_implication": "Both adjectives modify महिला; continuous phrase without pause"
+        },
+        {
+          "interpretation": "सरकारले [गरिब] र [दलित] [महिला]लाई छात्रवृत्ति दिने",
+          "english": "Government to give scholarships to poor women and Dalit women",
+          "prosodic_implication": "Both adjectives individually modify महिला; slight pauses between items"
+        }
+      ],
+      "intended_reading": "Second reading is most likely — scholarships for women who are both poor and from Dalit communities",
+      "tts_challenge": "Triple ambiguity in modifier scope: do the adjectives गरिब and दलित jointly modify महिला, does गरिब stand alone as a separate beneficiary group, or are they three separate categories? This type of policy announcement ambiguity has real-world consequences and is common in Nepali government news.",
+      "description": "Constructed based on common government policy announcement pattern in Nepali news. The intersectionality of social categories creates modifier scope ambiguity."
+    },
+    {
+      "id": "amb_31",
+      "sentence": "एक जुगमा नबनेको पुल : नेता बदलिइरहे, चुनावी एजेन्डा बनिरह्यो",
+      "source": "Online Khabar (onlinekhabar.com)",
+      "url": "https://onlinekhabar.com",
+      "ambiguity_type": "pronoun_reference",
+      "readings": [
+        {
+          "interpretation": "[एक जुगमा नबनेको पुल] : [नेता बदलिइरहे], [चुनावी एजेन्डा बनिरह्यो]",
+          "english": "Bridge not built in a decade: leaders kept changing, [the bridge] kept becoming an election agenda",
+          "prosodic_implication": "Colon separates topic from commentary; चुनावी एजेन्डा बनिरह्यो has the bridge as implicit subject"
+        },
+        {
+          "interpretation": "[एक जुगमा नबनेको पुल] : [नेता बदलिइरहे, चुनावी एजेन्डा बनिरह्यो]",
+          "english": "Unbuilt bridge: leaders changed and the election agenda was formed [around it]",
+          "prosodic_implication": "The second clause could mean a new election agenda formed (independently of the bridge)"
+        }
+      ],
+      "intended_reading": "First reading — the unbuilt bridge itself kept becoming an election promise each cycle",
+      "tts_challenge": "The subject of बनिरह्यो is ambiguous — is the bridge becoming the election agenda, or is a separate election agenda forming? Colon-separated headline fragments require TTS to maintain thematic coherence across prosodic breaks.",
+      "description": "Real headline from Online Khabar. Implicit subject reference across colon-separated headline fragments."
+    },
+    {
+      "id": "amb_32",
+      "sentence": "कोशी किनारका माझी बस्ती, जहाँ तिर्खा अझै महँगो छ",
+      "source": "Kantipur (ekantipur.com)",
+      "url": "https://ekantipur.com",
+      "ambiguity_type": "lexical",
+      "readings": [
+        {
+          "interpretation": "कोशी किनारका माझी बस्ती, जहाँ तिर्खा (=पानीको अभाव) अझै महँगो छ",
+          "english": "Majhi settlements by the Koshi river, where thirst/water is still expensive",
+          "prosodic_implication": "तिर्खा = thirst/need for water; महँगो = costly (water costs a lot); empathetic tone"
+        },
+        {
+          "interpretation": "कोशी किनारका माझी बस्ती, जहाँ तिर्खा (=तिर्खाउनु, इच्छा) अझै महँगो छ",
+          "english": "Majhi settlements by the Koshi, where desire is still precious/costly",
+          "prosodic_implication": "तिर्खा = desire/longing; more literary/poetic reading"
+        }
+      ],
+      "intended_reading": "First reading — water scarcity makes even drinking water expensive despite living by a river",
+      "tts_challenge": "The word तिर्खा has both a literal meaning (thirst, need for water) and a more abstract meaning (desire, longing). The headline uses it for ironic literary effect — people by a river still can't afford water. TTS tone should convey the irony.",
+      "description": "Real headline from Kantipur feature story. Literary use of a polysemous word with ironic juxtaposition (living by a river but thirst is expensive)."
+    },
+    {
+      "id": "amb_33",
+      "sentence": "ढुक्क भएर मतदान गर्ने अवस्था छ",
+      "source": "Kantipur (ekantipur.com)",
+      "url": "https://ekantipur.com",
+      "ambiguity_type": "structural",
+      "readings": [
+        {
+          "interpretation": "[ढुक्क भएर] [मतदान गर्ने अवस्था] छ",
+          "english": "There is a condition/situation to vote with peace of mind / confidently",
+          "prosodic_implication": "ढुक्क भएर is an adverbial modifying the manner of voting; the situation is ready for calm voting"
+        },
+        {
+          "interpretation": "[ढुक्क भएर मतदान गर्ने] [अवस्था] छ",
+          "english": "The situation of voting peacefully exists (= it's possible to vote peacefully)",
+          "prosodic_implication": "The entire participial phrase modifies अवस्था; different internal phrasing"
+        }
+      ],
+      "intended_reading": "Both readings are functionally similar but the first is the intended parsing — the Home Minister is assuring that conditions are safe",
+      "tts_challenge": "The participial phrase 'ढुक्क भएर मतदान गर्ने' can be parsed as a flat sequence or as hierarchically structured. Prosodic grouping affects perceived confidence level of the statement.",
+      "description": "Real quote from Home Minister in Kantipur. Participial-verb-noun chain with ambiguous internal structure."
+    },
+    {
+      "id": "amb_34",
+      "sentence": "चुनावमा जित्ने उम्मेदवारलाई पार्टीले सम्मान गर्छ",
+      "source": "constructed_example",
+      "url": "constructed_example",
+      "ambiguity_type": "structural",
+      "readings": [
+        {
+          "interpretation": "[चुनावमा जित्ने उम्मेदवार]लाई पार्टीले सम्मान गर्छ",
+          "english": "The party will honor the candidate who wins the election",
+          "prosodic_implication": "जित्ने is a relative clause modifier of उम्मेदवार; चुनावमा modifies जित्ने"
+        },
+        {
+          "interpretation": "चुनावमा [जित्ने उम्मेदवारलाई] पार्टीले सम्मान गर्छ",
+          "english": "In the election, the party honors the winning candidate",
+          "prosodic_implication": "चुनावमा is a separate adverbial; pause after चुनावमा"
+        }
+      ],
+      "intended_reading": "Both readings are plausible with subtle meaning differences",
+      "tts_challenge": "PP-attachment ambiguity: चुनावमा can attach to the relative clause (the candidate who wins IN the election) or to the main clause (IN the election context, the party honors). Prosodic boundary placement disambiguates.",
+      "description": "Constructed based on common election news pattern. PP-attachment ambiguity is a fundamental challenge for Nepali TTS."
+    },
+    {
+      "id": "amb_35",
+      "sentence": "राउटेमा पुस्तान्तरण : मुखिया पद छाडेका वीरबहादुर भन्छन्- अब केटाहरूको पालो",
+      "source": "Kantipur (ekantipur.com)",
+      "url": "https://ekantipur.com",
+      "ambiguity_type": "pronoun_reference",
+      "readings": [
+        {
+          "interpretation": "राउटेमा पुस्तान्तरण : [मुखिया पद छाडेका] वीरबहादुर भन्छन् — अब [राउटे] केटाहरूको पालो",
+          "english": "Generational transition among Raute: Vir Bahadur who left the chieftain post says 'now it's the boys' turn'",
+          "prosodic_implication": "केटाहरू = Raute boys/young men in the community; specific reference"
+        },
+        {
+          "interpretation": "राउटेमा पुस्तान्तरण : [मुखिया पद छाडेका] वीरबहादुर भन्छन् — अब [उनका] केटाहरूको पालो",
+          "english": "Vir Bahadur says 'now it's [my] boys' turn'",
+          "prosodic_implication": "केटाहरू = his own sons specifically; possessive emphasis"
+        }
+      ],
+      "intended_reading": "First reading — it's the younger generation's turn in general, not just his sons",
+      "tts_challenge": "The possessor of केटाहरू is not specified. Are 'the boys' his own sons, or the young men of the community in general? The TTS prosodic rendering (emphasis on केटाहरू vs. पालो) can shift the perceived referent.",
+      "description": "Real headline from Kantipur feature on the Raute indigenous community. Implicit possessor creates referential ambiguity."
+    }
+  ]
+}

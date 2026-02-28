@@ -1,0 +1,603 @@
+{
+  "description": "Common Nepali greetings, phrases, and expressions for TTS text normalization and corpus generation",
+  "notes": {
+    "usage": "Reference data for generating natural Nepali TTS training sentences covering greetings, farewells, thanks, apologies, wishes, condolences, polite expressions, conversational phrases, and festival greetings",
+    "formality_levels": "Nepali has distinct formal (tapaaĩ/hajur), neutral, and informal (timi/ta) registers; formality is marked per entry",
+    "honorifics": "Nepali verbs conjugate differently based on respect level; phrases here use the appropriate verb forms for their marked formality",
+    "context": "Many phrases serve dual purposes (e.g., namaste for both greeting and farewell); usage_context clarifies primary use"
+  },
+  "greetings": [
+    {
+      "phrase": "नमस्ते",
+      "romanization": "namaste",
+      "english": "Hello / Greetings",
+      "formality": "neutral",
+      "usage_context": "Universal greeting used at any time of day; appropriate for all social contexts",
+      "description": "The most common Nepali greeting, used with palms joined (anjali mudra)"
+    },
+    {
+      "phrase": "नमस्कार",
+      "romanization": "namaskaar",
+      "english": "Greetings (formal)",
+      "formality": "formal",
+      "usage_context": "Formal greeting used in official settings, speeches, or with elders",
+      "description": "More formal variant of namaste; often used in written or broadcast Nepali"
+    },
+    {
+      "phrase": "प्रणाम",
+      "romanization": "pranaam",
+      "english": "Respectful salutation",
+      "formality": "formal",
+      "usage_context": "Used to greet elders, teachers, or revered persons with deep respect",
+      "description": "Highly respectful greeting typically accompanied by bowing or touching feet"
+    },
+    {
+      "phrase": "शुभ प्रभात",
+      "romanization": "shubha prabhaat",
+      "english": "Good morning",
+      "formality": "formal",
+      "usage_context": "Morning greeting, commonly used in media, formal settings, and educated speech",
+      "description": "Sanskrit-derived morning greeting; more common in formal/literary Nepali than everyday speech"
+    },
+    {
+      "phrase": "शुभ दिन",
+      "romanization": "shubha din",
+      "english": "Good day",
+      "formality": "formal",
+      "usage_context": "Daytime greeting used in formal or literary contexts",
+      "description": "Less commonly used in daily conversation; more frequent in written and broadcast Nepali"
+    },
+    {
+      "phrase": "शुभ सन्ध्या",
+      "romanization": "shubha sandhyaa",
+      "english": "Good evening",
+      "formality": "formal",
+      "usage_context": "Evening greeting used in formal settings and media",
+      "description": "Sanskrit-derived evening greeting; used in news broadcasts and formal events"
+    },
+    {
+      "phrase": "शुभ रात्रि",
+      "romanization": "shubha raatri",
+      "english": "Good night",
+      "formality": "formal",
+      "usage_context": "Nighttime farewell or greeting; used before sleeping or parting at night",
+      "description": "Formal good-night expression; colloquially people often just say namaste"
+    },
+    {
+      "phrase": "कस्तो हुनुहुन्छ?",
+      "romanization": "kasto hunuhunchha?",
+      "english": "How are you? (formal)",
+      "formality": "formal",
+      "usage_context": "Polite inquiry about well-being when greeting someone respectfully",
+      "description": "Formal second-person form using hunuhunchha (high honorific verb)"
+    }
+  ],
+  "farewells": [
+    {
+      "phrase": "नमस्ते",
+      "romanization": "namaste",
+      "english": "Goodbye",
+      "formality": "neutral",
+      "usage_context": "Used as farewell in addition to greeting; the most common way to say goodbye",
+      "description": "Same word used for both hello and goodbye in Nepali"
+    },
+    {
+      "phrase": "बिदा",
+      "romanization": "bidaa",
+      "english": "Farewell",
+      "formality": "formal",
+      "usage_context": "Formal farewell, often used when someone is leaving for a long time",
+      "description": "Literary/formal farewell term; also means 'leave' or 'holiday'"
+    },
+    {
+      "phrase": "फेरि भेटौँला",
+      "romanization": "pheri bhetaumlaa",
+      "english": "We will meet again",
+      "formality": "neutral",
+      "usage_context": "Hopeful farewell expressing expectation of meeting again",
+      "description": "Common parting phrase conveying hope for future reunion"
+    },
+    {
+      "phrase": "जाँदा खेरी",
+      "romanization": "jaadaa kheri",
+      "english": "While going / As you leave",
+      "formality": "neutral",
+      "usage_context": "Used when seeing someone off; often followed by well-wishes",
+      "description": "Transitional phrase used at the moment of departure"
+    },
+    {
+      "phrase": "शुभयात्रा",
+      "romanization": "shubhayaatraa",
+      "english": "Have a good journey",
+      "formality": "formal",
+      "usage_context": "Said to someone embarking on a trip or journey",
+      "description": "Formal travel blessing combining shubha (auspicious) and yaatraa (journey)"
+    },
+    {
+      "phrase": "फेरि आउनुहोस्",
+      "romanization": "pheri aaunuhos",
+      "english": "Please come again",
+      "formality": "formal",
+      "usage_context": "Polite farewell to a guest or visitor, inviting them to return",
+      "description": "Hospitable parting phrase using honorific verb form"
+    },
+    {
+      "phrase": "हेरचाह गर्नुहोस्",
+      "romanization": "herchaah garnuhos",
+      "english": "Take care",
+      "formality": "formal",
+      "usage_context": "Caring farewell wishing someone to look after themselves",
+      "description": "Formal expression of concern at parting"
+    },
+    {
+      "phrase": "अब म जान्छु",
+      "romanization": "aba ma jaanchhu",
+      "english": "I will go now",
+      "formality": "neutral",
+      "usage_context": "Announcing one's departure in conversation",
+      "description": "Common way to signal leaving; often said before the actual farewell"
+    }
+  ],
+  "thanks_and_gratitude": [
+    {
+      "phrase": "धन्यवाद",
+      "romanization": "dhanyavaad",
+      "english": "Thank you",
+      "formality": "formal",
+      "usage_context": "Standard expression of gratitude in formal and semi-formal contexts",
+      "description": "The most common formal thank-you; Sanskrit-derived"
+    },
+    {
+      "phrase": "धेरै धन्यवाद",
+      "romanization": "dherai dhanyavaad",
+      "english": "Thank you very much",
+      "formality": "formal",
+      "usage_context": "Emphatic gratitude for significant help or kindness",
+      "description": "Intensified form using dherai (very/much)"
+    },
+    {
+      "phrase": "कृतज्ञ छु",
+      "romanization": "kritagya chhu",
+      "english": "I am grateful",
+      "formality": "formal",
+      "usage_context": "Deep gratitude in formal speech, writing, or official acknowledgments",
+      "description": "Highly formal expression of gratitude; literary register"
+    },
+    {
+      "phrase": "मलाई खुसी लाग्यो",
+      "romanization": "malaai khusi laagyo",
+      "english": "I am happy / I am pleased",
+      "formality": "neutral",
+      "usage_context": "Expressing pleasure or gratitude upon receiving help or good news",
+      "description": "Conveys appreciation through expressing happiness"
+    },
+    {
+      "phrase": "तपाईंको कृपा हो",
+      "romanization": "tapaaĩko kripaa ho",
+      "english": "It is your kindness",
+      "formality": "formal",
+      "usage_context": "Attributing a positive outcome to someone's generosity or grace",
+      "description": "Humble expression of gratitude acknowledging the other person's role"
+    },
+    {
+      "phrase": "धेरै-धेरै धन्यवाद",
+      "romanization": "dherai-dherai dhanyavaad",
+      "english": "Thank you so very much",
+      "formality": "formal",
+      "usage_context": "Very emphatic gratitude, often for extraordinary help",
+      "description": "Reduplicated intensifier for maximum emphasis on gratitude"
+    },
+    {
+      "phrase": "सहयोगको लागि धन्यवाद",
+      "romanization": "sahayogko laagi dhanyavaad",
+      "english": "Thank you for the cooperation",
+      "formality": "formal",
+      "usage_context": "Thanking someone for their help or collaboration in a task",
+      "description": "Commonly used in professional and organizational contexts"
+    },
+    {
+      "phrase": "ठूलो उपकार",
+      "romanization": "thulo upakaar",
+      "english": "Great favor / Much obliged",
+      "formality": "formal",
+      "usage_context": "Acknowledging a significant favor or act of kindness",
+      "description": "Expresses deep obligation; often used when someone has gone out of their way to help"
+    }
+  ],
+  "apologies": [
+    {
+      "phrase": "माफ गर्नुहोस्",
+      "romanization": "maaf garnuhos",
+      "english": "Please forgive me / Excuse me",
+      "formality": "formal",
+      "usage_context": "Standard polite apology or request for pardon; also used to get attention",
+      "description": "Most common formal apology using honorific verb form"
+    },
+    {
+      "phrase": "क्षमा गर्नुहोस्",
+      "romanization": "chhamaa garnuhos",
+      "english": "Please pardon me",
+      "formality": "formal",
+      "usage_context": "Highly formal apology used in official or literary contexts",
+      "description": "Sanskrit-derived formal apology; more literary than maaf garnuhos"
+    },
+    {
+      "phrase": "दुःख लाग्यो",
+      "romanization": "dukha laagyo",
+      "english": "I feel sorry / I regret",
+      "formality": "neutral",
+      "usage_context": "Expressing regret or sorrow about a situation",
+      "description": "Conveys personal sadness or regret; used both as apology and expression of sympathy"
+    },
+    {
+      "phrase": "मलाई माफ दिनुहोस्",
+      "romanization": "malaai maaf dinuhos",
+      "english": "Please give me forgiveness",
+      "formality": "formal",
+      "usage_context": "Earnest request for forgiveness for a specific wrong",
+      "description": "More personal and direct appeal for forgiveness"
+    },
+    {
+      "phrase": "गल्ती भयो",
+      "romanization": "galti bhayo",
+      "english": "A mistake happened / I made a mistake",
+      "formality": "neutral",
+      "usage_context": "Acknowledging an error or mistake",
+      "description": "Neutral admission of error; the passive construction is common in Nepali apologies"
+    },
+    {
+      "phrase": "मैले गल्ती गरें",
+      "romanization": "maile galti gare",
+      "english": "I made a mistake",
+      "formality": "neutral",
+      "usage_context": "Direct personal admission of fault",
+      "description": "More direct and personal than galti bhayo; takes explicit responsibility"
+    },
+    {
+      "phrase": "क्षमा चाहन्छु",
+      "romanization": "chhamaa chaahanchhu",
+      "english": "I seek forgiveness",
+      "formality": "formal",
+      "usage_context": "Formal request for pardon in serious or official situations",
+      "description": "Literary/formal apology expression"
+    },
+    {
+      "phrase": "बिलम्बको लागि माफी चाहन्छु",
+      "romanization": "bilambko laagi maafi chaahanchhu",
+      "english": "I apologize for the delay",
+      "formality": "formal",
+      "usage_context": "Apologizing specifically for being late or a delay in response",
+      "description": "Common in professional and official communication"
+    }
+  ],
+  "congratulations_and_wishes": [
+    {
+      "phrase": "बधाई छ",
+      "romanization": "badhaai chha",
+      "english": "Congratulations",
+      "formality": "neutral",
+      "usage_context": "General congratulations for achievements, milestones, or happy events",
+      "description": "The most common congratulatory expression in Nepali"
+    },
+    {
+      "phrase": "शुभकामना",
+      "romanization": "shubhakaamanaa",
+      "english": "Best wishes",
+      "formality": "formal",
+      "usage_context": "Offering good wishes for any occasion; very versatile",
+      "description": "Widely used standalone or combined with occasion names (e.g., dashaĩko shubhakaamanaa)"
+    },
+    {
+      "phrase": "मेरो शुभकामना छ",
+      "romanization": "mero shubhakaamanaa chha",
+      "english": "You have my best wishes",
+      "formality": "formal",
+      "usage_context": "Personal expression of good wishes, often for a specific endeavor",
+      "description": "Personalized form explicitly stating the wishes come from the speaker"
+    },
+    {
+      "phrase": "हार्दिक बधाई",
+      "romanization": "haardik badhaai",
+      "english": "Heartfelt congratulations",
+      "formality": "formal",
+      "usage_context": "Warm congratulations for significant achievements or celebrations",
+      "description": "Emphatic congratulations conveying sincere joy; common in written messages"
+    },
+    {
+      "phrase": "शुभ हुनुहोस्",
+      "romanization": "shubha hunuhos",
+      "english": "May it be auspicious",
+      "formality": "formal",
+      "usage_context": "Blessing for a new venture, journey, or undertaking",
+      "description": "General-purpose blessing wishing auspiciousness"
+    },
+    {
+      "phrase": "सफलताको कामना गर्दछु",
+      "romanization": "saphalatako kaamanaa gardachhu",
+      "english": "I wish you success",
+      "formality": "formal",
+      "usage_context": "Wishing success before exams, projects, or new endeavors",
+      "description": "Formal well-wishing for someone's success"
+    },
+    {
+      "phrase": "दीर्घायु होस्",
+      "romanization": "dirghayu hos",
+      "english": "May you have a long life",
+      "formality": "formal",
+      "usage_context": "Birthday blessing or general blessing for longevity; often from elders",
+      "description": "Traditional blessing for long life; commonly given during tika ceremonies"
+    },
+    {
+      "phrase": "खुसी रहनुहोस्",
+      "romanization": "khusi rahnuhos",
+      "english": "Stay happy",
+      "formality": "formal",
+      "usage_context": "General well-wishing for someone's happiness",
+      "description": "Common wish expressing hope for the other person's continued happiness"
+    }
+  ],
+  "condolences": [
+    {
+      "phrase": "दुःख व्यक्त गर्दछु",
+      "romanization": "dukha byakta gardachhu",
+      "english": "I express my sorrow",
+      "formality": "formal",
+      "usage_context": "Formal condolence upon hearing of a death or tragedy",
+      "description": "Standard formal condolence expression used in official and personal contexts"
+    },
+    {
+      "phrase": "शान्ति मिलोस्",
+      "romanization": "shaanti milos",
+      "english": "May peace be found / Rest in peace",
+      "formality": "formal",
+      "usage_context": "Wishing peace for the departed soul",
+      "description": "Prayer for the deceased; commonly used in condolence messages"
+    },
+    {
+      "phrase": "भगवानले शान्ति दिऊन्",
+      "romanization": "bhagavaanle shaanti diun",
+      "english": "May God grant peace",
+      "formality": "formal",
+      "usage_context": "Religious condolence wishing divine peace for the departed",
+      "description": "Common Hindu condolence prayer invoking God's peace for the soul"
+    },
+    {
+      "phrase": "दिवंगत आत्माको शान्तिको लागि प्रार्थना गर्दछु",
+      "romanization": "divangat aatmaako shaantiko laagi praarthanaa gardachhu",
+      "english": "I pray for the peace of the departed soul",
+      "formality": "formal",
+      "usage_context": "Full formal condolence prayer, often used in written messages or speeches",
+      "description": "Extended formal condolence expression; common in obituaries and official statements"
+    },
+    {
+      "phrase": "समवेदना प्रकट गर्दछु",
+      "romanization": "samvedanaa prakat gardachhu",
+      "english": "I offer my condolences",
+      "formality": "formal",
+      "usage_context": "Official expression of sympathy and condolence",
+      "description": "Formal condolence phrase used in official correspondence and public statements"
+    },
+    {
+      "phrase": "यो दुःखद समाचार सुनेर मन भारी भयो",
+      "romanization": "yo dukhad samaachaar sunera man bhaari bhayo",
+      "english": "My heart is heavy hearing this sad news",
+      "formality": "neutral",
+      "usage_context": "Personal expression of grief upon receiving bad news",
+      "description": "More personal and emotional condolence expression"
+    },
+    {
+      "phrase": "परिवारलाई धैर्य मिलोस्",
+      "romanization": "parivaarlaai dhairya milos",
+      "english": "May the family find strength",
+      "formality": "formal",
+      "usage_context": "Wishing courage and patience to the bereaved family",
+      "description": "Common supportive phrase directed at the family of the deceased"
+    },
+    {
+      "phrase": "ओम् शान्ति",
+      "romanization": "om shaanti",
+      "english": "Om Shanti / Peace",
+      "formality": "formal",
+      "usage_context": "Hindu prayer for peace of the departed; used as a condolence expression",
+      "description": "Sacred Hindu mantra frequently used in Nepali condolence contexts"
+    }
+  ],
+  "polite_expressions": [
+    {
+      "phrase": "कृपया",
+      "romanization": "kripayaa",
+      "english": "Please",
+      "formality": "formal",
+      "usage_context": "Polite request marker; used to soften requests and instructions",
+      "description": "Sanskrit-derived formal please; used in polite speech and writing"
+    },
+    {
+      "phrase": "हजुर",
+      "romanization": "hajur",
+      "english": "Yes (respectful) / Sir/Ma'am",
+      "formality": "formal",
+      "usage_context": "Respectful acknowledgment; also used to address elders or superiors",
+      "description": "Multipurpose respectful word: 'yes', form of address, and attention signal"
+    },
+    {
+      "phrase": "हुन्छ",
+      "romanization": "hunchha",
+      "english": "Okay / Alright / It will do",
+      "formality": "neutral",
+      "usage_context": "Agreement or acceptance of a request or proposal",
+      "description": "Very common agreement word; literally 'it happens/will be'"
+    },
+    {
+      "phrase": "ठीक छ",
+      "romanization": "thik chha",
+      "english": "It's fine / Okay",
+      "formality": "neutral",
+      "usage_context": "Expressing agreement, acceptance, or that something is satisfactory",
+      "description": "Universal agreement phrase; one of the most frequently used expressions"
+    },
+    {
+      "phrase": "राम्रो",
+      "romanization": "raamro",
+      "english": "Good / Nice",
+      "formality": "neutral",
+      "usage_context": "Expressing approval or positive evaluation",
+      "description": "General-purpose positive adjective used as acknowledgment or praise"
+    },
+    {
+      "phrase": "बस्नुहोस्",
+      "romanization": "basnuhos",
+      "english": "Please sit down",
+      "formality": "formal",
+      "usage_context": "Politely offering a seat to a guest or visitor",
+      "description": "Hospitable expression; one of the first things said to guests in Nepali culture"
+    },
+    {
+      "phrase": "खानुहोस्",
+      "romanization": "khaanuhos",
+      "english": "Please eat",
+      "formality": "formal",
+      "usage_context": "Offering food to a guest; a key part of Nepali hospitality",
+      "description": "Essential hospitality phrase; refusing food is considered impolite in Nepali culture"
+    },
+    {
+      "phrase": "पर्दैन",
+      "romanization": "pardaina",
+      "english": "It doesn't matter / No need",
+      "formality": "neutral",
+      "usage_context": "Dismissing a concern or saying something is not necessary",
+      "description": "Used to reassure someone that something is not a problem"
+    }
+  ],
+  "common_conversational_phrases": [
+    {
+      "phrase": "तपाईंलाई कस्तो छ?",
+      "romanization": "tapaaĩlaai kasto chha?",
+      "english": "How are you?",
+      "formality": "formal",
+      "usage_context": "Standard polite inquiry about someone's well-being",
+      "description": "Common conversation starter; formal register using tapaaĩ"
+    },
+    {
+      "phrase": "सन्चै हुनुहुन्छ?",
+      "romanization": "sanchai hunuhunchha?",
+      "english": "Are you well?",
+      "formality": "formal",
+      "usage_context": "Polite health inquiry; common greeting follow-up",
+      "description": "Respectful inquiry about well-being using high honorific verb"
+    },
+    {
+      "phrase": "मलाई थाहा छैन",
+      "romanization": "malaai thaahaa chhaina",
+      "english": "I don't know",
+      "formality": "neutral",
+      "usage_context": "Expressing lack of knowledge about something",
+      "description": "Direct statement of not knowing; universally used across registers"
+    },
+    {
+      "phrase": "के भयो?",
+      "romanization": "ke bhayo?",
+      "english": "What happened?",
+      "formality": "neutral",
+      "usage_context": "Asking about a situation or event; expressing concern or curiosity",
+      "description": "Very common question in daily conversation"
+    },
+    {
+      "phrase": "कहाँ जानुहुन्छ?",
+      "romanization": "kahaa jaanuhunchha?",
+      "english": "Where are you going?",
+      "formality": "formal",
+      "usage_context": "Common greeting-like question when meeting someone on the way",
+      "description": "In Nepali culture this is a casual greeting, not necessarily expecting a detailed answer"
+    },
+    {
+      "phrase": "खाना खानुभयो?",
+      "romanization": "khaanaa khaanubhayo?",
+      "english": "Have you eaten?",
+      "formality": "formal",
+      "usage_context": "Common greeting showing concern for well-being; reflects food-centric hospitality",
+      "description": "A distinctly Nepali conversational greeting; asking about meals is a way of caring"
+    },
+    {
+      "phrase": "अलि बसौँ न",
+      "romanization": "ali basau~ na",
+      "english": "Let's sit for a bit",
+      "formality": "informal",
+      "usage_context": "Casual invitation to rest or chat together",
+      "description": "Friendly conversational phrase inviting someone to spend time"
+    },
+    {
+      "phrase": "के गर्दै हुनुहुन्छ?",
+      "romanization": "ke gardai hunuhunchha?",
+      "english": "What are you doing?",
+      "formality": "formal",
+      "usage_context": "Asking about someone's current activity; conversation starter",
+      "description": "Polite inquiry about current activity using honorific form"
+    }
+  ],
+  "festival_and_seasonal_greetings": [
+    {
+      "phrase": "दशैंको शुभकामना",
+      "romanization": "dashaĩko shubhakaamanaa",
+      "english": "Happy Dashain",
+      "formality": "neutral",
+      "usage_context": "Greeting during Dashain, Nepal's biggest festival (September-October)",
+      "description": "Dashain is the longest and most significant Hindu festival in Nepal, celebrating the victory of good over evil"
+    },
+    {
+      "phrase": "तिहारको शुभकामना",
+      "romanization": "tihaarko shubhakaamanaa",
+      "english": "Happy Tihar",
+      "formality": "neutral",
+      "usage_context": "Greeting during Tihar, the festival of lights (October-November)",
+      "description": "Tihar is a five-day festival honoring various animals and Laxmi, the goddess of wealth"
+    },
+    {
+      "phrase": "नयाँ वर्षको शुभकामना",
+      "romanization": "nayaa~ barshako shubhakaamanaa",
+      "english": "Happy New Year",
+      "formality": "neutral",
+      "usage_context": "Greeting for Nepali New Year (Bikram Sambat) in mid-April, or January 1",
+      "description": "Used for both the Bikram Sambat new year (Baisakh 1) and the Gregorian new year"
+    },
+    {
+      "phrase": "होलीको शुभकामना",
+      "romanization": "holiko shubhakaamanaa",
+      "english": "Happy Holi",
+      "formality": "neutral",
+      "usage_context": "Greeting during Holi, the festival of colors (February-March)",
+      "description": "Holi is celebrated with colors and water; known as Fagu Purnima in Nepal"
+    },
+    {
+      "phrase": "छठ पर्वको शुभकामना",
+      "romanization": "chhath parbako shubhakaamanaa",
+      "english": "Happy Chhath",
+      "formality": "neutral",
+      "usage_context": "Greeting during Chhath Parva, a sun-worshipping festival (October-November)",
+      "description": "Chhath is mainly celebrated in the Terai/Madhesh region of Nepal"
+    },
+    {
+      "phrase": "लोसारको शुभकामना",
+      "romanization": "losaarko shubhakaamanaa",
+      "english": "Happy Losar",
+      "formality": "neutral",
+      "usage_context": "Greeting during Losar, the Tibetan/Tamang/Sherpa New Year (February)",
+      "description": "Celebrated by Tibeto-Burman communities including Tamang, Sherpa, and Gurung"
+    },
+    {
+      "phrase": "जन्मदिनको शुभकामना",
+      "romanization": "janmadinko shubhakaamanaa",
+      "english": "Happy Birthday",
+      "formality": "neutral",
+      "usage_context": "Birthday greeting",
+      "description": "Standard birthday greeting; janmadin means birthday (literally birth-day)"
+    },
+    {
+      "phrase": "विवाहको शुभकामना",
+      "romanization": "vivaahako shubhakaamanaa",
+      "english": "Wedding congratulations / Happy marriage",
+      "formality": "formal",
+      "usage_context": "Congratulating a couple on their wedding",
+      "description": "Formal wedding blessing; vivaha is the Sanskrit-derived word for marriage"
+    }
+  ]
+}

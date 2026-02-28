@@ -1,0 +1,290 @@
+{
+  "description": "Long-form Nepali sentences (20-40+ words) for TTS prosodic coherence evaluation (NepTTS-Bench), testing whether synthesized speech maintains natural rhythm, pausing, and intonation over extended utterances",
+  "notes": {
+    "usage": "Reference data for evaluating TTS stability and prosodic coherence on long utterances. Each sentence is designed to challenge specific aspects of prosodic planning over extended speech.",
+    "benchmark_inspiration": "Modeled after Blizzard Challenge long-form evaluation and J-HARD-TTS-Eval stability tests",
+    "evaluation": "A good TTS system should maintain natural pacing, correct pause placement, appropriate breath groups, and coherent intonation contours throughout the entire utterance without degradation",
+    "pause_notation": "In suggested_pause_points, '|' marks where a natural pause should occur; '||' marks a major prosodic boundary (longer pause)",
+    "word_counting": "Word counts follow Nepali orthographic conventions where postpositions attached to stems count as part of the word"
+  },
+  "news_style": [
+    {
+      "sentence": "नेपाल सरकारले आगामी आर्थिक वर्षको लागि पचास खर्ब रुपैयाँको बजेट प्रस्तुत गर्दै गरिबी निवारण, पूर्वाधार विकास, र शिक्षा क्षेत्रमा विशेष जोड दिने घोषणा गरेको छ।",
+      "romanization": "nepaal sarkaarle aagaami aarthik barshako laagi pachaas kharba rupaiyaako bajet prastu gardai garibi niwaaran, purwaadhaar bikaas, ra shikshaa kshetramaa bishesh jod dine ghoshanaa gareko chha.",
+      "english": "The Government of Nepal has announced that it will present a budget of fifty trillion rupees for the upcoming fiscal year, with special emphasis on poverty alleviation, infrastructure development, and the education sector.",
+      "word_count": 25,
+      "domain": "news_style",
+      "prosodic_challenges": "Long noun phrase chain before the main verb, list intonation for three policy areas, maintaining coherent pitch declination over the full sentence",
+      "suggested_pause_points": "नेपाल सरकारले | आगामी आर्थिक वर्षको लागि | पचास खर्ब रुपैयाँको बजेट प्रस्तुत गर्दै | गरिबी निवारण, | पूर्वाधार विकास, | र शिक्षा क्षेत्रमा विशेष जोड दिने | घोषणा गरेको छ।",
+      "description": "Government budget announcement with a three-item list of policy priorities; typical of Nepali news broadcast style"
+    },
+    {
+      "sentence": "काठमाडौँ उपत्यकामा बढ्दो वायु प्रदूषणका कारण श्वासप्रश्वाससम्बन्धी रोग बढेको भन्दै स्वास्थ्य मन्त्रालयले सबै नागरिकलाई मास्क लगाउन र बाहिरी गतिविधि कम गर्न आग्रह गरेको छ।",
+      "romanization": "kaathmadaũ upatyakaamaa badhdho waayu pradushanakaa kaaran shwaaspraswaas sambandhii rog badheko bhandai swaasthya mantraalayale sabai nagariklai mask lagaauna ra baahiri gatibidhi kam garna aagraha gareko chha.",
+      "english": "Citing the increase in respiratory diseases due to growing air pollution in the Kathmandu Valley, the Ministry of Health has urged all citizens to wear masks and reduce outdoor activities.",
+      "word_count": 24,
+      "domain": "news_style",
+      "prosodic_challenges": "Complex causal clause preceding the main clause, technical health vocabulary, dual request structure with 'ra' conjunction",
+      "suggested_pause_points": "काठमाडौँ उपत्यकामा | बढ्दो वायु प्रदूषणका कारण | श्वासप्रश्वाससम्बन्धी रोग बढेको भन्दै || स्वास्थ्य मन्त्रालयले | सबै नागरिकलाई | मास्क लगाउन | र बाहिरी गतिविधि कम गर्न | आग्रह गरेको छ।",
+      "description": "Health advisory news report with causal reasoning; reflects real air pollution concerns in Kathmandu"
+    },
+    {
+      "sentence": "निर्वाचन आयोगले आगामी स्थानीय तहको चुनावको मिति तोक्दै सबै राजनीतिक दललाई आचारसंहिता पालना गर्न, हिंसात्मक गतिविधिबाट टाढा रहन र शान्तिपूर्ण वातावरणमा चुनाव सम्पन्न गर्न सहयोग गर्न आह्वान गरेको छ।",
+      "romanization": "nirwaachan aayogle aagaami sthaaniya tahako chunaawako miti tokdai sabai raajnitik dallai aachaar sanhitaa paalnaa garna, hinsaatmak gatibidhibaata tadhaa rahna ra shaantipurna waatawaranmaa chunaaw sampanna garna sahayog garna aahwaan gareko chha.",
+      "english": "The Election Commission, while setting the date for the upcoming local elections, has called on all political parties to follow the code of conduct, stay away from violent activities, and cooperate in conducting elections in a peaceful environment.",
+      "word_count": 29,
+      "domain": "news_style",
+      "prosodic_challenges": "Three-part list of requests within a participial clause, deeply nested structure, maintaining prosodic hierarchy across multiple verb phrases",
+      "suggested_pause_points": "निर्वाचन आयोगले | आगामी स्थानीय तहको चुनावको मिति तोक्दै || सबै राजनीतिक दललाई | आचारसंहिता पालना गर्न, | हिंसात्मक गतिविधिबाट टाढा रहन | र शान्तिपूर्ण वातावरणमा चुनाव सम्पन्न गर्न | सहयोग गर्न | आह्वान गरेको छ।",
+      "description": "Election Commission statement with multiple directives; tests handling of formal political discourse with nested verb chains"
+    },
+    {
+      "sentence": "गत वर्ष नेपालमा पर्यटन क्षेत्रबाट प्राप्त आयमा उल्लेखनीय वृद्धि भएको छ र सरकारले यस क्षेत्रलाई थप प्रवर्द्धन गर्न नयाँ पर्यटकीय गन्तव्यहरूको विकास र अन्तर्राष्ट्रिय उडानहरू बढाउने योजना सार्वजनिक गरेको छ।",
+      "romanization": "gata barsha nepaalma paryatan kshetrabata praapta aayamaa ullekhaniya briddhi bhaeko chha ra sarkaarle yas kshetralai thap prawarddhan garna nayaa paryatakiya gantabya haruko bikaas ra antarraastriya udaanharoo badhaune yojanaa saarwajanik gareko chha.",
+      "english": "Tourism revenue in Nepal has seen remarkable growth last year, and the government has announced plans to further promote the sector by developing new tourist destinations and increasing international flights.",
+      "word_count": 30,
+      "domain": "news_style",
+      "prosodic_challenges": "Two main clauses joined by 'ra' requiring a major prosodic reset, complex noun phrases with multiple modifiers, list of planned actions",
+      "suggested_pause_points": "गत वर्ष | नेपालमा पर्यटन क्षेत्रबाट प्राप्त आयमा | उल्लेखनीय वृद्धि भएको छ || र सरकारले | यस क्षेत्रलाई थप प्रवर्द्धन गर्न | नयाँ पर्यटकीय गन्तव्यहरूको विकास | र अन्तर्राष्ट्रिय उडानहरू बढाउने योजना | सार्वजनिक गरेको छ।",
+      "description": "Tourism sector news combining data reporting with forward-looking policy announcement"
+    },
+    {
+      "sentence": "उच्च अदालतले भ्रष्टाचार मुद्दामा फैसला सुनाउँदै दोषी ठहर भएका पूर्वमन्त्रीलाई दश वर्ष कैद र पचास लाख रुपैयाँ जरिवाना हुने सजाय तोकेको छ।",
+      "romanization": "uchcha adaalatale bhrashtaachaar muddaamaa phaisalaa sunaaudai doshi thahar bhaekaa purwa mantrilai dash barsha kaid ra pachaas laakh rupaiyaa jariwanaa hune sajaay tokeko chha.",
+      "english": "The High Court, while delivering its verdict in the corruption case, has sentenced the convicted former minister to ten years imprisonment and a fine of fifty lakh rupees.",
+      "word_count": 22,
+      "domain": "news_style",
+      "prosodic_challenges": "Legal terminology, participial clause with main clause, dual sentencing structure, maintaining gravity of formal legal announcement",
+      "suggested_pause_points": "उच्च अदालतले | भ्रष्टाचार मुद्दामा फैसला सुनाउँदै || दोषी ठहर भएका पूर्वमन्त्रीलाई | दश वर्ष कैद | र पचास लाख रुपैयाँ जरिवाना हुने सजाय | तोकेको छ।",
+      "description": "Court verdict announcement with legal sentencing; tests formal judicial register and dual-penalty structure"
+    },
+    {
+      "sentence": "प्रधानमन्त्रीले राष्ट्रिय दिवसको अवसरमा राष्ट्रलाई सम्बोधन गर्दै विगत एक वर्षमा भएका विकास कार्यहरूको समीक्षा गर्नुभयो र आउँदा दिनहरूमा जनताको जीवनस्तर उकास्न सरकार प्रतिबद्ध रहेको बताउनुभयो।",
+      "romanization": "pradhaan mantri le raastriya diwas ko abasaramaa raastra lai sambodhan gardai bigata ek barshamaa bhaekaa bikaas kaarya haruko samiikshaa garnubhayo ra aaũdaa dinaharumaa janatako jiwanstar ukaasna sarkaar pratibaddha raheko bataunubhayo.",
+      "english": "The Prime Minister, addressing the nation on the occasion of National Day, reviewed the development works of the past year and stated that the government remains committed to improving the living standards of the people in the coming days.",
+      "word_count": 25,
+      "domain": "news_style",
+      "prosodic_challenges": "Formal address register, two sequential main verbs sharing one subject, long temporal and circumstantial phrases, maintaining authoritative tone",
+      "suggested_pause_points": "प्रधानमन्त्रीले | राष्ट्रिय दिवसको अवसरमा | राष्ट्रलाई सम्बोधन गर्दै || विगत एक वर्षमा भएका | विकास कार्यहरूको समीक्षा गर्नुभयो || र आउँदा दिनहरूमा | जनताको जीवनस्तर उकास्न | सरकार प्रतिबद्ध रहेको बताउनुभयो।",
+      "description": "Prime ministerial national address; combines retrospective review with forward commitment; formal honorific register throughout"
+    },
+    {
+      "sentence": "नेपाल राष्ट्र बैंकले मुद्रास्फीतिलाई नियन्त्रणमा राख्न ब्याजदर बढाउने निर्णय गरेको छ र यसले आवास ऋण, व्यापारिक कर्जा तथा उपभोक्ता ऋणको किस्तामा प्रत्यक्ष असर पर्ने विज्ञहरूले बताएका छन्।",
+      "romanization": "nepaal raastra bainkle mudraasphitilai niyantranmaa raakhna byaajdar badhaune nirnay gareko chha ra yasle aawaas rin, wyaaparik karjaa tathaa upabhoktaa rinko kistaamaa pratyaksha asar parne bigyaharule bataekaa chhan.",
+      "english": "Nepal Rastra Bank has decided to increase interest rates to control inflation, and experts have said this will directly affect installments on housing loans, commercial credit, and consumer loans.",
+      "word_count": 27,
+      "domain": "news_style",
+      "prosodic_challenges": "Financial terminology, compound cause-effect structure across two clauses, three-item list of affected loan types, embedded attribution",
+      "suggested_pause_points": "नेपाल राष्ट्र बैंकले | मुद्रास्फीतिलाई नियन्त्रणमा राख्न | ब्याजदर बढाउने निर्णय गरेको छ || र यसले | आवास ऋण, | व्यापारिक कर्जा | तथा उपभोक्ता ऋणको किस्तामा | प्रत्यक्ष असर पर्ने | विज्ञहरूले बताएका छन्।",
+      "description": "Central bank monetary policy report with expert attribution; tests financial register and cause-effect discourse"
+    }
+  ],
+  "narrative": [
+    {
+      "sentence": "बिहान सबेरै घरबाट हिँडेकी ती वृद्ध आमाले तीन घण्टा पैदल हिँडेर बजार पुगिन्, तरकारी किनिन्, र साँझ नपर्दै फर्किएर नातिनातिनालाई खाना पकाइदिइन्।",
+      "romanization": "bihaan saberai gharbata hĩdeki ti briddha aamaale tin ghantaa paidal hĩdera bajaar pugin, tarkaari kinin, ra saajh napardai pharkiera naati naatinaalai khaanaa pakaaidin.",
+      "english": "That elderly mother who set out from home early in the morning walked for three hours to reach the market, bought vegetables, and returned before evening to cook food for her grandchildren.",
+      "word_count": 22,
+      "domain": "narrative",
+      "prosodic_challenges": "Sequential narrative with temporal progression, three chained actions, maintaining storytelling cadence, emotional weight of the elderly character",
+      "suggested_pause_points": "बिहान सबेरै | घरबाट हिँडेकी ती वृद्ध आमाले | तीन घण्टा पैदल हिँडेर बजार पुगिन्, | तरकारी किनिन्, | र साँझ नपर्दै फर्किएर | नातिनातिनालाई खाना पकाइदिइन्।",
+      "description": "Narrative about an elderly woman's daily journey; tests temporal flow and emotional storytelling prosody"
+    },
+    {
+      "sentence": "गाउँको त्यो पुरानो पीपलको रुख, जसको छहारीमा बसेर हाम्रा हजुरबुबाले साँझपख हामी नातिनातिनालाई पुराना कथा सुनाउनुहुन्थ्यो, अहिले त्यहाँ छैन — नयाँ सडक बनाउँदा काटिसकेछन् र त्यो ठाउँमा अब सिमेन्टको फुटपाथ मात्र छ।",
+      "romanization": "gaũko tyo puraano pipalko rukh, jasko chhaahaarimaa basera haamraa hajurbubale saajhpakh haami naatinaatinaalai puraanaa kathaa sunaaunuhunthyo, ahile tyahaa chhaina — nayaa sadak banaũdaa kaatisakechchhan ra tyo thaaũmaa aba simentko phutpaath maatra chha.",
+      "english": "That old peepal tree in the village, sitting under whose shade our grandfather used to tell us grandchildren old stories in the evenings, is no longer there — it was cut down when they built the new road, and now only a cement sidewalk remains in that spot.",
+      "word_count": 32,
+      "domain": "narrative",
+      "prosodic_challenges": "Long relative clause interrupting main clause, nostalgic tone shift, dash-marked afterthought requiring prosodic detachment, double continuation after dash with coordinated clauses",
+      "suggested_pause_points": "गाउँको त्यो पुरानो पीपलको रुख, | जसको छहारीमा बसेर | हाम्रा हजुरबुबाले साँझपख | हामी नातिनातिनालाई पुराना कथा सुनाउनुहुन्थ्यो, || अहिले त्यहाँ छैन | — नयाँ सडक बनाउँदा काटिसकेछन् | र त्यो ठाउँमा अब सिमेन्टको फुटपाथ मात्र छ।",
+      "description": "Nostalgic narrative about a lost village landmark; tests long relative clause prosody, tonal shift at the dash, and bittersweet concluding detail"
+    },
+    {
+      "sentence": "हिमालको काखमा बसेको त्यो सानो गाउँमा बिजुली पुगेको दिन सबैजना सडकमा निस्किए, एकअर्कालाई बधाई दिए, र बत्ती बलेको देख्दा केहीको आँखामा आँसु नै आयो।",
+      "romanization": "himaalko kaakhmaa baseko tyo saano gaũmaa bijuli pugeko din sabaijanaa sadakmaa niskiye, ekarkaalai badhaai diye, ra batti baleko dekhdaa kehiko aakhaamaa aasu nai aayo.",
+      "english": "On the day electricity reached that small village nestled in the lap of the Himalayas, everyone came out to the streets, congratulated each other, and seeing the lights on, some even had tears in their eyes.",
+      "word_count": 24,
+      "domain": "narrative",
+      "prosodic_challenges": "Long locative opening phrase, three sequential narrative actions, emotional climax at the end requiring pitch rise then fall",
+      "suggested_pause_points": "हिमालको काखमा बसेको | त्यो सानो गाउँमा | बिजुली पुगेको दिन || सबैजना सडकमा निस्किए, | एकअर्कालाई बधाई दिए, | र बत्ती बलेको देख्दा | केहीको आँखामा आँसु नै आयो।",
+      "description": "Narrative of a village receiving electricity for the first time; builds emotional arc from setting to climax"
+    },
+    {
+      "sentence": "उनले झ्यालबाट बाहिर हेरिन् — खेतमा धान रोप्दै गरेका किसानहरू, गाईवस्तु चराउँदै हिँडेका गोठाला, र टाढा हिमालको चुचुरोमा बसेको बादल — सबै कुरा त्यत्तिकै शान्त थियो।",
+      "romanization": "unle jhyaalbata baahira herin — khetmaa dhaan ropdai garekaa kisaanharoo, gaaibastuu charaũdai hĩdekaa gothaala, ra tadhaa himaalko chuchurooma baseko baadal — sabai kuraa tyattikai shaant thiyo.",
+      "english": "She looked outside from the window — farmers planting rice in the fields, herders walking their cattle, and a cloud resting on a distant Himalayan peak — everything was perfectly peaceful.",
+      "word_count": 26,
+      "domain": "narrative",
+      "prosodic_challenges": "Dash-bounded descriptive list requiring parallel intonation, three visual scenes with consistent listing prosody, return to main clause after long parenthetical",
+      "suggested_pause_points": "उनले झ्यालबाट बाहिर हेरिन् | — खेतमा धान रोप्दै गरेका किसानहरू, | गाईवस्तु चराउँदै हिँडेका गोठाला, | र टाढा हिमालको चुचुरोमा बसेको बादल — || सबै कुरा त्यत्तिकै शान्त थियो।",
+      "description": "Literary scene description with a triple visual inventory; tests parenthetical list prosody and return to main narrative"
+    },
+    {
+      "sentence": "दाजुले हातमा सानो बाँसुरी समाउँदै भन्नुभयो कि यो बाँसुरी हजुरबुबाको स्मृति हो र जबसम्म यो छ तबसम्म उहाँको आवाज हाम्रो घरमा गुन्जिरहनेछ।",
+      "romanization": "daajule haatmaa saano baasuri samaũdai bhannubhayo ki yo baasuri hajurbubako smriti ho ra jabasamma yo chha tabasamma uhaasko aawaaj haamro gharmaa gunjirahanechha.",
+      "english": "Holding a small flute in his hand, elder brother said that this flute is a memory of grandfather, and as long as it exists, his voice will keep resonating in our home.",
+      "word_count": 22,
+      "domain": "narrative",
+      "prosodic_challenges": "Participial opening, reported speech with 'ki' complementizer, correlative 'jabasamma...tabasamma' structure requiring prosodic pairing, emotional weight",
+      "suggested_pause_points": "दाजुले हातमा सानो बाँसुरी समाउँदै भन्नुभयो | कि यो बाँसुरी हजुरबुबाको स्मृति हो || र जबसम्म यो छ | तबसम्म उहाँको आवाज | हाम्रो घरमा गुन्जिरहनेछ।",
+      "description": "Sentimental family narrative with reported speech and correlative clause; tests embedded prosodic structures"
+    },
+    {
+      "sentence": "ऊ सधैँ भन्थ्यो कि मान्छेको जीवनमा सबैभन्दा ठूलो धन पैसा होइन, बरु आफ्ना मान्छेहरूसँगको माया र सम्बन्ध नै हो जसले गर्दा दुःखमा पनि बाँच्न सकिन्छ।",
+      "romanization": "uu sadhaiN bhanthyo ki maanchheko jiwanmaa sabai bhandaa thulo dhan paisaa hoina, baru aaphnaa maanchheharoo sãgako maayaa ra sambandha nai ho jasle gardaa dukhmaa pani baachna sakinchha.",
+      "english": "He always used to say that the greatest wealth in a person's life is not money, but rather the love and bonds with one's own people, which is what lets you survive even in sorrow.",
+      "word_count": 25,
+      "domain": "narrative",
+      "prosodic_challenges": "Reported speech containing a contrastive 'hoina...baru' structure, relative clause extending the thought, maintaining prosodic coherence through philosophical content",
+      "suggested_pause_points": "ऊ सधैँ भन्थ्यो कि | मान्छेको जीवनमा | सबैभन्दा ठूलो धन पैसा होइन, | बरु आफ्ना मान्छेहरूसँगको माया र सम्बन्ध नै हो | जसले गर्दा | दुःखमा पनि बाँच्न सकिन्छ।",
+      "description": "Philosophical reflection through reported speech with contrastive and relative clause; tests deep embedding and tonal continuity"
+    }
+  ],
+  "technical": [
+    {
+      "sentence": "मानव शरीरमा रहेको प्रतिरक्षा प्रणालीले बाह्य विषाणु र ब्याक्टेरियालाई चिन्न, तिनलाई नष्ट पार्न र भविष्यमा त्यस्तै संक्रमणबाट जोगिन सक्ने गरी स्मृति कोशिकाहरू बनाउने काम गर्छ।",
+      "romanization": "maanav shariramaa raheko pratirakshaa pranaalile baahya bishaanu ra byaakteriyaalai chinna, tinlai nashta paarna ra bhabisyamaa tyastai sankramanbaata jogina sakne gari smriti koshikaaharoo banaune kaam garchha.",
+      "english": "The immune system in the human body works to identify external viruses and bacteria, destroy them, and create memory cells that can protect against similar infections in the future.",
+      "word_count": 25,
+      "domain": "technical",
+      "prosodic_challenges": "Three-part functional description, technical biological vocabulary requiring clear articulation, infinitive chain leading to final main verb",
+      "suggested_pause_points": "मानव शरीरमा रहेको प्रतिरक्षा प्रणालीले | बाह्य विषाणु र ब्याक्टेरियालाई चिन्न, | तिनलाई नष्ट पार्न | र भविष्यमा त्यस्तै संक्रमणबाट जोगिन सक्ने गरी | स्मृति कोशिकाहरू बनाउने काम गर्छ।",
+      "description": "Immunology explanation with a three-function description of the immune system; tests technical vocabulary prosody"
+    },
+    {
+      "sentence": "सौर्य ऊर्जा प्रणालीमा सूर्यको प्रकाशलाई फोटोभोल्टिक प्यानलहरूले विद्युतीय ऊर्जामा रूपान्तरण गर्छन् र उत्पादित बिजुलीलाई ब्याट्रीमा भण्डारण गरेर राति तथा बादलको बेलामा पनि प्रयोग गर्न सकिन्छ।",
+      "romanization": "saurya urjaa pranaalimaa suryako prakaashlai photovoltaic panel harule bidyutiya urjaamaa rupantaran garchhan ra utpaadit bijulilai byaatrimaa bhandaaran garera raati tathaa baadal ko belaamaa pani prayog garna sakinchha.",
+      "english": "In a solar energy system, photovoltaic panels convert sunlight into electrical energy, and the produced electricity can be stored in batteries to be used at night and during cloudy weather as well.",
+      "word_count": 25,
+      "domain": "technical",
+      "prosodic_challenges": "Technical compound nouns requiring clear segmentation, two-clause structure with different subjects, temporal phrase list at the end",
+      "suggested_pause_points": "सौर्य ऊर्जा प्रणालीमा | सूर्यको प्रकाशलाई | फोटोभोल्टिक प्यानलहरूले | विद्युतीय ऊर्जामा रूपान्तरण गर्छन् || र उत्पादित बिजुलीलाई | ब्याट्रीमा भण्डारण गरेर | राति तथा बादलको बेलामा पनि | प्रयोग गर्न सकिन्छ।",
+      "description": "Solar energy system explanation; tests handling of technical loanwords and process description prosody"
+    },
+    {
+      "sentence": "जलवायु परिवर्तनका कारण नेपालका हिमनदीहरू द्रुत गतिमा पग्लिँदै छन् जसले गर्दा हिमताल विस्फोटनको खतरा बढेको छ र तल्लो भेगका बासिन्दाहरूको जीवन र सम्पत्तिमा गम्भीर जोखिम उत्पन्न भएको छ।",
+      "romanization": "jalawaayu pariwartan kaa kaaran nepaal kaa himanadiiharoo drut gatimaa pagliNdai chhan jasle gardaa himataal bisphhotanko khataraa badheko chha ra tallho bhegkaa baasindaaharuko jiwan ra sampatti maa gambhir jokhim utpanna bhaeko chha.",
+      "english": "Due to climate change, Nepal's glaciers are melting rapidly, which has increased the risk of glacial lake outburst floods and created serious threats to the lives and property of residents in the lower regions.",
+      "word_count": 28,
+      "domain": "technical",
+      "prosodic_challenges": "Causal chain spanning three clauses, environmental science terminology, relative clause with 'jasle gardaa', compounding risks at the end",
+      "suggested_pause_points": "जलवायु परिवर्तनका कारण | नेपालका हिमनदीहरू द्रुत गतिमा पग्लिँदै छन् || जसले गर्दा | हिमताल विस्फोटनको खतरा बढेको छ | र तल्लो भेगका बासिन्दाहरूको | जीवन र सम्पत्तिमा | गम्भीर जोखिम उत्पन्न भएको छ।",
+      "description": "Climate change impact explanation specific to Nepal; tests causal reasoning discourse and environmental vocabulary"
+    },
+    {
+      "sentence": "कृत्रिम बौद्धिकताले भाषा प्रशोधन, तस्बिर पहिचान, स्वचालित अनुवाद जस्ता कार्यहरूमा उल्लेखनीय प्रगति गरेको छ तर यसले उठाउने नैतिक प्रश्नहरू जस्तै गोपनीयता, पक्षपात र रोजगारीमा पर्ने प्रभावबारे अझै व्यापक छलफल आवश्यक छ।",
+      "romanization": "kritrim bauddhikatale bhaashaa prashodhan, tasbir pahichaan, swachaalit anuwaad jastaa kaaryaharumaa ullekhaniya pragati gareko chha tara yasle uthaune naitik prashnaharoo jastai gopaniyataa, pakshapaat ra rojgaarimaa parne prabhaawbaare ajhai wyaapak chhalphala aawashyak chha.",
+      "english": "Artificial intelligence has made remarkable progress in tasks such as language processing, image recognition, and machine translation, but broader discussion is still needed about the ethical questions it raises, such as privacy, bias, and the impact on employment.",
+      "word_count": 31,
+      "domain": "technical",
+      "prosodic_challenges": "Two contrasting clauses with 'tara', two separate lists (AI applications and ethical concerns), technical vocabulary from multiple domains",
+      "suggested_pause_points": "कृत्रिम बौद्धिकताले | भाषा प्रशोधन, | तस्बिर पहिचान, | स्वचालित अनुवाद जस्ता कार्यहरूमा | उल्लेखनीय प्रगति गरेको छ || तर यसले उठाउने नैतिक प्रश्नहरू | जस्तै गोपनीयता, | पक्षपात | र रोजगारीमा पर्ने प्रभावबारे | अझै व्यापक छलफल आवश्यक छ।",
+      "description": "AI progress and ethics discussion; tests contrastive discourse with parallel list structures"
+    },
+    {
+      "sentence": "नेपालमा जडीबुटीमा आधारित परम्परागत चिकित्सा पद्धति सदियौँदेखि चलिआएको छ र आधुनिक अनुसन्धानले यी वनस्पतिहरूमा रोगनिवारक गुणहरू रहेको पुष्टि गर्दै यसलाई वैज्ञानिक तरिकाले प्रमाणित गर्ने प्रयास भइरहेको छ।",
+      "romanization": "nepaal maa jadibutimaa aadhaarit paramparaagat chikitsaa paddhati sadiyaũ dekhi chaliaaeko chha ra aadhunik anusandhaanle yi wanaspatiharumaa rogniwarak gunaharoo raheko pushti gardai yaslai baigyanik tarikale pramaanit garne prayaas bhairaheko chha.",
+      "english": "Traditional medicine based on herbs has been practiced in Nepal for centuries, and modern research is confirming that these plants have curative properties while working to validate them through scientific methods.",
+      "word_count": 27,
+      "domain": "technical",
+      "prosodic_challenges": "Temporal span from ancient to modern, two-clause structure bridging traditional and scientific domains, participial 'gardai' connecting confirmation with validation effort",
+      "suggested_pause_points": "नेपालमा | जडीबुटीमा आधारित परम्परागत चिकित्सा पद्धति | सदियौँदेखि चलिआएको छ || र आधुनिक अनुसन्धानले | यी वनस्पतिहरूमा रोगनिवारक गुणहरू रहेको पुष्टि गर्दै | यसलाई वैज्ञानिक तरिकाले | प्रमाणित गर्ने प्रयास भइरहेको छ।",
+      "description": "Traditional medicine and modern validation; tests bridging traditional and scientific registers in one utterance"
+    }
+  ],
+  "legal_formal": [
+    {
+      "sentence": "नेपालको संविधानको धारा सोह्र बमोजिम प्रत्येक नेपाली नागरिकलाई भाषा, धर्म, लिङ्ग, जात, वर्ग वा क्षेत्रको आधारमा कुनै पनि भेदभाव बिना कानुनको समान संरक्षणको अधिकार प्राप्त हुनेछ।",
+      "romanization": "nepaalko sambidhaan ko dhaaraa sohra bamojim pratyeka nepali nagariklai bhaashaa, dharma, linga, jaat, barga waa kshetrako aadhaarma kunai pani bhedbhaaw binaa kaanunko samaan sanrakshanko adhikaar praapta hunechha.",
+      "english": "In accordance with Article Sixteen of the Constitution of Nepal, every Nepali citizen shall have the right to equal protection of law without any discrimination on the basis of language, religion, gender, caste, class, or region.",
+      "word_count": 26,
+      "domain": "legal_formal",
+      "prosodic_challenges": "Constitutional legal register, six-item enumerated list of protected categories, deeply formal vocabulary, maintaining authoritative gravitas throughout",
+      "suggested_pause_points": "नेपालको संविधानको धारा सोह्र बमोजिम || प्रत्येक नेपाली नागरिकलाई | भाषा, | धर्म, | लिङ्ग, | जात, | वर्ग | वा क्षेत्रको आधारमा | कुनै पनि भेदभाव बिना | कानुनको समान संरक्षणको अधिकार प्राप्त हुनेछ।",
+      "description": "Constitutional provision on equal protection; tests enumeration prosody and formal legal register"
+    },
+    {
+      "sentence": "सर्वोच्च अदालतको आदेश बमोजिम सम्बन्धित निकायले तीस दिनभित्र प्रतिवादीको सम्पत्ति रोक्का गर्ने, सम्बन्धित कागजातहरू अदालतमा पेश गर्ने र मुद्दाको अन्तिम फैसला नभएसम्म कुनै पनि सम्पत्ति हस्तान्तरण नगर्ने गरी अन्तरिम आदेश जारी गरिएको छ।",
+      "romanization": "sarwochcha adaalatko aadesh bamojim sambandhit nikaayale tiis dinbhitra pratiwaadiko sampatti rokkaa garne, sambandhit kaagajaat haroo adaalatmaa pesh garne ra muddaako antim phaisalaa nabhayesammaa kunai pani sampatti hastaantaran nagarne gari antarim aadesh jaari garieko chha.",
+      "english": "As per the order of the Supreme Court, the concerned authority has been issued an interim order to freeze the defendant's property within thirty days, present related documents to the court, and not transfer any property until the final verdict of the case.",
+      "word_count": 33,
+      "domain": "legal_formal",
+      "prosodic_challenges": "Three sequential legal directives, conditional temporal clause, deeply nested formal structure, legal terminology requiring precise articulation",
+      "suggested_pause_points": "सर्वोच्च अदालतको आदेश बमोजिम || सम्बन्धित निकायले | तीस दिनभित्र प्रतिवादीको सम्पत्ति रोक्का गर्ने, | सम्बन्धित कागजातहरू अदालतमा पेश गर्ने | र मुद्दाको अन्तिम फैसला नभएसम्म | कुनै पनि सम्पत्ति हस्तान्तरण नगर्ने गरी | अन्तरिम आदेश जारी गरिएको छ।",
+      "description": "Supreme Court interim order with three directives; tests legal procedural language and multi-directive structure"
+    },
+    {
+      "sentence": "यस ऐनको दफा बाह्र उपदफा तीन अनुसार कुनै पनि व्यक्तिले अर्को व्यक्तिको लिखित सहमति बिना निजको व्यक्तिगत जानकारी सङ्कलन, प्रशोधन वा तेस्रो पक्षलाई हस्तान्तरण गर्न पाउने छैन र उल्लङ्घन भएमा कानुन बमोजिम कारबाही हुनेछ।",
+      "romanization": "yas ainko daphaa baahra upadaphaa tin anusaar kunai pani byaktile arko byaktiko likhit sahamati binaa nijko byaktigat jaankaari sanakalan, prashodhan waa tesro pakshalai hastaantaran garna paaune chhaina ra ullanghan bhaemaa kaanun bamojim kaarawaahi hunechha.",
+      "english": "According to Section Twelve, Sub-section Three of this Act, no person shall collect, process, or transfer to a third party any personal information of another person without their written consent, and in case of violation, action shall be taken as per the law.",
+      "word_count": 34,
+      "domain": "legal_formal",
+      "prosodic_challenges": "Precise section references, triple prohibition (collect, process, transfer), conditional consequence clause, maintaining formal authority through very long sentence",
+      "suggested_pause_points": "यस ऐनको दफा बाह्र उपदफा तीन अनुसार || कुनै पनि व्यक्तिले | अर्को व्यक्तिको लिखित सहमति बिना | निजको व्यक्तिगत जानकारी | सङ्कलन, | प्रशोधन | वा तेस्रो पक्षलाई हस्तान्तरण गर्न पाउने छैन || र उल्लङ्घन भएमा | कानुन बमोजिम कारबाही हुनेछ।",
+      "description": "Data privacy provision with triple prohibition and penalty clause; tests deep formal legal nesting"
+    },
+    {
+      "sentence": "नेपाल सरकार, प्रदेश सरकार र स्थानीय तहहरूबीच राजस्व बाँडफाँट सम्बन्धी विवाद उत्पन्न भएमा राष्ट्रिय प्राकृतिक स्रोत तथा वित्त आयोगले सिफारिस गरेको आधारमा मन्त्रिपरिषद्ले अन्तिम निर्णय गर्नेछ।",
+      "romanization": "nepaal sarkaar, pradesh sarkaar ra sthaaniya tahaharoo bich raajaswa baadphaadt sambandhii biwaad utpanna bhaemaa raastriya praakritik srota tathaa witta aayogle siphaarish gareko aadhaarma mantriparishadle antim nirnay garnechha.",
+      "english": "In case of disputes arising between the Government of Nepal, provincial governments, and local levels regarding revenue distribution, the Council of Ministers shall make the final decision based on the recommendation of the National Natural Resources and Fiscal Commission.",
+      "word_count": 26,
+      "domain": "legal_formal",
+      "prosodic_challenges": "Three-level government enumeration, conditional clause, long institutional names requiring clear articulation, formal decision-making chain",
+      "suggested_pause_points": "नेपाल सरकार, | प्रदेश सरकार | र स्थानीय तहहरूबीच | राजस्व बाँडफाँट सम्बन्धी विवाद उत्पन्न भएमा || राष्ट्रिय प्राकृतिक स्रोत तथा वित्त आयोगले | सिफारिस गरेको आधारमा | मन्त्रिपरिषद्ले अन्तिम निर्णय गर्नेछ।",
+      "description": "Intergovernmental revenue dispute resolution mechanism; tests institutional name prosody and formal governmental register"
+    }
+  ],
+  "conversational_long": [
+    {
+      "sentence": "मैले त भनेको थिएँ कि हामी सबै बिहान सात बजे भेला हुन्छौँ तर कोही आठ बजे आयो, कोही नौ बजे आयो, अनि अन्तमा हामी हिँड्न त पौने दश बजेमात्र सक्यौँ।",
+      "romanization": "maile ta bhaneko thiyẽ ki haami sabai bihaan saat baje bhelaa hũchhaũ tara kohi aath baje aayo, kohi nau baje aayo, ani antamaa haami hĩdna ta paune dash bajemai sakyaũ.",
+      "english": "I had said that we would all gather at seven in the morning, but some came at eight, some came at nine, and in the end we could only start walking at quarter to ten.",
+      "word_count": 30,
+      "domain": "conversational_long",
+      "prosodic_challenges": "Reported speech, parallel 'kohi...kohi' structures needing matching intonation, escalating time references, exasperated conclusion",
+      "suggested_pause_points": "मैले त भनेको थिएँ कि | हामी सबै बिहान सात बजे भेला हुन्छौँ | तर कोही आठ बजे आयो, | कोही नौ बजे आयो, | अनि अन्तमा | हामी हिँड्न त | पौने दश बजेमात्र सक्यौँ।",
+      "description": "Conversational complaint about group tardiness with escalating time markers; tests exasperated storytelling prosody"
+    },
+    {
+      "sentence": "त्यो दिन म बजार गएँ, त्यहाँ भिड नै भिड थियो, अनि सोचेँ कि अर्को दिन आउँला भनेर फर्किएँ तर अर्को दिन पनि त्यत्तिकै भिड रहेछ।",
+      "romanization": "tyo din ma bajaar gayẽ, tyahaa bhid nai bhid thiyo, ani sochẽ ki arko din aaũlaa bhanera pharkiyẽ tara arko din pani tyattikai bhid rahechha.",
+      "english": "That day I went to the market, there was nothing but crowds, so I thought I'd come back another day and returned, but the next day was just as crowded.",
+      "word_count": 25,
+      "domain": "conversational_long",
+      "prosodic_challenges": "Sequential narrative with plan-and-outcome structure, mirative 'rahechha' at the end conveying surprised discovery, natural conversational pacing",
+      "suggested_pause_points": "त्यो दिन म बजार गएँ, | त्यहाँ भिड नै भिड थियो, | अनि सोचेँ कि | अर्को दिन आउँला भनेर फर्किएँ | तर अर्को दिन पनि | त्यत्तिकै भिड रहेछ।",
+      "description": "Conversational anecdote about market crowding with mirative ending; tests natural storytelling with anti-climactic twist"
+    },
+    {
+      "sentence": "हाम्रो छिमेकीले भन्नुभयो कि उहाँको छोराले जापानमा राम्रो काम पाएको रहेछ अनि अब उहाँलाई पनि बोलाउने भनेको छ तर कागजातको काम अलि लामो लाग्ने रहेछ।",
+      "romanization": "haamro chhimekile bhannubhayo ki uhaasko chhoraale japaan maa ramro kaam paaeko rahechha ani aba uhaalai pani bolaune bhaneko chha tara kaagjaatko kaam ali laamo laagne rahechha.",
+      "english": "Our neighbor said that her son has apparently gotten a good job in Japan and that he plans to bring her there too, but the paperwork apparently takes quite long.",
+      "word_count": 25,
+      "domain": "conversational_long",
+      "prosodic_challenges": "Nested reported speech, multiple mirative 'rahechha' forms conveying hearsay, conversational gossipy tone, 'tara' contrastive shift",
+      "suggested_pause_points": "हाम्रो छिमेकीले भन्नुभयो कि | उहाँको छोराले जापानमा राम्रो काम पाएको रहेछ | अनि अब उहाँलाई पनि बोलाउने भनेको छ | तर कागजातको काम | अलि लामो लाग्ने रहेछ।",
+      "description": "Neighborhood gossip about migration; tests hearsay evidential prosody and conversational reported speech"
+    },
+    {
+      "sentence": "मेरो विचारमा यो समस्या एकैदिनमा समाधान हुने कुरा होइन किनभने यसको जरा धेरै गहिरो छ र वर्षौँदेखि जमेको भ्रष्टाचार, लापरवाही र जनचेतनाको कमीले गर्दा यस्तो अवस्था आएको हो।",
+      "romanization": "mero bichaar maa yo samasyaa ekaidinmaa samaadhaan hune kuraa hoina kinabhane yasko jaraa dherai gahiro chha ra barshauN dekhi jameko bhrashtaachaar, laaparwaahi ra janachetanaako kamile gardaa yasto awasthaa aaeko ho.",
+      "english": "In my opinion, this problem is not something that can be solved in a single day because its root is very deep, and it is due to years of accumulated corruption, negligence, and lack of public awareness that this situation has arisen.",
+      "word_count": 28,
+      "domain": "conversational_long",
+      "prosodic_challenges": "Opinion framing with causal reasoning, 'kinabhane' introducing because-clause, three-item causal list, maintaining argumentative coherence",
+      "suggested_pause_points": "मेरो विचारमा | यो समस्या एकैदिनमा समाधान हुने कुरा होइन | किनभने यसको जरा धेरै गहिरो छ || र वर्षौँदेखि जमेको भ्रष्टाचार, | लापरवाही | र जनचेतनाको कमीले गर्दा | यस्तो अवस्था आएको हो।",
+      "description": "Extended opinion with causal argument; tests argumentative discourse prosody and causal chain delivery"
+    },
+    {
+      "sentence": "आज बिहानदेखि नै घरमा ढुक्कले बसिरहेको थिएँ तर अचानक फोन आयो, दिदीले भन्नुभयो कि आमाको तबियत बिग्रेको छ भन्ने सुनेर म त के गर्ने भएर अल्मलिँदै सिधा अस्पतालतिर कुदेँ।",
+      "romanization": "aaja bihaandekhi nai gharmaa dhukale basiraakheko thiyẽ tara achaanak phon aayo, didile bhannubhayo ki aamako tabiyat bigreko chha bhanne sunera ma ta ke garne bhaera almalĩdai sidhaa aspataaltira kudẽ.",
+      "english": "I had been sitting peacefully at home since morning when suddenly a call came, and hearing my elder sister say that mother's health had worsened, I was flustered and ran straight to the hospital not knowing what to do.",
+      "word_count": 29,
+      "domain": "conversational_long",
+      "prosodic_challenges": "Dramatic shift from calm to panic, nested reported speech within narrative, emotional escalation, self-description of confusion, conversational tempo changes",
+      "suggested_pause_points": "आज बिहानदेखि नै | घरमा ढुक्कले बसिरहेको थिएँ | तर अचानक फोन आयो, | दिदीले भन्नुभयो कि | आमाको तबियत बिग्रेको छ भन्ने सुनेर | म त के गर्ने भएर | अल्मलिँदै सिधा अस्पतालतिर कुदेँ।",
+      "description": "Personal emergency narrative with dramatic tonal shift; tests prosodic transition from calm to panicked urgency"
+    }
+  ]
+}

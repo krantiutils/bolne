@@ -1,0 +1,467 @@
+{
+  "description": "Comprehensive reference of Nepali abbreviations and acronyms for TTS text normalization. A text normalizer must expand these abbreviated forms into full spoken Nepali before synthesis. Critical for the NepTTS-Bench challenging real-world cases section.",
+  "notes": {
+    "usage": "Used by the text normalization stage of the TTS pipeline to detect and expand Nepali abbreviations into their full spoken forms",
+    "dot_convention": "Nepali abbreviations typically use a Devanagari period (purna-biram ।) or a Latin full stop (.) between abbreviated syllables, e.g., ने.क.पा.",
+    "ambiguity": "Some abbreviations are context-dependent (e.g., मि. could be मिटर or मिनेट); the normalizer should use surrounding context to disambiguate",
+    "source_domains": "Abbreviations are drawn from politics, government, measurement, titles, media, and administrative contexts commonly found in Nepali news, official documents, and daily speech"
+  },
+  "political_organizational": [
+    {
+      "abbreviation": "ने.क.पा.",
+      "expansion": "नेपाल कम्युनिस्ट पार्टी",
+      "romanization": "Nepal Kamyunist Parti",
+      "english": "Nepal Communist Party",
+      "context": "Political party references in news and government",
+      "description": "One of Nepal's major political parties; frequently abbreviated in headlines and party communications"
+    },
+    {
+      "abbreviation": "ने.कां.",
+      "expansion": "नेपाली काँग्रेस",
+      "romanization": "Nepali Kangres",
+      "english": "Nepali Congress",
+      "context": "Political party references in news and government",
+      "description": "Nepal's oldest democratic party; very common abbreviation in political coverage"
+    },
+    {
+      "abbreviation": "मा.ले.",
+      "expansion": "मार्क्सवादी-लेनिनवादी",
+      "romanization": "Marksbadi-Leninbadi",
+      "english": "Marxist-Leninist",
+      "context": "Political ideology and party faction labels",
+      "description": "Used as suffix to party name, e.g., ने.क.पा. (मा.ले.); common in political reporting"
+    },
+    {
+      "abbreviation": "ने.क.पा. (मा.ले.)",
+      "expansion": "नेपाल कम्युनिस्ट पार्टी (मार्क्सवादी-लेनिनवादी)",
+      "romanization": "Nepal Kamyunist Parti (Marksbadi-Leninbadi)",
+      "english": "Communist Party of Nepal (Marxist-Leninist)",
+      "context": "Full political party name with faction",
+      "description": "Combined abbreviation commonly seen in formal political contexts"
+    },
+    {
+      "abbreviation": "ने.क.पा. (माओवादी)",
+      "expansion": "नेपाल कम्युनिस्ट पार्टी (माओवादी)",
+      "romanization": "Nepal Kamyunist Parti (Maobadi)",
+      "english": "Communist Party of Nepal (Maoist)",
+      "context": "Political party references",
+      "description": "Maoist faction of the Communist Party; frequently seen in post-2006 political coverage"
+    },
+    {
+      "abbreviation": "सं.रा.सं.",
+      "expansion": "संयुक्त राष्ट्र संघ",
+      "romanization": "Samyukta Rashtra Sangha",
+      "english": "United Nations (UN)",
+      "context": "International affairs, diplomacy, development reporting",
+      "description": "Nepali abbreviation for the United Nations; very common in international news"
+    },
+    {
+      "abbreviation": "रा.प्र.प.",
+      "expansion": "राष्ट्रिय प्रजातन्त्र पार्टी",
+      "romanization": "Rashtriya Prajatantra Parti",
+      "english": "National Democratic Party (RPP)",
+      "context": "Political party references",
+      "description": "Center-right political party in Nepal"
+    },
+    {
+      "abbreviation": "ज.स.पा.",
+      "expansion": "जनता समाजवादी पार्टी",
+      "romanization": "Janata Samajbadi Parti",
+      "english": "Janata Samajbadi Party",
+      "context": "Political party references, especially Madhesh-centric politics",
+      "description": "Political party primarily representing Madheshi interests"
+    },
+    {
+      "abbreviation": "सार्क",
+      "expansion": "दक्षिण एसियाली क्षेत्रीय सहयोग संगठन",
+      "romanization": "Dakshin Esiyali Kshetriya Sahayog Sangathan",
+      "english": "South Asian Association for Regional Cooperation (SAARC)",
+      "context": "Regional diplomacy and international organizations",
+      "description": "Borrowed acronym from English SAARC; Nepali expansion is the full translated name"
+    },
+    {
+      "abbreviation": "नि.प्रा.",
+      "expansion": "निर्वाचन प्राधिकरण",
+      "romanization": "Nirbachan Pradhikaran",
+      "english": "Election Commission",
+      "context": "Election coverage and governance",
+      "description": "Nepal's election authority; frequently referenced during election periods"
+    },
+    {
+      "abbreviation": "ने.रा.बै.",
+      "expansion": "नेपाल राष्ट्र बैंक",
+      "romanization": "Nepal Rashtra Baink",
+      "english": "Nepal Rastra Bank (Central Bank)",
+      "context": "Finance, banking, monetary policy news",
+      "description": "Nepal's central bank; commonly abbreviated in financial reporting"
+    },
+    {
+      "abbreviation": "अ.दू.",
+      "expansion": "अमेरिकी डलर",
+      "romanization": "Ameriki Dalar",
+      "english": "US Dollar (USD)",
+      "context": "Financial reporting and currency exchange",
+      "description": "Common abbreviation for US Dollar in Nepali financial contexts"
+    }
+  ],
+  "measurement_unit": [
+    {
+      "abbreviation": "कि.मी.",
+      "expansion": "किलोमिटर",
+      "romanization": "kilomitar",
+      "english": "kilometer",
+      "context": "Distance measurement in news, transportation, geography",
+      "description": "Most common distance abbreviation in Nepali text"
+    },
+    {
+      "abbreviation": "कि.ग्रा.",
+      "expansion": "किलोग्राम",
+      "romanization": "kilogram",
+      "english": "kilogram",
+      "context": "Weight measurement in commerce, agriculture, daily life",
+      "description": "Standard weight abbreviation; colloquially often just किलो"
+    },
+    {
+      "abbreviation": "से.मी.",
+      "expansion": "सेन्टिमिटर",
+      "romanization": "sentimitar",
+      "english": "centimeter",
+      "context": "Small distance measurement in health, construction",
+      "description": "Common metric length abbreviation"
+    },
+    {
+      "abbreviation": "मि.मि.",
+      "expansion": "मिलिमिटर",
+      "romanization": "milimitar",
+      "english": "millimeter",
+      "context": "Precision measurement in technical and medical contexts",
+      "description": "Small metric length abbreviation"
+    },
+    {
+      "abbreviation": "मि.लि.",
+      "expansion": "मिलिलिटर",
+      "romanization": "mililitar",
+      "english": "milliliter",
+      "context": "Liquid measurement in medicine, cooking, packaging",
+      "description": "Common volume abbreviation especially in pharmaceutical and food contexts"
+    },
+    {
+      "abbreviation": "लि.",
+      "expansion": "लिटर",
+      "romanization": "litar",
+      "english": "liter",
+      "context": "Liquid volume measurement for fuel, water, beverages",
+      "description": "Standard volume abbreviation"
+    },
+    {
+      "abbreviation": "ग्रा.",
+      "expansion": "ग्राम",
+      "romanization": "gram",
+      "english": "gram",
+      "context": "Small weight measurement in cooking, medicine",
+      "description": "Standard metric weight abbreviation"
+    },
+    {
+      "abbreviation": "मि.ग्रा.",
+      "expansion": "मिलिग्राम",
+      "romanization": "miligram",
+      "english": "milligram",
+      "context": "Pharmaceutical dosage, chemical measurement",
+      "description": "Very small weight abbreviation; common on medicine packaging"
+    },
+    {
+      "abbreviation": "घ.मी.",
+      "expansion": "घनमिटर",
+      "romanization": "ghanamitar",
+      "english": "cubic meter",
+      "context": "Volume of construction materials, water supply capacity",
+      "description": "Cubic volume abbreviation used in engineering and infrastructure"
+    },
+    {
+      "abbreviation": "व.मि.",
+      "expansion": "वर्ग मिटर",
+      "romanization": "barga mitar",
+      "english": "square meter",
+      "context": "Area measurement in real estate and construction",
+      "description": "Standard area abbreviation"
+    },
+    {
+      "abbreviation": "व.कि.मी.",
+      "expansion": "वर्ग किलोमिटर",
+      "romanization": "barga kilomitar",
+      "english": "square kilometer",
+      "context": "Geographic area, district/country size reporting",
+      "description": "Large area abbreviation used in geographic descriptions"
+    },
+    {
+      "abbreviation": "हे.",
+      "expansion": "हेक्टर",
+      "romanization": "hektar",
+      "english": "hectare",
+      "context": "Agricultural land area, forestry",
+      "description": "Metric area unit used in government and agricultural contexts"
+    },
+    {
+      "abbreviation": "कि.मी./घ.",
+      "expansion": "किलोमिटर प्रति घण्टा",
+      "romanization": "kilomitar prati ghanta",
+      "english": "kilometers per hour",
+      "context": "Speed measurement in traffic, weather, sports",
+      "description": "Compound rate abbreviation for speed"
+    }
+  ],
+  "title_honorific": [
+    {
+      "abbreviation": "डा.",
+      "expansion": "डाक्टर",
+      "romanization": "Daktar",
+      "english": "Doctor (Dr.)",
+      "context": "Medical professionals and PhD holders",
+      "description": "Used before names of medical doctors and academic doctorate holders"
+    },
+    {
+      "abbreviation": "प्रा.",
+      "expansion": "प्राध्यापक",
+      "romanization": "Pradhyapak",
+      "english": "Professor (Prof.)",
+      "context": "Academic titles in university and research contexts",
+      "description": "Title for university professors"
+    },
+    {
+      "abbreviation": "प्रा.डा.",
+      "expansion": "प्राध्यापक डाक्टर",
+      "romanization": "Pradhyapak Daktar",
+      "english": "Professor Doctor (Prof. Dr.)",
+      "context": "Academic and medical titles combined",
+      "description": "Combined title for professors who also hold a doctorate; common in Nepali academia"
+    },
+    {
+      "abbreviation": "श्री",
+      "expansion": "श्रीमान्",
+      "romanization": "Shriman",
+      "english": "Mr.",
+      "context": "Formal address for men in official documents and speech",
+      "description": "Standard male honorific; also used as a general respect marker"
+    },
+    {
+      "abbreviation": "श्रीमती",
+      "expansion": "श्रीमती",
+      "romanization": "Shrimati",
+      "english": "Mrs.",
+      "context": "Formal address for married women",
+      "description": "Standard married female honorific; typically written in full but sometimes abbreviated in lists"
+    },
+    {
+      "abbreviation": "सु.श्री",
+      "expansion": "सुश्री",
+      "romanization": "Sushri",
+      "english": "Ms.",
+      "context": "Formal address for women regardless of marital status",
+      "description": "Gender-neutral female honorific; increasingly common in modern official contexts"
+    },
+    {
+      "abbreviation": "मा.",
+      "expansion": "माननीय",
+      "romanization": "Mananiya",
+      "english": "Honorable",
+      "context": "Addressing ministers, judges, and high-ranking officials",
+      "description": "Honorific prefix for dignitaries; very common in parliamentary and judicial contexts"
+    },
+    {
+      "abbreviation": "प्र.म.",
+      "expansion": "प्रधानमन्त्री",
+      "romanization": "Pradhanmantri",
+      "english": "Prime Minister (PM)",
+      "context": "Political news and government references",
+      "description": "Abbreviation for Prime Minister; frequently used in headlines"
+    },
+    {
+      "abbreviation": "रा.प.",
+      "expansion": "राष्ट्रपति",
+      "romanization": "Rashtrapati",
+      "english": "President",
+      "context": "Head of state references",
+      "description": "Abbreviation for President of Nepal"
+    },
+    {
+      "abbreviation": "इन्जि.",
+      "expansion": "इन्जिनियर",
+      "romanization": "Injiniyar",
+      "english": "Engineer (Er.)",
+      "context": "Professional title for engineers",
+      "description": "Title used before names of licensed engineers in Nepal"
+    },
+    {
+      "abbreviation": "वरि.",
+      "expansion": "वरिष्ठ",
+      "romanization": "Barishtha",
+      "english": "Senior",
+      "context": "Professional rank prefix, e.g., वरि. अधिवक्ता (Senior Advocate)",
+      "description": "Seniority prefix used with professional titles"
+    }
+  ],
+  "geographic_administrative": [
+    {
+      "abbreviation": "जि.वि.स.",
+      "expansion": "जिल्ला विकास समिति",
+      "romanization": "Jilla Bikas Samiti",
+      "english": "District Development Committee (DDC)",
+      "context": "Local governance and development administration",
+      "description": "Former local government body at the district level; replaced by new federal structure but still referenced in older documents"
+    },
+    {
+      "abbreviation": "गा.वि.स.",
+      "expansion": "गाउँ विकास समिति",
+      "romanization": "Gaun Bikas Samiti",
+      "english": "Village Development Committee (VDC)",
+      "context": "Local governance at village level",
+      "description": "Former smallest administrative unit; now replaced by गाउँपालिका but abbreviation still seen in many documents and land records"
+    },
+    {
+      "abbreviation": "न.पा.",
+      "expansion": "नगरपालिका",
+      "romanization": "Nagarpalika",
+      "english": "Municipality",
+      "context": "Urban local government",
+      "description": "Municipal government body; common in addresses and local governance reporting"
+    },
+    {
+      "abbreviation": "म.न.पा.",
+      "expansion": "महानगरपालिका",
+      "romanization": "Mahanagarpalika",
+      "english": "Metropolitan City",
+      "context": "Major urban centers like Kathmandu, Pokhara, Lalitpur",
+      "description": "Metropolitan-level municipality; Nepal has several mahanagarpalika"
+    },
+    {
+      "abbreviation": "उ.म.न.पा.",
+      "expansion": "उपमहानगरपालिका",
+      "romanization": "Upamahanagarpalika",
+      "english": "Sub-Metropolitan City",
+      "context": "Large urban centers below metropolitan status",
+      "description": "Sub-metropolitan level municipal government"
+    },
+    {
+      "abbreviation": "गा.पा.",
+      "expansion": "गाउँपालिका",
+      "romanization": "Gaunpalika",
+      "english": "Rural Municipality",
+      "context": "Rural local government under new federal structure",
+      "description": "Current rural local government unit replacing the old VDC system"
+    },
+    {
+      "abbreviation": "प्र.",
+      "expansion": "प्रदेश",
+      "romanization": "Pradesh",
+      "english": "Province",
+      "context": "Provincial-level governance in federal Nepal",
+      "description": "Provincial administrative unit; Nepal has seven provinces"
+    },
+    {
+      "abbreviation": "जि.",
+      "expansion": "जिल्ला",
+      "romanization": "Jilla",
+      "english": "District",
+      "context": "District-level administrative references",
+      "description": "District administrative unit; Nepal has 77 districts"
+    },
+    {
+      "abbreviation": "वडा नं.",
+      "expansion": "वडा नम्बर",
+      "romanization": "Wada Nambar",
+      "english": "Ward Number",
+      "context": "Addresses and local administrative divisions",
+      "description": "Ward number within a municipality or rural municipality; the smallest administrative unit"
+    },
+    {
+      "abbreviation": "का.म.न.पा.",
+      "expansion": "काठमाडौं महानगरपालिका",
+      "romanization": "Kathmadaun Mahanagarpalika",
+      "english": "Kathmandu Metropolitan City",
+      "context": "Capital city governance and administration",
+      "description": "Specific abbreviation for the Kathmandu Metropolitan City government"
+    }
+  ],
+  "media_common": [
+    {
+      "abbreviation": "अ.म.",
+      "expansion": "अपरान्ह",
+      "romanization": "aparanha",
+      "english": "PM (post meridiem)",
+      "context": "Time references in schedules, news, daily communication",
+      "description": "Afternoon/evening time marker; Nepali equivalent of PM"
+    },
+    {
+      "abbreviation": "पू.म.",
+      "expansion": "पूर्वान्ह",
+      "romanization": "purbanha",
+      "english": "AM (ante meridiem)",
+      "context": "Time references in schedules, news, daily communication",
+      "description": "Morning time marker; Nepali equivalent of AM"
+    },
+    {
+      "abbreviation": "वि.सं.",
+      "expansion": "विक्रम संवत्",
+      "romanization": "Bikram Sambat",
+      "english": "Bikram Sambat (BS) / Nepali calendar era",
+      "context": "Date references in all Nepali official documents and daily use",
+      "description": "Nepal's official calendar system; approximately 56.7 years ahead of the Gregorian calendar"
+    },
+    {
+      "abbreviation": "ई.सं.",
+      "expansion": "ईसवी संवत्",
+      "romanization": "Isvi Sambat",
+      "english": "AD (Anno Domini) / Gregorian calendar era",
+      "context": "International date references and academic contexts",
+      "description": "Gregorian calendar reference; used alongside वि.सं. in some contexts"
+    },
+    {
+      "abbreviation": "ने.सं.",
+      "expansion": "नेपाल संवत्",
+      "romanization": "Nepal Sambat",
+      "english": "Nepal Sambat (Newar calendar era)",
+      "context": "Newar community cultural and calendar references",
+      "description": "Traditional Newar calendar used by the Newar community; recognized as national calendar alongside वि.सं."
+    },
+    {
+      "abbreviation": "पृ.",
+      "expansion": "पृष्ठ",
+      "romanization": "pristha",
+      "english": "page (p.)",
+      "context": "Academic citations, book references, newspapers",
+      "description": "Page number abbreviation used in citations and references"
+    },
+    {
+      "abbreviation": "अ.",
+      "expansion": "अंक",
+      "romanization": "anka",
+      "english": "issue/number",
+      "context": "Magazine and journal issue numbers",
+      "description": "Publication issue number abbreviation"
+    },
+    {
+      "abbreviation": "सं.",
+      "expansion": "संवाददाता",
+      "romanization": "samvaddadata",
+      "english": "correspondent/reporter",
+      "context": "News bylines and journalist credits",
+      "description": "Reporter credit abbreviation commonly seen in newspaper bylines"
+    },
+    {
+      "abbreviation": "रा.स.",
+      "expansion": "राष्ट्रिय समाचार समिति",
+      "romanization": "Rashtriya Samachar Samiti",
+      "english": "Rashtriya Samachar Samiti (RSS) / National News Agency",
+      "context": "News source attribution",
+      "description": "Nepal's national news agency; commonly credited as source in media"
+    },
+    {
+      "abbreviation": "अ.हे.रा.",
+      "expansion": "अपराह्न हेडलाइन राउन्डअप",
+      "romanization": "Aparahna Hedlain Raundap",
+      "english": "Afternoon Headline Roundup",
+      "context": "News broadcast segments",
+      "description": "Common news segment abbreviation in broadcast media"
+    }
+  ]
+}

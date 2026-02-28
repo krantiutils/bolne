@@ -1,0 +1,202 @@
+{
+  "description": "Nepali ordinal number reference for TTS text normalization (converting '1st', '2nd', etc. to spoken Nepali ordinal forms)",
+  "notes": {
+    "irregular_forms": "The first four ordinals (1st-4th) are fully irregular and must be memorized as special cases",
+    "suffix_pattern": "Most ordinals from 5 onward are formed by adding -औं (-aũ) to the cardinal number word, but several have stem changes",
+    "stem_changes": "Some numbers change their stem before the -औं suffix: e.g., नौ → नवौं (9th), छ → छैटौं (6th)",
+    "alternate_forms": "4th can also appear as चौथौं (chauthauṃ) in some dialects; पहिलो is sometimes written as प्रथम in formal contexts",
+    "usage": "Ordinals are used with -औं suffix for ranking/ordering; पहिलो/दोस्रो/तेस्रो are the most common in everyday speech"
+  },
+  "suffix_rules": {
+    "default_suffix": "औं",
+    "default_suffix_romanization": "-aũ",
+    "description": "The general pattern is: cardinal number word + औं. Irregular forms exist for 1st through 4th and a few others where the stem changes.",
+    "examples": [
+      "पाँच + औं → पाँचौं (5th)",
+      "सात + औं → सातौं (7th)",
+      "दश + औं → दशौं (10th)"
+    ]
+  },
+  "ordinals": {
+    "1": {
+      "cardinal": "एक",
+      "ordinal": "पहिलो",
+      "romanization": "pahilo",
+      "suffix": "irregular"
+    },
+    "2": {
+      "cardinal": "दुई",
+      "ordinal": "दोस्रो",
+      "romanization": "dosro",
+      "suffix": "irregular"
+    },
+    "3": {
+      "cardinal": "तीन",
+      "ordinal": "तेस्रो",
+      "romanization": "tesro",
+      "suffix": "irregular"
+    },
+    "4": {
+      "cardinal": "चार",
+      "ordinal": "चौथो",
+      "romanization": "chautho",
+      "suffix": "ओ (irregular)"
+    },
+    "5": {
+      "cardinal": "पाँच",
+      "ordinal": "पाँचौं",
+      "romanization": "pā̃cauṃ",
+      "suffix": "औं"
+    },
+    "6": {
+      "cardinal": "छ",
+      "ordinal": "छैटौं",
+      "romanization": "chaiṭauṃ",
+      "suffix": "औं (stem change: छ → छैट)"
+    },
+    "7": {
+      "cardinal": "सात",
+      "ordinal": "सातौं",
+      "romanization": "sātauṃ",
+      "suffix": "औं"
+    },
+    "8": {
+      "cardinal": "आठ",
+      "ordinal": "आठौं",
+      "romanization": "āṭhauṃ",
+      "suffix": "औं"
+    },
+    "9": {
+      "cardinal": "नौ",
+      "ordinal": "नवौं",
+      "romanization": "navauṃ",
+      "suffix": "औं (stem change: नौ → नव)"
+    },
+    "10": {
+      "cardinal": "दश",
+      "ordinal": "दशौं",
+      "romanization": "daśauṃ",
+      "suffix": "औं"
+    },
+    "11": {
+      "cardinal": "एघार",
+      "ordinal": "एघारौं",
+      "romanization": "eghārauṃ",
+      "suffix": "औं"
+    },
+    "12": {
+      "cardinal": "बाह्र",
+      "ordinal": "बाह्रौं",
+      "romanization": "bāhrauṃ",
+      "suffix": "औं"
+    },
+    "13": {
+      "cardinal": "तेह्र",
+      "ordinal": "तेह्रौं",
+      "romanization": "tehrauṃ",
+      "suffix": "औं"
+    },
+    "14": {
+      "cardinal": "चौध",
+      "ordinal": "चौधौं",
+      "romanization": "caudhauṃ",
+      "suffix": "औं"
+    },
+    "15": {
+      "cardinal": "पन्ध्र",
+      "ordinal": "पन्ध्रौं",
+      "romanization": "pandhrauṃ",
+      "suffix": "औं"
+    },
+    "16": {
+      "cardinal": "सोह्र",
+      "ordinal": "सोह्रौं",
+      "romanization": "sohrauṃ",
+      "suffix": "औं"
+    },
+    "17": {
+      "cardinal": "सत्र",
+      "ordinal": "सत्रौं",
+      "romanization": "satrauṃ",
+      "suffix": "औं"
+    },
+    "18": {
+      "cardinal": "अठार",
+      "ordinal": "अठारौं",
+      "romanization": "aṭhārauṃ",
+      "suffix": "औं"
+    },
+    "19": {
+      "cardinal": "उन्नाइस",
+      "ordinal": "उन्नाइसौं",
+      "romanization": "unnāisauṃ",
+      "suffix": "औं"
+    },
+    "20": {
+      "cardinal": "बीस",
+      "ordinal": "बीसौं",
+      "romanization": "bīsauṃ",
+      "suffix": "औं"
+    },
+    "25": {
+      "cardinal": "पच्चीस",
+      "ordinal": "पच्चीसौं",
+      "romanization": "paccīsauṃ",
+      "suffix": "औं"
+    },
+    "30": {
+      "cardinal": "तीस",
+      "ordinal": "तीसौं",
+      "romanization": "tīsauṃ",
+      "suffix": "औं"
+    },
+    "33": {
+      "cardinal": "तेत्तीस",
+      "ordinal": "तेत्तीसौं",
+      "romanization": "tettīsauṃ",
+      "suffix": "औं"
+    },
+    "40": {
+      "cardinal": "चालीस",
+      "ordinal": "चालीसौं",
+      "romanization": "cālīsauṃ",
+      "suffix": "औं"
+    },
+    "50": {
+      "cardinal": "पचास",
+      "ordinal": "पचासौं",
+      "romanization": "pacāsauṃ",
+      "suffix": "औं"
+    },
+    "51": {
+      "cardinal": "एकाउन्न",
+      "ordinal": "एकाउन्नौं",
+      "romanization": "ekāunnauṃ",
+      "suffix": "औं"
+    },
+    "60": {
+      "cardinal": "साठी",
+      "ordinal": "साठीऔं",
+      "romanization": "sāṭhīauṃ",
+      "suffix": "औं"
+    },
+    "75": {
+      "cardinal": "पचहत्तर",
+      "ordinal": "पचहत्तरौं",
+      "romanization": "pacahattarauṃ",
+      "suffix": "औं"
+    },
+    "99": {
+      "cardinal": "उनान्सय",
+      "ordinal": "उनान्सयौं",
+      "romanization": "unānsayauṃ",
+      "suffix": "औं"
+    },
+    "100": {
+      "cardinal": "सय",
+      "ordinal": "सयौं",
+      "romanization": "sayauṃ",
+      "suffix": "औं"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "description": "Nepali day-of-week names and metadata for TTS text normalization",
+  "notes": {
+    "week_start": "The Nepali week starts on Sunday (आइतबार/Aaitabaar), following the traditional Hindu calendar",
+    "weekly_holiday": "Saturday (शनिबार/Shanibaar) is the official weekly public holiday in Nepal, unlike most Western countries where Sunday is the day off",
+    "suffix": "All Nepali day names end with the suffix -बार (baar), meaning 'day'; this comes from the Sanskrit वार (vaar)",
+    "planetary_association": "Nepali day names are derived from celestial bodies, following the same planetary naming convention as Sanskrit and many other Indo-European languages"
+  },
+  "days": [
+    {
+      "day_number": 1,
+      "nepali": "आइतबार",
+      "romanization": "aaitabaar",
+      "english": "Sunday",
+      "abbreviation": "आइत",
+      "is_holiday": false,
+      "associated_deity_or_planet": "सूर्य (Surya / Sun)"
+    },
+    {
+      "day_number": 2,
+      "nepali": "सोमबार",
+      "romanization": "sombaar",
+      "english": "Monday",
+      "abbreviation": "सोम",
+      "is_holiday": false,
+      "associated_deity_or_planet": "चन्द्रमा (Chandra / Moon)"
+    },
+    {
+      "day_number": 3,
+      "nepali": "मंगलबार",
+      "romanization": "mangalbaar",
+      "english": "Tuesday",
+      "abbreviation": "मंगल",
+      "is_holiday": false,
+      "associated_deity_or_planet": "मंगल ग्रह (Mangal / Mars)"
+    },
+    {
+      "day_number": 4,
+      "nepali": "बुधबार",
+      "romanization": "budhabaar",
+      "english": "Wednesday",
+      "abbreviation": "बुध",
+      "is_holiday": false,
+      "associated_deity_or_planet": "बुध ग्रह (Budha / Mercury)"
+    },
+    {
+      "day_number": 5,
+      "nepali": "बिहीबार",
+      "romanization": "bihibaar",
+      "english": "Thursday",
+      "abbreviation": "बिही",
+      "is_holiday": false,
+      "associated_deity_or_planet": "बृहस्पति (Brihaspati / Jupiter)"
+    },
+    {
+      "day_number": 6,
+      "nepali": "शुक्रबार",
+      "romanization": "shukrabaar",
+      "english": "Friday",
+      "abbreviation": "शुक्र",
+      "is_holiday": false,
+      "associated_deity_or_planet": "शुक्र ग्रह (Shukra / Venus)"
+    },
+    {
+      "day_number": 7,
+      "nepali": "शनिबार",
+      "romanization": "shanibaar",
+      "english": "Saturday",
+      "abbreviation": "शनि",
+      "is_holiday": true,
+      "associated_deity_or_planet": "शनि ग्रह (Shani / Saturn)"
+    }
+  ]
+}

@@ -1,0 +1,372 @@
+{
+  "description": "Nepali honorific verb conjugation reference across three pronoun registers for TTS training and evaluation",
+  "notes": {
+    "usage": "Used to verify correct honorific-register agreement in synthesized Nepali speech and to generate training pairs",
+    "registers": "Nepali has three grammaticalized respect levels: tapāī̃ (high/formal), timī (mid/familiar), tã (low/intimate)",
+    "request_forms": "Request forms (गरिदिनुहोस्, गरिदेउ) add the benefactive -इदि- morpheme; तँ level typically lacks a distinct polite request form",
+    "present_habitual": "Present habitual forms indicate regular or habitual actions; also used for general truths",
+    "romanization": "Romanization follows standard Nepali linguistic transliteration"
+  },
+  "verbs": [
+    {
+      "verb": "गर्नु",
+      "romanization": "garnu",
+      "english": "to do",
+      "forms": {
+        "tapaii": {
+          "imperative": "गर्नुहोस्",
+          "present_habitual": "गर्नुहुन्छ",
+          "past": "गर्नुभयो",
+          "request": "गरिदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "गर",
+          "present_habitual": "गर्छौ",
+          "past": "गर्यौ",
+          "request": "गरिदेउ"
+        },
+        "ta": {
+          "imperative": "गर्",
+          "present_habitual": "गर्छस्",
+          "past": "गरिस्"
+        }
+      }
+    },
+    {
+      "verb": "जानु",
+      "romanization": "jānu",
+      "english": "to go",
+      "forms": {
+        "tapaii": {
+          "imperative": "जानुहोस्",
+          "present_habitual": "जानुहुन्छ",
+          "past": "जानुभयो",
+          "request": "गइदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "जाउ",
+          "present_habitual": "जान्छौ",
+          "past": "गयौ",
+          "request": "गइदेउ"
+        },
+        "ta": {
+          "imperative": "जा",
+          "present_habitual": "जान्छस्",
+          "past": "गइस्"
+        }
+      }
+    },
+    {
+      "verb": "खानु",
+      "romanization": "khānu",
+      "english": "to eat",
+      "forms": {
+        "tapaii": {
+          "imperative": "खानुहोस्",
+          "present_habitual": "खानुहुन्छ",
+          "past": "खानुभयो",
+          "request": "खाइदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "खाउ",
+          "present_habitual": "खान्छौ",
+          "past": "खायौ",
+          "request": "खाइदेउ"
+        },
+        "ta": {
+          "imperative": "खा",
+          "present_habitual": "खान्छस्",
+          "past": "खाइस्"
+        }
+      }
+    },
+    {
+      "verb": "बस्नु",
+      "romanization": "basnu",
+      "english": "to sit / to live",
+      "forms": {
+        "tapaii": {
+          "imperative": "बस्नुहोस्",
+          "present_habitual": "बस्नुहुन्छ",
+          "past": "बस्नुभयो",
+          "request": "बसिदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "बस",
+          "present_habitual": "बस्छौ",
+          "past": "बस्यौ",
+          "request": "बसिदेउ"
+        },
+        "ta": {
+          "imperative": "बस्",
+          "present_habitual": "बस्छस्",
+          "past": "बसिस्"
+        }
+      }
+    },
+    {
+      "verb": "आउनु",
+      "romanization": "āunu",
+      "english": "to come",
+      "forms": {
+        "tapaii": {
+          "imperative": "आउनुहोस्",
+          "present_habitual": "आउनुहुन्छ",
+          "past": "आउनुभयो",
+          "request": "आइदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "आउ",
+          "present_habitual": "आउँछौ",
+          "past": "आयौ",
+          "request": "आइदेउ"
+        },
+        "ta": {
+          "imperative": "आइज",
+          "present_habitual": "आउँछस्",
+          "past": "आइस्"
+        }
+      }
+    },
+    {
+      "verb": "बोल्नु",
+      "romanization": "bolnu",
+      "english": "to speak",
+      "forms": {
+        "tapaii": {
+          "imperative": "बोल्नुहोस्",
+          "present_habitual": "बोल्नुहुन्छ",
+          "past": "बोल्नुभयो",
+          "request": "बोलिदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "बोल",
+          "present_habitual": "बोल्छौ",
+          "past": "बोल्यौ",
+          "request": "बोलिदेउ"
+        },
+        "ta": {
+          "imperative": "बोल्",
+          "present_habitual": "बोल्छस्",
+          "past": "बोलिस्"
+        }
+      }
+    },
+    {
+      "verb": "हेर्नु",
+      "romanization": "hernu",
+      "english": "to look / to watch",
+      "forms": {
+        "tapaii": {
+          "imperative": "हेर्नुहोस्",
+          "present_habitual": "हेर्नुहुन्छ",
+          "past": "हेर्नुभयो",
+          "request": "हेरिदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "हेर",
+          "present_habitual": "हेर्छौ",
+          "past": "हेर्यौ",
+          "request": "हेरिदेउ"
+        },
+        "ta": {
+          "imperative": "हेर्",
+          "present_habitual": "हेर्छस्",
+          "past": "हेरिस्"
+        }
+      }
+    },
+    {
+      "verb": "दिनु",
+      "romanization": "dinu",
+      "english": "to give",
+      "forms": {
+        "tapaii": {
+          "imperative": "दिनुहोस्",
+          "present_habitual": "दिनुहुन्छ",
+          "past": "दिनुभयो",
+          "request": "दिइदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "देउ",
+          "present_habitual": "दिन्छौ",
+          "past": "दियौ",
+          "request": "दिइदेउ"
+        },
+        "ta": {
+          "imperative": "दे",
+          "present_habitual": "दिन्छस्",
+          "past": "दिइस्"
+        }
+      }
+    },
+    {
+      "verb": "लिनु",
+      "romanization": "linu",
+      "english": "to take",
+      "forms": {
+        "tapaii": {
+          "imperative": "लिनुहोस्",
+          "present_habitual": "लिनुहुन्छ",
+          "past": "लिनुभयो",
+          "request": "लिइदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "लेउ",
+          "present_habitual": "लिन्छौ",
+          "past": "लियौ",
+          "request": "लिइदेउ"
+        },
+        "ta": {
+          "imperative": "ले",
+          "present_habitual": "लिन्छस्",
+          "past": "लिइस्"
+        }
+      }
+    },
+    {
+      "verb": "भन्नु",
+      "romanization": "bhannu",
+      "english": "to say / to tell",
+      "forms": {
+        "tapaii": {
+          "imperative": "भन्नुहोस्",
+          "present_habitual": "भन्नुहुन्छ",
+          "past": "भन्नुभयो",
+          "request": "भनिदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "भन",
+          "present_habitual": "भन्छौ",
+          "past": "भन्यौ",
+          "request": "भनिदेउ"
+        },
+        "ta": {
+          "imperative": "भन्",
+          "present_habitual": "भन्छस्",
+          "past": "भनिस्"
+        }
+      }
+    },
+    {
+      "verb": "सुन्नु",
+      "romanization": "sunnu",
+      "english": "to hear / to listen",
+      "forms": {
+        "tapaii": {
+          "imperative": "सुन्नुहोस्",
+          "present_habitual": "सुन्नुहुन्छ",
+          "past": "सुन्नुभयो",
+          "request": "सुनिदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "सुन",
+          "present_habitual": "सुन्छौ",
+          "past": "सुन्यौ",
+          "request": "सुनिदेउ"
+        },
+        "ta": {
+          "imperative": "सुन्",
+          "present_habitual": "सुन्छस्",
+          "past": "सुनिस्"
+        }
+      }
+    },
+    {
+      "verb": "पढ्नु",
+      "romanization": "paḍhnu",
+      "english": "to read / to study",
+      "forms": {
+        "tapaii": {
+          "imperative": "पढ्नुहोस्",
+          "present_habitual": "पढ्नुहुन्छ",
+          "past": "पढ्नुभयो",
+          "request": "पढिदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "पढ",
+          "present_habitual": "पढ्छौ",
+          "past": "पढ्यौ",
+          "request": "पढिदेउ"
+        },
+        "ta": {
+          "imperative": "पढ्",
+          "present_habitual": "पढ्छस्",
+          "past": "पढिस्"
+        }
+      }
+    },
+    {
+      "verb": "लेख्नु",
+      "romanization": "lekhnu",
+      "english": "to write",
+      "forms": {
+        "tapaii": {
+          "imperative": "लेख्नुहोस्",
+          "present_habitual": "लेख्नुहुन्छ",
+          "past": "लेख्नुभयो",
+          "request": "लेखिदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "लेख",
+          "present_habitual": "लेख्छौ",
+          "past": "लेख्यौ",
+          "request": "लेखिदेउ"
+        },
+        "ta": {
+          "imperative": "लेख्",
+          "present_habitual": "लेख्छस्",
+          "past": "लेखिस्"
+        }
+      }
+    },
+    {
+      "verb": "सुत्नु",
+      "romanization": "sutnu",
+      "english": "to sleep",
+      "forms": {
+        "tapaii": {
+          "imperative": "सुत्नुहोस्",
+          "present_habitual": "सुत्नुहुन्छ",
+          "past": "सुत्नुभयो",
+          "request": "सुतिदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "सुत",
+          "present_habitual": "सुत्छौ",
+          "past": "सुत्यौ",
+          "request": "सुतिदेउ"
+        },
+        "ta": {
+          "imperative": "सुत्",
+          "present_habitual": "सुत्छस्",
+          "past": "सुतिस्"
+        }
+      }
+    },
+    {
+      "verb": "उठ्नु",
+      "romanization": "uṭhnu",
+      "english": "to get up / to wake up",
+      "forms": {
+        "tapaii": {
+          "imperative": "उठ्नुहोस्",
+          "present_habitual": "उठ्नुहुन्छ",
+          "past": "उठ्नुभयो",
+          "request": "उठिदिनुहोस्"
+        },
+        "timi": {
+          "imperative": "उठ",
+          "present_habitual": "उठ्छौ",
+          "past": "उठ्यौ",
+          "request": "उठिदेउ"
+        },
+        "ta": {
+          "imperative": "उठ्",
+          "present_habitual": "उठ्छस्",
+          "past": "उठिस्"
+        }
+      }
+    }
+  ]
+}

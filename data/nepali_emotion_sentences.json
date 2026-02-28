@@ -1,0 +1,526 @@
+{
+  "description": "Emotion-labeled Nepali sentences for TTS emotional prosody evaluation (NepTTS-Bench), testing whether synthesized speech conveys appropriate emotional tone, pitch, and rhythm",
+  "notes": {
+    "usage": "Reference data for evaluating TTS emotional expressiveness. Each sentence has a clear emotional valence that should be reflected in prosody, pitch contour, tempo, and voice quality.",
+    "benchmark_inspiration": "Modeled after EmergentTTS-Eval and InstructTTSEval approaches to emotion prosody testing",
+    "evaluation": "A good TTS system should produce speech where the emotion is identifiable by listeners without seeing the text label",
+    "intensity_levels": "mild = subtle emotional coloring, moderate = clearly emotional, strong = intense/heightened emotion",
+    "coverage": "Covers 8 emotion categories: happy, sad, angry, fearful, surprised, calm, urgent, sympathetic"
+  },
+  "happy": [
+    {
+      "sentence": "वाह, कति राम्रो खबर!",
+      "romanization": "waah, kati ramro khabar!",
+      "english": "Wow, what great news!",
+      "emotion": "happy",
+      "intensity": "strong",
+      "prosodic_features": "higher pitch, wider pitch range, faster tempo, bright voice quality",
+      "context": "Reacting to unexpectedly good news from a friend or family member",
+      "description": "Exclamatory expression of delight with the interjection 'waah' signaling strong positive emotion"
+    },
+    {
+      "sentence": "म आज धेरै खुसी छु!",
+      "romanization": "ma aaja dherai khusi chhu!",
+      "english": "I am very happy today!",
+      "emotion": "happy",
+      "intensity": "strong",
+      "prosodic_features": "elevated pitch throughout, energetic tempo, emphatic stress on 'dherai' and 'khusi'",
+      "context": "Expressing personal joy about a good day or positive event",
+      "description": "Direct declaration of happiness with intensifier 'dherai' amplifying the emotion"
+    },
+    {
+      "sentence": "हामीले जित्यौँ, विश्वास नै लाग्दैन!",
+      "romanization": "haamile jityaũ, vishwaas nai laagdaina!",
+      "english": "We won, I can't even believe it!",
+      "emotion": "happy",
+      "intensity": "strong",
+      "prosodic_features": "high pitch onset, rising-falling contour on 'jityaũ', accelerated tempo, breathy excitement",
+      "context": "Celebrating a team victory in sports or competition",
+      "description": "Jubilant exclamation combining triumph with disbelief; typical of sports celebrations"
+    },
+    {
+      "sentence": "आज मेरो मन फुलेको फूल जस्तो छ।",
+      "romanization": "aaja mero man phuleko phool jasto chha.",
+      "english": "Today my heart feels like a blooming flower.",
+      "emotion": "happy",
+      "intensity": "moderate",
+      "prosodic_features": "warm tone, gentle rising pitch, moderate tempo with slight lengthening on 'phuleko phool'",
+      "context": "Sharing a feeling of contentment and inner joy with someone close",
+      "description": "Poetic expression of happiness using a common Nepali metaphor of a blooming flower"
+    },
+    {
+      "sentence": "यो सुनेर मलाई कत्ति खुसी लाग्यो!",
+      "romanization": "yo sunera malai katti khusi laagyo!",
+      "english": "Hearing this made me so happy!",
+      "emotion": "happy",
+      "intensity": "moderate",
+      "prosodic_features": "rising pitch on 'katti khusi', upbeat tempo, warm vocal quality",
+      "context": "Responding positively to someone's good news or achievement",
+      "description": "Reactive happiness triggered by hearing something pleasant; natural conversational expression"
+    },
+    {
+      "sentence": "बधाई छ! तपाईंले त कमाल गर्नुभयो!",
+      "romanization": "badhaai chha! tapaaĩle ta kamaal garnubhayo!",
+      "english": "Congratulations! You did something amazing!",
+      "emotion": "happy",
+      "intensity": "strong",
+      "prosodic_features": "high pitch peak on 'badhaai', emphatic stress on 'kamaal', enthusiastic tempo",
+      "context": "Congratulating someone on a major achievement like passing an exam or getting a promotion",
+      "description": "Celebratory congratulation with emphatic praise; uses formal honorific verb form"
+    },
+    {
+      "sentence": "चाड आउँदैछ, कत्ति रमाइलो हुन्छ होला!",
+      "romanization": "chaad aaũdaichha, katti ramailo hunchha holaa!",
+      "english": "The festival is coming, it will be so much fun!",
+      "emotion": "happy",
+      "intensity": "moderate",
+      "prosodic_features": "gradually rising pitch, anticipatory intonation, lively tempo",
+      "context": "Looking forward to an upcoming festival like Dashain or Tihar",
+      "description": "Anticipatory excitement about a Nepali festival; reflects cultural celebration context"
+    },
+    {
+      "sentence": "अहिलेसम्मकै सबैभन्दा राम्रो दिन!",
+      "romanization": "ahilesammkai sabai bhandaa ramro din!",
+      "english": "The best day ever so far!",
+      "emotion": "happy",
+      "intensity": "strong",
+      "prosodic_features": "wide pitch range, emphatic stress on 'sabai bhandaa ramro', fast enthusiastic tempo",
+      "context": "Exclaiming about having an exceptionally good day",
+      "description": "Superlative expression of joy; the compound 'ahilesammkai' emphasizes the unprecedented nature"
+    }
+  ],
+  "sad": [
+    {
+      "sentence": "उहाँ अब हाम्रो बीचमा हुनुहुन्न।",
+      "romanization": "uhaa~ aba haamro beechmaa hunuhunna.",
+      "english": "They are no longer among us.",
+      "emotion": "sad",
+      "intensity": "strong",
+      "prosodic_features": "low pitch, slow tempo, falling intonation, heavy pauses between phrases",
+      "context": "Speaking about someone who has passed away, at a funeral or memorial",
+      "description": "Solemn expression of loss using the respectful 'uhaa~' and formal negative verb; deeply emotional in Nepali culture"
+    },
+    {
+      "sentence": "मन धेरै दुखेको छ।",
+      "romanization": "man dherai dukheko chha.",
+      "english": "My heart is deeply pained.",
+      "emotion": "sad",
+      "intensity": "strong",
+      "prosodic_features": "low pitch, very slow tempo, breathy voice quality, prolonged vowels on 'dherai'",
+      "context": "Expressing deep emotional pain after a personal loss or betrayal",
+      "description": "Direct expression of heartache; 'man dukheko' is the standard Nepali idiom for emotional pain"
+    },
+    {
+      "sentence": "यो बिदाइ धेरै गाह्रो भयो।",
+      "romanization": "yo bidaai dherai gaahro bhayo.",
+      "english": "This farewell has been very difficult.",
+      "emotion": "sad",
+      "intensity": "moderate",
+      "prosodic_features": "low-mid pitch, slow tempo, slight voice tremor, falling contour on 'gaahro bhayo'",
+      "context": "Saying goodbye to someone leaving for a long time, such as a family member going abroad",
+      "description": "Expression of sadness at parting; common in Nepali context of labor migration"
+    },
+    {
+      "sentence": "कहिलेकाहीँ एक्लो हुँदा रुन मन लाग्छ।",
+      "romanization": "kahilekahĩ eklo hũdaa runa man laagchha.",
+      "english": "Sometimes when I'm alone, I feel like crying.",
+      "emotion": "sad",
+      "intensity": "moderate",
+      "prosodic_features": "soft voice, low pitch, slow deliberate pacing, slight breathiness",
+      "context": "Confiding in someone about feelings of loneliness",
+      "description": "Vulnerable admission of loneliness and sadness; intimate conversational register"
+    },
+    {
+      "sentence": "सबैले बिर्सिसके जस्तो लाग्छ।",
+      "romanization": "sabaile birsisake jasto laagchha.",
+      "english": "It feels like everyone has forgotten.",
+      "emotion": "sad",
+      "intensity": "moderate",
+      "prosodic_features": "flat low pitch, slow tempo, resigned falling intonation",
+      "context": "Feeling neglected or forgotten by friends and family",
+      "description": "Expression of neglect and isolation; the 'jasto laagchha' construction conveys subjective feeling"
+    },
+    {
+      "sentence": "उसको याद आउँदा आँखा भिजिन्छ।",
+      "romanization": "usko yaad aaũdaa aakhaa bhijinchha.",
+      "english": "When I remember them, my eyes get wet.",
+      "emotion": "sad",
+      "intensity": "moderate",
+      "prosodic_features": "low pitch, gentle slow tempo, slight voice cracking quality, falling contour",
+      "context": "Remembering a deceased loved one or someone who has gone far away",
+      "description": "Poignant expression of missing someone; 'aakhaa bhijinchha' is an idiomatic way to describe tearing up"
+    },
+    {
+      "sentence": "जिन्दगीले कहिलेकाहीँ निकै दुःख दिन्छ।",
+      "romanization": "jindagile kahilekahĩ nikai dukha dinchha.",
+      "english": "Life sometimes gives a lot of sorrow.",
+      "emotion": "sad",
+      "intensity": "mild",
+      "prosodic_features": "low pitch, measured slow tempo, philosophical resigned tone",
+      "context": "Reflecting on hardships in a philosophical conversation",
+      "description": "Reflective, philosophical sadness about life's difficulties; mild intensity suggests acceptance"
+    },
+    {
+      "sentence": "मैले धेरै कोसिसँ गरेँ, तर हुन सकेन।",
+      "romanization": "maile dherai kosis garẽ, tara huna sakena.",
+      "english": "I tried very hard, but it could not happen.",
+      "emotion": "sad",
+      "intensity": "moderate",
+      "prosodic_features": "rising pitch on effort clause, sharp fall on 'tara huna sakena', slow defeated tempo",
+      "context": "Expressing disappointment after a failed attempt at something important",
+      "description": "Disappointment after failure despite effort; the contrast between trying and failing creates emotional tension"
+    }
+  ],
+  "angry": [
+    {
+      "sentence": "यो कसरी स्वीकार्य हुन सक्छ?",
+      "romanization": "yo kasari swikaarya huna sakchha?",
+      "english": "How can this be acceptable?",
+      "emotion": "angry",
+      "intensity": "moderate",
+      "prosodic_features": "sharp rising pitch on 'kasari', increased loudness, clipped articulation, fast tempo",
+      "context": "Reacting to an unjust decision or unfair treatment",
+      "description": "Rhetorical question expressing indignation; the formal 'swikaarya' adds gravity"
+    },
+    {
+      "sentence": "मलाई यस्तो व्यवहार मन पर्दैन!",
+      "romanization": "malai yasto vyavahaar man pardaina!",
+      "english": "I don't like this kind of behavior!",
+      "emotion": "angry",
+      "intensity": "strong",
+      "prosodic_features": "high pitch, loud volume, emphatic stress on 'yasto' and 'pardaina', fast forceful tempo",
+      "context": "Confronting someone about their rude or disrespectful behavior",
+      "description": "Direct expression of displeasure and anger at mistreatment"
+    },
+    {
+      "sentence": "कसैले पनि जिम्मेवारी लिँदैन!",
+      "romanization": "kasaile pani jimmewaari lĩdaina!",
+      "english": "Nobody takes any responsibility!",
+      "emotion": "angry",
+      "intensity": "strong",
+      "prosodic_features": "high pitch throughout, emphatic stress on 'kasaile' and 'lĩdaina', aggressive tempo",
+      "context": "Frustrated at a group or organization where things keep going wrong",
+      "description": "Frustrated accusation of collective irresponsibility; common in workplace or public discourse"
+    },
+    {
+      "sentence": "बस, अब त सहनै सकिँदैन!",
+      "romanization": "bas, aba ta sahanai sakĩdaina!",
+      "english": "Enough, I can't tolerate this anymore!",
+      "emotion": "angry",
+      "intensity": "strong",
+      "prosodic_features": "abrupt onset on 'bas', rising intensity, fast tempo, tense voice quality",
+      "context": "Reaching a breaking point after repeated provocations or injustice",
+      "description": "Expression of having reached one's limit; 'bas' signals finality and the breaking point"
+    },
+    {
+      "sentence": "यो भ्रष्टाचार कहिलेसम्म चल्छ?",
+      "romanization": "yo bhrashtaachaar kahilesamma chalchha?",
+      "english": "How long will this corruption go on?",
+      "emotion": "angry",
+      "intensity": "moderate",
+      "prosodic_features": "sharp pitch peaks, indignant tone, measured but forceful tempo",
+      "context": "Expressing anger about systemic corruption in public institutions",
+      "description": "Rhetorical question expressing societal anger; reflects common Nepali public discourse"
+    },
+    {
+      "sentence": "तिमीलाई लाज लाग्दैन यसो गर्दा?",
+      "romanization": "timilaai laaj laagdaina yaso gardaa?",
+      "english": "Aren't you ashamed doing this?",
+      "emotion": "angry",
+      "intensity": "strong",
+      "prosodic_features": "sharp accusatory tone, high pitch on 'laaj', pointed emphasis, fast clipped delivery",
+      "context": "Confronting someone directly about shameful behavior",
+      "description": "Accusatory question invoking shame; uses informal 'timi' register to show disrespect in anger"
+    },
+    {
+      "sentence": "मैले कति पटक भनेँ, तर कसैले सुन्दैन।",
+      "romanization": "maile kati patak bhanẽ, tara kasaile sundaina.",
+      "english": "How many times have I said it, but nobody listens.",
+      "emotion": "angry",
+      "intensity": "moderate",
+      "prosodic_features": "exasperated rising-falling pattern, stress on 'kati patak', frustrated slow-then-fast tempo",
+      "context": "Frustrated at being repeatedly ignored or having advice disregarded",
+      "description": "Expression of exasperation at being unheard; the repetition element adds to the frustration"
+    }
+  ],
+  "fearful": [
+    {
+      "sentence": "के हुन्छ होला?",
+      "romanization": "ke hunchha holaa?",
+      "english": "What will happen, I wonder?",
+      "emotion": "fearful",
+      "intensity": "mild",
+      "prosodic_features": "uncertain rising intonation, slightly trembling voice, slow tentative tempo",
+      "context": "Worrying about an uncertain future outcome, such as exam results or medical tests",
+      "description": "Anxious uncertainty expressed through the speculative particle 'holaa'"
+    },
+    {
+      "sentence": "म धेरै चिन्तित छु।",
+      "romanization": "ma dherai chintit chhu.",
+      "english": "I am very worried.",
+      "emotion": "fearful",
+      "intensity": "moderate",
+      "prosodic_features": "low pitch, slow tempo, tight voice quality, emphasis on 'dherai chintit'",
+      "context": "Expressing worry about a family member's health or a serious situation",
+      "description": "Direct statement of anxiety; 'chintit' is the standard Nepali word for worried/anxious"
+    },
+    {
+      "sentence": "बाहिर निकै अन्धेरो छ, मलाई डर लागिरहेको छ।",
+      "romanization": "baahira nikai andhero chha, malai dar laagirakheko chha.",
+      "english": "It's very dark outside, I am feeling scared.",
+      "emotion": "fearful",
+      "intensity": "moderate",
+      "prosodic_features": "low hushed pitch, slow cautious tempo, breathy voice, rising anxiety in second clause",
+      "context": "Feeling afraid at night in an unfamiliar or dark place",
+      "description": "Fear of darkness with ongoing state expressed by continuous tense 'laagirakheko chha'"
+    },
+    {
+      "sentence": "भूकम्प! छिटो टेबलमुनि लुक!",
+      "romanization": "bhukampa! chhito table-muni luka!",
+      "english": "Earthquake! Quick, hide under the table!",
+      "emotion": "fearful",
+      "intensity": "strong",
+      "prosodic_features": "sharp sudden onset, high-pitched alarm, very fast urgent tempo, loud volume",
+      "context": "Reacting to an earthquake, shouting instructions in panic",
+      "description": "Panicked response to a natural disaster; combines fear with urgent command; highly relevant in earthquake-prone Nepal"
+    },
+    {
+      "sentence": "यो बाटो सुरक्षित छैन, अर्को बाटो जाऔँ।",
+      "romanization": "yo baato surakshit chhaina, arko baato jaaũ.",
+      "english": "This road isn't safe, let's take another road.",
+      "emotion": "fearful",
+      "intensity": "moderate",
+      "prosodic_features": "cautious low tone, deliberate pacing, slight urgency in second clause",
+      "context": "Warning companions about a dangerous path during travel in hilly terrain",
+      "description": "Cautious fear expressed as a practical suggestion; common in Nepal's mountainous geography"
+    },
+    {
+      "sentence": "मलाई यो ठाउँमा एक्लै बस्न डर लाग्छ।",
+      "romanization": "malai yo thaaũmaa eklai basna dar laagchha.",
+      "english": "I'm afraid to stay alone in this place.",
+      "emotion": "fearful",
+      "intensity": "moderate",
+      "prosodic_features": "low soft pitch, slow measured tempo, slightly tremulous voice quality",
+      "context": "Expressing discomfort about staying alone in an unfamiliar or eerie location",
+      "description": "Admission of fear about solitude in a specific place; 'dar laagchha' is the standard fear expression"
+    }
+  ],
+  "surprised": [
+    {
+      "sentence": "अरे! तिमी यहाँ?",
+      "romanization": "are! timi yahaa~?",
+      "english": "Oh! You here?",
+      "emotion": "surprised",
+      "intensity": "strong",
+      "prosodic_features": "sharp high pitch onset on 'are', wide pitch jump, abrupt tempo change",
+      "context": "Unexpectedly running into someone in an unlikely place",
+      "description": "Classic surprise interjection 'are' followed by disbelief; informal register"
+    },
+    {
+      "sentence": "यो त विश्वास नै लाग्दैन!",
+      "romanization": "yo ta vishwaas nai laagdaina!",
+      "english": "This is just unbelievable!",
+      "emotion": "surprised",
+      "intensity": "strong",
+      "prosodic_features": "high pitch, wide range, emphatic stress on 'vishwaas nai', fast excited tempo",
+      "context": "Reacting to something completely unexpected, positive or negative",
+      "description": "Expression of total disbelief; the emphatic particle 'nai' intensifies the incredulity"
+    },
+    {
+      "sentence": "ल, यो त मैले सोचेकै थिइनँ!",
+      "romanization": "la, yo ta maile sochekei thiinã!",
+      "english": "Well, I had never even thought of this!",
+      "emotion": "surprised",
+      "intensity": "moderate",
+      "prosodic_features": "rising pitch with high peak on 'sochekei', moderate tempo with pause after 'la'",
+      "context": "Discovering something completely unexpected that changes one's perspective",
+      "description": "Surprise at something unforeseen; 'la' as a discourse starter signals processing of new information"
+    },
+    {
+      "sentence": "अचम्म! यति छिटो कसरी भयो?",
+      "romanization": "achamma! yati chhito kasari bhayo?",
+      "english": "Amazing! How did it happen so fast?",
+      "emotion": "surprised",
+      "intensity": "moderate",
+      "prosodic_features": "high pitch exclamation, quick tempo, rising question intonation on 'kasari bhayo'",
+      "context": "Surprised by the speed of something being completed",
+      "description": "Wonder and surprise at unexpected quickness; 'achamma' is a standard surprise exclamation"
+    },
+    {
+      "sentence": "ए, तिमीले त पुरस्कार जित्यौ रे!",
+      "romanization": "e, timile ta puraskaar jityau re!",
+      "english": "Hey, I heard you won an award!",
+      "emotion": "surprised",
+      "intensity": "moderate",
+      "prosodic_features": "high onset on 'e', rising surprised pitch, emphasis on 'puraskaar', reportative 're' with trailing intonation",
+      "context": "Learning about someone's unexpected achievement through hearsay",
+      "description": "Surprised reaction to hearsay news; the reportative particle 're' indicates second-hand information"
+    },
+    {
+      "sentence": "यो त पूरै फरक रहेछ!",
+      "romanization": "yo ta purai pharak rahechha!",
+      "english": "This turned out to be completely different!",
+      "emotion": "surprised",
+      "intensity": "strong",
+      "prosodic_features": "wide pitch excursion, stress on 'purai pharak', mirative intonation on 'rahechha'",
+      "context": "Discovering something is entirely different from expectations",
+      "description": "Mirative surprise using 'rahechha' which conveys newly discovered information in Nepali"
+    }
+  ],
+  "calm": [
+    {
+      "sentence": "आज मंगलबार हो।",
+      "romanization": "aaja mangalbaar ho.",
+      "english": "Today is Tuesday.",
+      "emotion": "calm",
+      "intensity": "mild",
+      "prosodic_features": "flat even pitch, moderate steady tempo, neutral voice quality, simple falling terminal",
+      "context": "Stating a fact in everyday conversation or in response to a question",
+      "description": "Simple factual statement with no emotional charge; baseline neutral prosody"
+    },
+    {
+      "sentence": "बैठक तीन बजे हुनेछ।",
+      "romanization": "baithak tin baje hunechha.",
+      "english": "The meeting will be at three o'clock.",
+      "emotion": "calm",
+      "intensity": "mild",
+      "prosodic_features": "level pitch, steady moderate tempo, clear articulation, neutral falling intonation",
+      "context": "Informing colleagues about a scheduled meeting time",
+      "description": "Informational statement about a routine event; standard workplace communication"
+    },
+    {
+      "sentence": "यो किताब पढ्न राम्रो छ।",
+      "romanization": "yo kitaab padhna ramro chha.",
+      "english": "This book is good to read.",
+      "emotion": "calm",
+      "intensity": "mild",
+      "prosodic_features": "moderate even pitch, relaxed tempo, gentle falling contour",
+      "context": "Making a calm recommendation about a book during conversation",
+      "description": "Mild positive assessment delivered in a matter-of-fact tone; no strong emotional engagement"
+    },
+    {
+      "sentence": "हिजो बजारमा गएर तरकारी किनेँ।",
+      "romanization": "hijo bajaarmaa gaera tarkaari kinẽ.",
+      "english": "Yesterday I went to the market and bought vegetables.",
+      "emotion": "calm",
+      "intensity": "mild",
+      "prosodic_features": "flat pitch, steady narrative tempo, simple declarative intonation",
+      "context": "Casually describing a routine daily activity",
+      "description": "Neutral narrative about daily life; standard conversational register without emotional weight"
+    },
+    {
+      "sentence": "नेपालको राजधानी काठमाडौँ हो।",
+      "romanization": "nepaalko raajdhaani kaathmadaũ ho.",
+      "english": "The capital of Nepal is Kathmandu.",
+      "emotion": "calm",
+      "intensity": "mild",
+      "prosodic_features": "level informational pitch, clear even tempo, textbook-style falling terminal",
+      "context": "Stating a geographical fact in a classroom or informational setting",
+      "description": "Pure factual statement; useful as a prosodic baseline for comparison with emotional sentences"
+    }
+  ],
+  "urgent": [
+    {
+      "sentence": "छिटो अस्पताल लैजाऊ!",
+      "romanization": "chhito aspatal laijau!",
+      "english": "Take them to the hospital quickly!",
+      "emotion": "urgent",
+      "intensity": "strong",
+      "prosodic_features": "high pitch, very fast tempo, loud volume, sharp emphatic stress on 'chhito'",
+      "context": "Medical emergency where someone needs immediate hospital care",
+      "description": "Emergency command; the informal imperative 'laijau' signals urgency over politeness"
+    },
+    {
+      "sentence": "तुरुन्तै बाहिर निस्कनुहोस्!",
+      "romanization": "turuntai baahira niskanuhoss!",
+      "english": "Get outside immediately!",
+      "emotion": "urgent",
+      "intensity": "strong",
+      "prosodic_features": "very high pitch, maximum tempo, commanding loud volume, sharp onset on 'turuntai'",
+      "context": "Emergency evacuation during a fire, earthquake, or other disaster",
+      "description": "Urgent evacuation command using formal imperative; urgency overrides the politeness of '-nuhoss'"
+    },
+    {
+      "sentence": "ढोका बन्द गर, कोही आउँदैछ!",
+      "romanization": "dhokaa banda gar, kohi aaũdaichha!",
+      "english": "Close the door, someone is coming!",
+      "emotion": "urgent",
+      "intensity": "moderate",
+      "prosodic_features": "fast tempo, high pitch, hushed intensity, quick pause between clauses",
+      "context": "Warning someone to close the door quickly due to a perceived threat",
+      "description": "Urgent warning with immediate action command; informal register showing closeness and urgency"
+    },
+    {
+      "sentence": "समय छैन, अहिले नै जानुपर्छ!",
+      "romanization": "samay chhaina, ahile nai jaanuparchha!",
+      "english": "There's no time, we must go right now!",
+      "emotion": "urgent",
+      "intensity": "strong",
+      "prosodic_features": "fast compressed tempo, high pitch, emphatic 'nai', stressed obligation in 'jaanuparchha'",
+      "context": "Rushing to catch a bus, plane, or meet a critical deadline",
+      "description": "Time-pressure urgency; the combination of negation and necessity creates strong imperative force"
+    },
+    {
+      "sentence": "एम्बुलेन्स बोलाउनुहोस्, बिरामी धेरै गम्भीर छ!",
+      "romanization": "ambulence bolaunuhoss, biraami dherai gambhir chha!",
+      "english": "Call an ambulance, the patient is very serious!",
+      "emotion": "urgent",
+      "intensity": "strong",
+      "prosodic_features": "high loud pitch, very fast tempo, stress on 'dherai gambhir', commanding tone",
+      "context": "Medical emergency requiring immediate professional help",
+      "description": "Emergency medical command using formal imperative; the gravity word 'gambhir' signals life-threatening situation"
+    }
+  ],
+  "sympathetic": [
+    {
+      "sentence": "दुःख नमान्नुहोस्, सबै ठीक हुन्छ।",
+      "romanization": "dukha namaannuhoss, sabai thik hunchha.",
+      "english": "Don't grieve, everything will be alright.",
+      "emotion": "sympathetic",
+      "intensity": "moderate",
+      "prosodic_features": "warm low pitch, slow gentle tempo, soothing falling contour, soft voice quality",
+      "context": "Consoling someone who has experienced a loss or setback",
+      "description": "Classic consolation phrase; the negative imperative 'namaannuhoss' gently asks to not take sorrow to heart"
+    },
+    {
+      "sentence": "म तपाईंको पीडा बुझ्छु।",
+      "romanization": "ma tapaaĩko pidaa bujhchhu.",
+      "english": "I understand your pain.",
+      "emotion": "sympathetic",
+      "intensity": "moderate",
+      "prosodic_features": "low warm pitch, slow tempo, empathetic tone, gentle stress on 'pidaa'",
+      "context": "Expressing empathy to someone going through a difficult time",
+      "description": "Direct empathetic statement using formal 'tapaaĩ'; 'pidaa' conveys deeper suffering than 'dukha'"
+    },
+    {
+      "sentence": "तपाईं एक्लो हुनुहुन्न, हामी सबै साथमा छौँ।",
+      "romanization": "tapaaĩ eklo hunuhunna, haami sabai saathmaa chhaũ.",
+      "english": "You are not alone, we are all with you.",
+      "emotion": "sympathetic",
+      "intensity": "moderate",
+      "prosodic_features": "warm reassuring tone, moderate tempo, rising warmth on second clause, gentle emphasis on 'sabai'",
+      "context": "Reassuring someone who feels isolated during a crisis",
+      "description": "Reassurance of solidarity; the contrast between 'eklo' and 'sabai saathmaa' creates emotional comfort"
+    },
+    {
+      "sentence": "रोउ भने रोउ, रोकिराख्नु पर्दैन।",
+      "romanization": "rou bhane rou, rokirakhnu pardaina.",
+      "english": "If you want to cry, cry — you don't have to hold back.",
+      "emotion": "sympathetic",
+      "intensity": "moderate",
+      "prosodic_features": "soft gentle pitch, very slow tempo, permissive warm tone, pause between clauses",
+      "context": "Giving someone emotional permission to express grief freely",
+      "description": "Compassionate permission to express emotions; validates grief rather than suppressing it"
+    },
+    {
+      "sentence": "समयसँगै यो पीडा कम हुँदै जान्छ।",
+      "romanization": "samayasãgai yo pidaa kam hũdai jaanchha.",
+      "english": "With time, this pain will gradually lessen.",
+      "emotion": "sympathetic",
+      "intensity": "mild",
+      "prosodic_features": "gentle low pitch, slow reassuring tempo, gradual falling contour, soft voice",
+      "context": "Offering hope to someone dealing with emotional or physical pain",
+      "description": "Consolation through the promise of healing over time; the progressive 'hũdai jaanchha' conveys gradual change"
+    }
+  ]
+}

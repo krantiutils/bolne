@@ -1,0 +1,206 @@
+{
+  "description": "Nepali month names for Bikram Sambat (BS) and Gregorian calendars, used for date text normalization in TTS",
+  "notes": {
+    "official_calendar": "Nepal officially uses Bikram Sambat (BS/विक्रम संवत्). BS is ~56.7 years ahead of Gregorian (AD).",
+    "new_year": "Nepali New Year falls in mid-April (1 Baisakh). The year 2081 BS ≈ 2024-2025 AD.",
+    "date_format": "Nepali dates typically written as YYYY/MM/DD or YYYY बैशाख DD गते",
+    "gate_suffix": "Day of month uses गते (gate) suffix: e.g., १५ गते = 15th",
+    "usage": "The normalizer should expand numeric months (e.g., २०८१/०१/१५) into spoken form (दुई हजार एकासी साल बैशाख पन्ध्र गते)"
+  },
+  "bikram_sambat_months": [
+    {
+      "month_number": 1,
+      "nepali": "बैशाख",
+      "romanization": "baishakh",
+      "english": "Baisakh",
+      "approximate_gregorian": "mid-April to mid-May",
+      "days": "30-31",
+      "season": "spring",
+      "notable": "Nepali New Year (नयाँ वर्ष) falls on 1 Baisakh"
+    },
+    {
+      "month_number": 2,
+      "nepali": "जेठ",
+      "romanization": "jeth",
+      "english": "Jestha",
+      "approximate_gregorian": "mid-May to mid-June",
+      "days": "31-32",
+      "season": "summer",
+      "notable": "Republic Day (गणतन्त्र दिवस) on 15 Jestha"
+    },
+    {
+      "month_number": 3,
+      "nepali": "असार",
+      "romanization": "asar",
+      "english": "Asar",
+      "approximate_gregorian": "mid-June to mid-July",
+      "days": "31-32",
+      "season": "monsoon",
+      "notable": "Rice planting season begins; Asar 15 (असार पन्ध्र) is a cultural celebration"
+    },
+    {
+      "month_number": 4,
+      "nepali": "साउन",
+      "romanization": "saun",
+      "english": "Shrawan",
+      "approximate_gregorian": "mid-July to mid-August",
+      "days": "31-32",
+      "season": "monsoon",
+      "notable": "Month of fasting and worship for Hindu women"
+    },
+    {
+      "month_number": 5,
+      "nepali": "भदौ",
+      "romanization": "bhadau",
+      "english": "Bhadra",
+      "approximate_gregorian": "mid-August to mid-September",
+      "days": "31-32",
+      "season": "monsoon",
+      "notable": "Teej (तीज), Krishna Janmashtami (कृष्ण जन्माष्टमी)"
+    },
+    {
+      "month_number": 6,
+      "nepali": "असोज",
+      "romanization": "asoj",
+      "english": "Ashwin",
+      "approximate_gregorian": "mid-September to mid-October",
+      "days": "30-31",
+      "season": "autumn",
+      "notable": "Dashain (दशैं), Nepal's biggest festival"
+    },
+    {
+      "month_number": 7,
+      "nepali": "कात्तिक",
+      "romanization": "kartik",
+      "english": "Kartik",
+      "approximate_gregorian": "mid-October to mid-November",
+      "days": "29-30",
+      "season": "autumn",
+      "notable": "Tihar (तिहार) / Deepawali"
+    },
+    {
+      "month_number": 8,
+      "nepali": "मंसिर",
+      "romanization": "mansir",
+      "english": "Mangsir",
+      "approximate_gregorian": "mid-November to mid-December",
+      "days": "29-30",
+      "season": "early winter",
+      "notable": "Bibaha Panchami (विवाह पञ्चमी)"
+    },
+    {
+      "month_number": 9,
+      "nepali": "पुस",
+      "romanization": "pus",
+      "english": "Poush",
+      "approximate_gregorian": "mid-December to mid-January",
+      "days": "29-30",
+      "season": "winter",
+      "notable": "Maghe Sankranti preparations, Christmas (for Christian minority)"
+    },
+    {
+      "month_number": 10,
+      "nepali": "माघ",
+      "romanization": "magh",
+      "english": "Magh",
+      "approximate_gregorian": "mid-January to mid-February",
+      "days": "29-30",
+      "season": "winter",
+      "notable": "Maghe Sankranti (माघे संक्रान्ति) on 1 Magh"
+    },
+    {
+      "month_number": 11,
+      "nepali": "फागुन",
+      "romanization": "phagun",
+      "english": "Falgun",
+      "approximate_gregorian": "mid-February to mid-March",
+      "days": "29-30",
+      "season": "late winter",
+      "notable": "Holi (फागु पूर्णिमा), Democracy Day (फागुन ७)"
+    },
+    {
+      "month_number": 12,
+      "nepali": "चैत्र",
+      "romanization": "chaitr",
+      "english": "Chaitra",
+      "approximate_gregorian": "mid-March to mid-April",
+      "days": "30-31",
+      "season": "spring",
+      "notable": "Last month of BS year; Chaite Dashain"
+    }
+  ],
+  "gregorian_months": [
+    {
+      "month_number": 1,
+      "nepali": "जनवरी",
+      "romanization": "janwari",
+      "english": "January"
+    },
+    {
+      "month_number": 2,
+      "nepali": "फेब्रुअरी",
+      "romanization": "february",
+      "english": "February"
+    },
+    {
+      "month_number": 3,
+      "nepali": "मार्च",
+      "romanization": "march",
+      "english": "March"
+    },
+    {
+      "month_number": 4,
+      "nepali": "अप्रिल",
+      "romanization": "april",
+      "english": "April"
+    },
+    {
+      "month_number": 5,
+      "nepali": "मे",
+      "romanization": "me",
+      "english": "May"
+    },
+    {
+      "month_number": 6,
+      "nepali": "जुन",
+      "romanization": "jun",
+      "english": "June"
+    },
+    {
+      "month_number": 7,
+      "nepali": "जुलाई",
+      "romanization": "julai",
+      "english": "July"
+    },
+    {
+      "month_number": 8,
+      "nepali": "अगस्ट",
+      "romanization": "agast",
+      "english": "August"
+    },
+    {
+      "month_number": 9,
+      "nepali": "सेप्टेम्बर",
+      "romanization": "september",
+      "english": "September"
+    },
+    {
+      "month_number": 10,
+      "nepali": "अक्टोबर",
+      "romanization": "aktobar",
+      "english": "October"
+    },
+    {
+      "month_number": 11,
+      "nepali": "नोभेम्बर",
+      "romanization": "nobhembar",
+      "english": "November"
+    },
+    {
+      "month_number": 12,
+      "nepali": "डिसेम्बर",
+      "romanization": "disambar",
+      "english": "December"
+    }
+  ]
+}

@@ -1,0 +1,437 @@
+{
+  "description": "Nepali phone number and numeric identifier reading patterns for TTS text normalization. Covers how different types of numbers (phone numbers, house numbers, license plates, PINs, bank accounts, years, flight numbers, scores) are read aloud in Nepali, including multiple valid reading styles with naturalness ratings.",
+  "notes": {
+    "usage": "Used by the TTS normalizer to convert numeric identifiers into their most natural spoken Nepali forms. The normalizer should detect the number type from context and apply the preferred reading pattern.",
+    "no_fixed_convention": "There is no single fixed convention for reading phone numbers in Nepali. Three patterns exist: (1) full number form, (2) digit-by-digit, (3) chunked as pairs/threes/fours. The most natural choice depends on the number type and context.",
+    "digit_by_digit_default": "For phone numbers and most long numeric identifiers, digit-by-digit reading with natural pause groupings is the most common pattern in spoken Nepali.",
+    "zero_pronunciation": "When reading digits aloud (phone numbers, PINs, etc.), सुन्ना is more common than शून्य in colloquial speech. शून्य is reserved for formal/mathematical contexts.",
+    "pause_grouping": "In digit-by-digit reading, speakers naturally insert micro-pauses to chunk digits. For mobile numbers, the typical grouping follows the written format: 98XX XXXXXXX or 98XX-XXX-XXXX."
+  },
+  "phone_number_formats": [
+    {
+      "type": "mobile",
+      "format": "98XX-XXXXXXX",
+      "total_digits": 10,
+      "example": "९८४१-५२३४५६",
+      "reading_patterns": [
+        {
+          "style": "digit_by_digit_grouped",
+          "nepali": "नौ आठ चार एक, पाँच दुई तीन चार पाँच छ",
+          "romanization": "nau āṭh cār ek, pā̃c duī tīn cār pā̃c cha",
+          "naturalness": "most_natural",
+          "description": "Digit-by-digit with a pause after the first four digits matching the written grouping. This is how most Nepali speakers naturally read mobile numbers aloud."
+        },
+        {
+          "style": "digit_by_digit_flat",
+          "nepali": "नौ आठ चार एक पाँच दुई तीन चार पाँच छ",
+          "romanization": "nau āṭh cār ek pā̃c duī tīn cār pā̃c cha",
+          "naturalness": "common",
+          "description": "Digit-by-digit without clear grouping pauses. Common when reading quickly."
+        },
+        {
+          "style": "paired",
+          "nepali": "अठ्यानब्बे एकचालीस बाउन्न चौँतीस छपन्न",
+          "romanization": "aṭhyānnabbe ekcālīs bāunna caũtīs chapanna",
+          "naturalness": "unnatural",
+          "description": "Reading as two-digit pairs (98-41-52-34-56). This is unnatural for phone numbers in Nepali and would cause confusion."
+        },
+        {
+          "style": "full_number",
+          "nepali": "नौ अर्ब चौरासी करोड पन्ध्र लाख तेइस हजार चार सय छपन्न",
+          "romanization": "nau arba caurāsī karoḍ pandhr lākh teīs hajār cār say chapanna",
+          "naturalness": "unnatural",
+          "description": "Reading as a single large number. Nobody reads phone numbers this way in Nepali."
+        }
+      ],
+      "preferred_style": "digit_by_digit_grouped",
+      "description": "Nepal mobile numbers start with 98 (NTC) or 97 (Ncell). Ten digits total. Always read digit-by-digit with natural pause grouping."
+    },
+    {
+      "type": "landline_kathmandu",
+      "format": "01-XXXXXXX",
+      "total_digits": 9,
+      "example": "०१-४२३४५६७",
+      "reading_patterns": [
+        {
+          "style": "digit_by_digit_grouped",
+          "nepali": "सुन्ना एक, चार दुई तीन चार पाँच छ सात",
+          "romanization": "sunnā ek, cār duī tīn cār pā̃c cha sāt",
+          "naturalness": "most_natural",
+          "description": "Area code read digit-by-digit, pause, then remaining digits read individually. The dash in writing corresponds to a natural pause."
+        },
+        {
+          "style": "digit_by_digit_flat",
+          "nepali": "सुन्ना एक चार दुई तीन चार पाँच छ सात",
+          "romanization": "sunnā ek cār duī tīn cār pā̃c cha sāt",
+          "naturalness": "common",
+          "description": "All digits read sequentially without a strong pause at the dash."
+        },
+        {
+          "style": "area_code_as_number",
+          "nepali": "एक, चार दुई तीन चार पाँच छ सात",
+          "romanization": "ek, cār duī tīn cār pā̃c cha sāt",
+          "naturalness": "common",
+          "description": "Area code 01 spoken as just 'एक' (dropping the leading zero), then digits. Common in casual speech within the Kathmandu valley where the area code is assumed."
+        }
+      ],
+      "preferred_style": "digit_by_digit_grouped",
+      "description": "Kathmandu valley landline numbers use area code 01 followed by 7 digits. The leading zero of the area code is sometimes dropped in casual speech."
+    },
+    {
+      "type": "landline_other",
+      "format": "0XX-XXXXXXX",
+      "total_digits": 9,
+      "example": "०२१-५२३४५६",
+      "reading_patterns": [
+        {
+          "style": "digit_by_digit_grouped",
+          "nepali": "सुन्ना दुई एक, पाँच दुई तीन चार पाँच छ",
+          "romanization": "sunnā duī ek, pā̃c duī tīn cār pā̃c cha",
+          "naturalness": "most_natural",
+          "description": "Area code digits read individually, pause at the dash, then local number digits individually."
+        }
+      ],
+      "preferred_style": "digit_by_digit_grouped",
+      "description": "Landlines outside Kathmandu valley use 3-digit area codes (e.g., 021 for Biratnagar, 061 for Pokhara) followed by 6 digits."
+    },
+    {
+      "type": "toll_free",
+      "format": "16XX",
+      "total_digits": 4,
+      "example": "१६६६",
+      "reading_patterns": [
+        {
+          "style": "digit_by_digit",
+          "nepali": "एक छ छ छ",
+          "romanization": "ek cha cha cha",
+          "naturalness": "most_natural",
+          "description": "Read digit-by-digit. Short numbers are almost always read this way."
+        },
+        {
+          "style": "full_number",
+          "nepali": "सोह्र सय छयसट्ठी",
+          "romanization": "sohr say chayasaṭṭhī",
+          "naturalness": "unnatural",
+          "description": "Reading as a full number is not natural for toll-free/service codes."
+        }
+      ],
+      "preferred_style": "digit_by_digit",
+      "description": "Nepal Telecom toll-free and service numbers. Always read digit-by-digit."
+    },
+    {
+      "type": "emergency",
+      "format": "1XX",
+      "total_digits": 3,
+      "examples": [
+        {
+          "number": "१००",
+          "service": "Nepal Police",
+          "reading_nepali": "एक सुन्ना सुन्ना",
+          "reading_romanization": "ek sunnā sunnā",
+          "naturalness": "most_natural"
+        },
+        {
+          "number": "१०१",
+          "service": "Fire Brigade (काठमाडौं)",
+          "reading_nepali": "एक सुन्ना एक",
+          "reading_romanization": "ek sunnā ek",
+          "naturalness": "most_natural"
+        },
+        {
+          "number": "१०२",
+          "service": "Ambulance / Red Cross",
+          "reading_nepali": "एक सुन्ना दुई",
+          "reading_romanization": "ek sunnā duī",
+          "naturalness": "most_natural"
+        },
+        {
+          "number": "१०३",
+          "service": "Traffic Police",
+          "reading_nepali": "एक सुन्ना तीन",
+          "reading_romanization": "ek sunnā tīn",
+          "naturalness": "most_natural"
+        }
+      ],
+      "preferred_style": "digit_by_digit",
+      "description": "Emergency numbers are always read digit-by-digit. These are well-known short codes."
+    }
+  ],
+  "other_number_contexts": [
+    {
+      "context": "house_room_number",
+      "format": "NNN or NNNN",
+      "example": "३०१",
+      "spoken_nepali": "तीन सय एक",
+      "romanization": "tīn say ek",
+      "reading_rule": "full_number",
+      "description": "House numbers and room numbers are typically read as full numbers. कोठा नं. ३०१ is read as 'कोठा नम्बर तीन सय एक'. For larger numbers like ११०५, it would be 'एघार सय पाँच'."
+    },
+    {
+      "context": "house_room_number_large",
+      "format": "NNNN",
+      "example": "११०५",
+      "spoken_nepali": "एघार सय पाँच",
+      "romanization": "eghār say pā̃c",
+      "reading_rule": "full_number",
+      "description": "Four-digit house/room numbers are also read as full numbers. घर नं. ११०५ is 'घर नम्बर एघार सय पाँच'."
+    },
+    {
+      "context": "vehicle_license_plate",
+      "format": "प्र.क्षे. N अक्षर NNNN",
+      "example": "बा १ च १२३४",
+      "spoken_nepali": "बा एक च बाह्र सय चौँतीस",
+      "romanization": "bā ek ca bāhr say caũtīs",
+      "reading_rule": "mixed",
+      "description": "Nepal license plates have a zone code (letters), a class digit, a series letter, and a 4-digit number. The zone and series letters are read as letters (बा, च), the class number as a digit, and the 4-digit number as a full number. बा = बागमती zone."
+    },
+    {
+      "context": "vehicle_license_plate_new",
+      "format": "प्र.क्षे. NN अक्षर NNNN",
+      "example": "बा १४ प ५६७८",
+      "spoken_nepali": "बा चौध प छपन्न सय अठहत्तर",
+      "romanization": "bā caudh pa chapanna say aṭhhattar",
+      "reading_rule": "mixed",
+      "description": "Newer plates may have a 2-digit class number. The class number is read as a full number, as is the final 4-digit sequence."
+    },
+    {
+      "context": "pin_code",
+      "format": "NNNNN",
+      "example": "४४६००",
+      "spoken_nepali": "चार चार छ सुन्ना सुन्ना",
+      "romanization": "cār cār cha sunnā sunnā",
+      "reading_rule": "digit_by_digit",
+      "description": "PIN codes and postal codes are typically read digit-by-digit to ensure accuracy. Note the use of सुन्ना for zero rather than शून्य."
+    },
+    {
+      "context": "bank_account_number",
+      "format": "variable length, typically 10-16 digits",
+      "example": "०१३०८७६५४३२१",
+      "spoken_nepali": "सुन्ना एक तीन सुन्ना आठ सात छ पाँच चार तीन दुई एक",
+      "romanization": "sunnā ek tīn sunnā āṭh sāt cha pā̃c cār tīn duī ek",
+      "reading_rule": "digit_by_digit",
+      "description": "Bank account numbers are always read digit-by-digit for accuracy. Long digit sequences are never read as full numbers or paired. Speakers may naturally pause every 3-4 digits."
+    },
+    {
+      "context": "year_bs",
+      "format": "NNNN (Bikram Sambat)",
+      "example": "२०८१",
+      "spoken_nepali": "दुई हजार एकासी",
+      "romanization": "duī hajār ekāsī",
+      "reading_rule": "full_number",
+      "description": "Bikram Sambat (BS) year numbers are read as full numbers. साल २०८१ is 'साल दुई हजार एकासी'. This is the standard and most natural reading."
+    },
+    {
+      "context": "year_bs_shortened",
+      "format": "NNNN (Bikram Sambat, casual)",
+      "example": "२०८१",
+      "spoken_nepali": "बीस एकासी",
+      "romanization": "bīs ekāsī",
+      "reading_rule": "shortened",
+      "description": "In casual speech, BS years are sometimes shortened by splitting into two 2-digit numbers: २०८१ becomes 'बीस एकासी' (twenty eighty-one). This is informal but widely understood."
+    },
+    {
+      "context": "year_ad",
+      "format": "NNNN (Anno Domini)",
+      "example": "२०२५",
+      "spoken_nepali": "दुई हजार पच्चीस",
+      "romanization": "duī hajār paccīs",
+      "reading_rule": "full_number",
+      "description": "AD year numbers in Nepali context are read as full numbers. Shortened form (बीस पच्चीस) is also used informally."
+    },
+    {
+      "context": "flight_number",
+      "format": "XX NNN (airline code + number)",
+      "example": "RA 205",
+      "spoken_nepali": "आर ए दुई सय पाँच",
+      "romanization": "ār e duī say pā̃c",
+      "reading_rule": "letters_then_full_number",
+      "description": "Flight numbers have the airline code read as individual English letters and the numeric part read as a full number. RA = Nepal Airlines (Royal Nepal). The number part (205) is read as 'दुई सय पाँच', not digit-by-digit."
+    },
+    {
+      "context": "flight_number_buddha",
+      "format": "XX NNNN",
+      "example": "U4 721",
+      "spoken_nepali": "यू फोर सात सय एक्काइस",
+      "romanization": "yū phor sāt say ekkāīs",
+      "reading_rule": "letters_then_full_number",
+      "description": "Other airline codes follow the same pattern. U4 = Buddha Air. The digit in the airline code is read as English, the flight number as a Nepali full number."
+    },
+    {
+      "context": "score_result",
+      "format": "N-N or NN-NN",
+      "example": "३-१",
+      "spoken_nepali": "तीन एक",
+      "romanization": "tīn ek",
+      "reading_rule": "digit_by_digit_with_implicit_separator",
+      "description": "Sports scores and match results are read as individual numbers. The dash/hyphen is not spoken explicitly; instead a brief pause separates the two numbers. ३-१ is 'तीन एक' (not 'तीन माइनस एक')."
+    },
+    {
+      "context": "score_result_with_context",
+      "format": "N-N",
+      "example": "३-१",
+      "spoken_nepali": "तीन विरुद्ध एक",
+      "romanization": "tīn biruddh ek",
+      "reading_rule": "digit_by_digit_with_explicit_separator",
+      "description": "In more formal sports commentary, the separator may be spoken as विरुद्ध (versus/against). '३-१ ले जित्यो' → 'तीन एक ले जित्यो' or 'तीन विरुद्ध एक ले जित्यो'."
+    },
+    {
+      "context": "percentage",
+      "format": "NN.NN%",
+      "example": "७५.५%",
+      "spoken_nepali": "पचहत्तर दशमलव पाँच प्रतिशत",
+      "romanization": "pachattar daśamlav pā̃c pratiśat",
+      "reading_rule": "full_number_with_decimal",
+      "description": "Percentages are read as full numbers. The decimal point is दशमलव and the percent sign is प्रतिशत."
+    },
+    {
+      "context": "currency_amount",
+      "format": "रु. N,NN,NNN",
+      "example": "रु. १,२५,०००",
+      "spoken_nepali": "एक लाख पच्चीस हजार रुपैयाँ",
+      "romanization": "ek lākh paccīs hajār rupaiyā̃",
+      "reading_rule": "full_number",
+      "description": "Currency amounts are always read as full numbers using the South Asian numbering system (lakh, crore). The unit रुपैयाँ typically comes after the number."
+    },
+    {
+      "context": "ward_number",
+      "format": "वडा नं. NN",
+      "example": "वडा नं. ३२",
+      "spoken_nepali": "वडा नम्बर बत्तीस",
+      "romanization": "waḍā nambar battīs",
+      "reading_rule": "full_number",
+      "description": "Municipal ward numbers are read as full numbers. 'वडा नं.' is expanded to 'वडा नम्बर'."
+    },
+    {
+      "context": "bus_route_number",
+      "format": "NN or NNN",
+      "example": "रुट नं. १४",
+      "spoken_nepali": "रुट नम्बर चौध",
+      "romanization": "ruṭ nambar caudh",
+      "reading_rule": "full_number",
+      "description": "Bus route numbers are read as full numbers. Short identifiers (1-3 digits) are naturally read as complete numbers rather than digit-by-digit."
+    },
+    {
+      "context": "citizen_id_number",
+      "format": "variable, typically alphanumeric",
+      "example": "६५-०१-७५-१२३४५",
+      "spoken_nepali": "पैंसट्ठी सुन्ना एक पचहत्तर एक दुई तीन चार पाँच",
+      "romanization": "paisaṭṭhī sunnā ek pachattar ek duī tīn cār pā̃c",
+      "reading_rule": "grouped_by_separator",
+      "description": "Citizenship numbers are read in groups separated by dashes. Each group may be read as a full number (for short groups) or digit-by-digit (for longer groups). The dashes correspond to natural pauses."
+    }
+  ],
+  "digit_pronunciation_reference": [
+    {
+      "digit": "०",
+      "devanagari_word_formal": "शून्य",
+      "devanagari_word_colloquial": "सुन्ना",
+      "romanization_formal": "śūnya",
+      "romanization_colloquial": "sunnā",
+      "usage_note": "सुन्ना is strongly preferred when reading digits aloud in phone numbers, PINs, account numbers, etc. शून्य is used in formal/mathematical contexts (e.g., 'शून्य डिग्री सेल्सियस')."
+    },
+    {
+      "digit": "१",
+      "devanagari_word": "एक",
+      "romanization": "ek",
+      "usage_note": "No formal/colloquial distinction for this digit."
+    },
+    {
+      "digit": "२",
+      "devanagari_word": "दुई",
+      "romanization": "duī",
+      "usage_note": "No formal/colloquial distinction for this digit."
+    },
+    {
+      "digit": "३",
+      "devanagari_word": "तीन",
+      "romanization": "tīn",
+      "usage_note": "No formal/colloquial distinction for this digit."
+    },
+    {
+      "digit": "४",
+      "devanagari_word": "चार",
+      "romanization": "cār",
+      "usage_note": "No formal/colloquial distinction for this digit."
+    },
+    {
+      "digit": "५",
+      "devanagari_word": "पाँच",
+      "romanization": "pā̃c",
+      "usage_note": "No formal/colloquial distinction for this digit."
+    },
+    {
+      "digit": "६",
+      "devanagari_word": "छ",
+      "romanization": "cha",
+      "usage_note": "Single syllable. No formal/colloquial distinction."
+    },
+    {
+      "digit": "७",
+      "devanagari_word": "सात",
+      "romanization": "sāt",
+      "usage_note": "No formal/colloquial distinction for this digit."
+    },
+    {
+      "digit": "८",
+      "devanagari_word": "आठ",
+      "romanization": "āṭh",
+      "usage_note": "No formal/colloquial distinction for this digit."
+    },
+    {
+      "digit": "९",
+      "devanagari_word": "नौ",
+      "romanization": "nau",
+      "usage_note": "No formal/colloquial distinction for this digit."
+    }
+  ],
+  "reading_style_decision_rules": [
+    {
+      "rule": "phone_numbers",
+      "apply_style": "digit_by_digit_grouped",
+      "condition": "Number is identified as a phone number (mobile, landline, toll-free, emergency)",
+      "description": "Phone numbers are always read digit-by-digit. Group pauses follow the written format (dash positions)."
+    },
+    {
+      "rule": "short_identifiers",
+      "apply_style": "full_number",
+      "condition": "Number is 1-4 digits and represents a label (room, ward, route, etc.)",
+      "description": "Short identifying numbers (house numbers, ward numbers, route numbers) are read as full numbers."
+    },
+    {
+      "rule": "long_identifiers",
+      "apply_style": "digit_by_digit",
+      "condition": "Number is 5+ digits and represents an identifier (account number, PIN, etc.)",
+      "description": "Long identifying numbers where each digit matters are read digit-by-digit for accuracy."
+    },
+    {
+      "rule": "years",
+      "apply_style": "full_number",
+      "condition": "Number is identified as a year (BS or AD)",
+      "description": "Year numbers are read as full numbers. Shortened form (split into two 2-digit numbers) is acceptable in casual speech."
+    },
+    {
+      "rule": "quantities_and_amounts",
+      "apply_style": "full_number",
+      "condition": "Number represents a quantity, amount, or measurement",
+      "description": "Quantities, currency amounts, and measurements are always read as full numbers using the South Asian numbering system."
+    },
+    {
+      "rule": "license_plates",
+      "apply_style": "mixed",
+      "condition": "Number is part of a vehicle license plate",
+      "description": "License plates use mixed reading: letters as letters, and numeric portions as full numbers."
+    },
+    {
+      "rule": "scores",
+      "apply_style": "digit_by_digit_with_implicit_separator",
+      "condition": "Number pair represents a score or result (N-N format)",
+      "description": "Scores are read as individual numbers with a pause (or विरुद्ध in formal speech) replacing the dash."
+    },
+    {
+      "rule": "grouped_with_separators",
+      "apply_style": "grouped_by_separator",
+      "condition": "Number contains dashes or dots as structural separators (e.g., citizenship number, date)",
+      "description": "Numbers with explicit separators are read group-by-group, with each group read as a full number (if short) or digit-by-digit (if long)."
+    }
+  ]
+}

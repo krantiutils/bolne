@@ -1,0 +1,523 @@
+{
+  "description": "Challenging Nepali test items for evaluating TTS robustness (NepTTS-Bench). Covers edge cases that autoregressive TTS models tend to fail on, modeled after the Seed-TTS hard set and J-HARD-TTS-Eval. Categories include tongue twisters, repetitive sequences, very short utterances, long compound words, code-switched text, special punctuation, and rare/archaic vocabulary.",
+  "notes": {
+    "usage": "Use these items as a hard-set evaluation suite for Nepali TTS systems. Each item targets a specific failure mode common in autoregressive models (e.g., attention collapse on repetition, instability on short inputs, mispronunciation of rare words).",
+    "evaluation": "Compare synthesized audio against expected_behavior descriptions. Score on intelligibility, naturalness, and whether the specific challenge was handled correctly.",
+    "difficulty_scale": "easy = most systems handle it; medium = some systems fail; hard = most autoregressive systems fail",
+    "coverage": "7 challenge categories with ~50 total items covering articulatory, length, script-mixing, punctuation, and vocabulary edge cases"
+  },
+  "tongue_twisters": [
+    {
+      "text": "कच्चा काँचको कचौरा कच्चा काँचको कचौरा",
+      "romanization": "kacchā kā̃chko kachaurā kacchā kā̃chko kachaurā",
+      "english": "A raw glass bowl, a raw glass bowl",
+      "category": "tongue_twister",
+      "difficulty": "hard",
+      "challenge_description": "Rapid alternation between /kachch/, /kā̃ch/, and /kachaur/ with similar onset consonants and varying vowel patterns",
+      "expected_behavior": "Clear distinction between kacchā, kā̃chko, and kachaurā with no merging or skipping of repeated segments",
+      "description": "Classic Nepali tongue twister testing velar and palatal affricate articulation"
+    },
+    {
+      "text": "कछुवाको छालाको छत्रीमा कछुवा छ",
+      "romanization": "kachhuwāko chhālāko chhatrīmā kachhuwā chha",
+      "english": "There is a turtle under the umbrella made of turtle skin",
+      "category": "tongue_twister",
+      "difficulty": "hard",
+      "challenge_description": "Dense cluster of aspirated affricates /chh/ in multiple positions with varying vowel contexts",
+      "expected_behavior": "Each /chh/ articulated distinctly; no swallowing of aspiration or merging of छाला and छत्री",
+      "description": "Well-known Nepali tongue twister focusing on the aspirated palatal affricate छ"
+    },
+    {
+      "text": "पक्कापक्की पक्कापक्की भन्नुस् त पक्कापक्की",
+      "romanization": "pakkāpakkī pakkāpakkī bhannusʼ ta pakkāpakkī",
+      "english": "For sure, for sure — say 'for sure' then!",
+      "category": "tongue_twister",
+      "difficulty": "hard",
+      "challenge_description": "Triple repetition of geminate /kk/ in pakkāpakkī triggers attention collapse in autoregressive models",
+      "expected_behavior": "All three repetitions of pakkāpakkī should be clearly and separately articulated without skipping or merging",
+      "description": "Repetitive tongue twister exploiting the geminate stop /kk/ across word boundaries"
+    },
+    {
+      "text": "चिसो चिया चामलको चुल्होमा चढाउ",
+      "romanization": "chiso chiyā chāmalko chulhomā chaḍhāu",
+      "english": "Heat the cold tea on the rice stove",
+      "category": "tongue_twister",
+      "difficulty": "medium",
+      "challenge_description": "Repeated palatal affricate /ch/ onsets in five consecutive words with different vowel follow-ups",
+      "expected_behavior": "Each /ch/-initial word should be distinct; no slurring between chiso, chiyā, chāmal, chulho, chaḍhāu",
+      "description": "Tongue twister testing palatal affricate onset repetition across words"
+    },
+    {
+      "text": "टमाटरको टोकरीमा ठूलो टमाटर",
+      "romanization": "ṭamāṭarko ṭokrīmā ṭhūlo ṭamāṭar",
+      "english": "A big tomato in the tomato basket",
+      "category": "tongue_twister",
+      "difficulty": "medium",
+      "challenge_description": "Dense retroflex stops /ṭ/ and /ṭh/ in sequence; tests retroflex articulation stability",
+      "expected_behavior": "Clear retroflex stops throughout; ठूलो should have distinct aspiration from the unaspirated ट in टमाटर",
+      "description": "Tongue twister focusing on retroflex consonant articulation"
+    },
+    {
+      "text": "भालेकुखुरा र पालेकुखुरा भालेकुखुराले पालेकुखुरालाई खेद्यो",
+      "romanization": "bhālekukhurā ra pālekukhurā bhālekukhurāle pālekukhurālāī khedyo",
+      "english": "The rooster and the hen — the rooster chased the hen",
+      "category": "tongue_twister",
+      "difficulty": "hard",
+      "challenge_description": "Long compound words (भालेकुखुरा, पालेकुखुरा) repeated with case suffixes creating very long tokens",
+      "expected_behavior": "Both compound words articulated fully each time; case suffixes -ले and -लाई should attach naturally",
+      "description": "Tongue twister with long compound animal names and repeated similar-sounding words"
+    },
+    {
+      "text": "साग सग्लो सग्ग सगरमाथा",
+      "romanization": "sāg saglo sagga sagarmāthā",
+      "english": "Greens, the whole thing, tightly, Sagarmatha (Mount Everest)",
+      "category": "tongue_twister",
+      "difficulty": "medium",
+      "challenge_description": "Minimal pair chain with /sāg/, /saglo/, /sagga/, /sagarmāthā/ — tests precise vowel and geminate distinctions",
+      "expected_behavior": "Each word distinct: sāg (long vowel), saglo (short vowel + lo), sagga (geminate), sagarmāthā (full compound)",
+      "description": "Alliterative sequence testing sa- onset with varying codas and vowel lengths"
+    },
+    {
+      "text": "बाख्रा बाख्राको बाख्री बाख्रीको बाख्रो",
+      "romanization": "bākhrā bākhrāko bākhrī bākhrīko bākhro",
+      "english": "Goat, of the goat, she-goat, of the she-goat, he-goat",
+      "category": "tongue_twister",
+      "difficulty": "medium",
+      "challenge_description": "Repeated /bākhr/ root with different gender/case suffixes; tests suffix articulation consistency",
+      "expected_behavior": "Clear distinction between -ā, -āko, -ī, -īko, -o endings on the same root",
+      "description": "Tongue twister testing gender suffix variation on the same root word"
+    }
+  ],
+  "repetitive_sequences": [
+    {
+      "text": "राम रामले राम्रो रामको रामायण राम्ररी पढ्यो",
+      "romanization": "rām rāmle rāmro rāmko rāmāyaṇ rāmrarī paḍhyo",
+      "english": "Ram, Ram nicely read Ram's Ramayana well",
+      "category": "repetitive_sequence",
+      "difficulty": "hard",
+      "challenge_description": "Six consecutive words starting with /rām/; autoregressive models tend to loop or skip tokens",
+      "expected_behavior": "Each rām- word articulated fully and distinctly; no looping, skipping, or truncation",
+      "description": "Dense /rām/ repetition sentence testing attention mechanism stability"
+    },
+    {
+      "text": "बिस्तारै बिस्तारै हिँड्नुहोस्",
+      "romanization": "bistārai bistārai hĩḍnuhos",
+      "english": "Walk slowly, slowly",
+      "category": "repetitive_sequence",
+      "difficulty": "medium",
+      "challenge_description": "Legitimate Nepali reduplication for emphasis; TTS must produce both tokens without merging",
+      "expected_behavior": "Both बिस्तारै tokens should be fully articulated with natural emphasis on the second instance",
+      "description": "Standard Nepali adverb reduplication for intensification"
+    },
+    {
+      "text": "होइन होइन, त्यो होइन, यो पनि होइन",
+      "romanization": "hoina hoina, tyo hoina, yo pani hoina",
+      "english": "No no, that's not it, this isn't either",
+      "category": "repetitive_sequence",
+      "difficulty": "medium",
+      "challenge_description": "Three occurrences of होइन with different prosodic emphasis requirements in each position",
+      "expected_behavior": "First pair emphatic, third with contrastive stress, fourth with finality; each instance clearly pronounced",
+      "description": "Repeated negation in natural conversational Nepali"
+    },
+    {
+      "text": "भन भन भन्छ तर भन्दैन, भने पनि भनेको जस्तो भन्दैन",
+      "romanization": "bhana bhana bhanchha tara bhandaina, bhane pani bhaneko jasto bhandaina",
+      "english": "Says 'say it, say it' but doesn't say; even if said, doesn't say it like it was said",
+      "category": "repetitive_sequence",
+      "difficulty": "hard",
+      "challenge_description": "Multiple conjugations of भन् (bhan-) in rapid succession: भन, भन्छ, भन्दैन, भने, भनेको, भन्दैन",
+      "expected_behavior": "Each verbal form should be distinctly articulated with correct vowel and suffix; no merging of similar forms",
+      "description": "Repetitive verbal conjugation chain testing morphological precision"
+    },
+    {
+      "text": "घर घरमा घरेलु घरघर",
+      "romanization": "ghar gharmā gharelu gharghar",
+      "english": "House, in the house, domestic, every house",
+      "category": "repetitive_sequence",
+      "difficulty": "medium",
+      "challenge_description": "Root /ghar/ appears four times with different suffixes and in compound form",
+      "expected_behavior": "Clear distinction between bare ghar, gharmā (locative), gharelu (adjectival), gharghar (reduplicative)",
+      "description": "Morphological derivation chain from a single root"
+    },
+    {
+      "text": "मलाई मनपर्छ, तिमीलाई मनपर्दैन, उसलाई मनपर्ला",
+      "romanization": "malāī manparchha, timīlāī manpardaina, uslāī manparlā",
+      "english": "I like it, you don't like it, maybe he/she will like it",
+      "category": "repetitive_sequence",
+      "difficulty": "medium",
+      "challenge_description": "मनपर्- (manpar-) repeated three times with different TAM suffixes and different pronoun subjects",
+      "expected_behavior": "Three instances of manpar- should each carry correct suffix pronunciation: -chha, -daina, -lā",
+      "description": "Parallel sentence structure with repeated predicate and varying inflection"
+    },
+    {
+      "text": "काम काम काम, काम मात्रै काम, कामबाट काम, कामकाम गर",
+      "romanization": "kām kām kām, kām mātrai kām, kāmbāṭa kām, kāmkām gar",
+      "english": "Work work work, only work, work from work, get to work",
+      "category": "repetitive_sequence",
+      "difficulty": "hard",
+      "challenge_description": "Extreme repetition of /kām/ (eight occurrences) with minimal intervening material; severe attention test",
+      "expected_behavior": "All eight instances of kām articulated; comma pauses should be observed; no looping or premature stopping",
+      "description": "Extreme repetition stress test with the word काम"
+    },
+    {
+      "text": "दिदी दिदीको दिदी दिदीकी दिदी",
+      "romanization": "didī didīko didī didīkī didī",
+      "english": "Elder sister, elder sister's elder sister, elder sister's elder sister",
+      "category": "repetitive_sequence",
+      "difficulty": "hard",
+      "challenge_description": "Five instances of दिदी with minimal variation; tests whether model can maintain count fidelity",
+      "expected_behavior": "All five दिदी tokens and their postpositions (-को, -की) must be clearly produced",
+      "description": "Kinship term repetition with possessive postpositions"
+    }
+  ],
+  "very_short_utterances": [
+    {
+      "text": "हो।",
+      "romanization": "ho.",
+      "english": "Yes.",
+      "category": "very_short",
+      "difficulty": "medium",
+      "challenge_description": "Single-syllable affirmative; TTS may produce silence, noise, or unnaturally elongated output",
+      "expected_behavior": "Clear, natural-sounding /ho/ with falling intonation and appropriate duration (~300-500ms)",
+      "description": "Most basic Nepali affirmative"
+    },
+    {
+      "text": "छैन।",
+      "romanization": "chhaina.",
+      "english": "No. / It isn't.",
+      "category": "very_short",
+      "difficulty": "medium",
+      "challenge_description": "Two-syllable negative; must sound complete and natural despite brevity",
+      "expected_behavior": "Natural falling intonation on chhaina with clear diphthong /ai/",
+      "description": "Common Nepali negative existential"
+    },
+    {
+      "text": "किन?",
+      "romanization": "kina?",
+      "english": "Why?",
+      "category": "very_short",
+      "difficulty": "medium",
+      "challenge_description": "Single-word question; requires rising intonation from very little material",
+      "expected_behavior": "Rising question intonation on /kina/ with natural duration",
+      "description": "Common question word, very short"
+    },
+    {
+      "text": "आउनुहोस्।",
+      "romanization": "āunuhos.",
+      "english": "Please come.",
+      "category": "very_short",
+      "difficulty": "easy",
+      "challenge_description": "Single polite imperative word; longer than minimal but still only one word",
+      "expected_behavior": "Natural polite imperative intonation with clear syllable boundaries: ā-u-nu-hos",
+      "description": "Polite imperative form, single word but multi-syllabic"
+    },
+    {
+      "text": "धन्यवाद।",
+      "romanization": "dhanyavād.",
+      "english": "Thank you.",
+      "category": "very_short",
+      "difficulty": "easy",
+      "challenge_description": "Common single-word expression; should sound natural and complete",
+      "expected_behavior": "Warm, natural dhanyavād with appropriate prosody for gratitude expression",
+      "description": "Standard Nepali thanks expression"
+    },
+    {
+      "text": "हैन।",
+      "romanization": "haina.",
+      "english": "No.",
+      "category": "very_short",
+      "difficulty": "medium",
+      "challenge_description": "Two-syllable negation; very short but must carry clear assertive intonation",
+      "expected_behavior": "Clear /haina/ with falling assertive intonation",
+      "description": "Nepali negation particle, often used to contradict"
+    },
+    {
+      "text": "के?",
+      "romanization": "ke?",
+      "english": "What?",
+      "category": "very_short",
+      "difficulty": "hard",
+      "challenge_description": "Single-syllable question word; extremely short, high risk of TTS producing garbage output",
+      "expected_behavior": "Clean rising-intonation /ke/ with no artifacts, appropriate duration",
+      "description": "Shortest common Nepali question word"
+    },
+    {
+      "text": "माफ गर्नुहोस्।",
+      "romanization": "māph garnuhos.",
+      "english": "Please forgive me. / Excuse me.",
+      "category": "very_short",
+      "difficulty": "easy",
+      "challenge_description": "Two-word polite apology; tests whether minimal multi-word input produces natural prosody",
+      "expected_behavior": "Natural apologetic tone with appropriate pause weight between māph and garnuhos",
+      "description": "Common polite apology expression"
+    }
+  ],
+  "long_compound_words": [
+    {
+      "text": "विद्यालयव्यवस्थापनसमिति",
+      "romanization": "vidyālayavyavasthāpanasamiti",
+      "english": "school management committee",
+      "category": "long_compound",
+      "difficulty": "hard",
+      "challenge_description": "Four-morpheme compound (विद्यालय+व्यवस्थापन+समिति) with 12 syllables; tests long-form articulation",
+      "expected_behavior": "All morpheme boundaries clear: vidyā-laya-vyavasthā-pana-samiti; no syllable dropping or merging",
+      "description": "Common administrative compound word used in Nepali education sector"
+    },
+    {
+      "text": "राष्ट्रियप्रसारणप्रणाली",
+      "romanization": "rāṣṭriyaprasāraṇapraṇālī",
+      "english": "national broadcasting system",
+      "category": "long_compound",
+      "difficulty": "hard",
+      "challenge_description": "Three-morpheme compound with consonant clusters /ṣṭr/ and /pr/; 11 syllables",
+      "expected_behavior": "Correct pronunciation of राष्ट्रिय with /ṣṭr/ cluster, clear compound boundaries",
+      "description": "Formal compound used in media and government contexts"
+    },
+    {
+      "text": "संविधानसभासदस्य",
+      "romanization": "saṃvidhānasabhāsadasya",
+      "english": "constituent assembly member",
+      "category": "long_compound",
+      "difficulty": "hard",
+      "challenge_description": "Three-morpheme compound (संविधान+सभा+सदस्य) with 10 syllables and nasal onset",
+      "expected_behavior": "Clear nasal /ṃ/ in saṃvidhāna; distinct morpheme boundaries throughout",
+      "description": "Political compound term from Nepal's constitution-writing era"
+    },
+    {
+      "text": "जनस्वास्थ्यसेवाकार्यालय",
+      "romanization": "janasvāsthyasevākāryālaya",
+      "english": "public health service office",
+      "category": "long_compound",
+      "difficulty": "hard",
+      "challenge_description": "Four-morpheme compound (जन+स्वास्थ्य+सेवा+कार्यालय) with complex cluster /sthya/ and 12 syllables",
+      "expected_behavior": "Correct articulation of स्वास्थ्य cluster; all four morphemes distinct and correctly stressed",
+      "description": "Government office compound name, very common in administrative Nepali"
+    },
+    {
+      "text": "दूरसञ्चारप्राधिकरण",
+      "romanization": "dūrasañchāraprādhikaraṇ",
+      "english": "telecommunications authority",
+      "category": "long_compound",
+      "difficulty": "hard",
+      "challenge_description": "Three-morpheme compound (दूर+सञ्चार+प्राधिकरण) with nasalized /ñch/ and retroflex /ṇ/ final",
+      "expected_behavior": "Clear /ñch/ nasal-affricate sequence; final retroflex /ṇ/ correctly produced",
+      "description": "Name of Nepal's telecom regulatory body (NTA)"
+    },
+    {
+      "text": "प्रधानमन्त्रीरोजगारकार्यक्रम",
+      "romanization": "pradhānamantrīrojagārakāryakram",
+      "english": "Prime Minister Employment Programme",
+      "category": "long_compound",
+      "difficulty": "hard",
+      "challenge_description": "Four-morpheme compound (प्रधानमन्त्री+रोजगार+कार्यक्रम) with 14 syllables; one of the longest common compounds",
+      "expected_behavior": "Full articulation of all 14 syllables; no truncation or syllable swallowing in the middle",
+      "description": "Name of a major Nepali government employment program"
+    }
+  ],
+  "mixed_script_code_switched": [
+    {
+      "text": "Facebook मा post गर्नुहोस्",
+      "romanization": "Facebook mā post garnuhos",
+      "english": "Please post on Facebook",
+      "category": "mixed_script",
+      "difficulty": "medium",
+      "challenge_description": "Latin script words (Facebook, post) embedded in Devanagari sentence; tests script boundary handling",
+      "expected_behavior": "Facebook and post pronounced with approximated English phonology; Nepali particles natural",
+      "description": "Extremely common in modern Nepali digital communication"
+    },
+    {
+      "text": "Meeting cancel भयो, email check गर्नुस्",
+      "romanization": "meeting cancel bhayo, email check garnus",
+      "english": "The meeting got cancelled, check your email",
+      "category": "mixed_script",
+      "difficulty": "medium",
+      "challenge_description": "Multiple English words (meeting, cancel, email, check) in a single Nepali sentence with Nepali verb forms",
+      "expected_behavior": "Smooth transitions between English loan words and Nepali inflected verbs; natural prosody throughout",
+      "description": "Common office/workplace Nepali with heavy English borrowing"
+    },
+    {
+      "text": "उसले 3 वटा किताब र 2 कपी किन्यो",
+      "romanization": "usle tīnwaṭā kitāb ra duī kapī kinyo",
+      "english": "He bought 3 books and 2 copies",
+      "category": "mixed_script",
+      "difficulty": "medium",
+      "challenge_description": "Arabic numerals (3, 2) mixed with Devanagari; TTS must verbalize numbers in Nepali",
+      "expected_behavior": "Numbers read as Nepali: 3 → तीन (tīn), 2 → दुई (duī); natural integration with surrounding text",
+      "description": "Mixed numeral and Devanagari text, very common in casual writing"
+    },
+    {
+      "text": "Zoom call मा join हुनुहोस्, password chai 123456 हो",
+      "romanization": "Zoom call mā join hunuhos, password chai ek lākh teīs hazār chār sau chappanna ho",
+      "english": "Join the Zoom call, the password is 123456",
+      "category": "mixed_script",
+      "difficulty": "hard",
+      "challenge_description": "Multiple English tech terms plus a numeric string; tests code-switching and number reading",
+      "expected_behavior": "English terms (Zoom, call, join, password) with Nepali phonology; 123456 read as a digit sequence or number",
+      "description": "Modern workplace Nepali with tech terminology and numeric codes"
+    },
+    {
+      "text": "YouTube मा video upload गरेर subscribe गर्नुहोस्",
+      "romanization": "YouTube mā video upload garera subscribe garnuhos",
+      "english": "Upload a video on YouTube and subscribe",
+      "category": "mixed_script",
+      "difficulty": "medium",
+      "challenge_description": "Four consecutive English words (video upload garera subscribe) with Nepali verbal suffixes",
+      "expected_behavior": "English nouns with approximated Nepali phonology; Nepali verb forms (-एर, -नुहोस्) attach naturally",
+      "description": "Social media Nepali, very common in influencer/creator speech"
+    },
+    {
+      "text": "सन् 2081 साल भदौ 15 गते बिहीबार",
+      "romanization": "san dui hazār ekāsī sāl bhadau pandhra gate bihībār",
+      "english": "Thursday, Bhadau 15, 2081 BS",
+      "category": "mixed_script",
+      "difficulty": "medium",
+      "challenge_description": "Bikram Sambat date with numerals; requires correct Nepali number reading and date format",
+      "expected_behavior": "2081 read as दुई हजार एकासी; 15 as पन्ध्र; day and month names in natural Nepali",
+      "description": "Standard Nepali Bikram Sambat date format with Arabic numerals"
+    },
+    {
+      "text": "A+ blood group भएको certificate चाहिन्छ",
+      "romanization": "A plus blood group bhaeko certificate chāhinchha",
+      "english": "A certificate showing A+ blood group is needed",
+      "category": "mixed_script",
+      "difficulty": "hard",
+      "challenge_description": "Latin letter with symbol (A+), English medical terms, and Devanagari; multi-script challenge",
+      "expected_behavior": "A+ read as 'A plus' or 'A positive'; blood group and certificate in English phonology; Nepali verbs natural",
+      "description": "Medical/administrative Nepali with English terminology"
+    },
+    {
+      "text": "Wi-Fi को speed 50 Mbps छ",
+      "romanization": "Wi-Fi ko speed pacchās Mbps chha",
+      "english": "The Wi-Fi speed is 50 Mbps",
+      "category": "mixed_script",
+      "difficulty": "hard",
+      "challenge_description": "Hyphenated English word (Wi-Fi), abbreviation (Mbps), numeral (50), and Devanagari mixed together",
+      "expected_behavior": "Wi-Fi, speed, Mbps pronounced in English phonology; 50 as पचास; को and छ in natural Nepali",
+      "description": "Tech-context Nepali with units and abbreviations"
+    }
+  ],
+  "special_characters_punctuation": [
+    {
+      "text": "उसले भन्यो — \"म जान्छु!\"",
+      "romanization": "usle bhanyo — \"ma jānchhu!\"",
+      "english": "He said — \"I will go!\"",
+      "category": "special_punctuation",
+      "difficulty": "medium",
+      "challenge_description": "Em dash and quoted speech with exclamation; tests punctuation-to-prosody mapping",
+      "expected_behavior": "Pause at em dash; quoted speech with distinct voice quality or pitch shift; exclamation with emphasis",
+      "description": "Direct speech with em dash and quotation marks"
+    },
+    {
+      "text": "नेपाल (आधिकारिक नाम: सङ्घीय लोकतान्त्रिक गणतन्त्र नेपाल) दक्षिण एसियाको देश हो।",
+      "romanization": "nepāl (ādhikārik nām: saṅghīya loktāntrik gaṇtantra nepāl) dakṣiṇ esiyāko desh ho.",
+      "english": "Nepal (official name: Federal Democratic Republic of Nepal) is a country in South Asia.",
+      "category": "special_punctuation",
+      "difficulty": "hard",
+      "challenge_description": "Parenthetical aside with colon; requires natural prosodic bracketing of the parenthetical content",
+      "expected_behavior": "Parenthetical content read with lowered pitch and faster pace; main clause resumes naturally after closing paren",
+      "description": "Encyclopedia-style sentence with parenthetical clarification"
+    },
+    {
+      "text": "के... के भन्ने... बिर्सें!",
+      "romanization": "ke... ke bhanne... birsẽ!",
+      "english": "What... what was I saying... I forgot!",
+      "category": "special_punctuation",
+      "difficulty": "medium",
+      "challenge_description": "Ellipses indicating hesitation pauses followed by exclamation; tests hesitation prosody",
+      "expected_behavior": "Natural hesitation pauses at ellipses; final exclamation with surprise/frustration emphasis",
+      "description": "Conversational Nepali with hesitation markers and exclamation"
+    },
+    {
+      "text": "\"तिमी आउँछौ कि आउँदैनौ?\" — उसले सोध्यो।",
+      "romanization": "\"timī āũchhau ki āũdainau?\" — usle sodhyo.",
+      "english": "\"Are you coming or not?\" — she asked.",
+      "category": "special_punctuation",
+      "difficulty": "medium",
+      "challenge_description": "Quoted question with alternative question (कि) inside quotes, followed by attribution with em dash",
+      "expected_behavior": "Rising intonation on the quoted question; natural pause at em dash; attribution in neutral narrative tone",
+      "description": "Quoted question with alternative construction and speech attribution"
+    },
+    {
+      "text": "उसको उमेर ४५–५० वर्ष जति हो; ठ्याक्कै थाहा छैन।",
+      "romanization": "usko umer 45–50 barṣa jati ho; ṭhyākkay thāhā chhaina.",
+      "english": "His age is about 45–50 years; I don't know exactly.",
+      "category": "special_punctuation",
+      "difficulty": "medium",
+      "challenge_description": "En dash for number range, Devanagari numerals, and semicolon; tests range reading and clause boundary",
+      "expected_behavior": "45–50 read as 'पैँतालीसदेखि पचास' with natural range intonation; semicolon produces clause boundary pause",
+      "description": "Sentence with numeric range, semicolon clause boundary, and Devanagari numerals"
+    },
+    {
+      "text": "नेपाली भाषा — जसलाई 'खस कुरा' पनि भनिन्छ — दक्षिण एसियाली भाषा हो।",
+      "romanization": "nepālī bhāṣā — jaslāī 'khas kurā' pani bhaninchha — dakṣiṇ esiyālī bhāṣā ho.",
+      "english": "Nepali language — also called 'Khas Kura' — is a South Asian language.",
+      "category": "special_punctuation",
+      "difficulty": "hard",
+      "challenge_description": "Double em dash parenthetical with single quotes inside; complex prosodic structure",
+      "expected_behavior": "Em dash parenthetical read with lowered pitch; single-quoted term slightly emphasized; smooth return to main clause",
+      "description": "Academic-style sentence with em dash parenthetical and embedded quotes"
+    }
+  ],
+  "rare_archaic_words": [
+    {
+      "text": "अभिलेखागारमा पुरातात्त्विक दस्तावेजहरू सुरक्षित राखिएका छन्।",
+      "romanization": "abhilekhāgārmā purātāttwik dastāvejharū surakṣit rākhiekā chhan.",
+      "english": "Archaeological documents are kept safe in the archive.",
+      "category": "rare_archaic",
+      "difficulty": "hard",
+      "challenge_description": "Rare Sanskrit-origin words अभिलेखागार and पुरातात्त्विक with complex consonant clusters",
+      "expected_behavior": "Clear articulation of अभिलेखागार (abhi-lekhā-gār) and पुरातात्त्विक (purā-tāttvik) with correct clusters",
+      "description": "Formal/literary Nepali using Sanskrit-origin archival terminology"
+    },
+    {
+      "text": "सर्वोच्च न्यायालयको न्यायाधीशले यथास्थितिमा रिट जारी गर्नुभयो।",
+      "romanization": "sarbochcha nyāyālayko nyāyādhīshle yathāsthitimā riṭ jārī garnubhayo.",
+      "english": "The Supreme Court justice issued a writ in the status quo.",
+      "category": "rare_archaic",
+      "difficulty": "hard",
+      "challenge_description": "Legal Nepali with Sanskrit compounds सर्वोच्च, न्यायाधीश, यथास्थिति; rare in casual speech",
+      "expected_behavior": "Correct pronunciation of legal terms; सर्वोच्च with geminate /chch/; न्यायाधीश with /nyāyā-dhīsh/",
+      "description": "Formal legal Nepali from Supreme Court context"
+    },
+    {
+      "text": "राजदरबारको पुरातत्त्वशास्त्रीय अध्ययन सम्पन्न भयो।",
+      "romanization": "rājdarbārko purātattvashāstrīya adhyayan sampanna bhayo.",
+      "english": "The archaeological study of the royal palace was completed.",
+      "category": "rare_archaic",
+      "difficulty": "hard",
+      "challenge_description": "पुरातत्त्वशास्त्रीय is an extremely long Sanskrit compound with /ttv/ and /shāstr/ clusters",
+      "expected_behavior": "Full articulation of purā-tattva-shāstrīya without simplifying the consonant clusters",
+      "description": "Academic Nepali with archaeology terminology"
+    },
+    {
+      "text": "अन्तर्राष्ट्रिय मानवाधिकार प्रतिष्ठानको प्रतिवेदन प्रकाशित भएको छ।",
+      "romanization": "antarrāṣṭriya mānavādhikār pratiṣṭhānko pratibedan prakāshit bhaeko chha.",
+      "english": "The report of the international human rights institution has been published.",
+      "category": "rare_archaic",
+      "difficulty": "hard",
+      "challenge_description": "Dense formal vocabulary: अन्तर्राष्ट्रिय, मानवाधिकार, प्रतिष्ठान, प्रतिवेदन — all Sanskrit compounds",
+      "expected_behavior": "Each Sanskrit compound correctly segmented and pronounced; /ṣṭr/ cluster in राष्ट्रिय and /ṣṭh/ in प्रतिष्ठान clear",
+      "description": "Formal institutional Nepali from human rights / NGO context"
+    },
+    {
+      "text": "वेदान्तदर्शनको ज्ञानमीमांसा अत्यन्त गहन विषय हो।",
+      "romanization": "vedāntadarshanko jñānamīmāṃsā atyanta gahana biṣaya ho.",
+      "english": "The epistemology of Vedanta philosophy is a very profound subject.",
+      "category": "rare_archaic",
+      "difficulty": "hard",
+      "challenge_description": "Philosophical Sanskrit terms: वेदान्तदर्शन, ज्ञानमीमांसा — extremely rare in spoken Nepali",
+      "expected_behavior": "Correct pronunciation of ज्ञ as /jña/ (not /gya/); मीमांसा with nasalized vowel; all clusters intact",
+      "description": "Philosophical/academic Nepali using classical Sanskrit terminology"
+    },
+    {
+      "text": "लोकसेवा आयोगको परीक्षामा निबन्धात्मक प्रश्न सोधिन्छ।",
+      "romanization": "lokasevā āyogko parīkṣāmā nibandhātmak prashna sodhinchha.",
+      "english": "Essay-type questions are asked in the Public Service Commission exam.",
+      "category": "rare_archaic",
+      "difficulty": "medium",
+      "challenge_description": "Formal administrative terms: लोकसेवा आयोग, निबन्धात्मक — common in government but rare in casual speech",
+      "expected_behavior": "निबन्धात्मक correctly produced with /nibandh-ātmak/ boundary; formal register prosody",
+      "description": "Government examination Nepali with formal administrative vocabulary"
+    }
+  ]
+}

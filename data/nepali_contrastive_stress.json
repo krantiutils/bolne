@@ -1,0 +1,553 @@
+{
+  "description": "Nepali contrastive stress and emphasis test pairs for TTS benchmark evaluation (NepTTS-Bench). Tests whether a TTS system can correctly shift prosodic emphasis to change meaning or pragmatic focus, modeled after StressTest and EmphAssess benchmarks for English.",
+  "notes": {
+    "usage": "Each entry tests prosodic emphasis placement. Use variations to evaluate whether TTS produces audibly distinct stress patterns that convey the intended pragmatic meaning.",
+    "evaluation": "A good TTS system should produce perceptibly different prosodic contours when different words carry contrastive stress. Listeners should be able to identify which word is emphasized.",
+    "emphasis_marking": "Emphasized words are marked with ** ** in sentence_with_emphasis fields. In actual TTS input, emphasis may be conveyed via SSML <emphasis> tags or prosodic markup.",
+    "coverage": "Covers focus/emphasis shift (फोकस परिवर्तन), structurally ambiguous contrastive pairs (विरोधाभासी जोडी), and corrective emphasis (सुधारात्मक बल)",
+    "romanization": "Romanization follows standard Nepali transliteration conventions used in linguistics"
+  },
+  "focus_emphasis_shift": [
+    {
+      "base_sentence": "रामले किताब किन्यो।",
+      "romanization": "Rāmle kitāb kinyo.",
+      "english": "Ram bought a book.",
+      "variations": [
+        {
+          "emphasized_word": "रामले",
+          "sentence_with_emphasis": "**रामले** किताब किन्यो।",
+          "pragmatic_meaning": "It was RAM who bought the book (not someone else)",
+          "nepali_context": "कसले किताब किन्यो?"
+        },
+        {
+          "emphasized_word": "किताब",
+          "sentence_with_emphasis": "रामले **किताब** किन्यो।",
+          "pragmatic_meaning": "Ram bought a BOOK (not something else)",
+          "nepali_context": "रामले के किन्यो?"
+        },
+        {
+          "emphasized_word": "किन्यो",
+          "sentence_with_emphasis": "रामले किताब **किन्यो**।",
+          "pragmatic_meaning": "Ram BOUGHT the book (didn't borrow or steal it)",
+          "nepali_context": "रामले किताब चोर्यो कि किन्यो?"
+        }
+      ]
+    },
+    {
+      "base_sentence": "सीताले भात पकाइन्।",
+      "romanization": "Sītāle bhāt pakāin.",
+      "english": "Sita cooked rice.",
+      "variations": [
+        {
+          "emphasized_word": "सीताले",
+          "sentence_with_emphasis": "**सीताले** भात पकाइन्।",
+          "pragmatic_meaning": "It was SITA who cooked the rice (not someone else)",
+          "nepali_context": "कसले भात पकायो?"
+        },
+        {
+          "emphasized_word": "भात",
+          "sentence_with_emphasis": "सीताले **भात** पकाइन्।",
+          "pragmatic_meaning": "Sita cooked RICE (not dal or vegetables)",
+          "nepali_context": "सीताले के पकाइन्?"
+        },
+        {
+          "emphasized_word": "पकाइन्",
+          "sentence_with_emphasis": "सीताले भात **पकाइन्**।",
+          "pragmatic_meaning": "Sita COOKED the rice (didn't just wash it)",
+          "nepali_context": "सीताले भात धोइन् कि पकाइन्?"
+        }
+      ]
+    },
+    {
+      "base_sentence": "हरिले हिजो गाडी चलायो।",
+      "romanization": "Harile hijo gāḍī calāyo.",
+      "english": "Hari drove the car yesterday.",
+      "variations": [
+        {
+          "emphasized_word": "हरिले",
+          "sentence_with_emphasis": "**हरिले** हिजो गाडी चलायो।",
+          "pragmatic_meaning": "It was HARI who drove the car yesterday (not someone else)",
+          "nepali_context": "कसले हिजो गाडी चलायो?"
+        },
+        {
+          "emphasized_word": "हिजो",
+          "sentence_with_emphasis": "हरिले **हिजो** गाडी चलायो।",
+          "pragmatic_meaning": "Hari drove the car YESTERDAY (not today or the day before)",
+          "nepali_context": "हरिले कहिले गाडी चलायो?"
+        },
+        {
+          "emphasized_word": "गाडी",
+          "sentence_with_emphasis": "हरिले हिजो **गाडी** चलायो।",
+          "pragmatic_meaning": "Hari drove a CAR yesterday (not a motorcycle or bicycle)",
+          "nepali_context": "हरिले हिजो के चलायो?"
+        }
+      ]
+    },
+    {
+      "base_sentence": "आमाले बजारबाट तरकारी ल्याउनुभयो।",
+      "romanization": "Āmāle bajārbāṭa tarkārī lyāunubhayo.",
+      "english": "Mother brought vegetables from the market.",
+      "variations": [
+        {
+          "emphasized_word": "आमाले",
+          "sentence_with_emphasis": "**आमाले** बजारबाट तरकारी ल्याउनुभयो।",
+          "pragmatic_meaning": "It was MOTHER who brought the vegetables (not father or someone else)",
+          "nepali_context": "कसले बजारबाट तरकारी ल्याउनुभयो?"
+        },
+        {
+          "emphasized_word": "बजारबाट",
+          "sentence_with_emphasis": "आमाले **बजारबाट** तरकारी ल्याउनुभयो।",
+          "pragmatic_meaning": "Mother brought vegetables from THE MARKET (not from the garden or neighbor)",
+          "nepali_context": "आमाले कहाँबाट तरकारी ल्याउनुभयो?"
+        },
+        {
+          "emphasized_word": "तरकारी",
+          "sentence_with_emphasis": "आमाले बजारबाट **तरकारी** ल्याउनुभयो।",
+          "pragmatic_meaning": "Mother brought VEGETABLES from the market (not fruit or meat)",
+          "nepali_context": "आमाले बजारबाट के ल्याउनुभयो?"
+        }
+      ]
+    },
+    {
+      "base_sentence": "दाइले भोलि काठमाडौं जानुहुन्छ।",
+      "romanization": "Dāile bholi Kāṭhmāḍaũ jānuhuncha.",
+      "english": "Elder brother is going to Kathmandu tomorrow.",
+      "variations": [
+        {
+          "emphasized_word": "भोलि",
+          "sentence_with_emphasis": "दाइले **भोलि** काठमाडौं जानुहुन्छ।",
+          "pragmatic_meaning": "Elder brother is going to Kathmandu TOMORROW (not today or next week)",
+          "nepali_context": "दाइ कहिले काठमाडौं जानुहुन्छ?"
+        },
+        {
+          "emphasized_word": "काठमाडौं",
+          "sentence_with_emphasis": "दाइले भोलि **काठमाडौं** जानुहुन्छ।",
+          "pragmatic_meaning": "Elder brother is going to KATHMANDU tomorrow (not Pokhara or Biratnagar)",
+          "nepali_context": "दाइ भोलि कहाँ जानुहुन्छ?"
+        }
+      ]
+    },
+    {
+      "base_sentence": "उसले मलाई पैसा दियो।",
+      "romanization": "Usle malāī paisā diyo.",
+      "english": "He gave me money.",
+      "variations": [
+        {
+          "emphasized_word": "उसले",
+          "sentence_with_emphasis": "**उसले** मलाई पैसा दियो।",
+          "pragmatic_meaning": "HE gave me money (not someone else)",
+          "nepali_context": "कसले तिमीलाई पैसा दियो?"
+        },
+        {
+          "emphasized_word": "मलाई",
+          "sentence_with_emphasis": "उसले **मलाई** पैसा दियो।",
+          "pragmatic_meaning": "He gave ME money (not you or someone else)",
+          "nepali_context": "उसले कसलाई पैसा दियो?"
+        },
+        {
+          "emphasized_word": "पैसा",
+          "sentence_with_emphasis": "उसले मलाई **पैसा** दियो।",
+          "pragmatic_meaning": "He gave me MONEY (not a gift or food)",
+          "nepali_context": "उसले तिमीलाई के दियो?"
+        }
+      ]
+    },
+    {
+      "base_sentence": "बच्चाहरूले बगैँचामा खेल्छन्।",
+      "romanization": "Baccāharūle bagaĩcāmā khelchan.",
+      "english": "The children play in the garden.",
+      "variations": [
+        {
+          "emphasized_word": "बच्चाहरूले",
+          "sentence_with_emphasis": "**बच्चाहरूले** बगैँचामा खेल्छन्।",
+          "pragmatic_meaning": "It's the CHILDREN who play in the garden (not adults)",
+          "nepali_context": "बगैँचामा को खेल्छ?"
+        },
+        {
+          "emphasized_word": "बगैँचामा",
+          "sentence_with_emphasis": "बच्चाहरूले **बगैँचामा** खेल्छन्।",
+          "pragmatic_meaning": "The children play IN THE GARDEN (not on the road or at school)",
+          "nepali_context": "बच्चाहरू कहाँ खेल्छन्?"
+        }
+      ]
+    },
+    {
+      "base_sentence": "गुरुले विद्यार्थीलाई किताब दिनुभयो।",
+      "romanization": "Gurule vidyārthīlāī kitāb dinubhayo.",
+      "english": "The teacher gave the student a book.",
+      "variations": [
+        {
+          "emphasized_word": "गुरुले",
+          "sentence_with_emphasis": "**गुरुले** विद्यार्थीलाई किताब दिनुभयो।",
+          "pragmatic_meaning": "It was the TEACHER who gave the student a book (not the principal)",
+          "nepali_context": "कसले विद्यार्थीलाई किताब दिनुभयो?"
+        },
+        {
+          "emphasized_word": "विद्यार्थीलाई",
+          "sentence_with_emphasis": "गुरुले **विद्यार्थीलाई** किताब दिनुभयो।",
+          "pragmatic_meaning": "The teacher gave the STUDENT a book (not the parent or colleague)",
+          "nepali_context": "गुरुले कसलाई किताब दिनुभयो?"
+        },
+        {
+          "emphasized_word": "किताब",
+          "sentence_with_emphasis": "गुरुले विद्यार्थीलाई **किताब** दिनुभयो।",
+          "pragmatic_meaning": "The teacher gave the student a BOOK (not a pen or notebook)",
+          "nepali_context": "गुरुले विद्यार्थीलाई के दिनुभयो?"
+        }
+      ]
+    },
+    {
+      "base_sentence": "म भोलि विद्यालय जान्छु।",
+      "romanization": "Ma bholi vidyālaya jānchu.",
+      "english": "I will go to school tomorrow.",
+      "variations": [
+        {
+          "emphasized_word": "म",
+          "sentence_with_emphasis": "**म** भोलि विद्यालय जान्छु।",
+          "pragmatic_meaning": "I will go to school tomorrow (not you or someone else)",
+          "nepali_context": "भोलि को विद्यालय जान्छ?"
+        },
+        {
+          "emphasized_word": "भोलि",
+          "sentence_with_emphasis": "म **भोलि** विद्यालय जान्छु।",
+          "pragmatic_meaning": "I will go to school TOMORROW (not today or day after)",
+          "nepali_context": "तिमी कहिले विद्यालय जान्छौ?"
+        },
+        {
+          "emphasized_word": "विद्यालय",
+          "sentence_with_emphasis": "म भोलि **विद्यालय** जान्छु।",
+          "pragmatic_meaning": "I will go to SCHOOL tomorrow (not the office or market)",
+          "nepali_context": "तिमी भोलि कहाँ जान्छौ?"
+        }
+      ]
+    },
+    {
+      "base_sentence": "दिदीले रातो साडी लगाउनुभयो।",
+      "romanization": "Didīle rāto sāḍī lagāunubhayo.",
+      "english": "Elder sister wore a red sari.",
+      "variations": [
+        {
+          "emphasized_word": "दिदीले",
+          "sentence_with_emphasis": "**दिदीले** रातो साडी लगाउनुभयो।",
+          "pragmatic_meaning": "It was ELDER SISTER who wore the red sari (not mother or younger sister)",
+          "nepali_context": "कसले रातो साडी लगाउनुभयो?"
+        },
+        {
+          "emphasized_word": "रातो",
+          "sentence_with_emphasis": "दिदीले **रातो** साडी लगाउनुभयो।",
+          "pragmatic_meaning": "Elder sister wore a RED sari (not green or blue)",
+          "nepali_context": "दिदीले कस्तो साडी लगाउनुभयो?"
+        },
+        {
+          "emphasized_word": "साडी",
+          "sentence_with_emphasis": "दिदीले रातो **साडी** लगाउनुभयो।",
+          "pragmatic_meaning": "Elder sister wore a red SARI (not a kurta or dress)",
+          "nepali_context": "दिदीले के लगाउनुभयो?"
+        }
+      ]
+    },
+    {
+      "base_sentence": "बुबाले घरमा खाना बनाउनुभयो।",
+      "romanization": "Bubāle gharmā khānā banāunubhayo.",
+      "english": "Father cooked food at home.",
+      "variations": [
+        {
+          "emphasized_word": "बुबाले",
+          "sentence_with_emphasis": "**बुबाले** घरमा खाना बनाउनुभयो।",
+          "pragmatic_meaning": "It was FATHER who cooked food at home (surprisingly, not mother)",
+          "nepali_context": "कसले घरमा खाना बनाउनुभयो?"
+        },
+        {
+          "emphasized_word": "घरमा",
+          "sentence_with_emphasis": "बुबाले **घरमा** खाना बनाउनुभयो।",
+          "pragmatic_meaning": "Father cooked food AT HOME (not at the restaurant or office)",
+          "nepali_context": "बुबाले कहाँ खाना बनाउनुभयो?"
+        }
+      ]
+    },
+    {
+      "base_sentence": "उनीहरूले तीन वटा घर बनाए।",
+      "romanization": "Unīharūle tīn waṭā ghar banāe.",
+      "english": "They built three houses.",
+      "variations": [
+        {
+          "emphasized_word": "तीन वटा",
+          "sentence_with_emphasis": "उनीहरूले **तीन वटा** घर बनाए।",
+          "pragmatic_meaning": "They built THREE houses (not two or four)",
+          "nepali_context": "उनीहरूले कति वटा घर बनाए?"
+        },
+        {
+          "emphasized_word": "घर",
+          "sentence_with_emphasis": "उनीहरूले तीन वटा **घर** बनाए।",
+          "pragmatic_meaning": "They built three HOUSES (not shops or temples)",
+          "nepali_context": "उनीहरूले तीन वटा के बनाए?"
+        }
+      ]
+    }
+  ],
+  "contrastive_pairs": [
+    {
+      "sentence": "ठूलो मान्छेको छोरा",
+      "romanization": "ṭhūlo mānccheko chorā",
+      "variation_a": {
+        "sentence_with_emphasis": "**ठूलो** मान्छेको छोरा",
+        "meaning": "the tall/big man's son",
+        "english": "The son of the big man (ठूलो modifies physical size of मान्छे)",
+        "description": "Emphasis on ठूलो singles it out as an adjective modifying the man's physical attribute"
+      },
+      "variation_b": {
+        "sentence_with_emphasis": "ठूलो **मान्छेको** छोरा",
+        "meaning": "the important/great person's son",
+        "english": "The son of the important person (ठूलो मान्छे as a compound meaning 'big shot')",
+        "description": "Emphasis on मान्छे treats ठूलो मान्छे as a compound meaning an important or influential person"
+      }
+    },
+    {
+      "sentence": "नयाँ नेपालको कथा",
+      "romanization": "nayā̃ Nepālko kathā",
+      "variation_a": {
+        "sentence_with_emphasis": "**नयाँ** नेपालको कथा",
+        "meaning": "the story of new Nepal",
+        "english": "The story of a new Nepal (नयाँ modifies नेपाल)",
+        "description": "Emphasis on नयाँ implies a transformed or changed Nepal"
+      },
+      "variation_b": {
+        "sentence_with_emphasis": "नयाँ **नेपालको** कथा",
+        "meaning": "a new story about Nepal",
+        "english": "A new story about Nepal (नयाँ modifies कथा)",
+        "description": "Emphasis on नेपालको shifts नयाँ to modify the story rather than Nepal"
+      }
+    },
+    {
+      "sentence": "सानो बच्चाको खेलौना",
+      "romanization": "sāno baccāko khelaunā",
+      "variation_a": {
+        "sentence_with_emphasis": "**सानो** बच्चाको खेलौना",
+        "meaning": "the small child's toy",
+        "english": "The toy belonging to the small/young child (सानो modifies बच्चा)",
+        "description": "Emphasis on सानो indicates the child's age or size"
+      },
+      "variation_b": {
+        "sentence_with_emphasis": "सानो **बच्चाको** खेलौना",
+        "meaning": "the small toy for a child",
+        "english": "A small toy for children (सानो modifies खेलौना)",
+        "description": "Emphasis on बच्चाको shifts the adjective to modify the toy's size"
+      }
+    },
+    {
+      "sentence": "रामले श्यामलाई मार्यो भन्यो।",
+      "romanization": "Rāmle Śyāmlāī māryo bhanyo.",
+      "variation_a": {
+        "sentence_with_emphasis": "**रामले** श्यामलाई मार्यो भन्यो।",
+        "meaning": "Ram said he hit Shyam",
+        "english": "Ram said that [he/someone] hit Shyam (रामले is the subject of भन्यो)",
+        "description": "Emphasis on रामले clarifies Ram as the sayer — Ram reported the hitting"
+      },
+      "variation_b": {
+        "sentence_with_emphasis": "रामले श्यामलाई **मार्यो** भन्यो।",
+        "meaning": "Ram said Shyam was hit/killed",
+        "english": "Ram said that Shyam was HIT (emphasis on the act of hitting, not the saying)",
+        "description": "Emphasis on मार्यो highlights the violent action as the new/important information"
+      }
+    },
+    {
+      "sentence": "मेरो पुरानो साथीको घर",
+      "romanization": "mero purāno sāthīko ghar",
+      "variation_a": {
+        "sentence_with_emphasis": "मेरो **पुरानो** साथीको घर",
+        "meaning": "my old friend's house",
+        "english": "The house of my old/longtime friend (पुरानो modifies साथी)",
+        "description": "Emphasis on पुरानो means a friend from a long time ago"
+      },
+      "variation_b": {
+        "sentence_with_emphasis": "मेरो पुरानो **साथीको** घर",
+        "meaning": "my friend's old house",
+        "english": "The old house of my friend (पुरानो modifies घर)",
+        "description": "Emphasis on साथीको shifts पुरानो to describe the age of the house"
+      }
+    },
+    {
+      "sentence": "काली आँखाकी केटी",
+      "romanization": "kālī ā̃khākī keṭī",
+      "variation_a": {
+        "sentence_with_emphasis": "**काली** आँखाकी केटी",
+        "meaning": "the dark-eyed girl",
+        "english": "The girl with dark/black eyes (काली modifies आँखा)",
+        "description": "Emphasis on काली describes the eye color"
+      },
+      "variation_b": {
+        "sentence_with_emphasis": "काली **आँखाकी** केटी",
+        "meaning": "the dark girl with notable eyes",
+        "english": "The dark/beautiful girl known for her eyes (काली could modify केटी, or the whole phrase is a unit)",
+        "description": "Emphasis on आँखाकी makes the eyes the defining characteristic"
+      }
+    },
+    {
+      "sentence": "उसले पढ्न मन पराउँछ।",
+      "romanization": "Usle paḍhna man parāũcha.",
+      "variation_a": {
+        "sentence_with_emphasis": "उसले **पढ्न** मन पराउँछ।",
+        "meaning": "She likes to READ",
+        "english": "She likes READING (emphasis on the activity of reading, contrasting with other activities)",
+        "description": "Emphasis on पढ्न contrasts reading with other possible activities"
+      },
+      "variation_b": {
+        "sentence_with_emphasis": "उसले पढ्न **मन** पराउँछ।",
+        "meaning": "She actually LIKES to read",
+        "english": "She genuinely ENJOYS reading (emphasis on the liking, not just doing it as obligation)",
+        "description": "Emphasis on मन highlights genuine enjoyment rather than mere habit"
+      }
+    },
+    {
+      "sentence": "हामीले भरखर आएका मान्छेलाई भेट्यौँ।",
+      "romanization": "Hāmīle bharkhar āekā māncchēlāī bheṭyaũ.",
+      "english_base": "We met the people who had just arrived.",
+      "variation_a": {
+        "sentence_with_emphasis": "हामीले **भरखर** आएका मान्छेलाई भेट्यौँ।",
+        "meaning": "We met the people who had JUST arrived",
+        "english": "We met the people who had JUST NOW arrived (emphasis on the recency)",
+        "description": "Emphasis on भरखर stresses how recently they arrived"
+      },
+      "variation_b": {
+        "sentence_with_emphasis": "हामीले भरखर आएका **मान्छेलाई** भेट्यौँ।",
+        "meaning": "We met THE PEOPLE who had just arrived",
+        "english": "We met the PEOPLE (specific ones) who had just arrived (emphasis on who was met)",
+        "description": "Emphasis on मान्छेलाई highlights the identity of those who were met"
+      }
+    },
+    {
+      "sentence": "राम्रो कुरा गर्ने मान्छे",
+      "romanization": "rāmro kurā garne mānche",
+      "variation_a": {
+        "sentence_with_emphasis": "**राम्रो** कुरा गर्ने मान्छे",
+        "meaning": "a person who speaks nicely / tells good stories",
+        "english": "A person who says good things (राम्रो modifies कुरा — good talk)",
+        "description": "Emphasis on राम्रो makes it an adjective for कुरा, meaning good conversation"
+      },
+      "variation_b": {
+        "sentence_with_emphasis": "राम्रो कुरा **गर्ने** मान्छे",
+        "meaning": "a good person who talks / a person good at talking",
+        "english": "A person who is good at talking (राम्रो modifies the whole predicate or the person)",
+        "description": "Emphasis on गर्ने shifts the scope so that the person's skill at conversation is highlighted"
+      }
+    },
+    {
+      "sentence": "तीन जना केटाका बुबा",
+      "romanization": "tīn janā keṭākā bubā",
+      "variation_a": {
+        "sentence_with_emphasis": "**तीन** जना केटाका बुबा",
+        "meaning": "the father of three boys",
+        "english": "The father of three boys (तीन specifies the count of boys)",
+        "description": "Emphasis on तीन highlights the number of sons"
+      },
+      "variation_b": {
+        "sentence_with_emphasis": "तीन जना **केटाका** बुबा",
+        "meaning": "the father who has boys (three of them, specifically boys not girls)",
+        "english": "The father of boys (three of them) — emphasis on them being boys",
+        "description": "Emphasis on केटाका highlights the gender of the children rather than the count"
+      }
+    }
+  ],
+  "corrective_emphasis": [
+    {
+      "statement_a": "सीताले भात पकाइन्।",
+      "romanization_a": "Sītāle bhāt pakāin.",
+      "english_a": "Sita cooked rice.",
+      "correction_b": "होइन, **गीताले** भात पकाइन्।",
+      "romanization_b": "Hoina, **Gītāle** bhāt pakāin.",
+      "english_b": "No, GITA cooked the rice.",
+      "corrected_element": "agent",
+      "description": "Corrects the agent: Gita, not Sita, cooked the rice"
+    },
+    {
+      "statement_a": "उनी काठमाडौं गइन्।",
+      "romanization_a": "Unī Kāṭhmāḍaũ gain.",
+      "english_a": "She went to Kathmandu.",
+      "correction_b": "होइन, उनी **पोखरा** गइन्।",
+      "romanization_b": "Hoina, unī **Pokharā** gain.",
+      "english_b": "No, she went to POKHARA.",
+      "corrected_element": "destination",
+      "description": "Corrects the destination: Pokhara, not Kathmandu"
+    },
+    {
+      "statement_a": "रामले मोटरसाइकल किन्यो।",
+      "romanization_a": "Rāmle moṭarsāikal kinyo.",
+      "english_a": "Ram bought a motorcycle.",
+      "correction_b": "होइन, रामले **साइकल** किन्यो।",
+      "romanization_b": "Hoina, Rāmle **sāikal** kinyo.",
+      "english_b": "No, Ram bought a BICYCLE.",
+      "corrected_element": "object",
+      "description": "Corrects the object: a bicycle, not a motorcycle"
+    },
+    {
+      "statement_a": "तपाईं हिजो आउनुभयो।",
+      "romanization_a": "Tapāī̃ hijo āunubhayo.",
+      "english_a": "You came yesterday.",
+      "correction_b": "होइन, म **अस्ति** आएँ।",
+      "romanization_b": "Hoina, ma **asti** āẽ.",
+      "english_b": "No, I came the DAY BEFORE YESTERDAY.",
+      "corrected_element": "time",
+      "description": "Corrects the time: day before yesterday, not yesterday"
+    },
+    {
+      "statement_a": "उसले किताब चोर्यो।",
+      "romanization_a": "Usle kitāb coryo.",
+      "english_a": "He stole the book.",
+      "correction_b": "होइन, उसले किताब **किन्यो**।",
+      "romanization_b": "Hoina, usle kitāb **kinyo**.",
+      "english_b": "No, he BOUGHT the book.",
+      "corrected_element": "verb/action",
+      "description": "Corrects the action: bought, not stole"
+    },
+    {
+      "statement_a": "पाँच जना विद्यार्थी आए।",
+      "romanization_a": "Pā̃c janā vidyārthī āe.",
+      "english_a": "Five students came.",
+      "correction_b": "होइन, **तीन** जना विद्यार्थी आए।",
+      "romanization_b": "Hoina, **tīn** janā vidyārthī āe.",
+      "english_b": "No, THREE students came.",
+      "corrected_element": "quantity",
+      "description": "Corrects the number: three, not five"
+    },
+    {
+      "statement_a": "तिमी भोलि जान्छौ।",
+      "romanization_a": "Timī bholi jānchau.",
+      "english_a": "You are going tomorrow.",
+      "correction_b": "होइन, **म** भोलि जान्छु।",
+      "romanization_b": "Hoina, **ma** bholi jānchu.",
+      "english_b": "No, I am going tomorrow.",
+      "corrected_element": "subject",
+      "description": "Corrects the subject: I am going, not you"
+    },
+    {
+      "statement_a": "उसले चिया खायो।",
+      "romanization_a": "Usle ciyā khāyo.",
+      "english_a": "He drank tea.",
+      "correction_b": "होइन, उसले **दूध** खायो।",
+      "romanization_b": "Hoina, usle **dūdh** khāyo.",
+      "english_b": "No, he drank MILK.",
+      "corrected_element": "object",
+      "description": "Corrects the object: milk, not tea"
+    },
+    {
+      "statement_a": "बुबा अफिसमा हुनुहुन्छ।",
+      "romanization_a": "Bubā aphismā hunuhuncha.",
+      "english_a": "Father is at the office.",
+      "correction_b": "होइन, बुबा **घरमा** हुनुहुन्छ।",
+      "romanization_b": "Hoina, bubā **gharmā** hunuhuncha.",
+      "english_b": "No, father is AT HOME.",
+      "corrected_element": "location",
+      "description": "Corrects the location: at home, not at the office"
+    },
+    {
+      "statement_a": "दिदीले गीत गाउनुभयो।",
+      "romanization_a": "Didīle gīt gāunubhayo.",
+      "english_a": "Elder sister sang a song.",
+      "correction_b": "होइन, दिदीले गीत **सुन्नुभयो**।",
+      "romanization_b": "Hoina, didīle gīt **sunnubhayo**.",
+      "english_b": "No, elder sister LISTENED TO the song.",
+      "corrected_element": "verb/action",
+      "description": "Corrects the action: listened, not sang"
+    }
+  ]
+}

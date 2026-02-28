@@ -1,0 +1,715 @@
+{
+  "description": "Reference of English loanwords commonly used in Nepali speech and writing, with phonological adaptation notes for TTS synthesis. These words must be pronounced with Nepali phonology, not English pronunciation.",
+  "notes": {
+    "usage": "Used by the TTS pipeline to ensure correct Nepali-phonology pronunciation of English-origin loanwords rather than code-switching to English pronunciation",
+    "phonological_principles": "Nepali adapts English loanwords by: (1) mapping English phonemes to nearest Nepali equivalents, (2) adding epenthetic vowels to break impermissible consonant clusters, (3) replacing English vowels with closest Nepali vowel qualities, (4) applying Nepali stress and intonation patterns",
+    "orthographic_convention": "Loanwords are written in Devanagari script following Nepali phonological conventions; spelling may vary across publications",
+    "tts_relevance": "The TTS system should use the Nepali romanization (not the English pronunciation) as the target for grapheme-to-phoneme conversion of these words"
+  },
+  "technology": [
+    {
+      "nepali": "कम्प्युटर",
+      "romanization": "kampyutar",
+      "english_source": "computer",
+      "category": "technology",
+      "phonological_adaptation": "English /kəmˈpjuːtər/ adapted with full vowel /a/ replacing schwa, retroflex /ṭ/ for English /t/, final schwa added",
+      "description": "Universally used in Nepali; no native equivalent in common use"
+    },
+    {
+      "nepali": "मोबाइल",
+      "romanization": "mobail",
+      "english_source": "mobile",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈmoʊbaɪl/ adapted with diphthong /ai/ preserved, final /l/ retained",
+      "description": "Extremely common; often used interchangeably with फोन to refer to mobile phones"
+    },
+    {
+      "nepali": "इन्टरनेट",
+      "romanization": "intarnet",
+      "english_source": "internet",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈɪntərnet/ adapted with full vowel /i/ for /ɪ/, retroflex /ṭ/ for English /t/, schwa replaced by /a/",
+      "description": "Standard term for internet access; widely understood across demographics"
+    },
+    {
+      "nepali": "ल्यापटप",
+      "romanization": "lyaptap",
+      "english_source": "laptop",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈlæptɒp/ adapted with palatal onset /ly/ for /l/, vowel /a/ for /æ/, retroflex /ṭ/ for English /t/",
+      "description": "Common term for laptop computers"
+    },
+    {
+      "nepali": "सफ्टवेयर",
+      "romanization": "saftaweyar",
+      "english_source": "software",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈsɒftwɛər/ adapted with /a/ for /ɒ/, epenthetic vowel breaking /ftw/ cluster, /eyar/ for /ɛər/",
+      "description": "Used in technical and IT contexts"
+    },
+    {
+      "nepali": "हार्डवेयर",
+      "romanization": "hardaweyar",
+      "english_source": "hardware",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈhɑːrdwɛər/ adapted with short /a/ for long /ɑː/, /eyar/ for /ɛər/",
+      "description": "Used in technical and IT contexts alongside सफ्टवेयर"
+    },
+    {
+      "nepali": "एप",
+      "romanization": "ep",
+      "english_source": "app",
+      "category": "technology",
+      "phonological_adaptation": "English /æp/ adapted with /e/ for /æ/, short monosyllable preserved",
+      "description": "Very common in daily speech; refers to mobile applications"
+    },
+    {
+      "nepali": "फोन",
+      "romanization": "phon",
+      "english_source": "phone",
+      "category": "technology",
+      "phonological_adaptation": "English /foʊn/ adapted with aspirated /ph/ for English /f/ (Nepali lacks /f/), monophthong /o/ for diphthong /oʊ/",
+      "description": "Universally used; native Nepali दूरभाष exists but is rarely used in speech"
+    },
+    {
+      "nepali": "इमेल",
+      "romanization": "imel",
+      "english_source": "email",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈiːmeɪl/ adapted with short /i/ for long /iː/, monophthong /e/ for diphthong /eɪ/",
+      "description": "Standard term for electronic mail"
+    },
+    {
+      "nepali": "भिडियो",
+      "romanization": "bhidiyo",
+      "english_source": "video",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈvɪdioʊ/ adapted with aspirated /bh/ for /v/, /i/ for /ɪ/, added /y/ glide, final /o/ for /oʊ/",
+      "description": "Very common; used for all video content"
+    },
+    {
+      "nepali": "वेबसाइट",
+      "romanization": "websait",
+      "english_source": "website",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈwɛbsaɪt/ adapted with /e/ for /ɛ/, diphthong /ai/ for /aɪ/, retroflex /ṭ/ for final /t/",
+      "description": "Standard term for websites"
+    },
+    {
+      "nepali": "सर्भर",
+      "romanization": "sarbar",
+      "english_source": "server",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈsɜːrvər/ adapted with /a/ for /ɜː/, aspirated /bh/ for /v/, final /ar/ for /ər/",
+      "description": "Used in IT and networking contexts"
+    },
+    {
+      "nepali": "डाटा",
+      "romanization": "data",
+      "english_source": "data",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈdeɪtə/ adapted with retroflex /ḍ/ for English /d/, long /a/ for /eɪ/, retroflex /ṭ/ for /t/",
+      "description": "Common in both technical and colloquial usage (e.g., mobile data)"
+    },
+    {
+      "nepali": "नेटवर्क",
+      "romanization": "netawark",
+      "english_source": "network",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈnɛtwɜːrk/ adapted with /e/ for /ɛ/, epenthetic /a/ breaking /tw/ cluster, /ark/ for /ɜːrk/",
+      "description": "Used for both computer networks and mobile networks"
+    },
+    {
+      "nepali": "प्रिन्टर",
+      "romanization": "printar",
+      "english_source": "printer",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈprɪntər/ adapted with /i/ for /ɪ/, retroflex /ṭ/ for /t/, /ar/ for /ər/",
+      "description": "Standard term for printing devices"
+    },
+    {
+      "nepali": "ब्राउजर",
+      "romanization": "braujar",
+      "english_source": "browser",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈbraʊzər/ adapted with /j/ for /z/, /ar/ for /ər/, diphthong /au/ preserved",
+      "description": "Used in internet and computing contexts"
+    },
+    {
+      "nepali": "वाइफाइ",
+      "romanization": "waiphai",
+      "english_source": "Wi-Fi",
+      "category": "technology",
+      "phonological_adaptation": "English /ˈwaɪfaɪ/ adapted with /ph/ for /f/, diphthongs /ai/ preserved",
+      "description": "Extremely common in daily usage; refers to wireless internet"
+    }
+  ],
+  "education": [
+    {
+      "nepali": "कलेज",
+      "romanization": "kalej",
+      "english_source": "college",
+      "category": "education",
+      "phonological_adaptation": "English /ˈkɒlɪdʒ/ adapted with /a/ for /ɒ/, /e/ for /ɪ/, /j/ for /dʒ/",
+      "description": "Very common; refers to post-secondary educational institutions"
+    },
+    {
+      "nepali": "युनिभर्सिटी",
+      "romanization": "yunibharsiti",
+      "english_source": "university",
+      "category": "education",
+      "phonological_adaptation": "English /juːnɪˈvɜːrsɪti/ adapted with /bh/ for /v/, /a/ for /ɜː/, all schwas replaced with full vowels",
+      "description": "Standard term; विश्वविद्यालय is the Sanskrit-origin equivalent used in formal contexts"
+    },
+    {
+      "nepali": "क्याम्पस",
+      "romanization": "kyampas",
+      "english_source": "campus",
+      "category": "education",
+      "phonological_adaptation": "English /ˈkæmpəs/ adapted with palatalized /ky/ onset, /a/ for /æ/, /a/ for schwa",
+      "description": "Refers specifically to a college campus; sometimes used synonymously with college"
+    },
+    {
+      "nepali": "प्रोफेसर",
+      "romanization": "prophesar",
+      "english_source": "professor",
+      "category": "education",
+      "phonological_adaptation": "English /prəˈfɛsər/ adapted with /o/ for first schwa, /ph/ for /f/, /e/ for /ɛ/, /ar/ for /ər/",
+      "description": "Used alongside native title प्राध्यापक; more colloquial"
+    },
+    {
+      "nepali": "एसाइनमेन्ट",
+      "romanization": "esainment",
+      "english_source": "assignment",
+      "category": "education",
+      "phonological_adaptation": "English /əˈsaɪnmənt/ adapted with /e/ for initial schwa, /ai/ for /aɪ/, simplified cluster",
+      "description": "Common in student speech; no widely used Nepali equivalent"
+    },
+    {
+      "nepali": "इग्ज्याम",
+      "romanization": "igjyam",
+      "english_source": "exam",
+      "category": "education",
+      "phonological_adaptation": "English /ɪɡˈzæm/ adapted with /i/ for /ɪ/, /j/ for /z/, palatalized /jy/ cluster, /a/ for /æ/",
+      "description": "Colloquial alternative to परीक्षा, especially among younger speakers"
+    },
+    {
+      "nepali": "लाइब्रेरी",
+      "romanization": "laibreri",
+      "english_source": "library",
+      "category": "education",
+      "phonological_adaptation": "English /ˈlaɪbrəri/ adapted with diphthong /ai/ for /aɪ/, /e/ for schwa",
+      "description": "Used alongside native पुस्तकालय"
+    },
+    {
+      "nepali": "स्कुल",
+      "romanization": "skul",
+      "english_source": "school",
+      "category": "education",
+      "phonological_adaptation": "English /skuːl/ adapted with short /u/ for long /uː/, initial cluster /sk/ preserved",
+      "description": "Extremely common; विद्यालय is the formal Nepali equivalent but स्कुल dominates colloquial speech"
+    }
+  ],
+  "transportation": [
+    {
+      "nepali": "बस",
+      "romanization": "bas",
+      "english_source": "bus",
+      "category": "transportation",
+      "phonological_adaptation": "English /bʌs/ adapted with /a/ for /ʌ/",
+      "description": "Primary public transportation term; universally used"
+    },
+    {
+      "nepali": "ट्याक्सी",
+      "romanization": "tyaksi",
+      "english_source": "taxi",
+      "category": "transportation",
+      "phonological_adaptation": "English /ˈtæksi/ adapted with retroflex /ṭ/ and palatalized /ṭy/, /a/ for /æ/",
+      "description": "Common in urban areas; refers to metered cabs"
+    },
+    {
+      "nepali": "ट्रक",
+      "romanization": "trak",
+      "english_source": "truck",
+      "category": "transportation",
+      "phonological_adaptation": "English /trʌk/ adapted with retroflex /ṭr/ cluster, /a/ for /ʌ/",
+      "description": "Standard term for freight trucks"
+    },
+    {
+      "nepali": "मोटरसाइकल",
+      "romanization": "motarsaikal",
+      "english_source": "motorcycle",
+      "category": "transportation",
+      "phonological_adaptation": "English /ˈmoʊtərsaɪkəl/ adapted with /o/ for /oʊ/, /a/ for schwas, /ai/ for /aɪ/",
+      "description": "Often shortened to मोटर or बाइक in colloquial speech"
+    },
+    {
+      "nepali": "बाइक",
+      "romanization": "baik",
+      "english_source": "bike",
+      "category": "transportation",
+      "phonological_adaptation": "English /baɪk/ adapted with diphthong /ai/ for /aɪ/",
+      "description": "Colloquial term for motorcycle; very common among younger speakers"
+    },
+    {
+      "nepali": "रेल",
+      "romanization": "rel",
+      "english_source": "rail",
+      "category": "transportation",
+      "phonological_adaptation": "English /reɪl/ adapted with monophthong /e/ for diphthong /eɪ/",
+      "description": "Used for railway/train; रेलगाडी for train (vehicle)"
+    },
+    {
+      "nepali": "एयरपोर्ट",
+      "romanization": "eyarport",
+      "english_source": "airport",
+      "category": "transportation",
+      "phonological_adaptation": "English /ˈɛərpɔːrt/ adapted with /eyar/ for /ɛər/, /o/ for /ɔː/",
+      "description": "Standard term; विमानस्थल is the formal Nepali equivalent used in official contexts"
+    },
+    {
+      "nepali": "टिकट",
+      "romanization": "tikat",
+      "english_source": "ticket",
+      "category": "transportation",
+      "phonological_adaptation": "English /ˈtɪkɪt/ adapted with retroflex /ṭ/, /i/ for /ɪ/, final /a/ epenthesis before /ṭ/",
+      "description": "Universally used for transportation and event tickets"
+    },
+    {
+      "nepali": "पार्किङ",
+      "romanization": "parking",
+      "english_source": "parking",
+      "category": "transportation",
+      "phonological_adaptation": "English /ˈpɑːrkɪŋ/ adapted with short /a/ for long /ɑː/, /i/ for /ɪ/, anusvara for /ŋ/",
+      "description": "Common in urban areas"
+    },
+    {
+      "nepali": "ग्यारेज",
+      "romanization": "gyarej",
+      "english_source": "garage",
+      "category": "transportation",
+      "phonological_adaptation": "English /ɡəˈrɑːʒ/ adapted with palatalized /gy/, /a/ for schwa, /e/ for /ɑː/, /j/ for /ʒ/",
+      "description": "Refers to vehicle repair shops; common in urban areas"
+    }
+  ],
+  "food_daily_life": [
+    {
+      "nepali": "बिस्कुट",
+      "romanization": "biskut",
+      "english_source": "biscuit",
+      "category": "food_daily_life",
+      "phonological_adaptation": "English /ˈbɪskɪt/ adapted with /i/ for /ɪ/, final consonant cluster simplified, /u/ epenthesis",
+      "description": "Very common snack term; widely available and universally recognized"
+    },
+    {
+      "nepali": "चकलेट",
+      "romanization": "chaklet",
+      "english_source": "chocolate",
+      "category": "food_daily_life",
+      "phonological_adaptation": "English /ˈtʃɒklət/ adapted with /a/ for /ɒ/, schwa deletion in middle syllable, retroflex /ṭ/ for final /t/",
+      "description": "Common confectionery term"
+    },
+    {
+      "nepali": "केक",
+      "romanization": "kek",
+      "english_source": "cake",
+      "category": "food_daily_life",
+      "phonological_adaptation": "English /keɪk/ adapted with monophthong /e/ for diphthong /eɪ/",
+      "description": "Common bakery item; widely available in urban Nepal"
+    },
+    {
+      "nepali": "कफी",
+      "romanization": "kaphi",
+      "english_source": "coffee",
+      "category": "food_daily_life",
+      "phonological_adaptation": "English /ˈkɒfi/ adapted with /a/ for /ɒ/, aspirated /ph/ for /f/",
+      "description": "Increasingly popular beverage term; Nepal also produces coffee"
+    },
+    {
+      "nepali": "होटल",
+      "romanization": "hotel",
+      "english_source": "hotel",
+      "category": "food_daily_life",
+      "phonological_adaptation": "English /hoʊˈtɛl/ adapted with monophthong /o/ for /oʊ/, retroflex /ṭ/ for /t/",
+      "description": "In Nepali, होटल primarily means restaurant or eatery, not just lodging; a critical semantic shift from English"
+    },
+    {
+      "nepali": "रेस्टुरेन्ट",
+      "romanization": "resturent",
+      "english_source": "restaurant",
+      "category": "food_daily_life",
+      "phonological_adaptation": "English /ˈrɛstərɒnt/ adapted with /e/ for /ɛ/, /u/ for schwa, simplified final cluster",
+      "description": "Used for more upscale dining establishments; distinguished from होटल in modern usage"
+    },
+    {
+      "nepali": "ब्रेड",
+      "romanization": "bred",
+      "english_source": "bread",
+      "category": "food_daily_life",
+      "phonological_adaptation": "English /brɛd/ adapted with /e/ for /ɛ/, retroflex /ḍ/ for /d/",
+      "description": "Refers to sliced/Western-style bread; distinct from native रोटी"
+    },
+    {
+      "nepali": "चिज",
+      "romanization": "chij",
+      "english_source": "cheese",
+      "category": "food_daily_life",
+      "phonological_adaptation": "English /tʃiːz/ adapted with short /i/ for long /iː/, /j/ for /z/",
+      "description": "Common dairy product term"
+    },
+    {
+      "nepali": "नुडल्स",
+      "romanization": "nudals",
+      "english_source": "noodles",
+      "category": "food_daily_life",
+      "phonological_adaptation": "English /ˈnuːdəlz/ adapted with short /u/ for long /uː/, /a/ for schwa",
+      "description": "Very popular food item; चाउचाउ is the more colloquial Nepali term for instant noodles"
+    },
+    {
+      "nepali": "आइसक्रिम",
+      "romanization": "aiskrim",
+      "english_source": "ice cream",
+      "category": "food_daily_life",
+      "phonological_adaptation": "English /ˈaɪs kriːm/ adapted with /ai/ for /aɪ/, compound compressed, short /i/ for long /iː/",
+      "description": "Common dessert term"
+    }
+  ],
+  "government_bureaucracy": [
+    {
+      "nepali": "अफिस",
+      "romanization": "aphis",
+      "english_source": "office",
+      "category": "government_bureaucracy",
+      "phonological_adaptation": "English /ˈɒfɪs/ adapted with /a/ for /ɒ/, aspirated /ph/ for /f/, /i/ for /ɪ/",
+      "description": "Universally used; कार्यालय is the formal Nepali equivalent but अफिस dominates speech"
+    },
+    {
+      "nepali": "मिनिस्टर",
+      "romanization": "ministar",
+      "english_source": "minister",
+      "category": "government_bureaucracy",
+      "phonological_adaptation": "English /ˈmɪnɪstər/ adapted with /i/ for /ɪ/, /ar/ for /ər/",
+      "description": "Used alongside native मन्त्री; both are common"
+    },
+    {
+      "nepali": "बजेट",
+      "romanization": "bajet",
+      "english_source": "budget",
+      "category": "government_bureaucracy",
+      "phonological_adaptation": "English /ˈbʌdʒɪt/ adapted with /a/ for /ʌ/, /j/ for /dʒ/, /e/ for /ɪ/, retroflex /ṭ/ for final /t/",
+      "description": "Standard term in financial and government contexts; no common Nepali alternative"
+    },
+    {
+      "nepali": "पार्लियामेन्ट",
+      "romanization": "parliyament",
+      "english_source": "parliament",
+      "category": "government_bureaucracy",
+      "phonological_adaptation": "English /ˈpɑːrləmənt/ adapted with short /a/ for /ɑː/, full vowels replacing schwas, /iy/ glide inserted",
+      "description": "Used alongside native संसद्; both are common in media"
+    },
+    {
+      "nepali": "पोलिस",
+      "romanization": "polis",
+      "english_source": "police",
+      "category": "government_bureaucracy",
+      "phonological_adaptation": "English /pəˈliːs/ adapted with /o/ for schwa, short /i/ for long /iː/",
+      "description": "Universally used; प्रहरी is the formal Nepali term used in official contexts"
+    },
+    {
+      "nepali": "कमिसन",
+      "romanization": "kamisan",
+      "english_source": "commission",
+      "category": "government_bureaucracy",
+      "phonological_adaptation": "English /kəˈmɪʃən/ adapted with /a/ for schwa, /i/ for /ɪ/, /s/ for /ʃ/, /a/ for final schwa",
+      "description": "Used in government body names, e.g., निर्वाचन कमिसन"
+    },
+    {
+      "nepali": "कम्पनी",
+      "romanization": "kampani",
+      "english_source": "company",
+      "category": "government_bureaucracy",
+      "phonological_adaptation": "English /ˈkʌmpəni/ adapted with /a/ for /ʌ/, /a/ for schwa",
+      "description": "Standard business term"
+    },
+    {
+      "nepali": "प्रोजेक्ट",
+      "romanization": "projekt",
+      "english_source": "project",
+      "category": "government_bureaucracy",
+      "phonological_adaptation": "English /ˈprɒdʒɛkt/ adapted with /o/ for /ɒ/, /j/ for /dʒ/, /e/ for /ɛ/",
+      "description": "Very common in development and government contexts; आयोजना is the Nepali equivalent"
+    },
+    {
+      "nepali": "सर्भे",
+      "romanization": "sarbhe",
+      "english_source": "survey",
+      "category": "government_bureaucracy",
+      "phonological_adaptation": "English /ˈsɜːrveɪ/ adapted with /a/ for /ɜː/, /bh/ for /v/, /e/ for /eɪ/",
+      "description": "Used in land survey, research survey contexts"
+    }
+  ],
+  "medical": [
+    {
+      "nepali": "हस्पिटल",
+      "romanization": "haspital",
+      "english_source": "hospital",
+      "category": "medical",
+      "phonological_adaptation": "English /ˈhɒspɪtəl/ adapted with /a/ for /ɒ/, /i/ for /ɪ/, /a/ for schwa, retroflex /ṭ/ for /t/",
+      "description": "Universally used; अस्पताल is the nativized form also very common"
+    },
+    {
+      "nepali": "डाक्टर",
+      "romanization": "daktar",
+      "english_source": "doctor",
+      "category": "medical",
+      "phonological_adaptation": "English /ˈdɒktər/ adapted with retroflex /ḍ/, long /a/ for /ɒ/, /ar/ for /ər/",
+      "description": "Universally used; चिकित्सक is the formal Nepali equivalent but rarely used in speech"
+    },
+    {
+      "nepali": "नर्स",
+      "romanization": "nars",
+      "english_source": "nurse",
+      "category": "medical",
+      "phonological_adaptation": "English /nɜːrs/ adapted with /a/ for /ɜː/",
+      "description": "Standard term for nurses; no common Nepali alternative in everyday speech"
+    },
+    {
+      "nepali": "इन्जेक्सन",
+      "romanization": "injeksan",
+      "english_source": "injection",
+      "category": "medical",
+      "phonological_adaptation": "English /ɪnˈdʒɛkʃən/ adapted with /i/ for /ɪ/, /j/ for /dʒ/, /e/ for /ɛ/, /s/ for /ʃ/",
+      "description": "Very common medical term; सुई (needle) is sometimes used colloquially"
+    },
+    {
+      "nepali": "अपरेशन",
+      "romanization": "aparesan",
+      "english_source": "operation",
+      "category": "medical",
+      "phonological_adaptation": "English /ˌɒpəˈreɪʃən/ adapted with /a/ for /ɒ/, /a/ for schwa, /e/ for /eɪ/, /s/ for /ʃ/",
+      "description": "Standard term for surgical operations; शल्यक्रिया is the formal equivalent"
+    },
+    {
+      "nepali": "ट्याब्लेट",
+      "romanization": "tyablet",
+      "english_source": "tablet",
+      "category": "medical",
+      "phonological_adaptation": "English /ˈtæblɪt/ adapted with retroflex /ṭ/ and palatalized /ṭy/, /a/ for /æ/, /e/ for /ɪ/",
+      "description": "Used for medicine tablets; चक्की is a colloquial Nepali alternative"
+    },
+    {
+      "nepali": "भ्याक्सिन",
+      "romanization": "bhyaksin",
+      "english_source": "vaccine",
+      "category": "medical",
+      "phonological_adaptation": "English /vækˈsiːn/ adapted with /bh/ for /v/, palatalized /bhy/, /a/ for /æ/, short /i/ for long /iː/",
+      "description": "Very common especially since COVID-19 pandemic; खोप is the native Nepali equivalent"
+    },
+    {
+      "nepali": "एम्बुलेन्स",
+      "romanization": "embulens",
+      "english_source": "ambulance",
+      "category": "medical",
+      "phonological_adaptation": "English /ˈæmbjələns/ adapted with /e/ for /æ/, /u/ for schwa, simplified consonant clusters",
+      "description": "Standard term for emergency medical vehicle"
+    },
+    {
+      "nepali": "क्लिनिक",
+      "romanization": "klinik",
+      "english_source": "clinic",
+      "category": "medical",
+      "phonological_adaptation": "English /ˈklɪnɪk/ adapted with /i/ for /ɪ/ in both syllables",
+      "description": "Used for small medical facilities and doctor's offices"
+    },
+    {
+      "nepali": "अक्सिजन",
+      "romanization": "aksijan",
+      "english_source": "oxygen",
+      "category": "medical",
+      "phonological_adaptation": "English /ˈɒksɪdʒən/ adapted with /a/ for /ɒ/, /i/ for /ɪ/, /j/ for /dʒ/, /a/ for final schwa",
+      "description": "Common medical term; became widely known during COVID-19 pandemic"
+    }
+  ],
+  "sports_entertainment": [
+    {
+      "nepali": "क्रिकेट",
+      "romanization": "kriket",
+      "english_source": "cricket",
+      "category": "sports_entertainment",
+      "phonological_adaptation": "English /ˈkrɪkɪt/ adapted with /i/ for /ɪ/, /e/ for second /ɪ/, retroflex /ṭ/ for final /t/",
+      "description": "Hugely popular sport in Nepal; Nepal has international cricket status"
+    },
+    {
+      "nepali": "फुटबल",
+      "romanization": "phutbal",
+      "english_source": "football",
+      "category": "sports_entertainment",
+      "phonological_adaptation": "English /ˈfʊtbɔːl/ adapted with aspirated /ph/ for /f/, /u/ for /ʊ/, retroflex /ṭ/ for /t/, /a/ for /ɔː/",
+      "description": "Refers to association football (soccer); popular sport"
+    },
+    {
+      "nepali": "सिनेमा",
+      "romanization": "sinema",
+      "english_source": "cinema",
+      "category": "sports_entertainment",
+      "phonological_adaptation": "English /ˈsɪnəmə/ adapted with /i/ for /ɪ/, /e/ for first schwa, /a/ for final schwa",
+      "description": "Used for both the art form and movie theaters"
+    },
+    {
+      "nepali": "म्याच",
+      "romanization": "myach",
+      "english_source": "match",
+      "category": "sports_entertainment",
+      "phonological_adaptation": "English /mætʃ/ adapted with palatalized /my/ onset, /a/ for /æ/",
+      "description": "Very common sports term for competitive matches"
+    },
+    {
+      "nepali": "टिम",
+      "romanization": "tim",
+      "english_source": "team",
+      "category": "sports_entertainment",
+      "phonological_adaptation": "English /tiːm/ adapted with retroflex /ṭ/ for /t/, short /i/ for long /iː/",
+      "description": "Standard term for sports teams and work teams"
+    },
+    {
+      "nepali": "ग्राउन्ड",
+      "romanization": "graund",
+      "english_source": "ground",
+      "category": "sports_entertainment",
+      "phonological_adaptation": "English /ɡraʊnd/ adapted with /au/ for /aʊ/, retroflex /ḍ/ for final /d/",
+      "description": "Used for sports grounds and playing fields"
+    },
+    {
+      "nepali": "गोल",
+      "romanization": "gol",
+      "english_source": "goal",
+      "category": "sports_entertainment",
+      "phonological_adaptation": "English /ɡoʊl/ adapted with monophthong /o/ for diphthong /oʊ/",
+      "description": "Used in football and other goal-based sports"
+    },
+    {
+      "nepali": "फिल्म",
+      "romanization": "philm",
+      "english_source": "film",
+      "category": "sports_entertainment",
+      "phonological_adaptation": "English /fɪlm/ adapted with aspirated /ph/ for /f/, /i/ for /ɪ/",
+      "description": "Used for movies; चलचित्र is the formal Nepali equivalent"
+    },
+    {
+      "nepali": "हिरो",
+      "romanization": "hiro",
+      "english_source": "hero",
+      "category": "sports_entertainment",
+      "phonological_adaptation": "English /ˈhɪəroʊ/ adapted with /i/ for /ɪə/, monophthong /o/ for /oʊ/",
+      "description": "Used for movie protagonists and celebrated figures; नायक is the Nepali equivalent"
+    },
+    {
+      "nepali": "हिरोइन",
+      "romanization": "hiroin",
+      "english_source": "heroine",
+      "category": "sports_entertainment",
+      "phonological_adaptation": "English /ˈhɛroʊɪn/ adapted with /i/ for /ɛ/, monophthong /o/ for /oʊ/, /i/ for /ɪ/",
+      "description": "Used for female movie protagonists; नायिका is the Nepali equivalent"
+    }
+  ],
+  "clothing_fashion": [
+    {
+      "nepali": "ज्याकेट",
+      "romanization": "jyaket",
+      "english_source": "jacket",
+      "category": "clothing_fashion",
+      "phonological_adaptation": "English /ˈdʒækɪt/ adapted with /jy/ for /dʒ/, /a/ for /æ/, /e/ for /ɪ/, retroflex /ṭ/ for final /t/",
+      "description": "Common clothing term"
+    },
+    {
+      "nepali": "प्यान्ट",
+      "romanization": "pyant",
+      "english_source": "pant(s)",
+      "category": "clothing_fashion",
+      "phonological_adaptation": "English /pænts/ adapted with palatalized /py/, /a/ for /æ/, final cluster simplified by dropping /s/",
+      "description": "Standard term for trousers; used in singular form unlike English"
+    },
+    {
+      "nepali": "सर्ट",
+      "romanization": "sart",
+      "english_source": "shirt",
+      "category": "clothing_fashion",
+      "phonological_adaptation": "English /ʃɜːrt/ adapted with /s/ for /ʃ/, /a/ for /ɜː/, retroflex /ṭ/ for final /t/",
+      "description": "Common clothing term for shirts"
+    },
+    {
+      "nepali": "टाइ",
+      "romanization": "tai",
+      "english_source": "tie",
+      "category": "clothing_fashion",
+      "phonological_adaptation": "English /taɪ/ adapted with retroflex /ṭ/ for /t/, diphthong /ai/ for /aɪ/",
+      "description": "Used for neckties in formal contexts"
+    },
+    {
+      "nepali": "बेल्ट",
+      "romanization": "belt",
+      "english_source": "belt",
+      "category": "clothing_fashion",
+      "phonological_adaptation": "English /bɛlt/ adapted with /e/ for /ɛ/, retroflex /ṭ/ for final /t/",
+      "description": "Common accessory term; पेटी is also used"
+    }
+  ],
+  "infrastructure_housing": [
+    {
+      "nepali": "रोड",
+      "romanization": "rod",
+      "english_source": "road",
+      "category": "infrastructure_housing",
+      "phonological_adaptation": "English /roʊd/ adapted with monophthong /o/ for /oʊ/, retroflex /ḍ/ for /d/",
+      "description": "Very common in place names and directions, e.g., रिंग रोड (Ring Road)"
+    },
+    {
+      "nepali": "फ्ल्याट",
+      "romanization": "phlyat",
+      "english_source": "flat",
+      "category": "infrastructure_housing",
+      "phonological_adaptation": "English /flæt/ adapted with /ph/ for /f/, palatalized /ly/ cluster, /a/ for /æ/, retroflex /ṭ/ for /t/",
+      "description": "Used for apartments; increasingly common in urban real estate"
+    },
+    {
+      "nepali": "अपार्टमेन्ट",
+      "romanization": "apartment",
+      "english_source": "apartment",
+      "category": "infrastructure_housing",
+      "phonological_adaptation": "English /əˈpɑːrtmənt/ adapted with /a/ for initial schwa, short /a/ for /ɑː/, /e/ for second schwa",
+      "description": "Used in urban housing contexts"
+    },
+    {
+      "nepali": "ब्रिज",
+      "romanization": "brij",
+      "english_source": "bridge",
+      "category": "infrastructure_housing",
+      "phonological_adaptation": "English /brɪdʒ/ adapted with /i/ for /ɪ/, /j/ for /dʒ/",
+      "description": "Used alongside native पुल; both are common"
+    },
+    {
+      "nepali": "पाइप",
+      "romanization": "paip",
+      "english_source": "pipe",
+      "category": "infrastructure_housing",
+      "phonological_adaptation": "English /paɪp/ adapted with diphthong /ai/ for /aɪ/",
+      "description": "Used for water pipes, plumbing"
+    },
+    {
+      "nepali": "ट्याङ्की",
+      "romanization": "tyanki",
+      "english_source": "tank/tanki",
+      "category": "infrastructure_housing",
+      "phonological_adaptation": "English /tæŋk/ adapted with retroflex /ṭ/, palatalized /ṭy/, /a/ for /æ/, added /i/ suffix",
+      "description": "Used for water tanks; very common in household contexts"
+    },
+    {
+      "nepali": "सिमेन्ट",
+      "romanization": "siment",
+      "english_source": "cement",
+      "category": "infrastructure_housing",
+      "phonological_adaptation": "English /sɪˈmɛnt/ adapted with /i/ for /ɪ/, /e/ for /ɛ/",
+      "description": "Standard construction material term"
+    }
+  ]
+}

@@ -1,0 +1,623 @@
+{
+  "description": "Nepali phonological minimal pairs for TTS evaluation (NepTTS-Bench style), testing whether a system correctly distinguishes phonemic contrasts",
+  "notes": {
+    "usage": "Each pair tests a single phonological contrast. Use sentence_a and sentence_b to evaluate TTS pronunciation in natural context.",
+    "evaluation": "A good TTS system should produce audibly distinct outputs for word_a vs word_b in their respective sentences",
+    "coverage": "Covers aspiration (5 places of articulation), oral vs nasal vowels, retroflex vs dental, gemination, schwa deletion, and nasal consonants (5 places of articulation: velar, palatal, retroflex, dental, bilabial)",
+    "romanization": "Romanization follows standard Nepali transliteration conventions used in linguistics"
+  },
+  "aspiration_velar": [
+    {
+      "word_a": "काम",
+      "word_b": "खाम",
+      "romanization_a": "kām",
+      "romanization_b": "khām",
+      "meaning_a": "work",
+      "meaning_b": "envelope",
+      "contrast_type": "voiceless_unaspirated_vs_voiceless_aspirated_velar",
+      "sentence_a": "उसको काम राम्रो छ।",
+      "sentence_b": "उसले खाम पठायो।"
+    },
+    {
+      "word_a": "कल",
+      "word_b": "खल",
+      "romanization_a": "kal",
+      "romanization_b": "khal",
+      "meaning_a": "tap/faucet",
+      "meaning_b": "mortar (grinding stone)",
+      "contrast_type": "voiceless_unaspirated_vs_voiceless_aspirated_velar",
+      "sentence_a": "कल बन्द गर।",
+      "sentence_b": "खलमा मसला पिस।"
+    },
+    {
+      "word_a": "गाउँ",
+      "word_b": "घाउ",
+      "romanization_a": "gāũ",
+      "romanization_b": "ghāu",
+      "meaning_a": "village",
+      "meaning_b": "wound",
+      "contrast_type": "voiced_unaspirated_vs_voiced_aspirated_velar",
+      "sentence_a": "मेरो गाउँ टाढा छ।",
+      "sentence_b": "उसको हातमा घाउ लाग्यो।"
+    },
+    {
+      "word_a": "गोर",
+      "word_b": "घोर",
+      "romanization_a": "gor",
+      "romanization_b": "ghor",
+      "meaning_a": "fair-skinned",
+      "meaning_b": "terrible/dire",
+      "contrast_type": "voiced_unaspirated_vs_voiced_aspirated_velar",
+      "sentence_a": "ऊ गोर मान्छे हो।",
+      "sentence_b": "यो घोर अपराध हो।"
+    },
+    {
+      "word_a": "काल",
+      "word_b": "गाल",
+      "romanization_a": "kāl",
+      "romanization_b": "gāl",
+      "meaning_a": "time/era/death",
+      "meaning_b": "cheek",
+      "contrast_type": "voiceless_vs_voiced_velar",
+      "sentence_a": "त्यो काल कठिन थियो।",
+      "sentence_b": "बच्चाको गाल रातो छ।"
+    }
+  ],
+  "aspiration_palatal": [
+    {
+      "word_a": "चार",
+      "word_b": "छार",
+      "romanization_a": "cār",
+      "romanization_b": "chār",
+      "meaning_a": "four",
+      "meaning_b": "ash/residue",
+      "contrast_type": "voiceless_unaspirated_vs_voiceless_aspirated_palatal",
+      "sentence_a": "चार जना मान्छे आए।",
+      "sentence_b": "आगोको छार बटुल।"
+    },
+    {
+      "word_a": "चाप",
+      "word_b": "छाप",
+      "romanization_a": "cāp",
+      "romanization_b": "chāp",
+      "meaning_a": "pressure",
+      "meaning_b": "stamp/print",
+      "contrast_type": "voiceless_unaspirated_vs_voiceless_aspirated_palatal",
+      "sentence_a": "रगतको चाप बढ्यो।",
+      "sentence_b": "कागजमा छाप लगाउ।"
+    },
+    {
+      "word_a": "जात",
+      "word_b": "झात",
+      "romanization_a": "jāt",
+      "romanization_b": "jhāt",
+      "meaning_a": "caste/ethnicity",
+      "meaning_b": "pubic hair (vulgar)",
+      "contrast_type": "voiced_unaspirated_vs_voiced_aspirated_palatal",
+      "sentence_a": "नेपालमा धेरै जात छन्।",
+      "sentence_b": "यो शब्द अशिष्ट हो।"
+    },
+    {
+      "word_a": "जाँच",
+      "word_b": "झाँक",
+      "romanization_a": "jā̃c",
+      "romanization_b": "jhā̃k",
+      "meaning_a": "examination/test",
+      "meaning_b": "peek/peep",
+      "contrast_type": "voiced_unaspirated_vs_voiced_aspirated_palatal",
+      "sentence_a": "भोलि जाँच छ।",
+      "sentence_b": "ढोकाबाट झाँक।"
+    },
+    {
+      "word_a": "चोर",
+      "word_b": "छोर",
+      "romanization_a": "cor",
+      "romanization_b": "chor",
+      "meaning_a": "thief",
+      "meaning_b": "edge/border",
+      "contrast_type": "voiceless_unaspirated_vs_voiceless_aspirated_palatal",
+      "sentence_a": "चोर भागिहाल्यो।",
+      "sentence_b": "खेतको छोरमा रूख छ।"
+    }
+  ],
+  "aspiration_retroflex": [
+    {
+      "word_a": "टाल",
+      "word_b": "ठाल",
+      "romanization_a": "ṭāl",
+      "romanization_b": "ṭhāl",
+      "meaning_a": "to postpone/avoid",
+      "meaning_b": "to place/set down",
+      "contrast_type": "voiceless_unaspirated_vs_voiceless_aspirated_retroflex",
+      "sentence_a": "उसले काम टाल्यो।",
+      "sentence_b": "भाँडा ठालमा राख।"
+    },
+    {
+      "word_a": "टाउको",
+      "word_b": "ठाउँ",
+      "romanization_a": "ṭāuko",
+      "romanization_b": "ṭhāũ",
+      "meaning_a": "head",
+      "meaning_b": "place",
+      "contrast_type": "voiceless_unaspirated_vs_voiceless_aspirated_retroflex",
+      "sentence_a": "मेरो टाउको दुख्यो।",
+      "sentence_b": "यो राम्रो ठाउँ हो।"
+    },
+    {
+      "word_a": "डाँडा",
+      "word_b": "ढाँडा",
+      "romanization_a": "ḍā̃ḍā",
+      "romanization_b": "ḍhā̃ḍā",
+      "meaning_a": "hill/ridge",
+      "meaning_b": "pattern/style",
+      "contrast_type": "voiced_unaspirated_vs_voiced_aspirated_retroflex",
+      "sentence_a": "डाँडामा बस्ती छ।",
+      "sentence_b": "यो नयाँ ढाँडा हो।"
+    },
+    {
+      "word_a": "डोल",
+      "word_b": "ढोल",
+      "romanization_a": "ḍol",
+      "romanization_b": "ḍhol",
+      "meaning_a": "bucket/pail",
+      "meaning_b": "drum (musical instrument)",
+      "contrast_type": "voiced_unaspirated_vs_voiced_aspirated_retroflex",
+      "sentence_a": "डोलमा पानी भर।",
+      "sentence_b": "ढोल बजाउ।"
+    },
+    {
+      "word_a": "टोपी",
+      "word_b": "ढोकी",
+      "romanization_a": "ṭopī",
+      "romanization_b": "ḍhokī",
+      "meaning_a": "cap/hat",
+      "meaning_b": "wooden grain husking device",
+      "contrast_type": "voiceless_unaspirated_retroflex_vs_voiced_aspirated_retroflex",
+      "sentence_a": "उसले टोपी लगायो।",
+      "sentence_b": "ढोकीमा धान कुट।"
+    }
+  ],
+  "aspiration_dental": [
+    {
+      "word_a": "ताल",
+      "word_b": "थाल",
+      "romanization_a": "tāl",
+      "romanization_b": "thāl",
+      "meaning_a": "lake/rhythm",
+      "meaning_b": "large plate/platter",
+      "contrast_type": "voiceless_unaspirated_vs_voiceless_aspirated_dental",
+      "sentence_a": "फेवा ताल सुन्दर छ।",
+      "sentence_b": "थालमा भात राख।"
+    },
+    {
+      "word_a": "तार",
+      "word_b": "थार",
+      "romanization_a": "tār",
+      "romanization_b": "thār",
+      "meaning_a": "wire/telegram",
+      "meaning_b": "clan/surname group",
+      "contrast_type": "voiceless_unaspirated_vs_voiceless_aspirated_dental",
+      "sentence_a": "तार टुटेको छ।",
+      "sentence_b": "तिम्रो थार के हो?।"
+    },
+    {
+      "word_a": "दान",
+      "word_b": "धान",
+      "romanization_a": "dān",
+      "romanization_b": "dhān",
+      "meaning_a": "donation/charity",
+      "meaning_b": "paddy/rice plant",
+      "contrast_type": "voiced_unaspirated_vs_voiced_aspirated_dental",
+      "sentence_a": "उसले दान दियो।",
+      "sentence_b": "खेतमा धान रोप।"
+    },
+    {
+      "word_a": "दाम",
+      "word_b": "धाम",
+      "romanization_a": "dām",
+      "romanization_b": "dhām",
+      "meaning_a": "price",
+      "meaning_b": "religious feast/shrine",
+      "contrast_type": "voiced_unaspirated_vs_voiced_aspirated_dental",
+      "sentence_a": "यसको दाम कति हो?",
+      "sentence_b": "गाउँमा धाम लाग्यो।"
+    },
+    {
+      "word_a": "दल",
+      "word_b": "धल",
+      "romanization_a": "dal",
+      "romanization_b": "dhal",
+      "meaning_a": "party/group",
+      "meaning_b": "to collapse/topple",
+      "contrast_type": "voiced_unaspirated_vs_voiced_aspirated_dental",
+      "sentence_a": "राजनीतिक दल बन्यो।",
+      "sentence_b": "पर्खाल धल्यो।"
+    }
+  ],
+  "aspiration_labial": [
+    {
+      "word_a": "पाल",
+      "word_b": "फाल",
+      "romanization_a": "pāl",
+      "romanization_b": "phāl",
+      "meaning_a": "turn/shift",
+      "meaning_b": "jump/leap",
+      "contrast_type": "voiceless_unaspirated_vs_voiceless_aspirated_labial",
+      "sentence_a": "अब तिम्रो पाल हो।",
+      "sentence_b": "बिरालोले फाल मार्यो।"
+    },
+    {
+      "word_a": "पूल",
+      "word_b": "फूल",
+      "romanization_a": "pūl",
+      "romanization_b": "phūl",
+      "meaning_a": "bridge",
+      "meaning_b": "flower",
+      "contrast_type": "voiceless_unaspirated_vs_voiceless_aspirated_labial",
+      "sentence_a": "पूल पुग्न पाँच मिनेट लाग्छ।",
+      "sentence_b": "फूल फुलेको छ।"
+    },
+    {
+      "word_a": "बार",
+      "word_b": "भार",
+      "romanization_a": "bār",
+      "romanization_b": "bhār",
+      "meaning_a": "fence/time(s)",
+      "meaning_b": "load/weight",
+      "contrast_type": "voiced_unaspirated_vs_voiced_aspirated_labial",
+      "sentence_a": "बारीमा बार लगाउ।",
+      "sentence_b": "यो भार गह्रौँ छ।"
+    },
+    {
+      "word_a": "बाला",
+      "word_b": "भाला",
+      "romanization_a": "bālā",
+      "romanization_b": "bhālā",
+      "meaning_a": "earring (child's)",
+      "meaning_b": "spear",
+      "contrast_type": "voiced_unaspirated_vs_voiced_aspirated_labial",
+      "sentence_a": "नानीको बाला हरायो।",
+      "sentence_b": "सिपाहीले भाला बोकेको थियो।"
+    },
+    {
+      "word_a": "पाटो",
+      "word_b": "बाटो",
+      "romanization_a": "pāṭo",
+      "romanization_b": "bāṭo",
+      "meaning_a": "male (of animal)",
+      "meaning_b": "road/path",
+      "contrast_type": "voiceless_vs_voiced_labial",
+      "sentence_a": "यो बाख्राको पाटो हो।",
+      "sentence_b": "बाटो हिँड्न सजिलो छ।"
+    }
+  ],
+  "oral_vs_nasal_vowel": [
+    {
+      "word_a": "हास",
+      "word_b": "हाँस",
+      "romanization_a": "hās",
+      "romanization_b": "hā̃s",
+      "meaning_a": "laughter",
+      "meaning_b": "duck",
+      "contrast_type": "oral_vs_nasal_aa",
+      "sentence_a": "उसको हास रोकिएन।",
+      "sentence_b": "पोखरीमा हाँस पौडिरहेको छ।"
+    },
+    {
+      "word_a": "गाउ",
+      "word_b": "गाउँ",
+      "romanization_a": "gāu",
+      "romanization_b": "gāũ",
+      "meaning_a": "sing (imperative, timi)",
+      "meaning_b": "village",
+      "contrast_type": "oral_vs_nasal_u",
+      "sentence_a": "एउटा गीत गाउ।",
+      "sentence_b": "मेरो गाउँ रामेछाप हो।"
+    },
+    {
+      "word_a": "चाद",
+      "word_b": "चाँद",
+      "romanization_a": "cād",
+      "romanization_b": "cā̃d",
+      "meaning_a": "festival (variant)",
+      "meaning_b": "moon",
+      "contrast_type": "oral_vs_nasal_aa",
+      "sentence_a": "दशैँ ठूलो चाद हो।",
+      "sentence_b": "आज चाँद राम्रो देखिन्छ।"
+    },
+    {
+      "word_a": "आखा",
+      "word_b": "आँखा",
+      "romanization_a": "ākhā",
+      "romanization_b": "ā̃khā",
+      "meaning_a": "(non-standard / mishearing)",
+      "meaning_b": "eye",
+      "contrast_type": "oral_vs_nasal_aa",
+      "sentence_a": "आँखामा नसालिज चिर्ने गर्छ।",
+      "sentence_b": "उसको आँखा निलो छ।"
+    },
+    {
+      "word_a": "सास",
+      "word_b": "साँस",
+      "romanization_a": "sās",
+      "romanization_b": "sā̃s",
+      "meaning_a": "mother-in-law",
+      "meaning_b": "breath",
+      "contrast_type": "oral_vs_nasal_aa",
+      "sentence_a": "सास घरमा हुनुहुन्छ।",
+      "sentence_b": "साँस फेर्नु गाह्रो भयो।"
+    },
+    {
+      "word_a": "बास",
+      "word_b": "बाँस",
+      "romanization_a": "bās",
+      "romanization_b": "bā̃s",
+      "meaning_a": "shelter/lodging",
+      "meaning_b": "bamboo",
+      "contrast_type": "oral_vs_nasal_aa",
+      "sentence_a": "रातको बास कहाँ हो?",
+      "sentence_b": "बाँसको डालो बनाउ।"
+    }
+  ],
+  "retroflex_vs_dental": [
+    {
+      "word_a": "टाल",
+      "word_b": "ताल",
+      "romanization_a": "ṭāl",
+      "romanization_b": "tāl",
+      "meaning_a": "to postpone/avoid",
+      "meaning_b": "lake/rhythm",
+      "contrast_type": "retroflex_vs_dental_t",
+      "sentence_a": "काम नटाल।",
+      "sentence_b": "ताल राम्रो छ।"
+    },
+    {
+      "word_a": "डाल",
+      "word_b": "दाल",
+      "romanization_a": "ḍāl",
+      "romanization_b": "dāl",
+      "meaning_a": "branch",
+      "meaning_b": "lentil soup",
+      "contrast_type": "retroflex_vs_dental_d",
+      "sentence_a": "रूखको डाल भाँचियो।",
+      "sentence_b": "दाल भात खाऊ।"
+    },
+    {
+      "word_a": "कोट",
+      "word_b": "कोत",
+      "romanization_a": "koṭ",
+      "romanization_b": "kot",
+      "meaning_a": "coat/jacket",
+      "meaning_b": "fort/armory",
+      "contrast_type": "retroflex_vs_dental_t",
+      "sentence_a": "नयाँ कोट लगाउ।",
+      "sentence_b": "कोत पर्व मनाइन्छ।"
+    },
+    {
+      "word_a": "पाटो",
+      "word_b": "पातो",
+      "romanization_a": "pāṭo",
+      "romanization_b": "pāto",
+      "meaning_a": "male (of animal)",
+      "meaning_b": "leaf (colloquial/dialectal)",
+      "contrast_type": "retroflex_vs_dental_t",
+      "sentence_a": "पाटो बाख्रा बिक्यो।",
+      "sentence_b": "रूखको पातो खसिरहेको छ।"
+    },
+    {
+      "word_a": "सुड",
+      "word_b": "सुद",
+      "romanization_a": "suḍ",
+      "romanization_b": "sud",
+      "meaning_a": "trunk (elephant's)",
+      "meaning_b": "interest (on money)",
+      "contrast_type": "retroflex_vs_dental_d",
+      "sentence_a": "हात्तीको सुडले पानी तान्यो।",
+      "sentence_b": "बैंकको सुद बढ्यो।"
+    }
+  ],
+  "gemination": [
+    {
+      "word_a": "सकल",
+      "word_b": "सक्कल",
+      "romanization_a": "sakal",
+      "romanization_b": "sakkal",
+      "meaning_a": "all/total (variant)",
+      "meaning_b": "original (document)",
+      "contrast_type": "single_vs_geminate_k",
+      "sentence_a": "सकल जनसंख्या बढ्यो।",
+      "sentence_b": "सक्कल प्रमाणपत्र ल्याउनुहोस्।"
+    },
+    {
+      "word_a": "पका",
+      "word_b": "पक्का",
+      "romanization_a": "pakā",
+      "romanization_b": "pakkā",
+      "meaning_a": "to cook/ripen (causative stem)",
+      "meaning_b": "sure/permanent",
+      "contrast_type": "single_vs_geminate_k",
+      "sentence_a": "भात पका।",
+      "sentence_b": "यो कुरा पक्का हो।"
+    },
+    {
+      "word_a": "पछि",
+      "word_b": "पच्छि",
+      "romanization_a": "pachi",
+      "romanization_b": "pacchi",
+      "meaning_a": "after/later",
+      "meaning_b": "after (emphatic colloquial variant)",
+      "contrast_type": "single_vs_geminate_ch",
+      "sentence_a": "खाना पछि जाऊ।",
+      "sentence_b": "त्यो पच्छि के भयो?"
+    },
+    {
+      "word_a": "कुल",
+      "word_b": "कुल्लो",
+      "romanization_a": "kul",
+      "romanization_b": "kullo",
+      "meaning_a": "clan/lineage",
+      "meaning_b": "irrigation channel",
+      "contrast_type": "single_vs_geminate_l",
+      "sentence_a": "हाम्रो कुल पुरानो हो।",
+      "sentence_b": "कुल्लोबाट पानी आउँछ।"
+    },
+    {
+      "word_a": "छाता",
+      "word_b": "छात्ता",
+      "romanization_a": "chātā",
+      "romanization_b": "chāttā",
+      "meaning_a": "umbrella",
+      "meaning_b": "mushroom",
+      "contrast_type": "single_vs_geminate_t",
+      "sentence_a": "पानी परेपछि छाता लगाउ।",
+      "sentence_b": "जंगलमा छात्ता उम्रिएको छ।"
+    }
+  ],
+  "schwa_deletion": [
+    {
+      "word_a": "कमल",
+      "word_b": "कमला",
+      "romanization_a": "kamal",
+      "romanization_b": "kamalā",
+      "meaning_a": "lotus (also male name)",
+      "meaning_b": "female name / orange (fruit)",
+      "contrast_type": "schwa_retention_vs_vowel_suffix",
+      "sentence_a": "कमल फुलेको छ।",
+      "sentence_b": "कमला सुन्तला मिठो छ।"
+    },
+    {
+      "word_a": "नमक",
+      "word_b": "नम्र",
+      "romanization_a": "namak",
+      "romanization_b": "namra",
+      "meaning_a": "salt",
+      "meaning_b": "humble/polite",
+      "contrast_type": "schwa_in_final_syllable",
+      "sentence_a": "खानामा नमक थोरै छ।",
+      "sentence_b": "ऊ नम्र मान्छे हो।"
+    },
+    {
+      "word_a": "सडक",
+      "word_b": "सड्क",
+      "romanization_a": "saḍak",
+      "romanization_b": "saḍk (colloquial)",
+      "meaning_a": "road (full form, formal)",
+      "meaning_b": "road (schwa-deleted, colloquial speech)",
+      "contrast_type": "schwa_present_vs_deleted_medial",
+      "sentence_a": "सडक निर्माण भइरहेको छ।",
+      "sentence_b": "सड्कमा गाडी धेरै छ।"
+    },
+    {
+      "word_a": "समय",
+      "word_b": "सम्य",
+      "romanization_a": "samay",
+      "romanization_b": "samya (colloquial)",
+      "meaning_a": "time (full form)",
+      "meaning_b": "time (schwa-deleted, fast speech)",
+      "contrast_type": "schwa_present_vs_deleted_medial",
+      "sentence_a": "समय बित्यो।",
+      "sentence_b": "सम्य छैन अहिले।"
+    },
+    {
+      "word_a": "कर",
+      "word_b": "कार",
+      "romanization_a": "kar",
+      "romanization_b": "kār",
+      "meaning_a": "tax",
+      "meaning_b": "car",
+      "contrast_type": "short_vs_long_vowel_with_schwa",
+      "sentence_a": "कर तिर्नुपर्छ।",
+      "sentence_b": "नयाँ कार किन्यो।"
+    }
+  ],
+  "nasal_consonants": [
+    {
+      "word_a": "मन",
+      "word_b": "मण",
+      "romanization_a": "man",
+      "romanization_b": "maṇ",
+      "meaning_a": "mind/heart",
+      "meaning_b": "a unit of weight (approx. 40 kg)",
+      "contrast_type": "nasal_consonant_dental_vs_retroflex",
+      "sentence_a": "मेरो मन दुखेको छ।",
+      "sentence_b": "एक मण चामल ल्याउ।"
+    },
+    {
+      "word_a": "कण",
+      "word_b": "कन",
+      "romanization_a": "kaṇ",
+      "romanization_b": "kan",
+      "meaning_a": "particle/grain",
+      "meaning_b": "ear (dialectal/colloquial variant of कान)",
+      "contrast_type": "nasal_consonant_retroflex_vs_dental",
+      "sentence_a": "अन्नको एक एक कण बचाउ।",
+      "sentence_b": "कनमा दुखाइ भयो।"
+    },
+    {
+      "word_a": "बाण",
+      "word_b": "बान",
+      "romanization_a": "bāṇ",
+      "romanization_b": "bān",
+      "meaning_a": "arrow",
+      "meaning_b": "habit/custom",
+      "contrast_type": "nasal_consonant_retroflex_vs_dental",
+      "sentence_a": "रामले बाण चलाए।",
+      "sentence_b": "यो खराब बान हो।"
+    },
+    {
+      "word_a": "रङ",
+      "word_b": "रन",
+      "romanization_a": "raṅ",
+      "romanization_b": "ran",
+      "meaning_a": "color",
+      "meaning_b": "run (loanword, as in cricket)",
+      "contrast_type": "nasal_consonant_velar_vs_dental",
+      "sentence_a": "यो रङ राम्रो छ।",
+      "sentence_b": "उसले दुई रन बनायो।"
+    },
+    {
+      "word_a": "गङ्गा",
+      "word_b": "गन्दा",
+      "romanization_a": "gaṅgā",
+      "romanization_b": "gandā",
+      "meaning_a": "Ganges river",
+      "meaning_b": "dirty/filthy",
+      "contrast_type": "nasal_consonant_velar_vs_dental",
+      "sentence_a": "गङ्गा पवित्र नदी हो।",
+      "sentence_b": "लुगा गन्दा भयो।"
+    },
+    {
+      "word_a": "पञ्च",
+      "word_b": "पन्च",
+      "romanization_a": "pañc",
+      "romanization_b": "panc",
+      "meaning_a": "five / village elder (panchayat head)",
+      "meaning_b": "puncture",
+      "contrast_type": "nasal_consonant_palatal_vs_dental",
+      "sentence_a": "पञ्चले फैसला सुनाए।",
+      "sentence_b": "टायरमा पन्चर लाग्यो।"
+    },
+    {
+      "word_a": "कमान",
+      "word_b": "कमाण्ड",
+      "romanization_a": "kamān",
+      "romanization_b": "kamāṇḍ",
+      "meaning_a": "bow (weapon) / arch",
+      "meaning_b": "command (loanword)",
+      "contrast_type": "nasal_consonant_dental_vs_retroflex_in_context",
+      "sentence_a": "कमानबाट तीर छोड्यो।",
+      "sentence_b": "कमाण्डरले आदेश दिए।"
+    },
+    {
+      "word_a": "नम",
+      "word_b": "णम",
+      "romanization_a": "nam",
+      "romanization_b": "ṇam",
+      "meaning_a": "to bow/bend (as in नम्र humble)",
+      "meaning_b": "(non-word: demonstrates that ण does not occur word-initially in native Nepali)",
+      "contrast_type": "nasal_consonant_dental_initial_vs_retroflex_initial",
+      "sentence_a": "गुरुलाई नम्र भएर नम।",
+      "sentence_b": "नेपालीमा शब्दको सुरुमा ण आउँदैन।"
+    }
+  ]
+}

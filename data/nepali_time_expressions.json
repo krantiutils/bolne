@@ -1,0 +1,607 @@
+{
+  "description": "Nepali time-related expressions for TTS text normalization and corpus generation",
+  "notes": {
+    "usage": "Used to normalize and expand time references in Nepali text into spoken forms for TTS synthesis",
+    "time_telling_convention": "Nepali time-telling uses बजे (o'clock), सवा (quarter past), साढे (half past), and पौने (quarter to). Special forms: डेढ (1:30) and ढाई (2:30) are used instead of साढे एक and साढे दुई respectively.",
+    "12_hour_system": "Nepali typically uses a 12-hour system with time-of-day qualifiers (बिहान, दिउँसो, साँझ, राती) rather than AM/PM",
+    "formal_vs_colloquial": "Some expressions have both formal (e.g., अपरान्ह) and colloquial (e.g., दिउँसो) variants"
+  },
+  "time_of_day": [
+    {
+      "word": "बिहान",
+      "romanization": "bihān",
+      "english": "morning",
+      "approximate_time_range": "5:00 - 10:00",
+      "description": "Morning; used as time-of-day qualifier (e.g., बिहान सात बजे = 7 AM)"
+    },
+    {
+      "word": "दिउँसो",
+      "romanization": "diũso",
+      "english": "daytime/afternoon",
+      "approximate_time_range": "10:00 - 16:00",
+      "description": "Daytime or afternoon; the general period after morning and before evening"
+    },
+    {
+      "word": "अपरान्ह",
+      "romanization": "aparānha",
+      "english": "afternoon (formal)",
+      "approximate_time_range": "12:00 - 16:00",
+      "description": "Formal term for afternoon; used in written and official contexts"
+    },
+    {
+      "word": "साँझ",
+      "romanization": "sā̃jh",
+      "english": "evening",
+      "approximate_time_range": "16:00 - 19:00",
+      "description": "Early evening; around dusk"
+    },
+    {
+      "word": "बेलुका",
+      "romanization": "belukā",
+      "english": "evening (later)",
+      "approximate_time_range": "17:00 - 20:00",
+      "description": "Later evening; slightly later than साँझ, often used interchangeably"
+    },
+    {
+      "word": "राती",
+      "romanization": "rātī",
+      "english": "night",
+      "approximate_time_range": "20:00 - 5:00",
+      "description": "Night; used as time-of-day qualifier (e.g., राती नौ बजे = 9 PM)"
+    },
+    {
+      "word": "मध्यरात",
+      "romanization": "madhyarāt",
+      "english": "midnight",
+      "approximate_time_range": "00:00",
+      "description": "Midnight; 12:00 AM"
+    },
+    {
+      "word": "आज",
+      "romanization": "āja",
+      "english": "today",
+      "approximate_time_range": null,
+      "description": "Today; the current day"
+    },
+    {
+      "word": "हिजो",
+      "romanization": "hijo",
+      "english": "yesterday",
+      "approximate_time_range": null,
+      "description": "Yesterday; the day before today"
+    },
+    {
+      "word": "भोलि",
+      "romanization": "bholi",
+      "english": "tomorrow",
+      "approximate_time_range": null,
+      "description": "Tomorrow; the day after today"
+    },
+    {
+      "word": "परसि",
+      "romanization": "parsi",
+      "english": "day after tomorrow",
+      "approximate_time_range": null,
+      "description": "The day after tomorrow"
+    },
+    {
+      "word": "अस्ति",
+      "romanization": "asti",
+      "english": "day before yesterday",
+      "approximate_time_range": null,
+      "description": "The day before yesterday"
+    }
+  ],
+  "clock_time_expressions": [
+    {
+      "word": "बजे",
+      "romanization": "baje",
+      "english": "o'clock",
+      "usage_pattern": "<number> बजे",
+      "example": {
+        "nepali": "तीन बजे",
+        "english": "3 o'clock"
+      }
+    },
+    {
+      "word": "बजेर",
+      "romanization": "bajer",
+      "english": "past (in time telling)",
+      "usage_pattern": "<hour> बजेर <minutes> मिनेट",
+      "example": {
+        "nepali": "तीन बजेर पन्ध्र मिनेट",
+        "english": "3:15 (three past fifteen minutes)"
+      }
+    },
+    {
+      "word": "बज्न",
+      "romanization": "bajna",
+      "english": "to (in time telling)",
+      "usage_pattern": "<next hour> बज्न <minutes> मिनेट",
+      "example": {
+        "nepali": "तीन बज्न पन्ध्र मिनेट",
+        "english": "2:45 (fifteen minutes to three)"
+      }
+    },
+    {
+      "word": "साढे",
+      "romanization": "sādhe",
+      "english": "half past",
+      "usage_pattern": "साढे <number> बजे",
+      "example": {
+        "nepali": "साढे तीन बजे",
+        "english": "3:30 (half past three)"
+      }
+    },
+    {
+      "word": "पौने",
+      "romanization": "paune",
+      "english": "quarter to",
+      "usage_pattern": "पौने <next hour> बजे",
+      "example": {
+        "nepali": "पौने तीन बजे",
+        "english": "2:45 (quarter to three)"
+      }
+    },
+    {
+      "word": "सवा",
+      "romanization": "sawā",
+      "english": "quarter past",
+      "usage_pattern": "सवा <number> बजे",
+      "example": {
+        "nepali": "सवा तीन बजे",
+        "english": "3:15 (quarter past three)"
+      }
+    },
+    {
+      "word": "डेढ",
+      "romanization": "ḍeḍh",
+      "english": "one and a half",
+      "usage_pattern": "डेढ बजे (specifically for 1:30)",
+      "example": {
+        "nepali": "डेढ बजे",
+        "english": "1:30 (half past one)"
+      }
+    },
+    {
+      "word": "ढाई",
+      "romanization": "ḍhāī",
+      "english": "two and a half",
+      "usage_pattern": "ढाई बजे (specifically for 2:30)",
+      "example": {
+        "nepali": "ढाई बजे",
+        "english": "2:30 (half past two)"
+      }
+    }
+  ],
+  "time_telling_patterns": [
+    {
+      "time": "1:00",
+      "nepali": "एक बजे",
+      "romanization": "ek baje",
+      "english": "one o'clock",
+      "pattern": "o'clock"
+    },
+    {
+      "time": "1:15",
+      "nepali": "सवा एक बजे",
+      "romanization": "sawā ek baje",
+      "english": "quarter past one",
+      "pattern": "quarter past"
+    },
+    {
+      "time": "1:30",
+      "nepali": "डेढ बजे",
+      "romanization": "ḍeḍh baje",
+      "english": "half past one",
+      "pattern": "half past (irregular: uses डेढ, not साढे एक)"
+    },
+    {
+      "time": "1:45",
+      "nepali": "पौने दुई बजे",
+      "romanization": "paune duī baje",
+      "english": "quarter to two",
+      "pattern": "quarter to"
+    },
+    {
+      "time": "2:00",
+      "nepali": "दुई बजे",
+      "romanization": "duī baje",
+      "english": "two o'clock",
+      "pattern": "o'clock"
+    },
+    {
+      "time": "2:15",
+      "nepali": "सवा दुई बजे",
+      "romanization": "sawā duī baje",
+      "english": "quarter past two",
+      "pattern": "quarter past"
+    },
+    {
+      "time": "2:30",
+      "nepali": "ढाई बजे",
+      "romanization": "ḍhāī baje",
+      "english": "half past two",
+      "pattern": "half past (irregular: uses ढाई, not साढे दुई)"
+    },
+    {
+      "time": "2:45",
+      "nepali": "पौने तीन बजे",
+      "romanization": "paune tīn baje",
+      "english": "quarter to three",
+      "pattern": "quarter to"
+    },
+    {
+      "time": "3:00",
+      "nepali": "तीन बजे",
+      "romanization": "tīn baje",
+      "english": "three o'clock",
+      "pattern": "o'clock"
+    },
+    {
+      "time": "3:15",
+      "nepali": "सवा तीन बजे",
+      "romanization": "sawā tīn baje",
+      "english": "quarter past three",
+      "pattern": "quarter past"
+    },
+    {
+      "time": "3:30",
+      "nepali": "साढे तीन बजे",
+      "romanization": "sādhe tīn baje",
+      "english": "half past three",
+      "pattern": "half past"
+    },
+    {
+      "time": "3:45",
+      "nepali": "पौने चार बजे",
+      "romanization": "paune cār baje",
+      "english": "quarter to four",
+      "pattern": "quarter to"
+    },
+    {
+      "time": "4:00",
+      "nepali": "चार बजे",
+      "romanization": "cār baje",
+      "english": "four o'clock",
+      "pattern": "o'clock"
+    },
+    {
+      "time": "4:15",
+      "nepali": "सवा चार बजे",
+      "romanization": "sawā cār baje",
+      "english": "quarter past four",
+      "pattern": "quarter past"
+    },
+    {
+      "time": "4:30",
+      "nepali": "साढे चार बजे",
+      "romanization": "sādhe cār baje",
+      "english": "half past four",
+      "pattern": "half past"
+    },
+    {
+      "time": "4:45",
+      "nepali": "पौने पाँच बजे",
+      "romanization": "paune pā̃c baje",
+      "english": "quarter to five",
+      "pattern": "quarter to"
+    },
+    {
+      "time": "5:00",
+      "nepali": "पाँच बजे",
+      "romanization": "pā̃c baje",
+      "english": "five o'clock",
+      "pattern": "o'clock"
+    },
+    {
+      "time": "5:15",
+      "nepali": "सवा पाँच बजे",
+      "romanization": "sawā pā̃c baje",
+      "english": "quarter past five",
+      "pattern": "quarter past"
+    },
+    {
+      "time": "5:30",
+      "nepali": "साढे पाँच बजे",
+      "romanization": "sādhe pā̃c baje",
+      "english": "half past five",
+      "pattern": "half past"
+    },
+    {
+      "time": "5:45",
+      "nepali": "पौने छ बजे",
+      "romanization": "paune cha baje",
+      "english": "quarter to six",
+      "pattern": "quarter to"
+    },
+    {
+      "time": "6:00",
+      "nepali": "छ बजे",
+      "romanization": "cha baje",
+      "english": "six o'clock",
+      "pattern": "o'clock"
+    },
+    {
+      "time": "6:15",
+      "nepali": "सवा छ बजे",
+      "romanization": "sawā cha baje",
+      "english": "quarter past six",
+      "pattern": "quarter past"
+    },
+    {
+      "time": "6:30",
+      "nepali": "साढे छ बजे",
+      "romanization": "sādhe cha baje",
+      "english": "half past six",
+      "pattern": "half past"
+    },
+    {
+      "time": "6:45",
+      "nepali": "पौने सात बजे",
+      "romanization": "paune sāt baje",
+      "english": "quarter to seven",
+      "pattern": "quarter to"
+    },
+    {
+      "time": "7:00",
+      "nepali": "सात बजे",
+      "romanization": "sāt baje",
+      "english": "seven o'clock",
+      "pattern": "o'clock"
+    },
+    {
+      "time": "7:15",
+      "nepali": "सवा सात बजे",
+      "romanization": "sawā sāt baje",
+      "english": "quarter past seven",
+      "pattern": "quarter past"
+    },
+    {
+      "time": "7:30",
+      "nepali": "साढे सात बजे",
+      "romanization": "sādhe sāt baje",
+      "english": "half past seven",
+      "pattern": "half past"
+    },
+    {
+      "time": "7:45",
+      "nepali": "पौने आठ बजे",
+      "romanization": "paune āṭh baje",
+      "english": "quarter to eight",
+      "pattern": "quarter to"
+    },
+    {
+      "time": "8:00",
+      "nepali": "आठ बजे",
+      "romanization": "āṭh baje",
+      "english": "eight o'clock",
+      "pattern": "o'clock"
+    },
+    {
+      "time": "8:15",
+      "nepali": "सवा आठ बजे",
+      "romanization": "sawā āṭh baje",
+      "english": "quarter past eight",
+      "pattern": "quarter past"
+    },
+    {
+      "time": "8:30",
+      "nepali": "साढे आठ बजे",
+      "romanization": "sādhe āṭh baje",
+      "english": "half past eight",
+      "pattern": "half past"
+    },
+    {
+      "time": "8:45",
+      "nepali": "पौने नौ बजे",
+      "romanization": "paune nau baje",
+      "english": "quarter to nine",
+      "pattern": "quarter to"
+    },
+    {
+      "time": "9:00",
+      "nepali": "नौ बजे",
+      "romanization": "nau baje",
+      "english": "nine o'clock",
+      "pattern": "o'clock"
+    },
+    {
+      "time": "9:15",
+      "nepali": "सवा नौ बजे",
+      "romanization": "sawā nau baje",
+      "english": "quarter past nine",
+      "pattern": "quarter past"
+    },
+    {
+      "time": "9:30",
+      "nepali": "साढे नौ बजे",
+      "romanization": "sādhe nau baje",
+      "english": "half past nine",
+      "pattern": "half past"
+    },
+    {
+      "time": "9:45",
+      "nepali": "पौने दश बजे",
+      "romanization": "paune daś baje",
+      "english": "quarter to ten",
+      "pattern": "quarter to"
+    },
+    {
+      "time": "10:00",
+      "nepali": "दश बजे",
+      "romanization": "daś baje",
+      "english": "ten o'clock",
+      "pattern": "o'clock"
+    },
+    {
+      "time": "10:15",
+      "nepali": "सवा दश बजे",
+      "romanization": "sawā daś baje",
+      "english": "quarter past ten",
+      "pattern": "quarter past"
+    },
+    {
+      "time": "10:30",
+      "nepali": "साढे दश बजे",
+      "romanization": "sādhe daś baje",
+      "english": "half past ten",
+      "pattern": "half past"
+    },
+    {
+      "time": "10:45",
+      "nepali": "पौने एघार बजे",
+      "romanization": "paune eghār baje",
+      "english": "quarter to eleven",
+      "pattern": "quarter to"
+    },
+    {
+      "time": "11:00",
+      "nepali": "एघार बजे",
+      "romanization": "eghār baje",
+      "english": "eleven o'clock",
+      "pattern": "o'clock"
+    },
+    {
+      "time": "11:15",
+      "nepali": "सवा एघार बजे",
+      "romanization": "sawā eghār baje",
+      "english": "quarter past eleven",
+      "pattern": "quarter past"
+    },
+    {
+      "time": "11:30",
+      "nepali": "साढे एघार बजे",
+      "romanization": "sādhe eghār baje",
+      "english": "half past eleven",
+      "pattern": "half past"
+    },
+    {
+      "time": "11:45",
+      "nepali": "पौने बाह्र बजे",
+      "romanization": "paune bāhr baje",
+      "english": "quarter to twelve",
+      "pattern": "quarter to"
+    },
+    {
+      "time": "12:00",
+      "nepali": "बाह्र बजे",
+      "romanization": "bāhr baje",
+      "english": "twelve o'clock",
+      "pattern": "o'clock",
+      "note": "मध्यान्ह (madhyānha) for noon, मध्यरात (madhyarāt) for midnight"
+    }
+  ],
+  "duration_expressions": [
+    {
+      "word": "सेकेन्ड",
+      "romanization": "sekend",
+      "english": "second",
+      "description": "Second; standard time duration unit"
+    },
+    {
+      "word": "मिनेट",
+      "romanization": "mineṭ",
+      "english": "minute",
+      "description": "Minute; standard time duration unit"
+    },
+    {
+      "word": "घण्टा",
+      "romanization": "ghaṇṭā",
+      "english": "hour",
+      "description": "Hour; standard time duration unit (e.g., दुई घण्टा = two hours)"
+    },
+    {
+      "word": "दिन",
+      "romanization": "din",
+      "english": "day",
+      "description": "Day; used for duration (e.g., तीन दिन = three days)"
+    },
+    {
+      "word": "हप्ता",
+      "romanization": "haptā",
+      "english": "week",
+      "description": "Week; seven days (e.g., दुई हप्ता = two weeks)"
+    },
+    {
+      "word": "महिना",
+      "romanization": "mahīnā",
+      "english": "month",
+      "description": "Month; calendar month (e.g., तीन महिना = three months)"
+    },
+    {
+      "word": "वर्ष",
+      "romanization": "varṣa",
+      "english": "year (formal)",
+      "description": "Year; formal/literary form used in written and official contexts"
+    },
+    {
+      "word": "साल",
+      "romanization": "sāl",
+      "english": "year (colloquial)",
+      "description": "Year; colloquial form commonly used in everyday speech (e.g., दुई साल = two years)"
+    }
+  ],
+  "relative_time_expressions": [
+    {
+      "word": "अहिले",
+      "romanization": "ahile",
+      "english": "now",
+      "example": {
+        "nepali": "अहिले के भइरहेको छ?",
+        "english": "What is happening now?"
+      },
+      "description": "Now; the present moment"
+    },
+    {
+      "word": "अघि",
+      "romanization": "aghi",
+      "english": "ago/before",
+      "example": {
+        "nepali": "दुई घण्टा अघि",
+        "english": "Two hours ago"
+      },
+      "description": "Ago or before; placed after a time duration to indicate past (e.g., तीन दिन अघि = three days ago)"
+    },
+    {
+      "word": "पछि",
+      "romanization": "pachhi",
+      "english": "after/later",
+      "example": {
+        "nepali": "एक घण्टा पछि",
+        "english": "After one hour"
+      },
+      "description": "After or later; placed after a time duration to indicate future (e.g., दुई हप्ता पछि = after two weeks)"
+    },
+    {
+      "word": "तुरुन्तै",
+      "romanization": "turuntai",
+      "english": "immediately",
+      "example": {
+        "nepali": "तुरुन्तै आउनुहोस्।",
+        "english": "Come immediately."
+      },
+      "description": "Immediately; right away, without delay"
+    },
+    {
+      "word": "बिस्तारै",
+      "romanization": "bistārai",
+      "english": "slowly/gradually",
+      "example": {
+        "nepali": "बिस्तारै बोल्नुहोस्।",
+        "english": "Speak slowly."
+      },
+      "description": "Slowly or gradually; indicates a gradual pace"
+    },
+    {
+      "word": "छिट्टै",
+      "romanization": "chhiṭṭai",
+      "english": "quickly/soon",
+      "example": {
+        "nepali": "छिट्टै आउँछु।",
+        "english": "I will come soon."
+      },
+      "description": "Quickly or soon; indicates urgency or near-future timing"
+    }
+  ]
+}

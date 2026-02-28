@@ -1,0 +1,701 @@
+{
+  "description": "Nepali homographs for TTS evaluation (NepTTS-Bench style) — words spelled identically in Devanagari but with different pronunciations or meanings depending on context. Modeled after the Blizzard Challenge 2023 homograph evaluation. Tests whether a TTS system can use sentential context to select the correct pronunciation.",
+  "notes": {
+    "usage": "Each entry provides a homograph with two or more readings, each disambiguated by an example sentence. Use these to evaluate whether a TTS system produces the correct pronunciation based on context.",
+    "evaluation": "A good TTS system should produce distinct pronunciations for each reading when given the disambiguating sentence. Evaluate by comparing synthesized audio against the target pronunciation field.",
+    "ambiguity_types": "Covers schwa deletion, tatsama vs tadbhava pronunciation, part-of-speech dependent pronunciation, stress/emphasis differences, and Nepali-Hindi cognate divergences",
+    "schwa_deletion_note": "Nepali inherits the Devanagari inherent vowel 'a' (schwa), but schwa deletion rules are context-dependent and not always predictable from spelling alone. This is the single largest source of homographic ambiguity in Nepali."
+  },
+  "homographs": [
+    {
+      "word": "कर",
+      "readings": [
+        {
+          "pronunciation": "कर्",
+          "romanization": "kar",
+          "meaning": "tax",
+          "part_of_speech": "noun",
+          "example_sentence": "सरकारले नयाँ कर लगायो।",
+          "example_english": "The government imposed a new tax."
+        },
+        {
+          "pronunciation": "कर",
+          "romanization": "kara",
+          "meaning": "do (imperative, informal)",
+          "part_of_speech": "verb",
+          "example_sentence": "यो काम चाँडो कर।",
+          "example_english": "Do this work quickly."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "With schwa deleted, /kar/ means 'tax'; with schwa retained, /kara/ is the informal imperative of गर्नु (to do). Sentence context (noun vs. verb position) disambiguates."
+    },
+    {
+      "word": "फल",
+      "readings": [
+        {
+          "pronunciation": "फल्",
+          "romanization": "phal",
+          "meaning": "fruit",
+          "part_of_speech": "noun",
+          "example_sentence": "रुखमा फल पाकेको छ।",
+          "example_english": "The fruit on the tree has ripened."
+        },
+        {
+          "pronunciation": "फल",
+          "romanization": "phala",
+          "meaning": "result/consequence",
+          "part_of_speech": "noun",
+          "example_sentence": "मेहनतको फल मीठो हुन्छ।",
+          "example_english": "The result of hard work is sweet."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "Both are nouns, but /phal/ (with deleted schwa) typically means 'fruit' while /phala/ (with retained schwa) means 'result/consequence' in formal registers. The distinction is subtle and context-dependent."
+    },
+    {
+      "word": "बल",
+      "readings": [
+        {
+          "pronunciation": "बल्",
+          "romanization": "bal",
+          "meaning": "strength/force",
+          "part_of_speech": "noun",
+          "example_sentence": "उसमा धेरै बल छ।",
+          "example_english": "He has a lot of strength."
+        },
+        {
+          "pronunciation": "बल",
+          "romanization": "bala",
+          "meaning": "burn (imperative)",
+          "part_of_speech": "verb",
+          "example_sentence": "बत्ती बल, अँध्यारो छ।",
+          "example_english": "Turn on the light, it's dark."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "Schwa deletion distinguishes the noun /bal/ (strength) from the verb imperative /bala/ (burn/light up). Syntactic position disambiguates."
+    },
+    {
+      "word": "हर",
+      "readings": [
+        {
+          "pronunciation": "हर्",
+          "romanization": "har",
+          "meaning": "every/each",
+          "part_of_speech": "determiner",
+          "example_sentence": "हर मान्छेको कथा फरक हुन्छ।",
+          "example_english": "Every person's story is different."
+        },
+        {
+          "pronunciation": "हर",
+          "romanization": "hara",
+          "meaning": "defeat/loss",
+          "part_of_speech": "noun",
+          "example_sentence": "त्यो खेलमा हाम्रो हर भयो।",
+          "example_english": "We suffered a defeat in that game."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "As a determiner /har/ (every), schwa is deleted; as a noun /hara/ (defeat), schwa is retained. Part of speech and sentence position disambiguate."
+    },
+    {
+      "word": "विद्या",
+      "readings": [
+        {
+          "pronunciation": "बिद्या",
+          "romanization": "bidyā",
+          "meaning": "knowledge/education (colloquial)",
+          "part_of_speech": "noun",
+          "example_sentence": "बिद्या नभई केही हुँदैन।",
+          "example_english": "Nothing happens without education."
+        },
+        {
+          "pronunciation": "विद्या",
+          "romanization": "vidyā",
+          "meaning": "knowledge/learning (formal/Sanskritic)",
+          "part_of_speech": "noun",
+          "example_sentence": "विद्या सबभन्दा ठूलो धन हो।",
+          "example_english": "Knowledge is the greatest wealth."
+        }
+      ],
+      "ambiguity_type": "tatsama_vs_tadbhava",
+      "description": "The Sanskrit-origin word विद्या has two readings: colloquial /bidyā/ (with /b/ for /v/) used in everyday speech, and formal /vidyā/ (with labiodental /v/) used in literary, academic, or religious contexts. Register determines pronunciation."
+    },
+    {
+      "word": "विष",
+      "readings": [
+        {
+          "pronunciation": "बिष",
+          "romanization": "biṣ",
+          "meaning": "poison (colloquial)",
+          "part_of_speech": "noun",
+          "example_sentence": "साँपको बिष खतरनाक हुन्छ।",
+          "example_english": "Snake venom is dangerous."
+        },
+        {
+          "pronunciation": "विष",
+          "romanization": "viṣ",
+          "meaning": "poison (formal/literary)",
+          "part_of_speech": "noun",
+          "example_sentence": "विष र अमृतमा भिन्नता छ।",
+          "example_english": "There is a difference between poison and nectar."
+        }
+      ],
+      "ambiguity_type": "tatsama_vs_tadbhava",
+      "description": "Sanskrit विष is pronounced /biṣ/ in colloquial Nepali (labial /b/ for labiodental /v/) but /viṣ/ in formal, literary, or religious contexts. The surrounding register markers determine which reading is appropriate."
+    },
+    {
+      "word": "वन",
+      "readings": [
+        {
+          "pronunciation": "बन",
+          "romanization": "ban",
+          "meaning": "forest (colloquial)",
+          "part_of_speech": "noun",
+          "example_sentence": "बनमा बाघ छ।",
+          "example_english": "There is a tiger in the forest."
+        },
+        {
+          "pronunciation": "वन",
+          "romanization": "van",
+          "meaning": "forest (formal/official)",
+          "part_of_speech": "noun",
+          "example_sentence": "वन तथा वातावरण मन्त्रालयले निर्णय गर्यो।",
+          "example_english": "The Ministry of Forests and Environment made a decision."
+        }
+      ],
+      "ambiguity_type": "tatsama_vs_tadbhava",
+      "description": "वन (forest) is /ban/ in everyday speech but /van/ in official/formal contexts (e.g., वन मन्त्रालय). Government and institutional contexts trigger the Sanskritic reading."
+    },
+    {
+      "word": "पर",
+      "readings": [
+        {
+          "pronunciation": "पर्",
+          "romanization": "par",
+          "meaning": "the other side/far side",
+          "part_of_speech": "noun/adverb",
+          "example_sentence": "नदीको पर तिर जानुपर्छ।",
+          "example_english": "We need to go to the other side of the river."
+        },
+        {
+          "pronunciation": "पर",
+          "romanization": "para",
+          "meaning": "fall (imperative)",
+          "part_of_speech": "verb",
+          "example_sentence": "ढोगमा पर गुरुलाई।",
+          "example_english": "Bow down (fall in prostration) to the teacher."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "Schwa-deleted /par/ is a noun/adverb meaning 'far side', while schwa-retained /para/ is an imperative verb. Syntactic role disambiguates."
+    },
+    {
+      "word": "नमस्ते",
+      "readings": [
+        {
+          "pronunciation": "नमस्ते",
+          "romanization": "namaste",
+          "meaning": "hello (greeting)",
+          "part_of_speech": "interjection",
+          "example_sentence": "नमस्ते, कस्तो हुनुहुन्छ?",
+          "example_english": "Hello, how are you?"
+        },
+        {
+          "pronunciation": "नमस्ते",
+          "romanization": "namaste",
+          "meaning": "goodbye (farewell)",
+          "part_of_speech": "interjection",
+          "example_sentence": "अब म जान्छु, नमस्ते।",
+          "example_english": "I'm leaving now, goodbye."
+        }
+      ],
+      "ambiguity_type": "stress_emphasis",
+      "description": "Same spelling and base pronunciation, but greeting नमस्ते typically has a rising/warm intonation contour, while farewell नमस्ते has a falling/conclusive contour. Sentence-final vs. sentence-initial position also signals the difference."
+    },
+    {
+      "word": "दल",
+      "readings": [
+        {
+          "pronunciation": "दल्",
+          "romanization": "dal",
+          "meaning": "lentil soup",
+          "part_of_speech": "noun",
+          "example_sentence": "आज दाल भात खाऔं।",
+          "example_english": "Let's eat lentil soup and rice today."
+        },
+        {
+          "pronunciation": "दल",
+          "romanization": "dal",
+          "meaning": "political party/group",
+          "part_of_speech": "noun",
+          "example_sentence": "त्यो राजनीतिक दलले चुनाव जित्यो।",
+          "example_english": "That political party won the election."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "Both readings are nouns, but the food meaning दाल is often written with long vowel while the political meaning दल has short vowel. When written as दल, context (food vs. politics) disambiguates the pronunciation."
+    },
+    {
+      "word": "मन",
+      "readings": [
+        {
+          "pronunciation": "मन्",
+          "romanization": "man",
+          "meaning": "mind/heart",
+          "part_of_speech": "noun",
+          "example_sentence": "मेरो मन दुखेको छ।",
+          "example_english": "My heart is hurt."
+        },
+        {
+          "pronunciation": "मन",
+          "romanization": "mana",
+          "meaning": "a unit of measurement (~1 pound)",
+          "part_of_speech": "noun",
+          "example_sentence": "एक मन चामल दिनुहोस्।",
+          "example_english": "Please give one mana of rice."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "Schwa-deleted /man/ means 'mind/heart'; schwa-retained /mana/ is a traditional Nepali unit of weight/volume measurement. Context of emotion vs. commerce disambiguates."
+    },
+    {
+      "word": "कल",
+      "readings": [
+        {
+          "pronunciation": "कल्",
+          "romanization": "kal",
+          "meaning": "tap/faucet",
+          "part_of_speech": "noun",
+          "example_sentence": "कलको पानी बन्द गर।",
+          "example_english": "Turn off the tap water."
+        },
+        {
+          "pronunciation": "कल",
+          "romanization": "kala",
+          "meaning": "machine/engine",
+          "part_of_speech": "noun",
+          "example_sentence": "कारखानाको कल चलिरहेको छ।",
+          "example_english": "The factory machine is running."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "Schwa-deleted /kal/ typically means 'tap/faucet' in domestic contexts; schwa-retained /kala/ means 'machine/engine' in industrial contexts. Semantic domain disambiguates."
+    },
+    {
+      "word": "जल",
+      "readings": [
+        {
+          "pronunciation": "जल्",
+          "romanization": "jal",
+          "meaning": "water (formal/literary)",
+          "part_of_speech": "noun",
+          "example_sentence": "जलस्रोत संरक्षण गर्नुपर्छ।",
+          "example_english": "Water resources must be conserved."
+        },
+        {
+          "pronunciation": "जल",
+          "romanization": "jala",
+          "meaning": "burn (imperative)",
+          "part_of_speech": "verb",
+          "example_sentence": "आगो जल, चिसो छ।",
+          "example_english": "Fire, burn — it's cold."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "As a noun /jal/ (water, formal), schwa is deleted; as a verb imperative /jala/ (burn), schwa is retained. Part of speech and syntactic position disambiguate."
+    },
+    {
+      "word": "सब",
+      "readings": [
+        {
+          "pronunciation": "सब्",
+          "romanization": "sab",
+          "meaning": "all/everyone",
+          "part_of_speech": "determiner",
+          "example_sentence": "सब मान्छे बराबर हुन्।",
+          "example_english": "All people are equal."
+        },
+        {
+          "pronunciation": "सब",
+          "romanization": "saba",
+          "meaning": "corpse",
+          "part_of_speech": "noun",
+          "example_sentence": "घाटमा सब जलाइन्छ।",
+          "example_english": "Corpses are cremated at the ghat."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "The determiner 'all' /sab/ has deleted schwa, while the noun 'corpse' /saba/ retains it (often written शव in formal contexts). Context of quantification vs. death/cremation disambiguates."
+    },
+    {
+      "word": "विश्वास",
+      "readings": [
+        {
+          "pronunciation": "बिश्वास",
+          "romanization": "bishwās",
+          "meaning": "trust/belief (colloquial)",
+          "part_of_speech": "noun",
+          "example_sentence": "मलाई तिम्रो कुरामा बिश्वास छ।",
+          "example_english": "I trust what you say."
+        },
+        {
+          "pronunciation": "विश्वास",
+          "romanization": "vishwās",
+          "meaning": "faith/belief (formal/religious)",
+          "part_of_speech": "noun",
+          "example_sentence": "विश्वास मानवजीवनको आधार हो।",
+          "example_english": "Faith is the foundation of human life."
+        }
+      ],
+      "ambiguity_type": "tatsama_vs_tadbhava",
+      "description": "Colloquial pronunciation uses /b/ for /v/: /bishwās/. Formal, religious, or literary contexts use the Sanskritic /vishwās/. Register and formality level determine the reading."
+    },
+    {
+      "word": "घर",
+      "readings": [
+        {
+          "pronunciation": "घर्",
+          "romanization": "ghar",
+          "meaning": "house/home",
+          "part_of_speech": "noun",
+          "example_sentence": "मेरो घर काठमाडौंमा छ।",
+          "example_english": "My house is in Kathmandu."
+        },
+        {
+          "pronunciation": "घर",
+          "romanization": "ghara",
+          "meaning": "household/family (with schwa in compound forms)",
+          "part_of_speech": "noun",
+          "example_sentence": "घरबार सबै छोडेर गयो।",
+          "example_english": "He left all his household behind."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "Standalone /ghar/ (schwa deleted) means 'house'; in certain compound forms like घरबार, the schwa may be partially retained /ghara-bār/. Context of standalone vs. compound usage affects pronunciation."
+    },
+    {
+      "word": "पानी",
+      "readings": [
+        {
+          "pronunciation": "पानी",
+          "romanization": "pānī",
+          "meaning": "water",
+          "part_of_speech": "noun",
+          "example_sentence": "पानी पिउनुहोस्।",
+          "example_english": "Please drink water."
+        },
+        {
+          "pronunciation": "पानी",
+          "romanization": "pānī",
+          "meaning": "rain",
+          "part_of_speech": "noun",
+          "example_sentence": "आज धेरै पानी पर्यो।",
+          "example_english": "It rained a lot today."
+        }
+      ],
+      "ambiguity_type": "stress_emphasis",
+      "description": "Same pronunciation for both meanings, but prosodic emphasis differs: 'water' (drink context) has neutral prosody, while 'rain' (weather context) may carry heavier stress. TTS must pick appropriate prosody from context."
+    },
+    {
+      "word": "विकास",
+      "readings": [
+        {
+          "pronunciation": "बिकास",
+          "romanization": "bikās",
+          "meaning": "development (colloquial)",
+          "part_of_speech": "noun",
+          "example_sentence": "गाउँमा बिकास भइरहेको छ।",
+          "example_english": "Development is happening in the village."
+        },
+        {
+          "pronunciation": "विकास",
+          "romanization": "vikās",
+          "meaning": "development (formal/official)",
+          "part_of_speech": "noun",
+          "example_sentence": "विकास मन्त्रालयले योजना बनायो।",
+          "example_english": "The Ministry of Development made a plan."
+        }
+      ],
+      "ambiguity_type": "tatsama_vs_tadbhava",
+      "description": "Like other व-initial Sanskrit words, colloquial Nepali uses /b/ (/bikās/) while formal/institutional contexts use /v/ (/vikās/). The presence of official titles or formal register triggers the Sanskritic reading."
+    },
+    {
+      "word": "भर",
+      "readings": [
+        {
+          "pronunciation": "भर्",
+          "romanization": "bhar",
+          "meaning": "full/throughout",
+          "part_of_speech": "postposition",
+          "example_sentence": "दिनभर काम गरें।",
+          "example_english": "I worked throughout the day."
+        },
+        {
+          "pronunciation": "भर",
+          "romanization": "bhara",
+          "meaning": "fill (imperative)",
+          "part_of_speech": "verb",
+          "example_sentence": "गिलासमा पानी भर।",
+          "example_english": "Fill water in the glass."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "As a postposition meaning 'throughout', /bhar/ has deleted schwa and attaches to nouns (दिनभर). As a verb imperative /bhara/ (fill), schwa is retained. Grammatical function disambiguates."
+    },
+    {
+      "word": "नर",
+      "readings": [
+        {
+          "pronunciation": "नर्",
+          "romanization": "nar",
+          "meaning": "male/man (formal)",
+          "part_of_speech": "noun/adjective",
+          "example_sentence": "नर सिंह वनको राजा हो।",
+          "example_english": "The male lion is the king of the forest."
+        },
+        {
+          "pronunciation": "नर",
+          "romanization": "nara",
+          "meaning": "human/person (literary)",
+          "part_of_speech": "noun",
+          "example_sentence": "नर र नारायणको कथा पुराणमा छ।",
+          "example_english": "The story of Nara and Narayana is in the Puranas."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "As an adjective 'male' /nar/ (schwa deleted); as a mythological/literary proper noun 'Nara' /nara/ (schwa retained). Context of everyday gender vs. religious narrative disambiguates."
+    },
+    {
+      "word": "तप",
+      "readings": [
+        {
+          "pronunciation": "तप्",
+          "romanization": "tap",
+          "meaning": "heat/fever",
+          "part_of_speech": "noun",
+          "example_sentence": "उसलाई तप लागेको छ।",
+          "example_english": "He has a fever."
+        },
+        {
+          "pronunciation": "तप",
+          "romanization": "tapa",
+          "meaning": "penance/austerity",
+          "part_of_speech": "noun",
+          "example_sentence": "ऋषिले तप गरे।",
+          "example_english": "The sage performed penance."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "Medical/everyday context gives /tap/ (fever/heat); religious/literary context gives /tapa/ (penance/austerity) with schwa retained. Semantic domain disambiguates."
+    },
+    {
+      "word": "वर",
+      "readings": [
+        {
+          "pronunciation": "बर",
+          "romanization": "bar",
+          "meaning": "groom/bridegroom (colloquial)",
+          "part_of_speech": "noun",
+          "example_sentence": "बर र बेहुली आए।",
+          "example_english": "The bride and groom arrived."
+        },
+        {
+          "pronunciation": "वर",
+          "romanization": "var",
+          "meaning": "boon/blessing (formal)",
+          "part_of_speech": "noun",
+          "example_sentence": "देवताले वर दिनुभयो।",
+          "example_english": "The deity granted a boon."
+        }
+      ],
+      "ambiguity_type": "tatsama_vs_tadbhava",
+      "description": "In wedding/colloquial context, /bar/ with labial /b/; in religious/mythological formal context, /var/ with labiodental /v/. The wedding vs. divine context triggers different readings."
+    },
+    {
+      "word": "सुन",
+      "readings": [
+        {
+          "pronunciation": "सुन्",
+          "romanization": "sun",
+          "meaning": "gold",
+          "part_of_speech": "noun",
+          "example_sentence": "उसले सुनको चुरा लगाइन्।",
+          "example_english": "She wore gold bangles."
+        },
+        {
+          "pronunciation": "सुन",
+          "romanization": "suna",
+          "meaning": "listen (imperative)",
+          "part_of_speech": "verb",
+          "example_sentence": "मेरो कुरा सुन।",
+          "example_english": "Listen to what I say."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "Noun /sun/ (gold) has deleted schwa; verb imperative /suna/ (listen) retains schwa. Extremely common ambiguity in everyday Nepali; syntactic position (object vs. predicate) disambiguates."
+    },
+    {
+      "word": "दिन",
+      "readings": [
+        {
+          "pronunciation": "दिन्",
+          "romanization": "din",
+          "meaning": "day",
+          "part_of_speech": "noun",
+          "example_sentence": "आज राम्रो दिन हो।",
+          "example_english": "Today is a good day."
+        },
+        {
+          "pronunciation": "दिन",
+          "romanization": "dina",
+          "meaning": "to give (infinitive stem)",
+          "part_of_speech": "verb",
+          "example_sentence": "मलाई पानी दिन सक्नुहुन्छ?",
+          "example_english": "Can you give me water?"
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "Noun /din/ (day) vs. verbal stem /dina/ (to give). Very high-frequency ambiguity. Preceding and following words determine part of speech."
+    },
+    {
+      "word": "जन",
+      "readings": [
+        {
+          "pronunciation": "जन्",
+          "romanization": "jan",
+          "meaning": "people (as in जनता)",
+          "part_of_speech": "noun/prefix",
+          "example_sentence": "जनआन्दोलनले इतिहास बदल्यो।",
+          "example_english": "The people's movement changed history."
+        },
+        {
+          "pronunciation": "जन",
+          "romanization": "jana",
+          "meaning": "person (counter word)",
+          "part_of_speech": "classifier",
+          "example_sentence": "तीन जना मान्छे आए।",
+          "example_english": "Three people came."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "As a prefix/compound element /jan/ (people, as in जनता, जनसेवा), schwa is deleted. As a classifier /jana/ (counting people), schwa is retained. Compound vs. standalone usage disambiguates."
+    },
+    {
+      "word": "वास",
+      "readings": [
+        {
+          "pronunciation": "बास",
+          "romanization": "bās",
+          "meaning": "lodging/shelter (colloquial)",
+          "part_of_speech": "noun",
+          "example_sentence": "आज राति बास कहाँ लिने?",
+          "example_english": "Where shall we stay tonight?"
+        },
+        {
+          "pronunciation": "वास",
+          "romanization": "vās",
+          "meaning": "dwelling/residence (formal)",
+          "part_of_speech": "noun",
+          "example_sentence": "तपाईंको वासस्थान कहाँ हो?",
+          "example_english": "Where is your place of residence?"
+        }
+      ],
+      "ambiguity_type": "tatsama_vs_tadbhava",
+      "description": "Everyday colloquial usage gives /bās/ (with /b/); formal or compound usage (वासस्थान, निवास) gives /vās/ (with /v/). Register and compound context determine the reading."
+    },
+    {
+      "word": "चल",
+      "readings": [
+        {
+          "pronunciation": "चल्",
+          "romanization": "chal",
+          "meaning": "trick/move (in games)",
+          "part_of_speech": "noun",
+          "example_sentence": "उसको चल बुझ्नू।",
+          "example_english": "Understand his trick/move."
+        },
+        {
+          "pronunciation": "चल",
+          "romanization": "chala",
+          "meaning": "move/go (imperative)",
+          "part_of_speech": "verb",
+          "example_sentence": "अब चल, ढिलो भयो।",
+          "example_english": "Let's go now, it's getting late."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "Noun /chal/ (trick/stratagem) vs. verb imperative /chala/ (move/go). Very common ambiguity resolved by syntactic position and surrounding verbs."
+    },
+    {
+      "word": "कथा",
+      "readings": [
+        {
+          "pronunciation": "कथा",
+          "romanization": "kathā",
+          "meaning": "story (narrative)",
+          "part_of_speech": "noun",
+          "example_sentence": "बुबाले कथा सुनाउनुभयो।",
+          "example_english": "Father told a story."
+        },
+        {
+          "pronunciation": "कथा",
+          "romanization": "kathā",
+          "meaning": "religious recitation/discourse",
+          "part_of_speech": "noun",
+          "example_sentence": "मन्दिरमा सत्यनारायणको कथा भयो।",
+          "example_english": "A Satyanarayan religious discourse was held at the temple."
+        }
+      ],
+      "ambiguity_type": "stress_emphasis",
+      "description": "Same spelling and base pronunciation, but secular 'story' has neutral prosody while religious 'katha' (recitation) carries a more reverential, measured prosodic pattern. Semantic context (entertainment vs. temple/ritual) disambiguates."
+    },
+    {
+      "word": "छाप",
+      "readings": [
+        {
+          "pronunciation": "छाप्",
+          "romanization": "chhāp",
+          "meaning": "stamp/impression/print",
+          "part_of_speech": "noun",
+          "example_sentence": "कागजमा छाप लगाउनुहोस्।",
+          "example_english": "Put a stamp on the paper."
+        },
+        {
+          "pronunciation": "छाप",
+          "romanization": "chhāpa",
+          "meaning": "print (imperative)",
+          "part_of_speech": "verb",
+          "example_sentence": "यो किताब छाप।",
+          "example_english": "Print this book."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "Noun /chhāp/ (stamp/seal) vs. verb imperative /chhāpa/ (print). Classic schwa-deletion noun-verb pair in Nepali."
+    },
+    {
+      "word": "गत",
+      "readings": [
+        {
+          "pronunciation": "गत्",
+          "romanization": "gat",
+          "meaning": "past/previous",
+          "part_of_speech": "adjective",
+          "example_sentence": "गत वर्ष हामी पोखरा गयौं।",
+          "example_english": "Last year we went to Pokhara."
+        },
+        {
+          "pronunciation": "गत",
+          "romanization": "gata",
+          "meaning": "gone/departed (literary)",
+          "part_of_speech": "adjective",
+          "example_sentence": "गतप्राण भएपछि शव यात्रा निकालियो।",
+          "example_english": "After the departed soul left, the funeral procession was carried out."
+        }
+      ],
+      "ambiguity_type": "schwa_deletion",
+      "description": "As a common adjective meaning 'last/previous' (गत वर्ष, गत हप्ता), /gat/ has deleted schwa. In literary/Sanskrit compounds like गतप्राण (departed soul), schwa may be retained as /gata/. Register and compound context determine the reading."
+    }
+  ]
+}

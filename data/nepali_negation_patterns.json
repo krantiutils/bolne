@@ -1,0 +1,456 @@
+{
+  "description": "Nepali negation patterns for TTS text normalization and benchmark evaluation",
+  "notes": {
+    "usage": "Covers Nepali negation morphology systematically. Each entry provides positive and negative forms with natural sentences for TTS training and evaluation.",
+    "coverage": "Prefix negation (न-), negative particles (छैन, होइन, थिएन), polar verb pairs, compound/vector verb negation, and complex negation scope patterns",
+    "importance_for_tts": "Negation in Nepali interacts with verb morphology in complex ways. Prefix न- attaches directly to verb stems and can change prosodic structure. Distinguishing नचिप्लिँदोरैछ (negative reading) from चिप्लिँदो रैनछ (different negative scope) is a key TTS challenge.",
+    "romanization": "Romanization follows standard Nepali transliteration conventions used in linguistics"
+  },
+  "categories": {
+    "prefix_negation": {
+      "description": "Negation with prefix न- attached to verb stems. Covers infinitives (नजानु, नगर्नु), negative imperatives (नजाऊ, नगर), and participial forms.",
+      "entries": [
+        {
+          "positive": "जानु",
+          "negative": "नजानु",
+          "romanization_positive": "jānu",
+          "romanization_negative": "najānu",
+          "english": "to go / not to go",
+          "pattern": "न + verb infinitive",
+          "example_sentence": "त्यहाँ नजानु नै राम्रो।",
+          "description": "Negative infinitive: न- prefixed to जानु (to go)"
+        },
+        {
+          "positive": "गर्नु",
+          "negative": "नगर्नु",
+          "romanization_positive": "garnu",
+          "romanization_negative": "nagarnu",
+          "english": "to do / not to do",
+          "pattern": "न + verb infinitive",
+          "example_sentence": "यो काम नगर्नु भनेर भने।",
+          "description": "Negative infinitive: न- prefixed to गर्नु (to do)"
+        },
+        {
+          "positive": "खानु",
+          "negative": "नखानु",
+          "romanization_positive": "khānu",
+          "romanization_negative": "nakhānu",
+          "english": "to eat / not to eat",
+          "pattern": "न + verb infinitive",
+          "example_sentence": "बासी खाना नखानु।",
+          "description": "Negative infinitive: न- prefixed to खानु (to eat)"
+        },
+        {
+          "positive": "जाऊ",
+          "negative": "नजाऊ",
+          "romanization_positive": "jāū",
+          "romanization_negative": "najāū",
+          "english": "go / don't go (imperative, timi)",
+          "pattern": "न + verb imperative (timi-level)",
+          "example_sentence": "आज नजाऊ, भोलि जाऊ।",
+          "description": "Negative imperative (timi-level): prohibitive command"
+        },
+        {
+          "positive": "गर",
+          "negative": "नगर",
+          "romanization_positive": "gar",
+          "romanization_negative": "nagar",
+          "english": "do / don't do (imperative, timi)",
+          "pattern": "न + verb imperative (timi-level)",
+          "example_sentence": "यस्तो नगर।",
+          "description": "Negative imperative: short form prohibition"
+        },
+        {
+          "positive": "खाऊ",
+          "negative": "नखाऊ",
+          "romanization_positive": "khāū",
+          "romanization_negative": "nakhāū",
+          "english": "eat / don't eat (imperative, timi)",
+          "pattern": "न + verb imperative (timi-level)",
+          "example_sentence": "यो नखाऊ, पेट दुख्छ।",
+          "description": "Negative imperative (timi-level): prohibition on eating"
+        },
+        {
+          "positive": "बोल्नुहोस्",
+          "negative": "नबोल्नुहोस्",
+          "romanization_positive": "bolnuhos",
+          "romanization_negative": "nabolnuhos",
+          "english": "please speak / please don't speak (honorific)",
+          "pattern": "न + verb imperative (tapāī̃-level)",
+          "example_sentence": "कृपया यहाँ नबोल्नुहोस्।",
+          "description": "Negative honorific imperative: polite prohibition"
+        },
+        {
+          "positive": "गरेर",
+          "negative": "नगरेर",
+          "romanization_positive": "garera",
+          "romanization_negative": "nagarera",
+          "english": "having done / without doing",
+          "pattern": "न + conjunctive participle (-एर)",
+          "example_sentence": "काम नगरेर बस्यो।",
+          "description": "Negative conjunctive participle: without doing the action"
+        },
+        {
+          "positive": "जाने",
+          "negative": "नजाने",
+          "romanization_positive": "jāne",
+          "romanization_negative": "najāne",
+          "english": "one who goes / one who doesn't go",
+          "pattern": "न + agentive/habitual participle (-ने)",
+          "example_sentence": "नजाने मान्छेलाई किन बोलाउने?",
+          "description": "Negative habitual participle: characterizing someone who does not go"
+        }
+      ]
+    },
+    "negative_particles": {
+      "description": "Standalone negative verb forms and particles. These are fully inflected negative forms of copulas and auxiliaries.",
+      "entries": [
+        {
+          "positive": "छ",
+          "negative": "छैन",
+          "romanization_positive": "cha",
+          "romanization_negative": "chaina",
+          "english": "is (existential) / is not",
+          "pattern": "existential copula negation",
+          "example_sentence": "ऊ घरमा छैन।",
+          "description": "Negative existential: the most common Nepali negation form"
+        },
+        {
+          "positive": "छन्",
+          "negative": "छैनन्",
+          "romanization_positive": "chan",
+          "romanization_negative": "chainan",
+          "english": "are (honorific/plural) / are not",
+          "pattern": "existential copula negation (honorific/plural)",
+          "example_sentence": "हजुरआमा घरमा छैनन्।",
+          "description": "Negative existential honorific: used for respected persons or plurals"
+        },
+        {
+          "positive": "हो",
+          "negative": "होइन",
+          "romanization_positive": "ho",
+          "romanization_negative": "hoina",
+          "english": "is (identity) / is not",
+          "pattern": "equational copula negation",
+          "example_sentence": "यो मेरो किताब होइन।",
+          "description": "Negative equational copula: negates identity statements"
+        },
+        {
+          "positive": "हुन्",
+          "negative": "होइनन्",
+          "romanization_positive": "hun",
+          "romanization_negative": "hoinan",
+          "english": "are (identity, honorific) / are not",
+          "pattern": "equational copula negation (honorific)",
+          "example_sentence": "उहाँ डाक्टर होइनन्।",
+          "description": "Negative equational copula honorific: negates identity for respected persons"
+        },
+        {
+          "positive": "थियो",
+          "negative": "थिएन",
+          "romanization_positive": "thiyo",
+          "romanization_negative": "thiena",
+          "english": "was / was not",
+          "pattern": "past copula negation",
+          "example_sentence": "ऊ हिजो यहाँ थिएन।",
+          "description": "Negative past existential: was not present/existing"
+        },
+        {
+          "positive": "थिए",
+          "negative": "थिएनन्",
+          "romanization_positive": "thie",
+          "romanization_negative": "thienan",
+          "english": "were (honorific) / were not",
+          "pattern": "past copula negation (honorific)",
+          "example_sentence": "उहाँ त्यतिबेला थिएनन्।",
+          "description": "Negative past existential honorific: respected person was not present"
+        },
+        {
+          "positive": "हुन्छ",
+          "negative": "हुँदैन",
+          "romanization_positive": "huncha",
+          "romanization_negative": "hũdaina",
+          "english": "it happens, is okay / it doesn't happen, is not okay",
+          "pattern": "habitual/generic negation",
+          "example_sentence": "यसरी गर्दा हुँदैन।",
+          "description": "Negative habitual: something is not acceptable or does not happen"
+        },
+        {
+          "positive": "हुन्छ",
+          "negative": "हुन्न",
+          "romanization_positive": "huncha",
+          "romanization_negative": "hunna",
+          "english": "will be / won't be",
+          "pattern": "definite future negation",
+          "example_sentence": "यो काम समयमा हुन्न।",
+          "description": "Negative definite future: asserts something will not happen"
+        }
+      ]
+    },
+    "polar_verb_negation": {
+      "description": "Positive vs negative verb paradigm pairs showing systematic negation patterns across tenses and moods.",
+      "entries": [
+        {
+          "positive": "गर्छ",
+          "negative": "गर्दैन",
+          "romanization_positive": "garcha",
+          "romanization_negative": "gardaina",
+          "english": "does / doesn't do",
+          "pattern": "present habitual: -छ → -दैन",
+          "example_sentence": "ऊ काम गर्दैन।",
+          "description": "Present habitual negation: stem + -दैन replaces stem + -छ"
+        },
+        {
+          "positive": "खान्छ",
+          "negative": "खाँदैन",
+          "romanization_positive": "khāncha",
+          "romanization_negative": "khā̃daina",
+          "english": "eats / doesn't eat",
+          "pattern": "present habitual: -छ → -दैन",
+          "example_sentence": "उसले मासु खाँदैन।",
+          "description": "Present habitual negation with nasal vowel retention"
+        },
+        {
+          "positive": "जान्छ",
+          "negative": "जाँदैन",
+          "romanization_positive": "jāncha",
+          "romanization_negative": "jā̃daina",
+          "english": "goes / doesn't go",
+          "pattern": "present habitual: -छ → -दैन",
+          "example_sentence": "ऊ स्कुल जाँदैन।",
+          "description": "Present habitual negation: note the chandrabindu in negative form"
+        },
+        {
+          "positive": "गर्यो",
+          "negative": "गरेन",
+          "romanization_positive": "garyo",
+          "romanization_negative": "garena",
+          "english": "did / didn't do",
+          "pattern": "simple past: -यो → -एन",
+          "example_sentence": "उसले काम गरेन।",
+          "description": "Simple past negation: -यो ending replaced by -एन"
+        },
+        {
+          "positive": "गयो",
+          "negative": "गएन",
+          "romanization_positive": "gayo",
+          "romanization_negative": "gaena",
+          "english": "went / didn't go",
+          "pattern": "simple past: -यो → -एन",
+          "example_sentence": "ऊ हिजो गएन।",
+          "description": "Simple past negation of irregular verb जानु"
+        },
+        {
+          "positive": "खायो",
+          "negative": "खाएन",
+          "romanization_positive": "khāyo",
+          "romanization_negative": "khāena",
+          "english": "ate / didn't eat",
+          "pattern": "simple past: -यो → -एन",
+          "example_sentence": "उसले भात खाएन।",
+          "description": "Simple past negation: vowel-final stem"
+        },
+        {
+          "positive": "गर्छु",
+          "negative": "गर्दिनँ",
+          "romanization_positive": "garchu",
+          "romanization_negative": "gardinã",
+          "english": "I do / I don't do",
+          "pattern": "first person present: -छु → -दिनँ",
+          "example_sentence": "म यो काम गर्दिनँ।",
+          "description": "First person present negation: distinct negative suffix -दिनँ"
+        },
+        {
+          "positive": "गर्छौ",
+          "negative": "गर्दैनौ",
+          "romanization_positive": "garchau",
+          "romanization_negative": "gardainau",
+          "english": "you do / you don't do (timi)",
+          "pattern": "second person present: -छौ → -दैनौ",
+          "example_sentence": "तिमी किन काम गर्दैनौ?",
+          "description": "Second person (timi) present negation"
+        },
+        {
+          "positive": "गर्नुहुन्छ",
+          "negative": "गर्नुहुन्न",
+          "romanization_positive": "garnuhuncha",
+          "romanization_negative": "garnuhunna",
+          "english": "you do (honorific) / you don't do (honorific)",
+          "pattern": "honorific present: -हुन्छ → -हुन्न",
+          "example_sentence": "तपाईं चिया खानुहुन्न?",
+          "description": "Honorific present negation: used with tapāī̃-level address"
+        },
+        {
+          "positive": "गरिरहेको छ",
+          "negative": "गरिरहेको छैन",
+          "romanization_positive": "gariraheko cha",
+          "romanization_negative": "gariraheko chaina",
+          "english": "is doing / is not doing",
+          "pattern": "progressive: छ → छैन in periphrastic construction",
+          "example_sentence": "ऊ अहिले काम गरिरहेको छैन।",
+          "description": "Progressive negation: negation falls on the auxiliary छ → छैन"
+        }
+      ]
+    },
+    "compound_verb_negation": {
+      "description": "Negation patterns with compound verbs (vector/serial verbs) and light verb constructions. Negation typically attaches to the finite (light) verb.",
+      "entries": [
+        {
+          "positive": "गर्न सक्छ",
+          "negative": "गर्न सक्दैन",
+          "romanization_positive": "garna sakcha",
+          "romanization_negative": "garna sakdaina",
+          "english": "can do / cannot do",
+          "pattern": "ability: सक्छ → सक्दैन",
+          "example_sentence": "म यो गर्न सक्दैन।",
+          "description": "Ability negation: negation on the light verb सक्नु (to be able)"
+        },
+        {
+          "positive": "गर्न पाउँछ",
+          "negative": "गर्न पाउँदैन",
+          "romanization_positive": "garna pāũcha",
+          "romanization_negative": "garna pāũdaina",
+          "english": "is allowed to do / is not allowed to do",
+          "pattern": "permission: पाउँछ → पाउँदैन",
+          "example_sentence": "यहाँ धुम्रपान गर्न पाउँदैन।",
+          "description": "Permission negation: negation on the light verb पाउनु (to get/be allowed)"
+        },
+        {
+          "positive": "खाइसक्यो",
+          "negative": "खाइसकेन",
+          "romanization_positive": "khāisakyo",
+          "romanization_negative": "khāisakena",
+          "english": "finished eating / didn't finish eating",
+          "pattern": "completive: -सक्यो → -सकेन",
+          "example_sentence": "अझै खाना खाइसकेन।",
+          "description": "Completive negation: negation on the completive auxiliary सक्नु"
+        },
+        {
+          "positive": "गर्न लाग्यो",
+          "negative": "गर्न लागेन",
+          "romanization_positive": "garna lāgyo",
+          "romanization_negative": "garna lāgena",
+          "english": "started to do / didn't start to do",
+          "pattern": "inceptive: लाग्यो → लागेन",
+          "example_sentence": "काम गर्न लागेन अझै।",
+          "description": "Inceptive negation: negation on the inceptive auxiliary लाग्नु"
+        },
+        {
+          "positive": "गर्नुपर्छ",
+          "negative": "गर्नुपर्दैन",
+          "romanization_positive": "garnuparcha",
+          "romanization_negative": "garnupardaina",
+          "english": "must do / need not do",
+          "pattern": "obligation: पर्छ → पर्दैन",
+          "example_sentence": "आज जानुपर्दैन।",
+          "description": "Obligation negation: negation on पर्नु (to be necessary)"
+        },
+        {
+          "positive": "भइसक्यो",
+          "negative": "भइसकेन",
+          "romanization_positive": "bhaisakyo",
+          "romanization_negative": "bhaisakena",
+          "english": "has been completed / hasn't been completed",
+          "pattern": "completive with भइ-: -सक्यो → -सकेन",
+          "example_sentence": "काम अझै भइसकेन।",
+          "description": "Completive negation with intransitive auxiliary"
+        },
+        {
+          "positive": "गरिदिन्छ",
+          "negative": "गरिदिँदैन",
+          "romanization_positive": "gariddincha",
+          "romanization_negative": "garidĩdaina",
+          "english": "does (as a favor) / won't do (as a favor)",
+          "pattern": "benefactive: दिन्छ → दिँदैन",
+          "example_sentence": "ऊ कसैलाई गरिदिँदैन।",
+          "description": "Benefactive negation: negation on the benefactive auxiliary दिनु"
+        }
+      ]
+    },
+    "complex_negation": {
+      "description": "Complex negation patterns where scope, morpheme boundaries, or prefix placement changes meaning. These are particularly challenging for TTS because orthographic differences are subtle but semantic impact is large.",
+      "entries": [
+        {
+          "positive": "चिप्लिँदोरैछ",
+          "negative": "नचिप्लिँदोरैछ",
+          "romanization_positive": "cipliñdoraichha",
+          "romanization_negative": "nacipliñdoraichha",
+          "english": "it turns out to be slippery / it turns out to not be slippery",
+          "pattern": "न- prefix on main verb with evidential रैछ",
+          "example_sentence": "बाटो नचिप्लिँदोरैछ, हिँडौं।",
+          "description": "Negation scopes over the main verb only; the evidential (surprise/discovery) reading of रैछ is preserved. The speaker discovers that the road is NOT slippery."
+        },
+        {
+          "positive": "चिप्लिँदो रहेछ",
+          "negative": "चिप्लिँदो रहेनछ",
+          "romanization_positive": "cipliñdo rahechha",
+          "romanization_negative": "cipliñdo rahenachha",
+          "english": "it turns out to be slippery / (non-standard: negation on auxiliary)",
+          "pattern": "negation on evidential auxiliary rather than main verb",
+          "example_sentence": "चिप्लिँदो रहेनछ भन्ने कुरा गलत हो।",
+          "description": "Contrasts with नचिप्लिँदोरैछ. Here the negation would scope over the evidential itself, which is semantically odd. This contrast illustrates why negation placement matters for meaning."
+        },
+        {
+          "positive": "जान नदिनु",
+          "negative": "नजान दिनु",
+          "romanization_positive": "jāna nadinu",
+          "romanization_negative": "najāna dinu",
+          "english": "don't let (someone) go / let (someone) not-go (permit staying)",
+          "pattern": "negation scope: on light verb vs on main verb",
+          "example_sentence": "उसलाई जान नदिनु। (Don't allow him to go.)",
+          "description": "Negation on the permissive verb दिनु vs on the main verb जानु changes who controls the action. जान नदिनु = prohibition on permission. नजान दिनु = permission to not-go."
+        },
+        {
+          "positive": "नखाई",
+          "negative": "नखाई नहुने",
+          "romanization_positive": "nakhāī",
+          "romanization_negative": "nakhāī nahune",
+          "english": "without eating / impossible not to eat (double negation = compulsion)",
+          "pattern": "double negation: न-...न-हुने = must",
+          "example_sentence": "यो मिठाई नखाई नहुने छ।",
+          "description": "Double negation creating emphatic affirmative meaning: 'one cannot not eat this' = 'one must eat this'. Common Nepali rhetorical pattern."
+        },
+        {
+          "positive": "नगई नहुने",
+          "negative": "नगई",
+          "romanization_positive": "nagaī nahune",
+          "romanization_negative": "nagaī",
+          "english": "must go (can't not-go) / without going",
+          "pattern": "double negation: न-...न-हुने = compulsion",
+          "example_sentence": "भोलिको बैठकमा नगई नहुने भयो।",
+          "description": "Double negation expressing obligation: 'it has become such that one cannot not-go' = 'one must go to tomorrow's meeting'"
+        },
+        {
+          "positive": "गरे पनि",
+          "negative": "नगरे पनि",
+          "romanization_positive": "gare pani",
+          "romanization_negative": "nagare pani",
+          "english": "even if (one) does / even if (one) doesn't do",
+          "pattern": "concessive negation: न + past participle + पनि",
+          "example_sentence": "नगरे पनि हुन्छ।",
+          "description": "Concessive negation: 'even if you don't do it, it's fine'. The न- on the conditional participle creates a negative concessive."
+        },
+        {
+          "positive": "गर्न मिल्छ",
+          "negative": "गर्न मिल्दैन",
+          "romanization_positive": "garna milcha",
+          "romanization_negative": "garna mildaina",
+          "english": "it is possible/appropriate to do / it is not possible/appropriate",
+          "pattern": "impersonal possibility negation: मिल्छ → मिल्दैन",
+          "example_sentence": "यो ठाउँमा फोटो खिच्न मिल्दैन।",
+          "description": "Impersonal possibility negation with मिल्नु. Differs from सक्नु (ability) in that it expresses appropriateness or external possibility."
+        },
+        {
+          "positive": "बोलेको सुन्छु",
+          "negative": "नबोलेको सुन्छु",
+          "romanization_positive": "boleko sunchu",
+          "romanization_negative": "naboleko sunchu",
+          "english": "I hear what is said / I hear what is not said",
+          "pattern": "negation inside nominalized clause",
+          "example_sentence": "म नबोलेको कुरा पनि सुन्छु।",
+          "description": "Negation inside a nominalized clause: the न- scopes only within the embedded clause. 'I also hear the things that are not said' (i.e., I read between the lines)."
+        }
+      ]
+    }
+  }
+}
