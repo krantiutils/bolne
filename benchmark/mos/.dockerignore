@@ -1,0 +1,6 @@
+# Exclude everything except what the Dockerfile needs
+*
+!recording_app/requirements.txt
+!recording_app/server.py
+!recording_app/templates/
+!sentences.json
