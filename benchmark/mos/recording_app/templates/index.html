@@ -2,23 +2,1536 @@
 <html lang="ne">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NepTTS-Bench Recording App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NepTTS-Bench Recording</title>
     <style>
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            max-width: 600px;
-            margin: 80px auto;
-            padding: 0 20px;
-            text-align: center;
-            color: #333;
+        /* ------------------------------------------------------------------ */
+        /* Reset & base                                                       */
+        /* ------------------------------------------------------------------ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --primary: #0d7377;
+            --primary-dark: #095456;
+            --primary-light: #e0f2f2;
+            --bg: #faf8f5;
+            --text: #2c2c2c;
+            --text-muted: #777;
+            --red: #e74c3c;
+            --red-dark: #c0392b;
+            --green: #27ae60;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, 'Noto Sans Devanagari', sans-serif;
         }
-        h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-        p { color: #666; font-size: 1.1rem; }
+
+        html { height: 100%; }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100%;
+            display: flex;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        #app {
+            width: 100%;
+            max-width: 480px;
+            padding: 0 16px 32px;
+            position: relative;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Screens: show/hide with fade                                       */
+        /* ------------------------------------------------------------------ */
+        .screen {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .screen.active {
+            display: block;
+        }
+        .screen.visible {
+            opacity: 1;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Cards                                                              */
+        /* ------------------------------------------------------------------ */
+        .card {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 24px 20px;
+            margin-bottom: 16px;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Typography                                                         */
+        /* ------------------------------------------------------------------ */
+        h1 { font-size: 1.6rem; font-weight: 700; line-height: 1.3; }
+        h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; }
+        .subtitle { color: var(--text-muted); font-size: 0.95rem; margin-top: 4px; }
+        .dev-text {
+            font-size: 1.5rem;
+            line-height: 1.7;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .roman-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Buttons                                                            */
+        /* ------------------------------------------------------------------ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border: none;
+            border-radius: 10px;
+            font-family: var(--font);
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 14px 28px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s, opacity 0.2s;
+            min-height: 48px;
+            touch-action: manipulation;
+        }
+        .btn:active { transform: scale(0.97); }
+        .btn:disabled { opacity: 0.45; cursor: default; transform: none; }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            width: 100%;
+        }
+        .btn-primary:hover:not(:disabled) { background: var(--primary-dark); }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-outline:hover:not(:disabled) { background: var(--primary-light); }
+
+        .btn-sm {
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            border-radius: 8px;
+        }
+
+        .btn-nav {
+            background: #eee;
+            color: var(--text);
+            font-weight: 500;
+            flex: 1;
+        }
+        .btn-nav:hover:not(:disabled) { background: #ddd; }
+
+        .btn-next {
+            background: var(--primary);
+            color: #fff;
+            flex: 1;
+        }
+        .btn-next:hover:not(:disabled) { background: var(--primary-dark); }
+
+        /* ------------------------------------------------------------------ */
+        /* Form elements                                                      */
+        /* ------------------------------------------------------------------ */
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: var(--font);
+            font-size: 1rem;
+            background: #fff;
+            color: var(--text);
+            transition: border-color 0.2s;
+            min-height: 48px;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .form-group .field-error {
+            color: var(--red);
+            font-size: 0.8rem;
+            margin-top: 4px;
+            display: none;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Progress bar                                                       */
+        /* ------------------------------------------------------------------ */
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            margin: 16px 0 8px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+        .progress-label {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Record button                                                      */
+        /* ------------------------------------------------------------------ */
+        .rec-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .rec-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: none;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            touch-action: manipulation;
+            position: relative;
+        }
+        .rec-btn:active { transform: scale(0.93); }
+
+        .rec-btn-record {
+            background: var(--red);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(231,76,60,0.35);
+        }
+
+        .rec-btn-stop {
+            background: var(--red);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(231,76,60,0.35);
+            animation: pulse 1.2s ease-in-out infinite;
+        }
+
+        .rec-btn-play {
+            background: var(--green);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(39,174,96,0.3);
+            width: 56px;
+            height: 56px;
+            font-size: 1.5rem;
+        }
+
+        .rec-btn-rerecord {
+            background: #f0f0f0;
+            color: var(--text);
+            width: 56px;
+            height: 56px;
+            font-size: 1.3rem;
+        }
+
+        .rec-btn:disabled {
+            opacity: 0.4;
+            cursor: default;
+            transform: none;
+        }
+
+        .rec-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .rec-timer {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--red);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .rec-status {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            min-height: 20px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(231,76,60,0.4); }
+            50% { box-shadow: 0 0 0 14px rgba(231,76,60,0); }
+        }
+
+        /* Audio visualizer canvas */
+        .visualizer {
+            width: 200px;
+            height: 48px;
+            display: none;
+        }
+        .visualizer.active {
+            display: block;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Pair recording                                                     */
+        /* ------------------------------------------------------------------ */
+        .pair-sentence {
+            border: 2px solid #eee;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .pair-sentence .pair-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
+        }
+        .pair-sentence .contrast {
+            background: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+        .pair-sentence .rec-controls {
+            margin: 12px 0 4px;
+        }
+        .pair-rec-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pair-recorded-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.8rem;
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Navigation row                                                     */
+        /* ------------------------------------------------------------------ */
+        .nav-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Upload spinner overlay                                             */
+        /* ------------------------------------------------------------------ */
+        .upload-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.85);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .upload-overlay.active {
+            display: flex;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e0e0e0;
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .upload-overlay p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Error toast                                                        */
+        /* ------------------------------------------------------------------ */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            z-index: 200;
+            max-width: 90vw;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .toast.show { opacity: 1; }
+        .toast.error { background: var(--red-dark); }
+
+        /* ------------------------------------------------------------------ */
+        /* Completion screen                                                  */
+        /* ------------------------------------------------------------------ */
+        .check-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Mic permission error                                               */
+        /* ------------------------------------------------------------------ */
+        .mic-error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 10px;
+            padding: 16px;
+            margin: 12px 0;
+            display: none;
+        }
+        .mic-error.show { display: block; }
+        .mic-error h3 {
+            color: var(--red);
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+        }
+        .mic-error p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Welcome screen specific                                            */
+        /* ------------------------------------------------------------------ */
+        .welcome-logo {
+            margin-top: 60px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .welcome-logo .emoji {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .consent {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-top: 16px;
+            padding: 12px;
+            background: #f5f3f0;
+            border-radius: 8px;
+        }
+
+        .instructions li {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 4px;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .phase-header {
+            text-align: center;
+            padding: 12px;
+            background: var(--primary-light);
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        .phase-header h2 { color: var(--primary); margin-bottom: 2px; }
+        .phase-header p { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Ensure text-center helper */
+        .text-center { text-align: center; }
+        .mt-8 { margin-top: 8px; }
+        .mt-16 { margin-top: 16px; }
+        .mt-24 { margin-top: 24px; }
+        .mb-8 { margin-bottom: 8px; }
+        .mb-16 { margin-bottom: 16px; }
     </style>
 </head>
 <body>
-    <h1>NepTTS-Bench Recording App</h1>
-    <p>Coming Soon</p>
+    <div id="app">
+
+        <!-- Upload overlay -->
+        <div id="uploadOverlay" class="upload-overlay">
+            <div class="spinner"></div>
+            <p id="uploadMsg">Uploading...</p>
+        </div>
+
+        <!-- Toast -->
+        <div id="toast" class="toast"></div>
+
+        <!-- ============================================================== -->
+        <!-- Screen 1: Welcome                                              -->
+        <!-- ============================================================== -->
+        <div id="screenWelcome" class="screen active visible">
+            <div class="welcome-logo">
+                <span class="emoji" aria-hidden="true">&#x1F399;&#xFE0F;</span>
+                <h1>NepTTS-Bench बोल्नुहोस्</h1>
+                <p class="subtitle">Nepali Speech Recording</p>
+            </div>
+
+            <div class="card">
+                <ul class="instructions">
+                    <li>तपाईंको आवाज रेकर्ड गर्नुहोस्</li>
+                    <li>Record your voice for Nepali speech research</li>
+                    <li>This takes about 5-10 minutes</li>
+                </ul>
+
+                <div class="consent">
+                    Your recordings will be used for Nepali speech technology research.
+                    By continuing, you give consent for anonymous use of your recordings.
+                </div>
+
+                <div class="mt-24">
+                    <button class="btn btn-primary" onclick="showScreen('screenSpeakerInfo')">
+                        सुरु गर्नुहोस् / Start
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- Screen 2: Speaker Info                                         -->
+        <!-- ============================================================== -->
+        <div id="screenSpeakerInfo" class="screen">
+            <h1 class="text-center mt-24 mb-16">Speaker Information</h1>
+
+            <div class="card">
+                <form id="speakerForm" onsubmit="return handleSpeakerSubmit(event)">
+                    <div class="form-group">
+                        <label for="fieldName">नाम / Name <span style="color:var(--red)">*</span></label>
+                        <input type="text" id="fieldName" required autocomplete="name" placeholder="Your name">
+                        <div class="field-error" id="errName">Please enter your name.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fieldEthnicity">जातजाति / Ethnicity <span style="color:var(--red)">*</span></label>
+                        <select id="fieldEthnicity" required>
+                            <option value="">-- Select --</option>
+                            <option value="Khas/Pahadi">Khas/Pahadi</option>
+                            <option value="Madhesi">Madhesi</option>
+                            <option value="Newar">Newar</option>
+                            <option value="Tamang">Tamang</option>
+                            <option value="Tharu">Tharu</option>
+                            <option value="Gurung">Gurung</option>
+                            <option value="Magar">Magar</option>
+                            <option value="Rai/Limbu">Rai/Limbu</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="field-error" id="errEthnicity">Please select an option.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fieldAge">उमेर / Age Range <span style="color:var(--red)">*</span></label>
+                        <select id="fieldAge" required>
+                            <option value="">-- Select --</option>
+                            <option value="18-25">18-25</option>
+                            <option value="26-35">26-35</option>
+                            <option value="36-45">36-45</option>
+                            <option value="46+">46+</option>
+                        </select>
+                        <div class="field-error" id="errAge">Please select your age range.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fieldGender">लिङ्ग / Gender <span style="color:var(--red)">*</span></label>
+                        <select id="fieldGender" required>
+                            <option value="">-- Select --</option>
+                            <option value="Male">Male / पुरुष</option>
+                            <option value="Female">Female / महिला</option>
+                            <option value="Other">Other / अन्य</option>
+                        </select>
+                        <div class="field-error" id="errGender">Please select your gender.</div>
+                    </div>
+
+                    <div class="mt-16">
+                        <button type="submit" class="btn btn-primary" id="btnSpeakerSubmit">
+                            जारी राख्नुहोस् / Continue
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- Screen 3: Recording                                            -->
+        <!-- ============================================================== -->
+        <div id="screenRecording" class="screen">
+            <!-- Phase header -->
+            <div class="phase-header mt-16" id="phaseHeader">
+                <h2 id="phaseTitle">Recording</h2>
+                <p id="phaseSubtitle"></p>
+            </div>
+
+            <!-- Progress -->
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+            </div>
+            <div class="progress-label" id="progressLabel"></div>
+
+            <!-- Mic error -->
+            <div class="mic-error" id="micError">
+                <h3>Microphone access denied</h3>
+                <p>
+                    Please allow microphone access in your browser settings.
+                    On Android: tap the lock icon in the address bar, then allow Microphone.
+                    Then reload the page.
+                </p>
+            </div>
+
+            <!-- Regular sentence card -->
+            <div class="card" id="regularCard">
+                <div class="dev-text" id="sentTextDev"></div>
+                <div class="roman-text" id="sentTextRoman"></div>
+
+                <div class="rec-controls" id="recControls">
+                    <!-- State: ready -->
+                    <div id="recReady">
+                        <button class="rec-btn rec-btn-record" onclick="startRecording()" id="btnRecord" aria-label="Record">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
+                        </button>
+                        <div class="rec-status">Tap to record</div>
+                    </div>
+                    <!-- State: recording -->
+                    <div id="recActive" style="display:none">
+                        <canvas class="visualizer active" id="visualizer" width="200" height="48"></canvas>
+                        <button class="rec-btn rec-btn-stop" onclick="stopRecording()" id="btnStop" aria-label="Stop">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+                        </button>
+                        <div class="rec-timer" id="recTimer">0:00</div>
+                    </div>
+                    <!-- State: done -->
+                    <div id="recDone" style="display:none">
+                        <div class="rec-row">
+                            <button class="rec-btn rec-btn-play" onclick="playRecording()" id="btnPlay" aria-label="Play">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <button class="rec-btn rec-btn-rerecord" onclick="startRecording()" aria-label="Re-record">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                            </button>
+                        </div>
+                        <div class="rec-status">Recorded. Tap play to review.</div>
+                    </div>
+                </div>
+
+                <div class="nav-row">
+                    <button class="btn btn-nav btn-sm" id="btnBack" onclick="navBack()">
+                        &larr; Back
+                    </button>
+                    <button class="btn btn-next btn-sm" id="btnNext" onclick="navNext()" disabled>
+                        Next &rarr;
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pair recording card -->
+            <div class="card" id="pairCard" style="display:none">
+                <div class="pair-sentence" id="pairBlockA">
+                    <div class="pair-label">Sentence A</div>
+                    <div class="dev-text" id="pairADev"></div>
+                    <div class="roman-text" id="pairARoman"></div>
+                    <div class="rec-controls" id="pairAControls">
+                        <div id="pairAReady">
+                            <button class="rec-btn rec-btn-record" onclick="startPairRecording('A')" aria-label="Record A">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
+                            </button>
+                        </div>
+                        <div id="pairARecording" style="display:none">
+                            <canvas class="visualizer active" id="visualizerPairA" width="200" height="48"></canvas>
+                            <button class="rec-btn rec-btn-stop" onclick="stopPairRecording('A')" id="btnStopA" aria-label="Stop A">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+                            </button>
+                            <div class="rec-timer" id="pairATimer">0:00</div>
+                        </div>
+                        <div id="pairADone" style="display:none">
+                            <div class="pair-rec-row">
+                                <button class="rec-btn rec-btn-play" onclick="playPairRecording('A')" aria-label="Play A" style="width:48px;height:48px;font-size:1.2rem">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                </button>
+                                <button class="rec-btn rec-btn-rerecord" onclick="startPairRecording('A')" aria-label="Re-record A" style="width:48px;height:48px;font-size:1.1rem">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                                </button>
+                                <span class="pair-recorded-badge">&#10003; Recorded</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pair-sentence" id="pairBlockB">
+                    <div class="pair-label">Sentence B</div>
+                    <div class="dev-text" id="pairBDev"></div>
+                    <div class="roman-text" id="pairBRoman"></div>
+                    <div class="rec-controls" id="pairBControls">
+                        <div id="pairBReady">
+                            <button class="rec-btn rec-btn-record" onclick="startPairRecording('B')" aria-label="Record B">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
+                            </button>
+                        </div>
+                        <div id="pairBRecording" style="display:none">
+                            <canvas class="visualizer active" id="visualizerPairB" width="200" height="48"></canvas>
+                            <button class="rec-btn rec-btn-stop" onclick="stopPairRecording('B')" id="btnStopB" aria-label="Stop B">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+                            </button>
+                            <div class="rec-timer" id="pairBTimer">0:00</div>
+                        </div>
+                        <div id="pairBDone" style="display:none">
+                            <div class="pair-rec-row">
+                                <button class="rec-btn rec-btn-play" onclick="playPairRecording('B')" aria-label="Play B" style="width:48px;height:48px;font-size:1.2rem">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                </button>
+                                <button class="rec-btn rec-btn-rerecord" onclick="startPairRecording('B')" aria-label="Re-record B" style="width:48px;height:48px;font-size:1.1rem">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                                </button>
+                                <span class="pair-recorded-badge">&#10003; Recorded</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-row">
+                    <button class="btn btn-nav btn-sm" id="btnPairBack" onclick="navPairBack()">
+                        &larr; Back
+                    </button>
+                    <button class="btn btn-next btn-sm" id="btnPairNext" onclick="navPairNext()" disabled>
+                        Next Pair &rarr;
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- Screen 4: Completion                                           -->
+        <!-- ============================================================== -->
+        <div id="screenComplete" class="screen">
+            <div class="text-center" style="margin-top: 80px;">
+                <div class="check-icon" aria-hidden="true">&#10003;</div>
+                <h1>धन्यवाद! Thank you!</h1>
+                <div class="card mt-24">
+                    <p id="completionStats" style="font-size:1.05rem; line-height:1.7;"></p>
+                    <p class="mt-16" style="color: var(--text-muted); font-size: 0.9rem;">
+                        Your recordings have been saved successfully.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+    /* ====================================================================== */
+    /* State                                                                  */
+    /* ====================================================================== */
+    const state = {
+        currentScreen: 'screenWelcome',
+        speakerId: null,
+        regularSentences: [],
+        pairs: [],
+        regularIndex: 0,
+        pairIndex: 0,
+        phase: 'regular', // 'regular' | 'pairs'
+        // Recording blobs keyed by sentence_id
+        recordings: {},
+        // Set of uploaded sentence_ids
+        uploaded: new Set(),
+        // Pair recording blobs: { A: Blob, B: Blob }
+        pairRecordings: {},
+        startTime: null,
+    };
+
+    /* ====================================================================== */
+    /* Helpers                                                                */
+    /* ====================================================================== */
+    function toDevanagari(num) {
+        return String(num).replace(/[0-9]/g, d => '\u0966\u0967\u0968\u0969\u096A\u096B\u096C\u096D\u096E\u096F'[d]);
+    }
+
+    function $(id) { return document.getElementById(id); }
+
+    function showScreen(id) {
+        const prev = $(state.currentScreen);
+        if (prev) {
+            prev.classList.remove('visible');
+            setTimeout(() => { prev.classList.remove('active'); }, 300);
+        }
+        state.currentScreen = id;
+        const next = $(id);
+        // Small delay so the fade-out finishes before fade-in
+        setTimeout(() => {
+            next.classList.add('active');
+            // Force reflow
+            next.offsetHeight;
+            next.classList.add('visible');
+            window.scrollTo(0, 0);
+        }, prev ? 320 : 0);
+    }
+
+    function showToast(msg, isError) {
+        const t = $('toast');
+        t.textContent = msg;
+        t.className = 'toast show' + (isError ? ' error' : '');
+        clearTimeout(t._timeout);
+        t._timeout = setTimeout(() => { t.classList.remove('show'); }, 3500);
+    }
+
+    function showUpload(msg) {
+        $('uploadMsg').textContent = msg || 'Uploading...';
+        $('uploadOverlay').classList.add('active');
+    }
+    function hideUpload() {
+        $('uploadOverlay').classList.remove('active');
+    }
+
+    /* ====================================================================== */
+    /* Screen 2: Speaker form submit                                         */
+    /* ====================================================================== */
+    async function handleSpeakerSubmit(e) {
+        e.preventDefault();
+
+        // Validate
+        const name = $('fieldName').value.trim();
+        const ethnicity = $('fieldEthnicity').value;
+        const age = $('fieldAge').value;
+        const gender = $('fieldGender').value;
+
+        let valid = true;
+        [['fieldName','errName',name],['fieldEthnicity','errEthnicity',ethnicity],
+         ['fieldAge','errAge',age],['fieldGender','errGender',gender]].forEach(([fid,eid,val]) => {
+            const errEl = $(eid);
+            if (!val) { errEl.style.display = 'block'; valid = false; }
+            else { errEl.style.display = 'none'; }
+        });
+        if (!valid) return false;
+
+        const btn = $('btnSpeakerSubmit');
+        btn.disabled = true;
+        btn.textContent = 'Please wait...';
+
+        try {
+            const resp = await fetch('/api/speakers', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: name,
+                    ethnicity: ethnicity,
+                    age_range: age,
+                    gender: gender,
+                    device_info: navigator.userAgent,
+                }),
+            });
+
+            if (!resp.ok) {
+                throw new Error('Server error: ' + resp.status);
+            }
+
+            const data = await resp.json();
+            state.speakerId = data.speaker_id;
+            state.regularSentences = data.regular_sentences || [];
+            state.pairs = data.pairs || [];
+            state.startTime = Date.now();
+
+            // Request mic permission early
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                stream.getTracks().forEach(t => t.stop());
+            } catch (micErr) {
+                // We'll handle it when they try to record
+            }
+
+            initRecordingScreen();
+            showScreen('screenRecording');
+
+        } catch (err) {
+            showToast('Failed to connect. Please check your internet and try again.', true);
+            btn.disabled = false;
+            btn.textContent = '\u091C\u093E\u0930\u0940 \u0930\u093E\u0916\u094D\u0928\u0941\u0939\u094B\u0938\u094D / Continue';
+        }
+
+        return false;
+    }
+
+    /* ====================================================================== */
+    /* Screen 3: Recording — initialization                                  */
+    /* ====================================================================== */
+    function initRecordingScreen() {
+        state.regularIndex = 0;
+        state.pairIndex = 0;
+        state.phase = 'regular';
+        state.recordings = {};
+        state.uploaded = new Set();
+        state.pairRecordings = {};
+        renderCurrentSentence();
+    }
+
+    function renderCurrentSentence() {
+        if (state.phase === 'regular') {
+            $('regularCard').style.display = '';
+            $('pairCard').style.display = 'none';
+            renderRegularSentence();
+        } else {
+            $('regularCard').style.display = 'none';
+            $('pairCard').style.display = '';
+            renderPairSentence();
+        }
+    }
+
+    /* ====================================================================== */
+    /* Regular sentence rendering                                             */
+    /* ====================================================================== */
+    function renderRegularSentence() {
+        const total = state.regularSentences.length;
+        const idx = state.regularIndex;
+        const sent = state.regularSentences[idx];
+
+        // Phase header
+        $('phaseTitle').textContent = 'Recording';
+        $('phaseSubtitle').textContent = '';
+
+        // Progress
+        const pct = total > 0 ? ((idx) / total * 100) : 0;
+        $('progressFill').style.width = pct + '%';
+        const num = idx + 1;
+        $('progressLabel').textContent =
+            toDevanagari(num) + '/' + toDevanagari(total) +
+            ' (' + num + '/' + total + ')';
+
+        // Text
+        $('sentTextDev').textContent = sent.text_dev;
+        $('sentTextRoman').textContent = sent.text_roman || '';
+
+        // Recording state
+        const sid = sent.sent_id;
+        const hasRecording = !!state.recordings[sid];
+        setRecState(hasRecording ? 'done' : 'ready');
+
+        // Nav
+        $('btnBack').disabled = idx === 0;
+        $('btnNext').disabled = !hasRecording;
+    }
+
+    function setRecState(s) {
+        $('recReady').style.display = s === 'ready' ? '' : 'none';
+        $('recActive').style.display = s === 'recording' ? '' : 'none';
+        $('recDone').style.display = s === 'done' ? '' : 'none';
+    }
+
+    /* ====================================================================== */
+    /* Pair sentence rendering                                                */
+    /* ====================================================================== */
+    function renderPairSentence() {
+        const total = state.pairs.length;
+        const idx = state.pairIndex;
+        const pair = state.pairs[idx];
+        const sentA = pair.sentences[0];
+        const sentB = pair.sentences[1];
+
+        // Phase header
+        $('phaseTitle').innerHTML = 'Minimal Pairs / \u0928\u094D\u092F\u0942\u0928\u0924\u092E \u091C\u094B\u0921\u0940';
+        $('phaseSubtitle').textContent = 'Record both sentences. Notice the highlighted contrast word.';
+
+        // Progress
+        const totalAll = state.regularSentences.length + total;
+        const doneRegular = state.regularSentences.length;
+        const pct = ((doneRegular + idx) / totalAll * 100);
+        $('progressFill').style.width = pct + '%';
+        const num = idx + 1;
+        $('progressLabel').textContent =
+            'Pair ' + toDevanagari(num) + '/' + toDevanagari(total) +
+            ' (' + num + '/' + total + ')';
+
+        // Sentence A
+        renderPairBlock('A', sentA);
+        // Sentence B
+        renderPairBlock('B', sentB);
+
+        // Pair recording state
+        const pairKey = pair.pair_id;
+        const pairRecs = state.pairRecordings[pairKey] || {};
+        setPairRecState('A', pairRecs.A ? 'done' : 'ready');
+        setPairRecState('B', pairRecs.B ? 'done' : 'ready');
+
+        // Nav
+        $('btnPairBack').disabled = idx === 0 && state.regularSentences.length === 0;
+        $('btnPairNext').disabled = !(pairRecs.A && pairRecs.B);
+
+        // Button text for last pair
+        if (idx === total - 1) {
+            $('btnPairNext').textContent = 'Finish \u2192';
+        } else {
+            $('btnPairNext').textContent = 'Next Pair \u2192';
+        }
+    }
+
+    function renderPairBlock(label, sent) {
+        const devEl = $('pair' + label + 'Dev');
+        const romanEl = $('pair' + label + 'Roman');
+        const contrast = sent.contrast_word || '';
+
+        if (contrast && sent.text_dev.includes(contrast)) {
+            devEl.innerHTML = sent.text_dev.replace(
+                contrast,
+                '<span class="contrast">' + escapeHtml(contrast) + '</span>'
+            );
+        } else {
+            devEl.textContent = sent.text_dev;
+        }
+        romanEl.textContent = sent.text_roman || '';
+    }
+
+    function escapeHtml(s) {
+        const d = document.createElement('div');
+        d.textContent = s;
+        return d.innerHTML;
+    }
+
+    function setPairRecState(label, s) {
+        $('pair' + label + 'Ready').style.display = s === 'ready' ? '' : 'none';
+        $('pair' + label + 'Recording').style.display = s === 'recording' ? '' : 'none';
+        $('pair' + label + 'Done').style.display = s === 'done' ? '' : 'none';
+    }
+
+    /* ====================================================================== */
+    /* MediaRecorder — regular sentences                                     */
+    /* ====================================================================== */
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let recordingStream = null;
+    let recStartTime = 0;
+    let recTimerInterval = null;
+    let audioContext = null;
+    let analyser = null;
+    let animationFrameId = null;
+    let minDurationReached = false;
+
+    async function startRecording() {
+        $('micError').classList.remove('show');
+
+        try {
+            recordingStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        } catch (err) {
+            $('micError').classList.add('show');
+            return;
+        }
+
+        audioChunks = [];
+        minDurationReached = false;
+
+        // Choose MIME type
+        let mimeType = 'audio/webm;codecs=opus';
+        if (!MediaRecorder.isTypeSupported(mimeType)) {
+            mimeType = MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : '';
+        }
+
+        const options = mimeType ? { mimeType } : {};
+        mediaRecorder = new MediaRecorder(recordingStream, options);
+
+        mediaRecorder.ondataavailable = (e) => {
+            if (e.data.size > 0) audioChunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = () => {
+            const blob = new Blob(audioChunks, { type: mediaRecorder.mimeType });
+            const sid = state.regularSentences[state.regularIndex].sent_id;
+            state.recordings[sid] = blob;
+            stopVisualization();
+            stopRecTimer();
+            setRecState('done');
+            $('btnNext').disabled = false;
+            cleanupStream();
+        };
+
+        mediaRecorder.start(100); // collect in 100ms chunks
+        recStartTime = Date.now();
+        setRecState('recording');
+        $('btnStop').disabled = true;
+
+        // Enable stop after 0.5s
+        setTimeout(() => {
+            minDurationReached = true;
+            if ($('btnStop')) $('btnStop').disabled = false;
+        }, 500);
+
+        startRecTimer('recTimer');
+        startVisualization(recordingStream, 'visualizer');
+    }
+
+    function stopRecording() {
+        if (!minDurationReached) return;
+        if (mediaRecorder && mediaRecorder.state === 'recording') {
+            mediaRecorder.stop();
+        }
+    }
+
+    function cleanupStream() {
+        if (recordingStream) {
+            recordingStream.getTracks().forEach(t => t.stop());
+            recordingStream = null;
+        }
+    }
+
+    /* ====================================================================== */
+    /* MediaRecorder — pair sentences                                        */
+    /* ====================================================================== */
+    let pairMediaRecorder = null;
+    let pairAudioChunks = [];
+    let pairRecordingStream = null;
+    let pairRecStartTime = 0;
+    let pairRecTimerInterval = null;
+    let pairCurrentLabel = null;
+    let pairMinDurationReached = false;
+
+    async function startPairRecording(label) {
+        $('micError').classList.remove('show');
+
+        try {
+            pairRecordingStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        } catch (err) {
+            $('micError').classList.add('show');
+            return;
+        }
+
+        pairCurrentLabel = label;
+        pairAudioChunks = [];
+        pairMinDurationReached = false;
+
+        let mimeType = 'audio/webm;codecs=opus';
+        if (!MediaRecorder.isTypeSupported(mimeType)) {
+            mimeType = MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : '';
+        }
+
+        const options = mimeType ? { mimeType } : {};
+        pairMediaRecorder = new MediaRecorder(pairRecordingStream, options);
+
+        pairMediaRecorder.ondataavailable = (e) => {
+            if (e.data.size > 0) pairAudioChunks.push(e.data);
+        };
+
+        pairMediaRecorder.onstop = () => {
+            const blob = new Blob(pairAudioChunks, { type: pairMediaRecorder.mimeType });
+            const pair = state.pairs[state.pairIndex];
+            const pairKey = pair.pair_id;
+
+            if (!state.pairRecordings[pairKey]) state.pairRecordings[pairKey] = {};
+            state.pairRecordings[pairKey][pairCurrentLabel] = blob;
+
+            stopVisualization();
+            stopPairRecTimer();
+            setPairRecState(pairCurrentLabel, 'done');
+            cleanupPairStream();
+
+            // Check if both are done
+            const recs = state.pairRecordings[pairKey];
+            $('btnPairNext').disabled = !(recs.A && recs.B);
+        };
+
+        pairMediaRecorder.start(100);
+        pairRecStartTime = Date.now();
+        setPairRecState(label, 'recording');
+        const stopBtn = $('btnStop' + label);
+        if (stopBtn) stopBtn.disabled = true;
+
+        setTimeout(() => {
+            pairMinDurationReached = true;
+            if (stopBtn) stopBtn.disabled = false;
+        }, 500);
+
+        startRecTimer('pair' + label + 'Timer');
+        startVisualization(pairRecordingStream, 'visualizerPair' + label);
+    }
+
+    function stopPairRecording(label) {
+        if (!pairMinDurationReached) return;
+        if (pairMediaRecorder && pairMediaRecorder.state === 'recording') {
+            pairMediaRecorder.stop();
+        }
+    }
+
+    function cleanupPairStream() {
+        if (pairRecordingStream) {
+            pairRecordingStream.getTracks().forEach(t => t.stop());
+            pairRecordingStream = null;
+        }
+    }
+
+    /* ====================================================================== */
+    /* Recording timer                                                       */
+    /* ====================================================================== */
+    function startRecTimer(timerId) {
+        // Stop any existing timer
+        stopRecTimer();
+        stopPairRecTimer();
+        const el = $(timerId);
+        const start = Date.now();
+        const update = () => {
+            const elapsed = Math.floor((Date.now() - start) / 1000);
+            const mins = Math.floor(elapsed / 60);
+            const secs = elapsed % 60;
+            el.textContent = mins + ':' + String(secs).padStart(2, '0');
+        };
+        update();
+        if (timerId.startsWith('pair')) {
+            pairRecTimerInterval = setInterval(update, 250);
+        } else {
+            recTimerInterval = setInterval(update, 250);
+        }
+    }
+
+    function stopRecTimer() {
+        if (recTimerInterval) { clearInterval(recTimerInterval); recTimerInterval = null; }
+    }
+    function stopPairRecTimer() {
+        if (pairRecTimerInterval) { clearInterval(pairRecTimerInterval); pairRecTimerInterval = null; }
+    }
+
+    /* ====================================================================== */
+    /* Audio visualization                                                   */
+    /* ====================================================================== */
+    function startVisualization(stream, canvasId) {
+        stopVisualization();
+        try {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const source = audioContext.createMediaStreamSource(stream);
+            analyser = audioContext.createAnalyser();
+            analyser.fftSize = 128;
+            source.connect(analyser);
+
+            const canvas = $(canvasId);
+            const ctx = canvas.getContext('2d');
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+
+            function draw() {
+                animationFrameId = requestAnimationFrame(draw);
+                analyser.getByteFrequencyData(dataArray);
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                const barCount = 24;
+                const barWidth = canvas.width / barCount - 2;
+                const step = Math.floor(bufferLength / barCount);
+
+                for (let i = 0; i < barCount; i++) {
+                    const val = dataArray[i * step] / 255;
+                    const barHeight = Math.max(2, val * canvas.height * 0.9);
+                    const x = i * (barWidth + 2);
+                    const y = (canvas.height - barHeight) / 2;
+
+                    ctx.fillStyle = 'rgba(231, 76, 60, ' + (0.4 + val * 0.6) + ')';
+                    ctx.beginPath();
+                    ctx.roundRect(x, y, barWidth, barHeight, 2);
+                    ctx.fill();
+                }
+            }
+            draw();
+        } catch (e) {
+            // Visualization not critical — silently ignore
+        }
+    }
+
+    function stopVisualization() {
+        if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
+        if (audioContext) {
+            try { audioContext.close(); } catch(e) {}
+            audioContext = null;
+        }
+        analyser = null;
+    }
+
+    /* ====================================================================== */
+    /* Playback                                                              */
+    /* ====================================================================== */
+    let playbackAudio = null;
+
+    function playRecording() {
+        const sid = state.regularSentences[state.regularIndex].sent_id;
+        const blob = state.recordings[sid];
+        if (!blob) return;
+        playBlob(blob);
+    }
+
+    function playPairRecording(label) {
+        const pair = state.pairs[state.pairIndex];
+        const pairKey = pair.pair_id;
+        const recs = state.pairRecordings[pairKey];
+        if (!recs || !recs[label]) return;
+        playBlob(recs[label]);
+    }
+
+    function playBlob(blob) {
+        if (playbackAudio) {
+            playbackAudio.pause();
+            URL.revokeObjectURL(playbackAudio.src);
+        }
+        const url = URL.createObjectURL(blob);
+        playbackAudio = new Audio(url);
+        playbackAudio.onended = () => { URL.revokeObjectURL(url); };
+        playbackAudio.play().catch(() => {});
+    }
+
+    /* ====================================================================== */
+    /* Upload helper                                                         */
+    /* ====================================================================== */
+    async function uploadRecording(speakerId, sentenceId, blob) {
+        if (state.uploaded.has(sentenceId)) return true;
+
+        const durationMs = await getBlobDuration(blob);
+        const ext = blob.type.includes('webm') ? 'webm' : 'wav';
+        const formData = new FormData();
+        formData.append('speaker_id', speakerId);
+        formData.append('sentence_id', sentenceId);
+        formData.append('duration_ms', String(durationMs));
+        formData.append('audio', blob, sentenceId + '.' + ext);
+
+        let lastErr = null;
+        for (let attempt = 0; attempt < 3; attempt++) {
+            try {
+                const resp = await fetch('/api/recordings', {
+                    method: 'POST',
+                    body: formData,
+                });
+                if (resp.ok) {
+                    state.uploaded.add(sentenceId);
+                    return true;
+                }
+                lastErr = new Error('HTTP ' + resp.status);
+            } catch (e) {
+                lastErr = e;
+            }
+            if (attempt < 2) {
+                await new Promise(r => setTimeout(r, 1000));
+            }
+        }
+        throw lastErr;
+    }
+
+    function getBlobDuration(blob) {
+        return new Promise((resolve) => {
+            const url = URL.createObjectURL(blob);
+            const audio = new Audio();
+            audio.preload = 'metadata';
+            audio.onloadedmetadata = () => {
+                // Some browsers return Infinity for streaming blobs
+                if (audio.duration === Infinity || isNaN(audio.duration)) {
+                    // Fallback: estimate from blob size (rough: ~16kbps opus)
+                    resolve(Math.round(blob.size / 2));
+                } else {
+                    resolve(Math.round(audio.duration * 1000));
+                }
+                URL.revokeObjectURL(url);
+            };
+            audio.onerror = () => {
+                resolve(Math.round(blob.size / 2));
+                URL.revokeObjectURL(url);
+            };
+            audio.src = url;
+        });
+    }
+
+    /* ====================================================================== */
+    /* Navigation — regular sentences                                        */
+    /* ====================================================================== */
+    function navBack() {
+        if (state.regularIndex > 0) {
+            // Cancel any active recording
+            abortActiveRecording();
+            state.regularIndex--;
+            renderCurrentSentence();
+        }
+    }
+
+    async function navNext() {
+        const idx = state.regularIndex;
+        const sent = state.regularSentences[idx];
+        const sid = sent.sent_id;
+        const blob = state.recordings[sid];
+
+        // Upload if we have a new recording
+        if (blob && !state.uploaded.has(sid)) {
+            showUpload('Uploading recording...');
+            try {
+                await uploadRecording(state.speakerId, sid, blob);
+            } catch (err) {
+                hideUpload();
+                showToast('Upload failed. Please try again.', true);
+                return;
+            }
+            hideUpload();
+        }
+
+        if (idx < state.regularSentences.length - 1) {
+            state.regularIndex++;
+            abortActiveRecording();
+            renderCurrentSentence();
+        } else {
+            // Transition to pairs phase
+            if (state.pairs.length > 0) {
+                state.phase = 'pairs';
+                state.pairIndex = 0;
+                abortActiveRecording();
+                renderCurrentSentence();
+            } else {
+                finishRecording();
+            }
+        }
+    }
+
+    /* ====================================================================== */
+    /* Navigation — pair sentences                                           */
+    /* ====================================================================== */
+    function navPairBack() {
+        abortActiveRecording();
+        if (state.pairIndex > 0) {
+            state.pairIndex--;
+            renderCurrentSentence();
+        } else if (state.regularSentences.length > 0) {
+            // Go back to last regular sentence
+            state.phase = 'regular';
+            state.regularIndex = state.regularSentences.length - 1;
+            renderCurrentSentence();
+        }
+    }
+
+    async function navPairNext() {
+        const pair = state.pairs[state.pairIndex];
+        const pairKey = pair.pair_id;
+        const recs = state.pairRecordings[pairKey];
+
+        // Upload both
+        if (recs) {
+            showUpload('Uploading pair recordings...');
+            try {
+                if (recs.A) {
+                    await uploadRecording(state.speakerId, pair.sentences[0].sent_id, recs.A);
+                }
+                if (recs.B) {
+                    await uploadRecording(state.speakerId, pair.sentences[1].sent_id, recs.B);
+                }
+            } catch (err) {
+                hideUpload();
+                showToast('Upload failed. Please try again.', true);
+                return;
+            }
+            hideUpload();
+        }
+
+        if (state.pairIndex < state.pairs.length - 1) {
+            state.pairIndex++;
+            abortActiveRecording();
+            renderCurrentSentence();
+        } else {
+            finishRecording();
+        }
+    }
+
+    function abortActiveRecording() {
+        // Abort regular recorder
+        if (mediaRecorder && mediaRecorder.state === 'recording') {
+            mediaRecorder.ondataavailable = null;
+            mediaRecorder.onstop = null;
+            try { mediaRecorder.stop(); } catch(e) {}
+            mediaRecorder = null;
+        }
+        // Abort pair recorder
+        if (pairMediaRecorder && pairMediaRecorder.state === 'recording') {
+            pairMediaRecorder.ondataavailable = null;
+            pairMediaRecorder.onstop = null;
+            try { pairMediaRecorder.stop(); } catch(e) {}
+            pairMediaRecorder = null;
+        }
+        cleanupStream();
+        cleanupPairStream();
+        stopVisualization();
+        stopRecTimer();
+        stopPairRecTimer();
+    }
+
+    /* ====================================================================== */
+    /* Completion                                                            */
+    /* ====================================================================== */
+    function finishRecording() {
+        const totalSentences = state.uploaded.size;
+        const elapsedMs = Date.now() - state.startTime;
+        const mins = Math.round(elapsedMs / 60000);
+        const timeStr = mins < 1 ? 'less than 1 minute' : (mins + ' minute' + (mins > 1 ? 's' : ''));
+
+        $('completionStats').innerHTML =
+            'You recorded <strong>' + totalSentences + ' sentences</strong> in <strong>' + timeStr + '</strong>.';
+
+        showScreen('screenComplete');
+    }
+
+    /* ====================================================================== */
+    /* roundRect polyfill for older browsers                                 */
+    /* ====================================================================== */
+    if (!CanvasRenderingContext2D.prototype.roundRect) {
+        CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+            if (typeof r === 'number') r = [r];
+            const rad = r[0] || 0;
+            this.moveTo(x + rad, y);
+            this.lineTo(x + w - rad, y);
+            this.quadraticCurveTo(x + w, y, x + w, y + rad);
+            this.lineTo(x + w, y + h - rad);
+            this.quadraticCurveTo(x + w, y + h, x + w - rad, y + h);
+            this.lineTo(x + rad, y + h);
+            this.quadraticCurveTo(x, y + h, x, y + h - rad);
+            this.lineTo(x, y + rad);
+            this.quadraticCurveTo(x, y, x + rad, y);
+            this.closePath();
+            return this;
+        };
+    }
+    </script>
 </body>
 </html>
