@@ -19,7 +19,7 @@ APP_DIR = Path(__file__).resolve().parent
 DATA_DIR = APP_DIR / "data"
 AUDIO_DIR = DATA_DIR / "audio"
 DB_PATH = DATA_DIR / "recordings.db"
-SENTENCES_PATH = APP_DIR.parent / "sentences.json"
+SENTENCES_PATH = Path(os.environ.get("SENTENCES_PATH", str(APP_DIR.parent / "sentences.json")))
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "changeme")
 
 app = FastAPI(title="NepTTS-Bench Recording App")

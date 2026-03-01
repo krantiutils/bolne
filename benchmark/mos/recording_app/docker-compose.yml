@@ -1,0 +1,14 @@
+services:
+  recording-app:
+    build:
+      context: ..
+      dockerfile: recording_app/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - recording-data:/app/data
+    environment:
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-changeme}
+
+volumes:
+  recording-data:
