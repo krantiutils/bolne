@@ -1,0 +1,232 @@
+% REVIEW mode (double-blind)
+\documentclass{Interspeech}
+
+% CAMERA-READY: uncomment the line below and comment the line above
+%\documentclass[cameraready]{Interspeech}
+
+\title{NepTTS-Bench: A Phonologically-Grounded Evaluation Suite for Nepali Text-to-Speech}
+
+% Authors hidden for double-blind review
+\author[affiliation={1}]{Anonymous}{Author}
+
+\address{
+    $^1$ Anonymous Affiliation
+}
+
+\email{anonymous@example.com}
+
+\keywords{text-to-speech evaluation, Nepali, phonological accuracy, low-resource languages, speech synthesis benchmark}
+
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We introduce NepTTS-Bench, the first evaluation benchmark specifically designed for Nepali text-to-speech systems. Unlike language-agnostic TTS benchmarks that focus on acoustic quality and speaker similarity, NepTTS-Bench foregrounds phonological accuracy as a primary evaluation dimension. Nepali's four-way laryngeal contrast, retroflex-dental distinctions, contrastive nasalization, and context-dependent schwa deletion present meaning-distinguishing challenges absent from English benchmarks. NepTTS-Bench comprises eight evaluation categories with 1,128 test items across 14 protocol files, covering phonological accuracy via ABX discrimination, intelligibility via ASR round-trip, prosody, stability, acoustic quality, speaker consistency, latency, and text normalization. We evaluate commercial and open-source baselines, establishing the first quantitative picture of Nepali TTS quality. Results show that [placeholder for key finding].
+\end{abstract}
+
+\section{Introduction}
+
+Text-to-speech (TTS) technology has advanced rapidly for high-resource languages, with recent systems achieving near-human naturalness for English~\cite{SeedTTS2024, CosyVoice2024}. However, the evaluation infrastructure for low-resource languages remains severely underdeveloped. Standard benchmarks like Seed-TTS-Eval~\cite{SeedTTS2024} and LibriTTS-R~\cite{LibriTTSR2023} evaluate acoustic quality (DNSMOS, UTMOS) and speaker similarity (cosine similarity of speaker embeddings) --- metrics that are language-agnostic by design. While useful, these metrics fail to capture whether a TTS system correctly produces the \textit{phonological contrasts that distinguish meaning} in a given language.
+
+This gap is particularly acute for Nepali (\textit{ne}), spoken by over 32 million people. Nepali has a rich consonant inventory with phonemic contrasts absent from English: a four-way laryngeal distinction (voiceless unaspirated, voiceless aspirated, voiced unaspirated, voiced aspirated) across five places of articulation~\cite{Khatiwada2009, Schwarz2019}, retroflex-dental contrasts~\cite{Khatiwada2007retroflex, Hamann2003}, contrastive vowel nasalization~\cite{Bandhu1971}, gemination~\cite{Khatiwada2009}, and context-dependent schwa deletion inherited from the Indo-Aryan family~\cite{Choudhury2004}. Confusing any member of a minimal pair produces a \textit{different word} --- a TTS system scoring well on DNSMOS but failing to distinguish /ka/ from /kha/ is unusable for Nepali.
+
+Despite growing interest in Nepali TTS~\cite{Khadka2023, Dongol2023, Regmi2024, NepaliVoiceCloning2025}, no standardized benchmark exists. Published systems report MOS scores on ad-hoc test sets, making cross-system comparison impossible. NepTTS-Bench addresses this by providing:
+
+\begin{enumerate}
+  \item A \textbf{phonological accuracy} protocol using ABX discrimination~\cite{Schatz2013, Schatz2016} and forced alignment~\cite{McAuliffe2017} to evaluate production of Nepali contrasts across five categories;
+  \item A \textbf{comprehensive evaluation suite} spanning eight dimensions with defined pass/fail thresholds;
+  \item \textbf{Baseline evaluations} of commercial systems establishing the first quantitative quality landscape for Nepali TTS.
+\end{enumerate}
+
+
+\section{Nepali Phonological Challenges}
+
+\subsection{Four-way laryngeal contrast}
+
+Nepali maintains a four-way stop contrast across five places of articulation (velar, palatal, retroflex, dental, bilabial), yielding 20 stop phonemes~\cite{Khatiwada2009}. Each quadruple --- e.g., /k, kh, g, gh/ at the velar place --- is phonemically contrastive: \textit{kal} ``time,'' \textit{khal} ``type,'' \textit{gal} ``cheek,'' \textit{ghal} ``wound.'' Schwarz et al.~\cite{Schwarz2019} demonstrate that both voice onset time and voicing lead systematically co-vary with speech rate, confirming that the four-way contrast is robustly maintained in production. English has only a two-way contrast (voiced/voiceless), making this the most critical evaluation dimension absent from English-centric benchmarks.
+
+\subsection{Retroflex-dental contrast}
+
+Nepali distinguishes five retroflex-dental pairs: /\textipa{ú}/-/t/, /\textipa{ú\super h}/-/t\textsuperscript{h}/, /\textipa{\:d}/-/d/, /\textipa{\:d\super h}/-/d\textsuperscript{h}/, /\textipa{\:n}/-/n/~\cite{Khatiwada2007retroflex}. Palatographic studies show clear articulatory differences with inter-speaker variability~\cite{Khatiwada2007retroflex, Hamann2003}. TTS systems trained primarily on English or Hindi data may conflate these contrasts.
+
+\subsection{Nasalization, gemination, and schwa deletion}
+
+Nepali has six oral vowels and five phonemic nasal counterparts~\cite{Khatiwada2009, Bandhu1971}. Consonant gemination is contrastive in medial position (\textit{chapal} ``unstable'' vs. \textit{chappal} ``slipper'')~\cite{Khatiwada2009}. Schwa deletion --- where the inherent vowel of a Devanagari consonant is not pronounced in certain environments --- follows complex rules that differ from Hindi~\cite{Choudhury2004}. Nepali orthography retains schwa more consistently than Hindi, but deletions in fast speech and compound words create a significant challenge for grapheme-to-phoneme conversion in TTS front-ends.
+
+\section{NepTTS-Bench}
+
+\subsection{Design principles}
+
+NepTTS-Bench is organized around the principle that \textit{phonological correctness is a prerequisite} for acceptable Nepali TTS, not merely a component of overall quality. The benchmark comprises eight evaluation categories (Table~\ref{tab:categories}), each with a protocol defining metrics, tools, and two-tier thresholds: \textit{pass} (production-ready) and \textit{minimum} (requires improvement).
+
+Test data includes 1,128 items across 14 JSON files: minimal pairs covering all five phonological contrast categories, contrastive stress and intonation patterns, homographs, newspaper ambiguities, long-form stability tests, robustness edge cases, and code-switching utterances.
+
+\begin{table}[t]
+  \caption{NepTTS-Bench evaluation categories}
+  \label{tab:categories}
+  \centering
+  \small
+  \begin{tabular}{lcc}
+    \toprule
+    \textbf{Category} & \textbf{Items} & \textbf{Primary Metric} \\
+    \midrule
+    Phonological accuracy & 70+ pairs & ABX \% correct \\
+    Intelligibility (ASR) & full set & CER, WER \\
+    Prosody & 200+ & Perceptual \\
+    Stability & 100+ & DNSMOS \\
+    Code-switching & 50 & Boundary quality \\
+    Acoustic quality & full set & DNSMOS, UTMOS \\
+    Speaker consistency & 200 & Cosine sim. \\
+    Latency & 100 & TTFA, RTF \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Phonological accuracy protocol}
+
+This is the core differentiator of NepTTS-Bench. We evaluate five contrast categories with category-specific thresholds (Table~\ref{tab:phonological}).
+
+\begin{table}[t]
+  \caption{Phonological accuracy thresholds (ABX \% correct)}
+  \label{tab:phonological}
+  \centering
+  \small
+  \begin{tabular}{lcc}
+    \toprule
+    \textbf{Contrast Category} & \textbf{Pass} & \textbf{Min.} \\
+    \midrule
+    4-way aspiration (5 places) & $\geq$ 90\% & $\geq$ 80\% \\
+    Retroflex vs. dental & $\geq$ 90\% & $\geq$ 80\% \\
+    Oral vs. nasal vowels & $\geq$ 85\% & $\geq$ 75\% \\
+    Gemination & $\geq$ 85\% & $\geq$ 75\% \\
+    Schwa deletion & $\geq$ 80\% & $\geq$ 70\% \\
+    \midrule
+    Human ABX (50-pair subset) & $\geq$ 90\% & $\geq$ 80\% \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsubsection{ABX discrimination}
+
+For each minimal pair, we synthesize both members and apply the ABX discrimination framework~\cite{Schatz2013, Schatz2016}. Given three audio samples (A, B, X) where A and B form a minimal pair and X matches one, a classifier must identify which. We extract speaker-normalized embeddings using ECAPA-TDNN~\cite{ECAPATDNN2020} and wav2vec2~\cite{XLS-R2022}, compute cosine distances, and classify X as matching the closer embedding. The score is the percentage of correct classifications across all minimal pairs in each category.
+
+Thresholds are set by category difficulty: aspiration and retroflexion require $\geq$90\% (these are high-frequency, meaning-critical contrasts), while schwa deletion allows $\geq$80\% (context-dependent, with genuine ambiguity in some environments).
+
+\subsubsection{Forced alignment}
+
+We complement ABX with forced alignment using the Montreal Forced Aligner~\cite{McAuliffe2017} to align generated audio to expected phoneme sequences. Per-phoneme posterior probabilities below 0.60 indicate the produced sound does not match the expected phoneme. This provides a complementary view: ABX measures \textit{discriminability} between contrasting phones, while alignment measures \textit{fidelity} to the expected phone.
+
+\subsubsection{Perceptual confusion matrix}
+
+Errors from ABX and alignment are aggregated into a confusion matrix showing which Nepali contrasts fail most frequently. This enables targeted diagnosis: a system confusing /\textipa{ú}/ and /t/ systematically has a retroflex production problem, while one confusing /k/ and /kh/ has an aspiration problem. We report the top-10 most confused pairs with example utterances.
+
+\subsubsection{Human evaluation}
+
+A 50-pair subset (stratified across all contrast categories, prioritizing borderline automated scores) is evaluated by 3 native Nepali speakers in ABX format. Human agreement is measured via Fleiss' $\kappa$ ($\geq$ 0.7 required). This validates automated ABX scores and catches errors invisible to embedding-based classifiers.
+
+
+\subsection{ASR round-trip intelligibility}
+
+We formalize ASR round-trip evaluation following Seed-TTS-Eval~\cite{SeedTTS2024}: synthesize text, transcribe with Whisper large-v3~\cite{Radford2023}, and compute character error rate (CER) and word error rate (WER) after text normalization (Unicode NFC, punctuation stripping, whitespace normalization). Per-category thresholds accommodate the higher ASR difficulty of phonological contrasts: CER $\leq$ 0.15 for phonological core vs. $\leq$ 0.08 for conversational text. Whisper's Nepali performance has been characterized by Rai et al.~\cite{Rai2024}, who achieved 36\% WER reduction via fine-tuning on curated Nepali data.
+
+\subsection{Additional evaluation dimensions}
+
+\textbf{Prosody.} 200+ test items covering contrastive stress (focus, corrective), question intonation (yes/no, wh-, tag, rhetorical), and emotional prosody across five emotions.
+
+\textbf{Stability.} Long-form utterances ($>$8s) testing attention collapse, plus robustness edge cases: tongue twisters, repetitive sequences, very short inputs, and rare vocabulary.
+
+\textbf{Code-switching.} 50 Nepali-English utterances with annotated switch points, evaluating boundary DNSMOS ($\Delta \leq$ 0.3), speaker identity across languages (cosine sim. $\geq$ 0.88), phonology correctness (Nepali vs. English phonology for loanwords), and F0 transition smoothness ($\Delta \leq$ 50Hz)~\cite{Sitaram2016, Gurung2019}.
+
+\textbf{Acoustic quality.} DNSMOS P.835~\cite{DNSMOS2022} (OVRL $\geq$ 3.5, SIG $\geq$ 3.5, BAK $\geq$ 4.0), UTMOS~\cite{UTMOS2022} ($\geq$ 4.0), SNR ($\geq$ 35dB), LUFS normalization~\cite{EBUR128}, and human MOS calibration (100-sample, 5 listeners, $\geq$ 3.8).
+
+\textbf{Speaker consistency.} ECAPA-TDNN~\cite{ECAPATDNN2020} embeddings: teacher-student similarity $\geq$ 0.85, student-student $\geq$ 0.90. F0 and speaking rate deviation $\leq$ 15\%.
+
+\textbf{Latency.} Time to first audio ($\leq$ 200ms on A10G), real-time factor ($\leq$ 0.5), peak memory ($\leq$ 2GB GPU).
+
+\textbf{Text normalization.} Exact-match accuracy against rule-based normalizer outputs for numbers, dates, currency, time, abbreviations ($\geq$ 98\% overall)~\cite{Sproat2016, Bali2007}.
+
+
+\section{Experiments}
+
+\subsection{Systems evaluated}
+
+We evaluate the following systems on the full NepTTS-Bench suite:
+
+\begin{itemize}
+  \item \textbf{Google TTS \texttt{ne-NP}}: Google Cloud Text-to-Speech, standard Nepali voice. Commercial baseline.
+  \item \textbf{MMS-TTS Nepali}~\cite{MMS2023}: Meta's Massively Multilingual Speech TTS, VITS-based, trained on ~32h religious text.
+  \item \textbf{Indic Parler-TTS}~\cite{IndicParlerTTS2024}: AI4Bharat's multilingual Indic TTS supporting Nepali.
+  \item \textbf{Gemini Flash 2.5 TTS}: Google's latest multilingual TTS with Nepali support. Teacher model for distillation.
+  %\item \textbf{Student model}: Our distilled <500M parameter model [if ready].
+\end{itemize}
+
+\subsection{Evaluation setup}
+
+All systems generate audio for the same test set. Automated metrics are computed using the tools specified in each protocol. Human evaluations use a panel of native Nepali speakers recruited from [anonymized].
+
+\section{Results}
+
+% TODO: Fill in with actual experimental results
+
+\textit{[Results will be populated with experimental data. Key result tables below show the planned format.]}
+
+\begin{table}[t]
+  \caption{Phonological accuracy: ABX discrimination (\% correct)}
+  \label{tab:results_phonological}
+  \centering
+  \small
+  \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Category} & \textbf{Google} & \textbf{MMS} & \textbf{Parler} & \textbf{Gemini} \\
+    \midrule
+    Aspiration 4-way & -- & -- & -- & -- \\
+    Retroflex/dental & -- & -- & -- & -- \\
+    Nasal vowels & -- & -- & -- & -- \\
+    Gemination & -- & -- & -- & -- \\
+    Schwa deletion & -- & -- & -- & -- \\
+    \midrule
+    \textbf{Overall} & -- & -- & -- & -- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[t]
+  \caption{Acoustic quality and intelligibility}
+  \label{tab:results_quality}
+  \centering
+  \small
+  \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Metric} & \textbf{Google} & \textbf{MMS} & \textbf{Parler} & \textbf{Gemini} \\
+    \midrule
+    DNSMOS OVRL & -- & -- & -- & -- \\
+    UTMOS & -- & -- & -- & -- \\
+    CER (overall) & -- & -- & -- & -- \\
+    WER (overall) & -- & -- & -- & -- \\
+    Human MOS & -- & -- & -- & -- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Discussion}
+
+% TODO: Fill in after results are available
+
+NepTTS-Bench reveals [key insight about phonological accuracy vs. acoustic quality]. Systems achieving high DNSMOS scores may still fail on phonological contrasts critical for Nepali intelligibility, confirming the need for language-specific evaluation.
+
+\textbf{Limitations.} ABX discrimination using neural embeddings may not perfectly capture human perception of phonological contrasts. Our human evaluation subset (50 pairs) is small relative to the full contrast space. The benchmark currently focuses on a single Nepali dialect (standard Nepali) and does not cover dialectal variation.
+
+
+%% Pages 5-6: acknowledgments, AI disclosure, references only
+
+\section{Generative AI Use Disclosure}
+Claude (Anthropic) was used for manuscript editing and literature search assistance. All technical content, benchmark design, and experimental work are by the authors.
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\end{document}
