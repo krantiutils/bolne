@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NepTTS-Bench Admin</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f5f6fa;
+    color: #333;
+    line-height: 1.5;
+  }
+
+  /* Header */
+  .header {
+    background: #0d7377;
+    color: #fff;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header h1 { font-size: 20px; font-weight: 600; }
+  .header button {
+    background: #fff;
+    color: #0d7377;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .header button:hover { background: #e0f2f2; }
+
+  /* Container */
+  .container { max-width: 960px; margin: 24px auto; padding: 0 16px; }
+
+  /* Stats cards */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .stat-card .stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0d7377;
+  }
+  .stat-card .stat-label {
+    font-size: 13px;
+    color: #777;
+    margin-top: 4px;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #444;
+  }
+
+  /* Coverage grid */
+  .coverage-section { margin-bottom: 24px; }
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    gap: 6px;
+  }
+  .coverage-cell {
+    position: relative;
+    background: #e74c3c;
+    color: #fff;
+    border-radius: 4px;
+    padding: 6px 4px;
+    text-align: center;
+    font-size: 11px;
+    cursor: default;
+    line-height: 1.3;
+  }
+  .coverage-cell.level-1 { background: #f39c12; }
+  .coverage-cell.level-2 { background: #27ae60; }
+  .coverage-cell .cell-id { font-weight: 600; }
+  .coverage-cell .cell-count { font-size: 10px; opacity: 0.9; }
+  .coverage-cell .tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .coverage-cell:hover .tooltip { display: block; }
+
+  /* Tables */
+  .table-section { margin-bottom: 24px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  th {
+    background: #f0f0f0;
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    user-select: none;
+  }
+  th:hover { background: #e4e4e4; }
+  td {
+    padding: 10px 14px;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+  }
+  tr:nth-child(even) td { background: #fafafa; }
+  tr.clickable-row { cursor: pointer; }
+  tr.clickable-row:hover td { background: #e0f2f2; }
+  tr.active-row td { background: #cce8e8; }
+
+  /* Recording detail panel */
+  .detail-panel {
+    display: none;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+  .detail-panel.visible { display: block; }
+  .detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .detail-header h3 { font-size: 16px; color: #0d7377; }
+  .detail-close {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #666;
+  }
+  .detail-close:hover { background: #f5f5f5; }
+
+  .rec-list { list-style: none; }
+  .rec-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .rec-item:last-child { border-bottom: none; }
+  .rec-text {
+    flex: 1;
+    font-size: 14px;
+    min-width: 0;
+  }
+  .rec-text .devanagari { font-weight: 500; }
+  .rec-text .roman { color: #888; font-size: 12px; }
+  .rec-item audio { flex-shrink: 0; height: 32px; }
+  .btn-delete {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .btn-delete:hover { background: #c0392b; }
+
+  .empty-msg {
+    color: #999;
+    font-style: italic;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .rec-item { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>NepTTS-Bench Admin</h1>
+  <button onclick="exportZip()">Export ZIP</button>
+</div>
+
+<div class="container">
+  <!-- Stats cards -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-value" id="stat-speakers">--</div>
+      <div class="stat-label">Total Speakers</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="stat-recordings">--</div>
+      <div class="stat-label">Total Recordings</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="stat-avg">--</div>
+      <div class="stat-label">Avg per Sentence</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="stat-flagged">--</div>
+      <div class="stat-label">Flagged</div>
+    </div>
+  </div>
+
+  <!-- Coverage grid -->
+  <div class="coverage-section">
+    <div class="section-title">Coverage Grid</div>
+    <div class="coverage-grid" id="coverage-grid"></div>
+  </div>
+
+  <!-- Speaker table -->
+  <div class="table-section">
+    <div class="section-title">Speakers</div>
+    <table id="speaker-table">
+      <thead>
+        <tr>
+          <th data-col="name">Name</th>
+          <th data-col="ethnicity">Ethnicity</th>
+          <th data-col="age_range">Age</th>
+          <th data-col="gender">Gender</th>
+          <th data-col="recording_count">Recordings</th>
+          <th data-col="created_at">Date</th>
+        </tr>
+      </thead>
+      <tbody id="speaker-tbody"></tbody>
+    </table>
+  </div>
+
+  <!-- Recording detail panel -->
+  <div class="detail-panel" id="detail-panel">
+    <div class="detail-header">
+      <h3 id="detail-title">Recordings</h3>
+      <button class="detail-close" onclick="closeDetail()">Close</button>
+    </div>
+    <ul class="rec-list" id="rec-list"></ul>
+  </div>
+</div>
+
+<script>
+  let speakersData = [];
+  let sortCol = null;
+  let sortAsc = true;
+  let activeSpeakerId = null;
+
+  // -----------------------------------------------------------------------
+  // Data fetching
+  // -----------------------------------------------------------------------
+  async function fetchStats() {
+    const res = await fetch("/admin/api/stats");
+    const data = await res.json();
+
+    document.getElementById("stat-speakers").textContent = data.total_speakers;
+    document.getElementById("stat-recordings").textContent = data.total_recordings;
+    document.getElementById("stat-flagged").textContent = data.total_flagged;
+
+    const sentences = data.sentences;
+    const avg = sentences.length > 0
+      ? (data.total_recordings / sentences.length).toFixed(1)
+      : "0";
+    document.getElementById("stat-avg").textContent = avg;
+
+    renderCoverageGrid(sentences);
+  }
+
+  async function fetchSpeakers() {
+    const res = await fetch("/admin/api/speakers");
+    speakersData = await res.json();
+    renderSpeakerTable();
+  }
+
+  async function fetchRecordings(speakerId) {
+    const res = await fetch("/admin/api/recordings?speaker_id=" + encodeURIComponent(speakerId));
+    return await res.json();
+  }
+
+  // -----------------------------------------------------------------------
+  // Coverage grid
+  // -----------------------------------------------------------------------
+  function renderCoverageGrid(sentences) {
+    const grid = document.getElementById("coverage-grid");
+    grid.innerHTML = "";
+    sentences.forEach(s => {
+      const cell = document.createElement("div");
+      cell.className = "coverage-cell";
+      if (s.rec_count >= 3) {
+        cell.classList.add("level-2");
+      } else if (s.rec_count >= 1) {
+        cell.classList.add("level-1");
+      }
+      const shortId = s.sent_id.slice(-3);
+      cell.innerHTML =
+        '<div class="cell-id">' + shortId + '</div>' +
+        '<div class="cell-count">' + s.rec_count + '</div>' +
+        '<div class="tooltip">' + escapeHtml(s.text_dev) + '</div>';
+      grid.appendChild(cell);
+    });
+  }
+
+  // -----------------------------------------------------------------------
+  // Speaker table
+  // -----------------------------------------------------------------------
+  function renderSpeakerTable() {
+    const tbody = document.getElementById("speaker-tbody");
+    tbody.innerHTML = "";
+    const sorted = [...speakersData];
+    if (sortCol) {
+      sorted.sort((a, b) => {
+        let va = a[sortCol] ?? "";
+        let vb = b[sortCol] ?? "";
+        if (typeof va === "number" && typeof vb === "number") {
+          return sortAsc ? va - vb : vb - va;
+        }
+        va = String(va).toLowerCase();
+        vb = String(vb).toLowerCase();
+        if (va < vb) return sortAsc ? -1 : 1;
+        if (va > vb) return sortAsc ? 1 : -1;
+        return 0;
+      });
+    }
+    sorted.forEach(sp => {
+      const tr = document.createElement("tr");
+      tr.className = "clickable-row";
+      if (sp.id === activeSpeakerId) tr.classList.add("active-row");
+      tr.dataset.speakerId = sp.id;
+      tr.onclick = () => selectSpeaker(sp);
+
+      const date = sp.created_at ? sp.created_at.slice(0, 10) : "";
+      tr.innerHTML =
+        "<td>" + escapeHtml(sp.name || "") + "</td>" +
+        "<td>" + escapeHtml(sp.ethnicity || "") + "</td>" +
+        "<td>" + escapeHtml(sp.age_range || "") + "</td>" +
+        "<td>" + escapeHtml(sp.gender || "") + "</td>" +
+        "<td>" + (sp.recording_count || 0) + "</td>" +
+        "<td>" + escapeHtml(date) + "</td>";
+      tbody.appendChild(tr);
+    });
+  }
+
+  document.querySelectorAll("#speaker-table th").forEach(th => {
+    th.addEventListener("click", () => {
+      const col = th.dataset.col;
+      if (sortCol === col) {
+        sortAsc = !sortAsc;
+      } else {
+        sortCol = col;
+        sortAsc = true;
+      }
+      renderSpeakerTable();
+    });
+  });
+
+  // -----------------------------------------------------------------------
+  // Recording detail panel
+  // -----------------------------------------------------------------------
+  async function selectSpeaker(sp) {
+    activeSpeakerId = sp.id;
+    renderSpeakerTable();
+
+    const panel = document.getElementById("detail-panel");
+    const title = document.getElementById("detail-title");
+    const list = document.getElementById("rec-list");
+
+    title.textContent = "Recordings by " + (sp.name || sp.id);
+    list.innerHTML = '<li class="empty-msg">Loading...</li>';
+    panel.classList.add("visible");
+
+    const recordings = await fetchRecordings(sp.id);
+    list.innerHTML = "";
+
+    if (recordings.length === 0) {
+      list.innerHTML = '<li class="empty-msg">No recordings yet.</li>';
+      return;
+    }
+
+    recordings.forEach(rec => {
+      const li = document.createElement("li");
+      li.className = "rec-item";
+      li.innerHTML =
+        '<div class="rec-text">' +
+          '<div class="devanagari">' + escapeHtml(rec.text_dev || "") + '</div>' +
+          '<div class="roman">' + escapeHtml(rec.text_roman || "") + '</div>' +
+        '</div>' +
+        '<audio controls preload="none" src="/admin/api/audio/' + rec.id + '"></audio>' +
+        '<button class="btn-delete" data-id="' + rec.id + '">Delete</button>';
+      li.querySelector(".btn-delete").addEventListener("click", (e) => {
+        e.stopPropagation();
+        deleteRecording(rec.id, sp);
+      });
+      list.appendChild(li);
+    });
+  }
+
+  function closeDetail() {
+    activeSpeakerId = null;
+    document.getElementById("detail-panel").classList.remove("visible");
+    renderSpeakerTable();
+  }
+
+  // -----------------------------------------------------------------------
+  // Delete recording
+  // -----------------------------------------------------------------------
+  async function deleteRecording(recId, speaker) {
+    if (!confirm("Delete this recording? This cannot be undone.")) return;
+    await fetch("/admin/api/recordings/" + recId, { method: "DELETE" });
+    // Refresh everything
+    await Promise.all([fetchStats(), fetchSpeakers()]);
+    if (activeSpeakerId) {
+      const sp = speakersData.find(s => s.id === activeSpeakerId);
+      if (sp) await selectSpeaker(sp);
+    }
+  }
+
+  // -----------------------------------------------------------------------
+  // Export
+  // -----------------------------------------------------------------------
+  function exportZip() {
+    window.location = "/admin/api/export";
+  }
+
+  // -----------------------------------------------------------------------
+  // Helpers
+  // -----------------------------------------------------------------------
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // -----------------------------------------------------------------------
+  // Init
+  // -----------------------------------------------------------------------
+  fetchStats();
+  fetchSpeakers();
+</script>
+
+</body>
+</html>

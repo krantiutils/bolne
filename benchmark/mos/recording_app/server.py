@@ -211,7 +211,6 @@ def assign_sentences(db: sqlite3.Connection, speaker_id: str) -> list[str]:
     ).fetchall()
 
     # 6. Save to speaker_assignments table
-    now = datetime.now(timezone.utc).isoformat()
     for sid in selected:
         db.execute(
             """INSERT OR IGNORE INTO speaker_assignments
@@ -391,3 +390,116 @@ def get_progress(speaker_id: str, db: sqlite3.Connection = Depends(get_db)):
         "total_recorded": len(recorded_ids),
         "recorded_ids": recorded_ids,
     }
+
+
+# ---------------------------------------------------------------------------
+# Admin endpoints (Task 6)
+# ---------------------------------------------------------------------------
+
+@app.get("/admin", response_class=HTMLResponse)
+def admin_page(request: Request, username: str = Depends(verify_admin)):
+    return templates.TemplateResponse("admin.html", {"request": request})
+
+
+@app.get("/admin/api/stats")
+def admin_stats(username: str = Depends(verify_admin), db=Depends(get_db)):
+    rows = db.execute("""
+        SELECT s.sent_id, s.text_dev, s.category, s.pair_id,
+               COUNT(r.id) as rec_count
+        FROM sentences s
+        LEFT JOIN recordings r ON r.sentence_id = s.sent_id
+        GROUP BY s.sent_id
+        ORDER BY s.sent_id
+    """).fetchall()
+    total_recordings = db.execute("SELECT COUNT(*) FROM recordings").fetchone()[0]
+    total_speakers = db.execute("SELECT COUNT(*) FROM speakers").fetchone()[0]
+    total_flagged = db.execute("SELECT COUNT(*) FROM recordings WHERE flagged = 1").fetchone()[0]
+    return {
+        "sentences": [dict(r) for r in rows],
+        "total_recordings": total_recordings,
+        "total_speakers": total_speakers,
+        "total_flagged": total_flagged,
+    }
+
+
+@app.get("/admin/api/speakers")
+def admin_speakers(username: str = Depends(verify_admin), db=Depends(get_db)):
+    rows = db.execute("""
+        SELECT s.*, COUNT(r.id) as recording_count
+        FROM speakers s
+        LEFT JOIN recordings r ON r.speaker_id = s.id
+        GROUP BY s.id
+        ORDER BY s.created_at DESC
+    """).fetchall()
+    return [dict(r) for r in rows]
+
+
+@app.get("/admin/api/recordings")
+def admin_recordings(speaker_id: str = None, username: str = Depends(verify_admin), db=Depends(get_db)):
+    query = """
+        SELECT r.*, s.text_dev, s.text_roman
+        FROM recordings r
+        JOIN sentences s ON s.sent_id = r.sentence_id
+    """
+    params = []
+    if speaker_id:
+        query += " WHERE r.speaker_id = ?"
+        params.append(speaker_id)
+    query += " ORDER BY r.created_at DESC"
+    rows = db.execute(query, params).fetchall()
+    return [dict(r) for r in rows]
+
+
+@app.get("/admin/api/audio/{recording_id}")
+def admin_audio(recording_id: int, username: str = Depends(verify_admin), db=Depends(get_db)):
+    row = db.execute("SELECT audio_path FROM recordings WHERE id = ?", (recording_id,)).fetchone()
+    if not row:
+        raise HTTPException(status_code=404)
+    path = APP_DIR / row["audio_path"]
+    if not path.exists():
+        raise HTTPException(status_code=404)
+    media_type = "audio/webm" if str(path).endswith(".webm") else "audio/wav"
+    return FileResponse(path, media_type=media_type)
+
+
+@app.delete("/admin/api/recordings/{recording_id}")
+def admin_delete_recording(recording_id: int, username: str = Depends(verify_admin), db=Depends(get_db)):
+    row = db.execute("SELECT audio_path FROM recordings WHERE id = ?", (recording_id,)).fetchone()
+    if not row:
+        raise HTTPException(status_code=404)
+    path = APP_DIR / row["audio_path"]
+    if path.exists():
+        path.unlink()
+    db.execute("DELETE FROM recordings WHERE id = ?", (recording_id,))
+    db.commit()
+    return {"status": "deleted"}
+
+
+@app.get("/admin/api/export")
+def admin_export(username: str = Depends(verify_admin), db=Depends(get_db)):
+    import zipfile
+    import io
+
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+        speakers = db.execute("SELECT * FROM speakers").fetchall()
+        recordings = db.execute("""
+            SELECT r.*, s.text_dev, s.text_roman
+            FROM recordings r JOIN sentences s ON s.sent_id = r.sentence_id
+        """).fetchall()
+        metadata = {
+            "exported_at": datetime.now(timezone.utc).isoformat(),
+            "speakers": [dict(s) for s in speakers],
+            "recordings": [dict(r) for r in recordings],
+        }
+        zf.writestr("metadata.json", json.dumps(metadata, ensure_ascii=False, indent=2))
+        for rec in recordings:
+            audio_path = APP_DIR / rec["audio_path"]
+            if audio_path.exists():
+                zf.write(audio_path, f"audio/{rec['speaker_id']}/{Path(rec['audio_path']).name}")
+    buf.seek(0)
+    return StreamingResponse(
+        buf,
+        media_type="application/zip",
+        headers={"Content-Disposition": "attachment; filename=neptts-bench-recordings.zip"},
+    )
