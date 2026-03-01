@@ -15,7 +15,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from pydantic import BaseModel
 
-APP_DIR = Path(__file__).parent
+APP_DIR = Path(__file__).resolve().parent
 DATA_DIR = APP_DIR / "data"
 AUDIO_DIR = DATA_DIR / "audio"
 DB_PATH = DATA_DIR / "recordings.db"
@@ -182,9 +182,10 @@ def assign_sentences(db: sqlite3.Connection, speaker_id: str) -> list[str]:
             {"sent_id": row["sent_id"], "rec_count": row["rec_count"]}
         )
 
-    # 3. Sort each group by recording count ascending
+    # 3. Sort each group by recording count ascending, with random tiebreak
+    import random
     for cat in groups:
-        groups[cat].sort(key=lambda x: x["rec_count"])
+        groups[cat].sort(key=lambda x: (x["rec_count"], random.random()))
 
     # 4. Round-robin pick from groups until 20 selected
     selected: list[str] = []
